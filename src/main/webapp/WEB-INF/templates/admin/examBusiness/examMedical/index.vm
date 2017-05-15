@@ -1,0 +1,499 @@
+<style>
+    *{margin:0;padding:0;}
+    /*a{font-size:14px;color:#333;text-decoration: none;}*/
+    a:hover{text-decoration:underline;}
+    body{font-family:'Microsoft YaHei',YaHei,Arial,Helvetica,sans-serif;}
+    .container{width:1024px;margin:0 auto;height:820px;border:1px solid #999;}
+    .head{height:36px;border-bottom: 1px solid #999;}
+    .head span{font-size: 18px;font-weight: bolder; height:30px;line-height:30px; width:98px;display: inline-block; border:1px solid #999;background: #e4ecee;margin:5px 0 0 20px;text-align: center;border-top-left-radius: 3px;-moz-border-top-left-radius:3px; border-top-right-radius: 3px;-moz-border-top-right-radius:3px;}
+    /*head ---结束*/
+    .nav1{height:40px;background: #dbeaf9;border:1px solid #999;}
+    .nav1 span{font-size: 16px; height:28px;line-height:28px; width:120px;display: inline-block; border:1px solid #999;background: #e4ecee;margin:5px 0 0 20px;text-align: center;border-radius: 4px;-moz-border-radius:4px;}
+    .nav1 span img{margin-right: 10px;vertical-align: middle;margin-top: -4px;}
+    /*nav ---结束*/
+    .main-m{height:310px;}
+    .content-im-m{width:150px;height:200px;border:1px solid #797979;float:left;margin:18px 0 0 30px;border-radius: 6px;-moz-border-radius:6px;text-align:center;/*line-height: 228px;*/}
+    /*content-im ---结束*/
+    .content-xi-m{width:235px;float:left;height:280px;margin:18px 0 0 0;}
+    .content-xi-m span{width:84px;text-align:right;display: inline-block;}
+    .content-xi-m input{width:150px;height:26px;box-sizing:border-box;}
+    .content-xi-m .main-a, .content-xi-m .main-b{position: relative;}
+    .content-xi-m input.con-a{width:200px;position: absolute;left:84px;top:0;}
+    .content-xi-m input.con-b{width:520px;position: absolute;left:84px;top:0;}
+    .content-xi-m p{margin-bottom: 12px;}
+    /*content-xi ---结束*/
+    .content-lei-m{width:314 px;float:left;margin:18px 0 0 53px;}
+    .content-lei-m span{width:84px;text-align:right;display: inline-block;}
+    .content-lei-m input{width:230px;height:26px;box-sizing:border-box;}
+    .content-lei-m p{margin-bottom: 12px;}
+    .content-lei-m p span.con-min{width:70px;}
+    /*content-lei ---结束*/
+
+    .keep{float: left;height:230px;width:150px;border:1px solid #999;margin:38px 0 0 16px;font-size: 20px;text-align: center;line-height: 230px;border-radius: 6px;-moz-border-radius:6px;cursor: pointer;}
+    /*keep ---结束*/
+    .navs{height:40px;background: #dbeaf9;border:1px solid #999;}
+    .navs span{font-size: 16px; height:28px;line-height:28px;display: inline-block; background: #e4ecee;margin:5px 0 0 20px;text-align: center;}
+    .navs span img{margin-right: 10px;vertical-align: middle;margin-top: -4px;}
+    /*navs ---结束*/
+    .footerM{height:76px;width:800px;margin:20px 0 0 22px;}
+    .footerM p{margin-bottom: 22px;}
+    #qualified, .panduan{margin:0 22px 0 14px;width:80px;height:25px;box-sizing:border-box;}
+    /*#qualified{margin: 0 12px 0 0;}*/
+    .beizhu{width:313px;height:25px;margin:0 12px 0 23px;box-sizing:border-box;}
+    /*#description{margin: 0 12px 0 0;}*/
+    .beizhu{margin-left: 26px;width:314px;}
+    /*.footerM p a{width:62px;height:24px;line-height: 24px;border:1px solid #999;display: inline-block;text-align: center;font-size: 17px;font-weight: 500;background: #ecf2f3;border-radius: 6px;-moz-border-radius:6px;}*/
+    /*.footerM p a:hover{color:red;}*/
+    .footerM p em{color:red;font-style: normal;margin-left: 4px;}
+    .content-xi-m p.content-xix span {
+        margin-left: 0px;
+    }
+    .bjui-tags{position:relative; display:inline-block; padding-top:0px;margin-left: 22px; width:auto; min-height:24px; vertical-align:middle; background:#FFF; border:1px solid #CCCCCC; border-radius:2px; cursor:text;}
+    /*footer ---结束*/
+</style>
+<div class="bjui-pageHeader" style="background-color: white;min-width: 1300px;">
+
+    <!--head 结束-->
+    <input type="hidden" id="codeVal" />
+    <input type="hidden" id="resultDescriptionId" />
+    <input type="hidden" id="descriptionId" />
+    <input type="hidden" id="descriptionVal" />
+    <input type="hidden" id="projectId" value="$!projectId" />
+    <input type="hidden" id="medicalErrMSG" class="btn-red" data-toggle="alertmsg" data-options="{type:'error', msg:'请先扫描条形码获取体检人员信息！'}"/>
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        <span style="display: none" id="freshMedical" data-toggle="reloadsearch" data-clear-query="true">刷新</span>
+    </form>
+    <div class="nav1"><span><img src="/assets/hplus/img/exam/ren.png" alt="">体征检查</span></div>
+    <!--nav 结束-->
+    <div class="main-m clearfix" id="medicalDiv">
+        <div class="content-im-m"><img id="medicalImgIcon" src="" style="width:150px;height: 200px;border: 1px solid #797979;border-radius: 6px;"></div>
+        <div class="content-xi-m">
+            <p><span>体检号：</span><input id="medicalNum" type="text" value="" class="nkExammMedical" ></p>
+            <p class="content-xix"><span>姓名：</span><input id="medicalName" type="text" value="" readonly></p>
+            <p><span>出生日期：</span><input id="medicalBirthDay"  type="text" value="" readonly></p>
+            <p><span>体检日期：</span><input id="medicalExamDay" type="text" readonly></p>
+            <p style="line-height: 2;" class="main-a"><span>地区：</span><input id="medicalArea" style="width:150px;" type="text" class="con-a" value="" readonly></p>
+            <p style="line-height: 2;" class="main-b"><span>既往病史：</span><input id="medicalHis" type="text" class="con-b" value="" readonly></p>
+            <p style="line-height: 2;" class="main-b"><span>备注：</span><input id="medicalRemark" type="text" class="con-b" value="" readonly></p>
+        </div>
+        <div class="content-lei-m">
+            <p><span>体检类别：</span><input id="medicalCate" type="text" class="con-c" value="" readonly></p>
+            <p><span>性别：</span><input id="medicalSex" type="text" class="con-d" value="" readonly></p>
+            <p ><span>身份证号：</span><input id="medicalId" type="text" value="" readonly></p>
+            <p ><span>行业：</span><input id="medicalIndustry" type="text" value="" readonly></p>
+            <p class="main-a"><span>工作单位：</span><input id="medicalUnit" type="text" class="con-a" value="" readonly></p>
+        </div>
+        <div class="keep" id="saveMedicalResult" onclick="saveMedicalResult();"
+             data-toggle="doajax" >保存</div>
+    </div>
+
+</div>
+<div class="bjui-pageContent" style="min-width: 1300px;padding: 2px 5px">
+    <div class="navs"><span><img src="/assets/hplus/img/exam/ren.png" alt="">问诊及内科皮肤科检查</span></div>
+    <div class="footerM">
+
+        <p><span>内科检查</span>
+            <select name="" id="qualified">
+                <option value="1">合格</option>
+                <option value="2">不合格</option>
+            </select>
+            <span style="margin-right:22px;">描述</span>
+##            <select name="description" id="description" data-emptytxt="请选择">
+##
+##            </select>
+
+
+##            <select id="description" name="description"  style="width: 313px;height:25px">
+##            </select> onchange="this.parentNode.nextSibling.value=this.options[this.selectedIndex].text"
+          <span style="position:relative;">
+                <span style="margin-left:296px;width:22px;overflow:hidden;">
+                <select id="descriptionSel" name="descriptionSel" style="width:313px;margin-left:-296px;height: 25px;" onchange="this.parentNode.nextSibling.value=this.options[this.selectedIndex].text">
+
+                </select></span>
+              <input name="box" id="descriptionInput" style="width:296px;height: 25px;margin-left:-316px;margin-top: -2px;">
+          </span>
+
+##            <select name="" id="description">
+        ##                <option value="">正常</option> http://localhost:8080/admin/examBusiness/examMedical/toJoinMedical.do?
+        ##                <option value="">有病</option>  #U("findMedicalDescription")
+        ##            </select>
+##            <input id="qualifiedYes" type="text" name="tags" data-width="313px"  value="" data-toggle="tags"  data-url="#U('findMedicalDescription?isQualified=?',$!yes)" >
+##            <input id="qualifiedNo"  type="text" name="tags" data-width="313px"  value="" data-toggle="tags"  data-url="#U('findMedicalDescription?isQualified=?',$!no)" >
+            &nbsp;&nbsp;&nbsp;
+##            <input id="description" type="text" name="" value="" size="30"  data-toggle="tags" data-options="{url:'http://demo.b-jui.com/json/tags/tags.json?term=1', istag:false}" placeholder="可选择可输入">&nbsp;&nbsp;&nbsp;
+            <button type="button" id="upBtn" onclick="upMedical();" >编辑</button>
+##            <button type="button" id="upBtn" data-id="upDialog" data-toggle="dialog" data-width="830" data-height="800" data-url="#U('toUpExamResultMedicalX')" >编辑</button>
+##            <button type="button" id="joinBtnM" data-id="joinDialog" data-toggle="dialog" data-width="600" data-height="400" data-type="post"  data-url="#U('toJoinMedical?projectId=?',$!projectId)" >加入</button>
+            <button type="button" id="joinBtnM" onclick="joinMedical();">加入</button>
+##            <a data-toggle="dialog" data-id="joinMedical"  href="#U('toJoinMedical?id=?',$vo.id)"
+##               data-width="700" data-height="450">加入</a>
+        </p>
+        <p><span>判断人&nbsp&nbsp&nbsp&nbsp</span><input id="drName" type="text" readonly  class="panduan" value="$!user.realName"> <span>备注</span><input type="text" id="remark" class="beizhu"><em></em></p>
+    </div>
+</div>
+    <script>
+
+##        function findDescription(){
+##            var isQualified = getNavEle( "#qualified").val();
+##            console.info(isQualified);
+##            var url="#U('findMedicalDescription?')isQualified="+isQualified;
+##            getNavEle( ".footerM input[name='tags']").attr("data-url",url);
+##        };
+
+        // select下拉框获取不同描述用语
+##        getNavEle( "#qualified").change(function(){
+##            getNavEle( ".loadDescription").remove();
+##            var isQualified = getNavEle( "#qualified").val();
+##            console.info(isQualified);
+##            $.getJSON("#U("findMedicalDescription")",
+##                    {
+##                        isQualified:isQualified
+##                    },
+##                    function (data) {
+##                        console.info(data);
+##                        if (data) {
+##                            var html = "";
+##                            for (var i=0;i<data.length;i++) {
+##                                var des = data[i];
+##                                html += "<option class='loadDescription' value='"+des.value+"'>"+des.label+"</option>";
+##                            }
+##                            getNavEle( "#description").append(html);
+##                        }
+##                    }
+##            );
+##        });
+
+
+
+        //自动完成根据合格与否分别请求
+//        getNavEle( "#qualified").change(function(){
+//            var q = getNavEle( "#qualified").val();
+//            if(q==1){
+//                getNavEle( "#qualifiedYes").parent().show();
+//                getNavEle( "#qualifiedNo").parent().hide();
+//            }else{
+//                getNavEle( "#qualifiedYes").parent().hide();
+//                getNavEle( "#qualifiedNo").parent().show();
+//            }
+//        });
+
+        //自动完成功能
+//        getNavEle( ".footerM input[name='tags']").on('aftercreated.bjui.tags', function(e, data) {
+//            if(data.item){
+//                // 当前选定项的值(object，具体值由返回JSON决定)
+//                var description  = data.item.label;
+//                console.info("q"+description);
+//                getNavEle( "#descriptionVal").val(description);
+//                getNavEle( "#descriptionId").val(data.item.value);
+//            }else if(data.value){
+//                var descriptionId = data.value;
+//                getNavEle( "#resultDescriptionId").val(descriptionId);
+//                console.info("m"+descriptionId);
+//                getNavEle( "#descriptionVal").val(descriptionId);
+//            }
+//
+//        })
+
+     getNavEle( "#descriptionSel").change(function(){
+         getNavEle( "#descriptionInput").val("");
+    getNavEle( "#descriptionInput").val(getNavEle( "#descriptionSel").find("option:selected").text());
+     });
+
+    // 加入描述
+        function joinMedical() {
+            var qualified = getNavEle( '.footerM #qualified').val();
+            var drName= encodeURI(encodeURI(getNavEle( '.footerM #drName').val()));
+            var description = encodeURI(encodeURI(getNavEle( "#descriptionInput").val()));
+            if(description==""){
+                getNavEle( this).alertmsg("error","请先输入描述用语！");
+                return false;
+            };
+            var remark = getNavEle( '.footerM #remark').val();
+            var descriptionId = getNavEle( "#descriptionSel").val();
+            var url = "#U('toJoinMedical?')qualified="+qualified+"&drName="+drName+"&description="
+                    +description+"&descriptionId="+descriptionId+"&t="+new Date().getTime();
+//            getNavEle( '#joinBtnM').attr("data-url",url);
+            getNavEle( document).dialog({id:'joinDialog', url:url, title:'加入描述',width:600,height:400});
+        }
+
+##        getNavEle( "#qualified").change(function(){
+##            getNavEle( ".es-visible").remove();
+##            var isQualified = getNavEle( "#qualified").val();
+##            console.info(isQualified);
+##            $.getJSON("#U("findMedicalDescription")",
+##                    {
+##                        isQualified:isQualified
+##                    },
+##                    function (data) {
+##                        console.info(data);
+##                        if (data) {
+##                            var html = "";
+##                            for (var i=0;i<data.length;i++) {
+##                                var des = data[i];
+##                                html += "<li class='es-visible' value='" + des.value + "'>" + des.label + "</li>";
+##                            }
+##                            getNavEle( "#description").next().next().next().append(html);
+##                        }
+##                    }
+##            );
+##        });
+
+##        getNavEle( "#qualified").change(function(){
+##            getNavEle( ".loadDescription").remove();
+##            var isQualified = getNavEle( "#qualified").val();
+##            console.info(isQualified);
+##            $.getJSON("#U("findMedicalDescription")",
+##                    {
+##                        isQualified:isQualified
+##                    },
+##                    function (data) {
+##                        console.info(data);
+##                        if (data) {
+##                            var html = "";
+##                            for (var i=0;i<data.length;i++) {
+##                                var des = data[i];
+##                                html += "<option class='loadDescription' value='"+des.value+"'>"+des.label+"</option>";
+##                            }
+##                            getNavEle( "#descriptionSel").append(html);
+##                        }
+##                    }
+##            );
+##        });
+
+        function upMedical() {
+//            var qualified = getNavEle( '.footerM #qualified').val();
+//            var drName= encodeURI(encodeURI(getNavEle( '.footerM #drName').val()));
+//            var description = encodeURI(encodeURI(getNavEle( "#descriptionVal").val()));
+//            var remark = getNavEle( '.footerM #remark').val();
+//            var descriptionId = getNavEle( "#descriptionId").val();
+//            console.info(drName);
+//            console.info(description);
+##            var url = "#U('toJoinMedical?')qualified="+qualified+"&drName="+drName+"&description="
+##                    +description+"&remark="+remark+"&descriptionId="+descriptionId+"&t="+new Date().getTime();
+##            console.info(url);
+            var examNumber = getNavEle( '.nkExammMedical').val();
+            var projectId = getNavEle( '#projectId').val();
+            if(examNumber==''){
+                getNavEle( this).alertmsg("error","请先扫描条形码获取体检人员信息！");
+                return false;
+            }
+
+            getNavEle( document).dialog({id:'upDialog', url:"#U('toUpExamResultMedicalX?')examNumber="+examNumber+"&projectId="+projectId, title:'修改描述',width:830,height:800});
+        }
+
+         function upMedicalX(){
+             var upExamNumber = getNavEle( ".nkExammMedical").val();
+             var projectId = getNavEle( "input[name='projectId']").val();
+             var upIdLength = getNavEle( "input[name='upIdLength']").val();
+             var updescription = getNavEle( "input[name='updescription']").val();
+             $.post("#U('upExamResultMedicalX')",
+                     {
+                         upExamNumber:upExamNumber,
+                         projectId:projectId,
+                         upIdLength:upIdLength,
+                         updescription:updescription
+                     },function(data){
+                         data=$.parseJSON(data);
+                         getNavEle( document).dialog("close","upDialog");
+                         if(data.errorMsg){
+                             getNavEle( this).alertmsg("error",data.errorMsg);
+                         }else{
+                             getNavEle( "#descriptionInput").val(data.result.examResult);
+                             if(data.type==1){
+                                 getNavEle( '#qualified').val(1);
+                             }else{
+                                 getNavEle( '#qualified').val(2);
+                             }
+                         }
+                     });
+         };
+
+//        function upDialogCallback(){
+//            console.info("回调");
+//        }
+
+##        getNavEle( "#descriptionSel").click(function(){
+##            getNavEle( ".loadDescription").remove();
+##            $.getJSON("#U("findMedicalXDescription")",
+##                    {
+##                        projectId:9
+##                    },
+##                    function (data) {
+##                        console.info(data);
+##                        if (data) {
+##                            var html = "";
+##                            for (var i=0;i<data.length;i++) {
+##                                var des = data[i];
+##                                html += "<option class='loadDescription' t='"+des.type+"' value='"+des.id+"'>"+des.description+"</option>";
+##                            }
+##                            getNavEle( "#descriptionSel").append(html);
+##                        }
+##                    }
+##            );
+##        });
+
+        getNavEle( "#descriptionSel").change(function(){
+            var t = getNavEle( this).find("option:selected").attr("t");
+            if(t==1){
+                getNavEle( '#qualified').val(1);
+            }else{
+                getNavEle( '#qualified').val(2);
+            }
+        });
+
+
+      getNavEle( document).ready(function () {
+
+//          getNavEle( document).keydown(function(event) {
+//              if (event.keyCode == 13) {
+//                  getNavEle( "#joinBtnM").click();
+//              }
+//          });
+
+//          getNavEle( '#description').editableSelect(
+//          );
+
+          setTimeout(
+                  function(){
+                            $.getJSON("#U("findMedicalXDescription")",
+                                    {
+                                        projectId:9
+                                    },
+                                    function (data) {
+                                        if (data) {
+                                            var html = "";
+                                            for (var i = 0; i < data.length; i++) {
+                                                var des = data[i];
+                                                html += "<option class='loadDescription' t='"+des.type+"' value='" + des.id + "'>" + des.description + "</option>";
+                                            }
+                                            getNavEle( "#descriptionSel").append(html);
+                                            getNavEle( "#descriptionInput").val("正常");
+                                        }
+                                    });
+                  },100);
+
+
+
+          //加载时下拉框获取描述用语
+##          $.getJSON("#U("findMedicalDescription")",
+##                  {
+##                      isQualified:1
+##                  },
+##                  function (data) {
+##                      console.info(data);
+##                      if (data) {
+##                          var html = "";
+##                          for (var i = 0; i < data.length; i++) {
+##                              var des = data[i];
+##                              html += "<option class='loadDescription' value='" + des.value + "'>" + des.label + "</option>";
+##                          }
+##                          getNavEle( "#description").append(html);
+##                      }
+##                  });
+
+          // 等待自动完成初始化
+//          setTimeout(
+//                  function(){
+//                      getNavEle( "#qualifiedNo").parent().hide();
+//                  },100);
+//
+//
+//          getNavEle( ".footerM input[name='tags']").tags(
+//                  {
+//                      max:1
+//                  }
+//          );
+
+          getNavEle( '.content-xi-m #medicalNum').focus();
+
+          getNavEle( '.content-xi-m #medicalNum').on("keydown",function (event) {
+              var examNumber = getNavEle( '.content-xi-m #medicalNum').val();
+              var projectId = getNavEle( "#projectId").val();
+
+                  var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+                  var code = theEvent.keyCode;
+                  if (code == 13) {
+                  if(examNumber==''){
+                      getNavEle( '#medicalErrMSG').click();
+                      getNavEle( '.content-xi-m #medicalNum').focus();
+                      getNavEle( '.content-xi-m #medicalNum').select();
+                     return false;
+                  }
+                  $.getJSON("#U('findResultByProIdMeId')",
+                          {examNumber:examNumber,projectId:projectId},function(data){
+                              if(data.errorMsg){
+                                  getNavEle( this).alertmsg("error",data.errorMsg);
+                                  getNavEle( '.content-xi-m #medicalNum').focus();
+                                  getNavEle( '.content-xi-m #medicalNum').select();
+                                  return false;
+                              }else{
+                                 getNavEle( '#medicalDiv #medicalName').val(data.exam.name);
+                                 getNavEle( '#medicalDiv #medicalBirthDay').val(data.exam.birthday);
+                                 getNavEle( '#medicalDiv #medicalExamDay').val(data.exam.examTimeStr);
+                                 getNavEle( '#medicalDiv #medicalArea').val(data.exam.areaName);
+                                  getNavEle( '#medicalDiv #medicalImgIcon').attr("src",data.exam.icon);
+                                 getNavEle( '#medicalDiv #medicalHis').val(data.exam.anamnesis);
+                                 getNavEle( '#medicalDiv #medicalRemark').val(data.exam.remark);
+                                 getNavEle( '#medicalDiv #medicalCate').val("从业人员体检");
+                                 getNavEle( '#medicalDiv #medicalSex').val((data.exam.sex == 0) ? "女" : "男");
+                                 getNavEle( '#medicalDiv #medicalId').val(data.exam.idCardNum);
+                                 getNavEle( '#medicalDiv #medicalIndustry').val(data.exam.categoryName);
+                                 getNavEle( '#medicalDiv #medicalUnit').val(data.exam.workUnit);
+
+                                 getNavEle( '.content-xi-m #medicalNum').focus();
+                                 getNavEle( '.content-xi-m #medicalNum').select();
+
+                                 getNavEle( "#descriptionInput").val(data.qualifiedResult.examResult);
+                                  if(data.qualifiedResult.isQualified==1){
+                                      getNavEle( '#qualified').val(1);
+                                  }else{
+                                      getNavEle( '#qualified').val(2);
+                                  }
+
+                              }
+                      });
+                  };
+          });
+          })
+
+        //保存内科体检结果
+        function saveMedicalResult(){
+
+            var examNumber = getNavEle( '.content-xi-m #medicalNum').val();
+            if(examNumber==""){
+                getNavEle( this).alertmsg("error","请先扫描条形码获取体检人员信息");
+                return false;
+            }
+//            var descriptionId=getNavEle( "#descriptionId").val();
+//            var descriptionVal=encodeURI(encodeURI(getNavEle( "#descriptionVal").val()));
+//            if(descriptionVal==""){
+//                getNavEle( this).alertmsg("error","请输入体检描述用语");
+//                return false;
+//            };
+            var isQualified=getNavEle( "#qualified").val();
+            var projectId = getNavEle( "#projectId").val();
+            var description = getNavEle( "#descriptionInput").val();
+
+            $.post("#U('saveMedicalResult')",
+                    {   isQualified:isQualified,
+                        description:description,
+                        examNumber:examNumber,
+                        projectId:projectId
+                    },function(data){
+                        data=$.parseJSON(data);
+                        if(data.statusCode==200) {
+                            getNavEle( this).alertmsg("ok",data.message);
+                            setTimeout(function(){
+                                getNavEle( "#freshMedical").click();
+                            },2000);
+                        }else if(data.statusCode==300){
+                            getNavEle( this).alertmsg("error",data.message);
+                        }
+                    });
+
+        };
+
+    </script>
+
+##</body>
+##</html>

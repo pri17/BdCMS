@@ -1,0 +1,161 @@
+<div class="bjui-dialog bjui-dialog-container">
+    02
+    <div class="dialogHeader">
+
+        <!-- 最大化、最小化、关闭等按钮区 -->
+
+        <h1><!-- 标题 --></h1>
+
+    </div>
+
+    <div class="dialogContent unitBox">
+
+        <!-- 页片内容区 -->
+
+    </div>
+
+    <!-- 用于调整大小的div片断 -->
+
+</div>
+
+<div class="bjui-pageContent">
+    <form action="#U('confirmFee')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <table>
+            <input type="hidden" name="id" value="$!memberExam.examPay.id"/>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">体检号：</label>
+                        <input data-val="" name="examNumber" id="j_dialog_name" readonly value="$!memberExam.examNumber" size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        #if($!memberExam.isRecheck == 1)
+
+                            <input type="checkbox" id="isRecheck" checked disabled data-toggle="icheck" data-label="本次体检是否为复检">
+
+                        #else
+
+                            <input type="checkbox" id="isRecheck" disabled data-toggle="icheck" data-label="本次体检是否为复检">
+                        #end
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">姓名：</label>
+                        <input data-val="" name="name" id="j_dialog_name" readonly value="$!memberExam.examMember.name" size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">身份证号：</label>
+                        <input name="" id="j_dialog_name" value="$!memberExam.examMember.idCardNum" readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">乡镇：</label>
+                        <input name="" id="j_dialog_name" value="$!memberExam.examArea.areaName"  readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">体检日期：</label>
+                        <input name="createTime" id="j_dialog_name" value="$!memberExam.examPay.createTimeStr"  readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">工作单位：</label>
+                        <input name="workUnit" id="j_dialog_name" value="$!memberExam.workUnit" readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">收费方式：</label>
+
+                        <select name="payType" id="payType" data-toggle="selectpicker" data-width="85"
+                                data-emptytxt="请选择" >
+                            <option value="微信">微信</option>
+                            #* #LoadBean("examPayTypeService")
+                            #foreach($el in $examPayTypeService.getAllPayType())
+                                <option value="$!el.id"
+                                   #if($!el.id==$!memberExam.examPay.payType)
+                                        selected
+                                    #end
+                                >$!el.name</option>
+                            #end
+                        #end*#
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">应收：</label>
+                        <input name="payMoney" id="j_dialog_name" value="$!memberExam.examPay.payMoney" readonly size="20" class="form-control readonly" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">备注：</label>
+                        <input name="remarks" id="j_dialog_name" value="$!memberExam.examPay.remarks" size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">实收：</label>
+
+                        <input name="payActualMoney" id="j_dialog_name"  value="$!memberExam.examPay.payActualMoney" size="20" class="form-control readonly" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x110">是否打印发票：</label>
+                        #if($!memberExam.examPay.isPrint==1)
+
+                            <input type="radio" name="isPrint" checked  id="doc-radio1" value="1" data-toggle="icheck" data-label="是">
+                            <input type="radio" name="isPrint" id="doc-radio2" value="0" data-toggle="icheck" data-label="否">
+
+                        #elseif($!memberExam.examPay.isPrint==0)
+
+                            <input type="radio" name="isPrint" id="doc-radio1" value="1" data-toggle="icheck" data-label="是">
+                            <input type="radio" name="isPrint" checked id="doc-radio2" value="0" data-toggle="icheck" data-label="否">
+                        #end
+
+
+
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+
+
+
+    </form>
+    <div class="add-role-button">
+        <ul>
+            <li><button type="button" class="btn-default" >关闭</button></li>
+            <li><button type="submit"  class="btn-default" >保存</button></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+
+</script>

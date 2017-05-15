@@ -1,0 +1,43 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+        <div class="bjui-searchBar">
+
+            <button type="button" href="#U('addBackUp')" data-toggle="doajax" class="btn btn-default new-add-right" data-re-
+               data-confirm-msg="确定要备份数据库吗？">备份当前数据库</button>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">数据库备份日期</th>
+            <th align="center">备份人</th>
+            <th align="center">是否当前数据库</th>
+            <th align="center" width="220">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr>
+                <td align="center">$date.format('yyyy-MM-dd HH:mm:ss',$!vo.createTime)</td>
+                <td align="center">$!vo.creator</td>
+                #if($!vo.isCurrent==0)
+                    <td align="center">否</td>
+                #elseif($!vo.isCurrent==1)
+                    <td align="center">是</td>
+                #end
+                <td align="center">
+                    <a  data-id="updateUser" data-width="600"  class="btn btn-default" data-toggle="doajax" data-confirm-msg="确定要还原数据库吗？" href="#U('toRecoveryDB?id=?',$vo.id)"
+                    >还原</a>
+                    <a type="button" class="btn btn-default" href="#U('deleteBackUp?id=?',$vo.id)"
+                       data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</a>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+</div>
+#page($page)

@@ -1,0 +1,54 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('lookBackRoleMultiple')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+            <label>角色名：</label>
+            <input type="text" id="role" value="$!query.role" name="role" class="form-control" size="10">&nbsp;
+
+            <button type="submit" class="btn-default" data-icon="search">查询</button>&nbsp;
+            <a class="btn btn-orange" href="javascript:;"
+               data-toggle="reloadsearch" data-clear-query="true"
+               data-icon="undo">清空查询</a>
+
+            &nbsp;&nbsp;&nbsp;
+            <div class="pull-right">
+                <button type="button" class="btn-blue" data-toggle="lookupback" data-lookupid="ids"
+                        data-warn="请至少选择一项!" data-icon="check-square-o">选择选中</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true">
+        <thead>
+        <tr>
+
+            <th align="center">角色名</th>
+            <th align="center">介绍</th>
+            <th>状态</th>
+            <th width="28"><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
+            <th width="180">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($vo in $page.list)
+            <tr>
+
+                <td>$!vo.role</td>
+                <td>$!vo.description</td>
+                #if($!vo.status=="enable")
+                    <td>正常</td>
+                #else
+                    <td>禁用</td>
+                #end
+                <td><input type="checkbox" name="ids" data-toggle="icheck" value="{roleId:'$!vo.id', roleName:$!vo.name'}"></td>
+                <td>
+                    <a href="javascript:;" data-toggle="lookupback" data-args="{ roleId:'$!vo.id', roleName:'$!vo.name'}" class="btn btn-blue" title="选择本项" data-icon="check">选择</a>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+#page($page)

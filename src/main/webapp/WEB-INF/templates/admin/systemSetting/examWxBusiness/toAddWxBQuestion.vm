@@ -1,0 +1,29 @@
+<div class="bjui-pageContent">
+    <form action="#U('addWxBQuestion')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <div style="width: 100%;">
+            <div style="width: 50%;float: left;">
+                <label class="control-label x85" style="width: 50px;">问题：</label>
+                <textarea cols="30" rows="3" name="ask" value="" data-toggle="autoheight" data-url="required" style="height: 250px;resize: none;" maxlength="200"></textarea>
+                <span class="middle red">*</span>
+            </div>
+            <div style="width: 50%;float: right;">
+                <label class="control-label x85" style="width: 50px;">回答：</label>
+                <textarea cols="30" rows="3" name="answer" value="" data-toggle="autoheight" data-url="required" style="height: 250px;resize: none;" maxlength="200"></textarea>
+                <span class="middle red">*</span>
+            </div>
+        </div>
+        <span style="color: red;margin-left: 60px;">（注：问题及回答最多输入200字）</span>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-default" >关闭</button></li>
+        <li><button type="submit"  class="btn-default" >保存</button></li>
+    </ul>
+</div>
+<script>
+
+</script>

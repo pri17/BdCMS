@@ -1,0 +1,17 @@
+扩展功能，目录结构
+
+controller  控制器
+
+service  业务逻辑
+
+dao  数据操作层
+
+entity  实体
+
+document  mongodb 集合实体
+
+repository  mongodb 操作
+
+
+
+

@@ -1,0 +1,108 @@
+body {
+  /*width: 515px;*/
+  height: 1080px;
+  font-size: 21px;
+  margin:0;
+}
+dd { 
+  margin: 0;
+  text-align: center;
+}
+th {
+  font-size: 20px;
+}
+td {
+  padding: 2px 0;
+}
+.ticket {
+  box-sizing: border-box;
+  width: 515px;
+  padding: 8px;
+  background: #ffffff;
+  /*margin-left:8px;*/
+}
+.bar-img {
+  width: 185px;
+}
+.bar-img-two{
+  width: 40%!important;
+}
+.bar-img img {
+  width: 100%;
+  height:88px;
+}
+.bar-code {
+  display: inline-block;
+}
+.bar-code-two{
+  width: 40%;
+  padding-right: 5%;
+  float: right ;
+  text-align: center;
+  margin: 1rem 0;
+}
+.item {
+  display: inline-block;
+  height: 118px;
+  line-height: 100px;
+  vertical-align: bottom;
+}
+.half {
+  width: 50%;
+}
+.inner-table {
+  height: 340px;
+  border-top: 2px solid #333;
+  border-left: 2px solid #333;
+}
+.inner-table td {
+  border-bottom: 2px solid #333;
+  border-right: 2px solid #333;
+}
+.inner-table {
+  width: 98%;
+}
+.inner-table .head {
+  text-align: center;
+}
+.list-height{
+  height: 3.2rem;
+}
+.bar-box {
+  text-align: center;
+}
+.bar-box-two{
+  width: 40%;
+  margin: 1rem 5%;
+  text-align: center;
+}
+.bar-box .bar-code {
+  /*border: 1px solid #333;*/
+  padding: 0 5px;
+  margin: 0;
+  /*height: 140px;*/
+  margin-bottom: 40px;
+}
+.notice td{
+  padding: 2px 0;
+  font-size: 22px;
+}
+.re-code {
+  text-align: right;
+}
+.re-code .bar-code {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+.t-l {
+  text-align: left;
+}
+.t-r {
+  text-align: right;
+}
+.ticket.top {
+  height: 760px;
+  padding-bottom: 0;
+}

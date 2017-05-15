@@ -1,0 +1,8 @@
+FROM daocloud.io/xuejike/bd_maven_docker:v0.1
+
+MAINTAINER xuejike "xuejike2004@126.com"
+#1.安装基础
+
+ADD ./ /
+
+RUN mvn package

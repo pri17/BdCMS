@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>常熟市疾病预防控制中心欢迎使用自助系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <style>
+        .disable-input{
+            background-color: #C3C0C0 !important;
+        }
+    </style>
+
+</head>
+<object id="registerECardReader" codebase="../assets/FirstActivex.cab#version=1,3,3,1"
+        classid="CLSID:F225795B-A882-4FBA-934C-805E1B2FBD1B"
+        width="0" height="0">
+    <param name="_Version" value="65536"/>
+    <param name="_ExtentX" value="2646"/>
+    <param name="_ExtentY" value="1323"/>
+    <param name="_StockProps" value="0"/>
+</object>
+
+
+<body>
+
+
+<div class="main container form-margin-left">
+    <a style="margin-left: -160px;" href="javascript: history.go(-1)"
+       class="pull-left go-back button button-glow button-border button-primary burron-rounded button-go-back">返回</a>
+    <form action="" class="form-horizontal">
+        <input id="age" hidden/>
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="name" class="control-label col-xs-4">
+                                姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+                            </label>
+                            <div class="col-xs-7 fifty-percent">
+                                <input type="text" name="name" id="name" class="form-control disable-input" disabled readonly>
+                            </div>
+                            <div class="col-xs-1">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="gender" class="control-label col-xs-4">
+                                性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别
+                            </label>
+                            <div class="col-xs-7 fifty-percent">
+                            ##                            <select id="sex" name="gender" class="form-control">
+                            ##                                <option value="1">男</option>
+                            ##                                <option value="2">女</option>
+                            ##                            </select>
+                                <input type="text" name="sex" id="sex" class="form-control disable-input" readonly disabled>
+                            </div>
+                            <div class="col-xs-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="birthday" class="control-label col-xs-4">出&thinsp;&thinsp;生&thinsp;&thinsp;日&thinsp;期</label>
+                            <div class="col-xs-7 fifty-percent">
+                                <input type="text" name="birthday" id="birthday" class="form-control disable-input" readonly disabled>
+                            </div>
+                            <div class="col-xs-1">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="idCardNum" class="control-label col-xs-4">身份证号码</label>
+                            <div class="col-xs-7 fifty-percent">
+                                <input type="text" name="idCardNum" id="idCardNum" class="form-control disable-input" readonly disabled>
+                            </div>
+                            <div class="col-xs-1">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-3">
+                <div class="img" style="border: 1px red solid; height: 130px; width: 110px;">
+                    <img id="userIcon" src="" alt="">
+                    <input type="hidden" id="icon">
+                </div>
+                <div  style="width: 100px;text-align: center;font-size: 30px;color: #fff">照&nbsp;&nbsp;片</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="address" class="control-label col-xs-3">
+                        地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址
+                    </label>
+                    <div class="col-xs-8 fifty-four-percent">
+                        <input type="text" name="address" id="address" class="form-control disable-input"  readonly disabled>
+                    </div>
+                    <div class="col-xs-1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="mobile"
+                           class="control-label col-xs-3">手&thinsp;&thinsp;机&thinsp;&thinsp;号&thinsp;码</label>
+                    <div class="col-xs-8 fifty-four-percent">
+                        <input type="text" name="mobile" id="mobile" class="form-control"   >
+                        <div id="mobilekey"></div>
+                    </div>
+                    <div class="col-xs-1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="workUnit"
+                           class="control-label col-xs-3">工&thinsp;&thinsp;作&thinsp;&thinsp;单&thinsp;位</label>
+                    <div class="col-xs-8 fifty-four-percent">
+                        <input type="text" name="workUnit" id="workUnit" class="form-control">
+                        <div id="workUnitkey" ></div>
+                    </div>
+                    <div class="col-xs-1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="eaopenCategory" class="control-label col-xs-3">行&thinsp;&thinsp;业&thinsp;&thinsp;类&thinsp;别</label>
+                    <div class="col-xs-8 fifty-four-percent">
+                        <select name="eaparentId" id="eaopenCategory" class="form-control" data-emptytxt="请选择"
+                                onchange="addOptionEa()">
+##                            <option value="">请选择</option>
+                            #LoadBean("examCategoryService")
+                            #foreach($rootVo in $examCategoryService.getRootCategory())
+                                <option value="$rootVo.id"
+                                    #if($rootVo.id==$eaparentId)
+                                        selected
+                                    #end
+                                >
+                                    $rootVo.categoryName
+                                </option>
+                            #end
+                        #end
+                        </select>
+                    </div>
+                    <div class="col-xs-1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="col-xs-8 fifty-four-percent col-xs-offset-3">
+                        <select id="eaopenCategoryLevelTwo" class="form-control" type="text">
+                        </select>
+                    </div>
+                    <div class="col-xs-1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="packageId">
+        <input type="hidden" id="packagePrice">
+    </form>
+    <div class="save">
+        <span id="saveAndPrint" onclick="saveExamPrint()"  class="button button-3d button-primary button-rounded button-blue-hover">保存并打印体检单</span>
+    </div>
+
+</div>
+
+##<div id="prompt" style="width: 1000px;height: 700px" >
+##    <div class="prompt">
+##        请将身份证放置在感应区...
+##    </div>
+##    </div>
+
+</body>
+</html>
+
+<link rel="stylesheet" href="../assets/machineCss/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/machineCss/css/buttons.css">
+<link rel="stylesheet" href="../assets/machineCss/css/style.css">
+<link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+##    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+<script src="../assets/machineCss/js/sweetalert-dev.js"></script>
+<script src="../js/machine/registerExam.js"></script>
+<script  src="../assets/virtualkeyboard/vk_loader.js?vk_layout=CN%20Chinese%20Simpl.%20Pinyin&vk_skin=flat_gray" ></script>
+<script  src="../assets/virtualkeyboard/jquery-1.8.2.min.js" ></script>
+
+<script>
+    function mobileKeyboard(){
+        VirtualKeyboard.toggle('mobile', 'mobilekey');
+        $("#kb_langselector,#kb_mappingselector,#copyrights").css("display", "none");
+    }
+
+    function workUnitKeyboard(){
+        VirtualKeyboard.toggle('workUnit', 'workUnitkey');
+        $("#kb_langselector,#kb_mappingselector,#copyrights").css("display", "none");
+    }
+</script>
+
+<script>
+
+    var timeOutStr = 3000;
+    var secs = 10;
+    var timerId;
+    var isInit = false;
+    var requestTag = false;
+    $(document).ready(function () {
+        //初始化识别设备
+        $(document).bind('contextmenu',function(){
+            return false;
+        });
+        start();
+
+    });
+
+
+    //    function start() {
+    //        for (var i = 1; i <= secs; i++) {
+    //            timerId = setTimeout("update(" + i + ");", i * 1000);
+    //        }
+    //    }
+    //
+    //
+    //    function update(num) {
+    //        if (num == secs) {
+    //            clearBack();
+    //        }
+    //        else {
+    ////            var printnr = secs - num;
+    ////            document.getElementById("countDown").innerText = printnr;
+    //            if (!requestTag) {
+    //                openXZXCard();
+    //            }
+    //
+    //        }
+    //    }
+
+    //开始启动
+    function start() {
+        swal({   title: "请将身份证放在感应区域",
+            text:"正在读取身份证...",
+            showConfirmButton: false });
+//        timerId = setInterval("update()", 1000);
+        setTimeout(function () {
+            update();
+        },1000)
+//        openXZXCard();
+    }
+
+    function update() {
+
+        if (secs == 0) {
+            clearBack();
+        }
+        else {
+            secs--;
+            if (!requestTag) {
+                openXZXCard();
+//                requestTag = true;
+//                queryByIdCardNum('321283198901265430');
+
+
+            }
+        }
+    }
+
+
+    function openXZXCard() {
+        secs--;
+        var obj = document.getElementById("registerECardReader");
+        if (false == isInit) {
+            //设置端口号，1表示串口1，2表示串口2，依此类推；1001表示USB。0表示自动选择
+            obj.setPortNum(3);
+            isInit = true;
+        }
+        //使用重复读卡功能
+        obj.Flag = 0;
+        obj.BaudRate = 115200;
+        //设置照片保存路径，照片文件名：(身份证号).bmp。默认路径为系统临时目录,照片文件名：image.bmp
+//        obj.PhotoPath=form1.photoPath.value;
+        //读卡
+        var rst = obj.ReadCard();
+//            返回0x90表示读卡成功，0x01表示端口打开失败，0x02表示接收数据超时，0x41表示读卡失败，其它的错误号表示其它的错误。
+        if (0x90 == rst) {
+
+            requestTag = true;
+
+            //隐藏上层
+            $("#prompt").hide();
+
+            swal({   title: "读取成功",
+                type: "success",
+                timer: 1000,
+                showConfirmButton: false });
+
+            $("#idCardNum").val(obj.CardNo());
+            $("#name").val(obj.NameL());
+            $("#birthday").val(obj.BornL());
+            $("#sex").val(obj.SexL());
+            $("#address").val(obj.Address());
+            $("#userIcon").attr("src", "data:image/jpg;base64," + obj.GetImage());
+            $("#icon").val(obj.GetImage());
+
+            queryByIdCardNum(obj.CardNo());
+
+//            clearInterval(timerId);
+            return;
+
+
+        } else {
+            if(secs>0){
+                openXZXCard();
+            }else{
+                if (0x01 == rst) {
+//            alert("端口打开失败!请联系工作人员");
+                    requestTag = true;
+                    swal({
+                        title: "端口打开失败!",
+//                text: "端口打开失败",
+                        timer: timeOutStr,
+
+                        showConfirmButton: false
+                    }, function () {
+                        clearBack();
+                    });
+                } else if (0x02 == rst) {
+//            alert("接收数据超时!请联系工作人员");
+                    requestTag = true;
+                    swal({
+                        title: "错误",
+                        text: "接收数据超时!请联系工作人员",
+                        timer: timeOutStr,
+                        showConfirmButton: false,
+
+                    }, function () {
+                        clearBack();
+                    });
+                } else if (0x41 == rst) {
+//            alert("读卡失败!请联系工作人员");
+                    requestTag = true;
+                    swal({
+                        title: "读卡失败!",
+//                text: "读卡失败!请联系工作人员",
+                        timer: timeOutStr,
+                        showConfirmButton: false,
+
+                    }, function () {
+                        clearBack();
+                    });
+                } else {
+//            alert("其他错误!请联系工作人员");
+                    requestTag = true;
+                    swal({
+                        title: "其他错误!",
+//                text: "其他错误!请联系工作人员",
+                        timer: timeOutStr,
+                        showConfirmButton: false,
+
+                    }, function () {
+                        clearBack();
+                    });
+                }
+            }
+        }
+
+
+    }
+
+
+    function queryByIdCardNum(idCardNum) {
+
+        $.getJSON("#U("/machine/getMemberInfoByIdCardNumber")",
+                {
+                    idCardNumber: idCardNum,
+                    _t:new Date().getTime()
+                },
+                function (data) {
+
+                    //修改成功
+                    if (data.examMember == '') {
+
+                    } else {
+
+                        var examMember = eval('(' + data.examMember + ')');
+
+                        //回填手机号码 跟工作单位
+                        $("#workUnit").val(examMember.workUnit);
+                        $("#mobile").val(examMember.mobile);
+
+
+
+
+                    }
+                }
+        )
+
+    }
+
+    function clearBack() {
+
+        clearInterval(timerId);
+        goBackUp();
+
+        return;
+
+    }
+
+    function goBackUp() {
+
+        window.history.go(-1);
+
+    }
+
+    var idCardNum = '';
+    var name = '';
+    var sex =  '';
+    var address =  '';
+    var idCardNum =  '';
+    var workUnit = '';
+    var phoneNum =  '';
+    var categoryId =  '';
+    var packageId =  '';
+    var birthday =  '';
+    var packagePrice =  '';
+    var icon =  '';
+
+    //保存并打印体检单
+    function saveExamPrint(){
+
+            name = $("#name").val();
+            sex = $("#sex").val();
+            address = $("#address").val();
+            idCardNum = $("#idCardNum").val();
+            workUnit = $("#workUnit").val();
+            phoneNum = $("#mobile").val();
+            categoryId = $("#eaopenCategoryLevelTwo").val();
+            packageId = $("#packageId").val();
+            birthday = $("#birthday").val();
+            packagePrice = $("#packagePrice").val();
+            icon = $("#icon").val();
+//        name = '季照群';
+//        sex = '男';
+//        address = '苏州市阿萨法师';
+//        idCardNum = '321283198901265430';
+//        workUnit = '阿斯顿发生积分卡世纪东方看';
+//        phoneNum = '13862413142';
+//        categoryId = '7';
+//        packageId = '58';
+//        birthday = '1989年1月26日';
+//        packagePrice = '87.0';
+//        icon ='kjkjdkfjasjfajfsjdafjdjfjafjkjsda';
+            var txt = [];
+            if (name == null || name == "") {
+                txt.push("姓名不能为空!");
+            }
+            if (birthday == null || birthday == "") {
+                txt.push("出生日期不能为空!");
+            }
+            if (idCardNum == null || idCardNum == "") {
+                txt.push("身份证号码不能为空!");
+            }
+            if (address == null || address == "") {
+                txt.push("现住址不能为空!");
+            }
+            if (phoneNum == null || phoneNum == "") {
+                txt.push("手机号码不能为空!");
+            }
+            //验证手机号码
+            if (!(/^1[34578]\d{9}$/.test(phoneNum))) {
+                txt.push("手机号码有误，请重填!");
+            }
+            if (workUnit == null || workUnit == "") {
+                txt.push("工作单位不能为空!");
+            }
+            if (txt.length > 0) {
+                txt = txt.join("\n");
+                swal({
+                    title: "输入有错误！",
+                    text: txt,
+                    type: "error"
+                });
+                return false;
+            } else {
+
+//            swal({   title: "正在保存体检单",
+//                showConfirmButton: false });
+
+                $.post("#U("machineJudgeExamMember")",
+                        {
+                            idCardNum: idCardNum,
+                            judgeTag: "1",
+                            _t:new Date().getTime()
+                        },
+                        function (data) {
+
+                            var json = eval('(' + data + ')');
+
+
+                            if (json.isNew != 0) {
+                                //该用户不是新用户 有数据
+                                if (json.isThirty != 1) {
+
+                                    judgeIsCancel(json);
+                                } else {
+                                    //超过3个月
+                                    swal({
+                                                title: "您现有的健康证有效期超过3个月,确定重新体检?",
+//                                            text: "您现有的健康证有效期超过3个月,确定重新体检?",
+//                                            type: "warning",
+                                                showCancelButton: true,
+                                                confirmButtonText: "确定",
+                                                cancelButtonText: "取消",
+                                                closeOnConfirm: false,
+                                                closeOnCancel: true
+                                            },
+                                            function (isConfirm) {
+
+                                               if(isConfirm){
+                                                   judgeIsCancel(json);
+                                               }
+                                            });
+
+
+                                }
+
+                            } else {
+                                //直接注册
+
+                                addExamMember();
+                            }
+
+                        });
+
+
+            }
+
+
+    }
+
+    //判断是否有未完成的项目
+  function judgeIsCancel (json) {
+//        console.log(json)
+      if (json.isCancel == 1) {
+          //有
+//有未完成的体检项目
+          swal({
+                      title: "您现未完成的体检项目,确定重新体检?",
+//                                                                            text: "您现未完成的体检项目,确定重新体检?",
+                      type: "warning",
+                      showCancelButton: true,
+                      confirmButtonText: "确定",
+                      cancelButtonText: "取消",
+                      closeOnConfirm: false,
+                      closeOnCancel: true
+                  },
+                  function (isConfirm) {
+
+                      if (isConfirm) {//确定
+
+                          //直接注册
+                          addExamMember();
+
+                      } else {//取消
+                          //不做任何操作
+                          return;
+                      }
+                  });
+
+
+      } else {
+          //没有需要作废的项目 则不弹出 直接添加新的用户 不做任何处理
+//                                                    //直接注册
+
+          addExamMember();
+
+      }
+    }
+
+     function addExamMember() {
+        //登记体检用户信息，并在成功后跳转到体检项目及费用页面
+//         console.log("print")
+         swal({   title: "正在打印体检单，请稍候...",
+             showConfirmButton: false });
+
+//        setTimeout(function () {
+//            swal({   title: "正在打印体检单，请稍候...",
+//                showConfirmButton: false });
+//            setTimeout(function () {
+//                swal({   title: "正在打印体检单，请稍候...",
+//                    showConfirmButton: false });
+//            },500)
+
+            $.ajax({
+                type: 'POST',
+                dataType: "json",
+                url: "#U("machineAddExamMember")",
+                data: {
+                    name: name,
+                    sex: sex,
+                    address: address,
+                    idCardNum: idCardNum,
+                    workUnit: workUnit,
+                    mobile: phoneNum,
+                    categoryId: categoryId,
+                    packageId: packageId,
+                    birthday: birthday,
+                    imageBase64: icon,
+                    packagePrice: packagePrice,
+                    _t:new Date().getTime()
+                }, success: function (data) {
+
+                    if (data.errorMsg != null) {
+                        swal({
+                            title: "错误！",
+                            text: data.errorMsg,
+                            timer: timeOutStr,
+
+                        }, function () {
+                            clearBack();
+                        });
+
+                    } else {
+                        //打印
+                        var examMemberExam = data.examMemberExam;
+
+//                    alert('examMemberExam.id'+examMemberExam.id);
+//eval('(' +  + ')');
+//
+
+                        var urll = '#U("jkMachinePrintViewTransferForm")?id=' + examMemberExam.id+"&_t="+new Date().getTime();
+
+//                        $(this).dialog({id:'printPhysicalExamDialog', url:urll, title:'体检流转单打印',width:'550',height:'360'});
+
+                        $('#printRegisterExamPrint').attr('src', urll);
+
+
+
+                    }
+
+                }
+            });
+
+
+
+
+    }
+
+    //行业类别二级选项卡
+    var addOptionEa = function () {
+        $(".categoryLevelTwoClass").remove();
+        var pid = $("#eaopenCategory").val();
+        $.getJSON("/machine/getCategoryByPid.do",
+                {
+                    pid: pid
+                },
+                function (data) {
+                    if (data.categoryList.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.categoryList.length; i++) {
+                            var category = data.categoryList[i];
+                            html += "<option class='categoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                        }
+                        $("#eaopenCategoryLevelTwo").append(html);
+                    }
+                    if (data.examCategoryPackage != null) {
+                        if (data.examPackage != null) {
+                            $("#packagePrice").val(data.examPackage.money);
+                        }
+                        $("#packageId").val(data.examCategoryPackage.packageId);
+                    }
+                }
+        );
+    };
+    //页面加载时，调用一次addOption方法，对行业类别加默认值
+    addOptionEa();
+
+
+    //打印回调
+
+    /**
+     * 打印页面隐藏了 回调parent显示成功
+     */
+    function machinePrintSuccess(examMemberId) {
+
+
+
+        swal({
+                    title: "打印成功",
+                    timer: 2000,
+                    showConfirmButton: false
+                },
+                function () {
+                    updatePhysicalPrint(examMemberId);
+                });
+
+
+
+    }
+
+    /**
+     * 打印页面隐藏了 回调parent显示失败
+     */
+    function machinePrintFail() {
+
+//        alert("fail");
+
+        swal({
+                    title: "打印失败!",
+//                    text: "打印失败,请联系工作人员",
+                    showConfirmButton: false
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        goBackUp();
+                    }
+                });
+
+    }
+
+    //更新打印状态
+    function updatePhysicalPrint(memberExamId) {
+//        alert("memberExamId=" + memberExamId);
+        $.post("#U("/machine/updatePhysicalPrint")",
+                {
+                    examMemberId: memberExamId,
+                    _t:new Date().getTime()
+                },
+                function (data) {
+                    if (data.statusCode == 300) {
+
+                    } else {
+//                        window.location.href = "http://" + window.location.host + "/machine/printExamSuccess.do";
+                        goBackUp();
+                    }
+                });
+    }
+
+
+
+</script>
+<iframe id="printRegisterExamPrint" src="#" style="width:0px; height:0px;"></iframe>

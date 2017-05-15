@@ -1,0 +1,16 @@
+version: 2.0
+
+
+build:
+    lite_image:
+        compile:
+            dockerfile_path: Dockerfile.build
+            build_dir: /
+            cache: true
+        extract:
+            - /target/BdCMS-1.0-SNAPSHOT
+
+        package:
+              dockerfile_path: Dockerfile
+              build_dir: /
+              cache: true

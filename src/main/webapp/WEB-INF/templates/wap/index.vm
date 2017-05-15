@@ -1,0 +1,60 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+            <label>地区:</label>
+            <select name="parentId"  data-toggle="selectpicker" data-width="200">
+                <option value="0">省份</option>
+                #rootArea($query.parentId)
+            </select>&nbsp;
+
+            <button type="submit" class="btn-default" data-icon="search">查询</button>&nbsp;
+            <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch"
+               data-clear-query="true" data-icon="undo">清空查询</a>
+
+            &nbsp;&nbsp;&nbsp;
+            <a href="#U('toAddArea')" class="btn btn-default"
+               data-toggle="dialog"
+               data-id="addArea"
+               data-title="添加分类"
+            >&nbsp;新建&nbsp;</a>
+        </div>
+
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top">
+        <thead>
+
+        <tr>
+            <th width="50">编号</th>
+            <th>名称</th>
+            <th>拼音</th>
+            <th>代号</th>
+            <th width="180">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($vo in $page.list)
+            <tr  data-id="$vo.id">
+                <td>$!vo.id</td>
+                <td>$!vo.name</td>
+                <td>$!vo.pinyin</td>
+                <td>$!vo.code</td>
+                <td>
+                    <a type="button" class="btn btn-red" href="#U('deleteArea?id=?',$vo.id)"
+                       data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</a>
+                    <a   data-toggle="dialog" data-id="updateArea" data-width="600"  class="btn btn-green" href="#U('toUpdateArea?id=?',$vo.id)"
+                    >修改</a>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+<script>
+</script>
+#page($page)
+##<div class="bjui-pageFooter">
+##</div>

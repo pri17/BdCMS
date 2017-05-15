@@ -1,0 +1,198 @@
+##点击该条记录进行收费确认
+<style>
+    .content-im{width:150px;height:200px;border:1px solid #797979;float: left;margin:16px 0 0 60px;border-radius: 6px;-moz-border-radius:6px;text-align:center;line-height: 200px;}
+    .control-label {width: 80px; text-align: right}
+</style>
+<div class="bjui-pageContent container-fluid">
+    <form action="#U('commitFee')" class="form-horizontal"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <table>
+            <input type="hidden" name="id" value="$!examPay.id"/>
+            <tr>
+
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">体检号：</label>
+                            <input data-val="" name="examNumber" id="j_dialog_name" readonly value="$!examPay.examNumber" size="20" class="form-control" style="width: 200px;"  aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group" style="padding-left: 20px;">
+                        #if($!examPay.recheckTag !=0)
+
+                            <input type="checkbox" id="isRecheck" checked disabled data-toggle="icheck" data-label="本次体检是否为复检">
+
+                        #else
+
+                            <input type="checkbox" id="isRecheck" disabled data-toggle="icheck" data-label="本次体检是否为复检">
+                        #end
+
+                    </div>
+                </td>
+                <TH ROWSPAN=6><img id="memberIcon" class="content-im" src="$!examPay.icon"/></TH>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">姓名：</label>
+                        <input data-val="" name="name" id="j_dialog_name" readonly value="$!examPay.name" size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">身份证号：</label>
+                        <input name="" id="j_dialog_name" value="$!examPay.idCardNum" readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">乡镇：</label>
+                        <input name="" id="j_dialog_name" value="$!examPay.areaName"  readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">体检日期：</label>
+                        <input name="createTime" id="j_dialog_name" value="$!examPay.createTimeStr"  readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">工作单位：</label>
+                        <input name="workUnit" id="j_dialog_name" value="$!examPay.workUnit" readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">收费方式：</label>
+
+                        <select name="payType" id="payType" data-toggle="selectpicker" data-width="85"
+                                data-emptytxt="请选择" >
+                            <option value="微信">微信</option>
+                        #*  #LoadBean("examPayTypeService")
+                        #foreach($el in $examPayTypeService.getAllPayType())
+                             <option value="$!el.id"
+                                *##* #if($!el.id==$!examPay.payType)
+                                     selected
+                                 #end*##*
+                             >$!el.name</option>
+                         #end
+                     #end*#
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">应收：</label>
+                        <input name="payMoney" id="j_dialog_name" value="$!examPay.payMoney" readonly size="20" class="form-control readonly" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">备注：</label>
+                        <input name="remarks" id="j_dialog_name" value="$!examPay.remarks" size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x80">实收：</label>
+
+                        <input name="payActualMoney" id="j_dialog_name"  value="$!examPay.payMoney" size="20" class="form-control readonly" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                </td>
+##                <td>
+##                    <div class="form-group">
+##                        <label for="j_dialog_name" class="control-label x110">是否打印发票：</label>
+##                        #if($!memberExam.examPay.isPrint==1)
+##
+##                            <input type="radio" name="isPrint" checked  id="doc-radio1" value="1" data-toggle="icheck" data-label="是">
+##                            <input type="radio" name="isPrint" id="doc-radio2" value="0" data-toggle="icheck" data-label="否">
+##
+##                        #elseif($!memberExam.examPay.isPrint==0)
+##
+##                            <input type="radio" name="isPrint" id="doc-radio1" value="1" data-toggle="icheck" data-label="是">
+##                            <input type="radio" name="isPrint" checked id="doc-radio2" value="0" data-toggle="icheck" data-label="否">
+##                        #end
+##
+##
+##
+##                    </div>
+##                </td>
+            </tr>
+
+        </table>
+
+        <input id="hiddenPayState" type="hidden" value="$!examPay.payState">
+        <div class="add-role-button">
+            <ul>
+                <li><button type="button" class="btn btn-close" >关闭</button></li>
+            ##        缴费状态   2：已付款  1：待付款
+                #if($!examPay.payState==2)
+##                    <li><button  class="btn-default" disabled id="commitFeeSave" >保存</button></li>
+                ##            <li><button type="submit" class="btn-default" id="commitFeeSave" onclick="commitFeeAction();">保存</button></li>
+                #else
+                ##                <li><button type="submit" class="btn-default" id="commitFeeSave" onclick="commitFeeAction();">保存</button></li>
+                    <li><button type="submit" class="btn-default" id="commitFeeSave" >保存</button></li>
+                #end
+
+            </ul>
+        </div>
+    </form>
+</div>
+
+<script>
+
+//    //回车事件绑定
+//    $('#closeCommitFee').bind('keydown', function(event) {
+//        if (event.keyCode == "13") {
+//
+//            alert('closeCommitFee');
+//            //回车执行查询
+//            $(this).dialog('close',feeCommitDialog);
+//        }
+//    });
+//
+//    $('#submitCommitFee').bind('keydown', function(event) {
+//        if (event.keyCode == "13") {
+//
+//            alert('submitCommitFee');
+//            //回车执行查询
+//            $('#search_button').click();
+//        }
+//    });
+//
+//var hiddenPayState = $('#hiddenPayState').val();
+//
+//$(document).keydown(function(event) {
+//    if (event.keyCode == 13) {
+//
+//        $("#commitFeeSave").click();
+//    }
+//});
+//
+//    function commitFeeAction() {
+//
+//        alert(hiddenPayState);
+//;
+//        if (hiddenPayState == 2){
+//            $(this).dialog("close","feeCommitDialog");
+//        }else{
+//            alert('commitFeeSave');
+//            $('#commitFeeSave').submit();
+//            $(this).dialog("close","feeCommitDialog");
+//
+//        }
+//    }
+
+
+</script>

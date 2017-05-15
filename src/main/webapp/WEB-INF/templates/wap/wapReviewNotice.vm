@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>复检通知单</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="../assets/wap/style-recheck.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../assets/printExam/js/JsBarcode.code128.min.js"></script>
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+##    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../assets/machineCss/js/sweetalert-dev.js"></script>
+    <style>
+        body{
+            width: 100%;
+        }
+        .list-height{
+            height: 1.2rem;
+            font-size: 1.2rem;
+        }
+        .tableHeight{
+            height: 1rem !important;
+        }
+        body{
+            font-size: 1rem;
+        }
+    </style>
+
+</head>
+<body style="padding: 10px">
+<div  id="tk" style="background: #ffffff">
+    <table class="ticket top" style="width: 100%">
+        <thead>
+        <tr>
+            <th colspan="2" style="font-size: 1.6rem">从业人员预防性健康检查不合格告知书</th>
+        </tr>
+        </thead>
+
+    </table>
+    <p>$!examMemberExam.name：</p>
+    <p style="width: 98%">&emsp;&emsp;经检查，您在预防性健康检查中发现
+        #foreach($vo in $!examBlodIntestinalList)
+            $!{vo.projectName}($!vo.examResult)、
+        #end
+        不符合健康证明要求，
+        请带好本人身份证及复检单来本中心接受复检，如在接到本告知书10个工作日内未答复，视为无异议。</p>
+    <table>
+        <tbody>
+
+        <tr>
+            <td style="padding-right: .4rem;text-align: right">常熟市疾病预防控制中心</td>
+        </tr>
+        <tr>
+            <td  style="padding-right: .4rem;text-align: right">$!examMemberExam.examTimeShort</td>
+        </tr>
+        <tr>
+            <td colspan="2" >
+                <table border=0 cellspacing=0 class="inner-table" style="font-size: .8rem;margin-bottom: 12px;height: 1rem">
+                    <tr>
+                        <td colspan="2" class="head list-height">体检流程</td>
+                    </tr>
+                    <tr class="list-height">
+                        <td class="head half list-height">项目</td>
+                        <td class="head half list-height">完成情况</td>
+                    </tr>
+                    <tr>
+                        <td class="list-height">&emsp;1.复检缴费$!examMemberExam.payMoney元</td>
+                        <td></td>
+                    </tr>
+                    #foreach($vo in $examBlodIntestinalList)
+                        <tr class="list-height">
+                            <td class="tableHeight">&emsp;$math.add($velocityCount,1).$!vo.projectName</td>
+                            <td class="tableHeight"></td>
+                        </tr>
+                    #end
+                </table>
+            </td>
+        </tr>
+        <tr class="">
+            <td colspan="2">友情提示：</td>
+        </tr>
+        <tr class="">
+            <td colspan="2">&emsp;&emsp;体检完成5个工作日后，可凭身份证在大厅自</td>
+        </tr>
+        <tr class="">
+            <td colspan="2">助机上打印健康证，如有疑问请咨询工作人员。</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
+<script>
+##    JsBarcode(".tjCodeImg", "$!examMemberExam.examNumber",{displayValue:false});
+
+</script>

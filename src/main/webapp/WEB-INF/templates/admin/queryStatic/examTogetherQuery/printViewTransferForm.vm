@@ -1,0 +1,118 @@
+<style>
+    .vtfmain p,span{color:#333;}
+    .vtfmain{width:530px;height:680px;border:1px solid #797979;background-color: #eef3fa;}
+    .vtfcontainer{margin:10px auto;height:680px;position: relative;}
+    .tit{font-size: 18px;color:#333;font-weight: bold;text-align: center;margin-top: 5px;}
+    .im{margin:16px 0 20px 14px;}
+    .im span{float: left;margin-top: 6px;}
+    .im img{float: left;}
+    .im span.nam{margin-left: 20%;}
+    .vtfcontainer p{font-size: 12px;width:500px;margin-left: 14px;}
+    .vtfmain ul{border:1px solid #797979;width:500px;margin:10px 0 10px 14px;}
+    .vtfmain ul li{height:38px;line-height:38px;color:#333;}
+    .vtfmain ul li.ju{text-align: center;}
+    .vtfmain ul li span{width:50%;display: inline-block;border-top:1px solid #797979;    line-height: 38px;}
+    .vtfmain ul li span.one{border-right: 1px solid #797979;}
+    .vtfcontainer p.num{text-indent:18px;}
+    .vtfcontainer .tiao{margin-left: 32px;}
+    .tiao img{margin-top: 10px;}
+    .tiao .distance{margin-right:44px;}
+    .vtfcontainer .status{margin-right: 26px;}
+    .vtfcontainer .health{margin-right: 56px;}
+</style>
+<script src="../assets/printExam/js/JsBarcode.code128.min.js"></script>
+<script>
+    doPrint();
+    function doPrint() {
+//        var myDoc = {
+//            documents: document,
+//            /*
+//             要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+//             作为首页打印id 为'page2'的作为第二页打印            */
+//            copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须
+//        };
+//        document.getElementById("jatoolsPrinter").print(myDoc, false); // 直接打印，不弹出打印机设置对话框
+        if(!jsPrintSetup){
+            window.open("https://addons.mozilla.org/en-US/firefox/addon/js-print-setup/")
+        }else{
+            jsPrintSetup.setSilentPrint(true);
+
+            // set page header/ /设置页面标题
+
+            jsPrintSetup.setOption('headerStrLeft', '');
+
+            jsPrintSetup.setOption('headerStrCenter', '');
+
+            jsPrintSetup.setOption('headerStrRight', '');
+
+            // set empty page footer/ /设置空页页脚
+
+            jsPrintSetup.setOption('footerStrLeft', '');
+
+            jsPrintSetup.setOption('footerStrCenter', '');
+
+            jsPrintSetup.setOption('footerStrRight', '');
+
+            jsPrintSetup.printWindow(window);
+        }
+    }
+
+</script>
+#set($brandIndex=1)
+#foreach($vo in $!examMemberExamList)
+<div class="bjui-pageContent" id="page$brandIndex">
+    <div class="vtfmain">
+        <div class="vtfcontainer">
+            <div class="tit">从业人员预防性健康检查流转单</div>
+            <div class="im clearfix">
+                <span>体检号：$!vo.examNumber</span>
+                <img src="">
+                <span class="nam">姓名：$!vo.name</span>
+            </div>
+            <p>
+                <span class="status">身份证号：$!vo.idCardNum</span>
+                <span>性别：
+                #if($!vo.examMember.sex==0)
+                    女
+                    #else
+                    男
+                #end
+                </span>
+            </p>
+            <p><span>工作单位：$!vo.workUnit</span></p>
+            <p>
+                <span class="health">行业：$!vo.categoryName</span>
+                <span>体检日期：$!vo.examTimeShort</span>
+            </p>
+            <ul>
+                <li class="ju">复查流程</li>
+                <li class="ju"><span>项目</span><span>完成情况</span></li>
+                <li><span class="one">1.复检缴费___元</span><span>完成情况</span></li>
+                <li><span class="one">2.内科检查</span><span>医生敲章</span></li>
+                <li><span class="one">3.胸部X线检查</span><span>医生敲章</span></li>
+                <li><span class="one">4.肠检</span><span>医生敲章</span></li>
+                <li><span class="one">5.血检</span><span>医生敲章</span></li>
+            </ul>
+            <p>友情提示：</p>
+            <p class="num">1.如需要发票可凭此流转单至底楼大厅收费窗口打印。</p>
+            <p class="num">2.内科、X光检查在底楼，肠检、血检在二楼。</p>
+            <p class="num">3.体检完成5个工作日后，可凭身份证在大厅自助机上打印健康证，如有疑问请咨询工作人员。</p>
+            <div class="tiao">
+                <img src="" class="distance"><img src=""><br/>
+                <img src="" class="distance"><img src=""><br/>
+                <img src="" class="distance"><img src="">
+            </div>
+        </div>
+    </div>
+</div>
+    #set($brandIndex=$brandIndex+1)
+#end
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-default" >关闭</button></li>
+    </ul>
+</div>
+##<object id="jatoolsPrinter" classid="CLSID:B43D3361-D075-4BE2-87FE-057188254255" codebase="jatoolsPrinter.cab#version=8,6,0,0"></object>
+##<script src="http://s.pc.qq.com/navigate/adc/v3/engine_loader_v3.js" type="text/javascript" charset="UTF-8"></script>
+##<script src="http://s.pc.qq.com/navigate/adc/jquery.min.js?ver=3" type="text/javascript" charset="UTF-8"></script>
+##<script src="http://s.pc.qq.com/navigate/adc/velocity.js" type="text/javascript" charset="UTF-8"></script>

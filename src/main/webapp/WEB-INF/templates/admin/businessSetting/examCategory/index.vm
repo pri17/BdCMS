@@ -1,0 +1,74 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="" method="post">
+        <button style="float: right;" href="#U('toAddCategory')" class="btn btn-default"
+           data-toggle="dialog"
+           data-id="addCategory"
+           data-title="添加行业"
+           data-width="500"
+                data-height="300"
+        >&nbsp;添加行业&nbsp;</button>
+        <div class="clearfix"></div>
+</form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table id="categoryTable" class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">类别</th>
+            <th align="center" width="420">操作</th>
+        </tr>
+        </thead>
+        <tbody >
+            #foreach($!vo in $!examCategories)
+            <tr class="hover-color" id="$!vo.id" pId="$!vo.parentId">
+                    <td align="center">$!vo.categoryName</td>
+                ##                #if($!vo.user.userImg().empty)
+                ##                    <td></td>
+                ##                #else
+                ##                    <td>
+                ##                        <img src="$!vo.user.userImg()"  height="50" width="50">
+                ##                    </td>
+                ##                #end
+
+##                    #if($!vo.user.status=="enable")
+##                        <td>启用</td>
+##                    #elseif($!vo.user.status=="disable")
+##                        <td>禁用</td>
+##                    #end
+                    <td align="center">
+##                        #if($!vo.user.status=="enable")
+##                            <a   data-toggle="doajax"  data-confirm-msg="确定禁用吗？" title="禁用用户"  class="btn btn-orange" href="#U('toStartStop?uid=?',$vo.uid)">禁用</a>
+##                        #elseif($!vo.user.status=="disable")
+##                            <a   data-toggle="doajax"  data-confirm-msg="确定启用吗？" title="启用用户"  class="btn btn-blue" href="#U('toStartStop?uid=?',$vo.uid)">启用</a>
+##                        #end
+                        #if($!vo.level==1)
+                            <button   data-toggle="dialog" data-id="updateCategory"  class="btn btn-default" href="#U('toUpCategory?id=?',$vo.id)"
+                                 data-width="500" data-height="240"
+                            >编辑</button>
+                            <button   data-toggle="doajax" data-id="delCategory" data-confirm-msg="确定要删除吗？"  class="btn btn-default" href="#U('deleteCategory?id=?',$vo.id)"
+                            >删除</button>
+                            <button   data-toggle="dialog" data-id="addCategorySon" data-width="500"  data-height="240" class="btn btn-default" href="#U('toAddCategorySon?id=?',$vo.id)"
+                            >新增</button>
+                            <button   data-toggle="dialog" data-id="selectPackage" data-width="500"  data-height="240" class="btn btn-default" href="#U('toSelectPackage?id=?',$vo.id)"
+                            >对应体检套餐</button>
+                        #elseif($!vo.level==2)
+                            <button   data-toggle="dialog" data-id="updateCategorySon" data-width="500"  data-height="240" class="btn btn-default" href="#U('toUpCategorySon?id=?',$vo.id)"
+                            >编辑</button>
+                            <button   data-toggle="doajax" data-id="delCategorySon" data-confirm-msg="确定要删除吗？"  class="btn btn-default" href="#U('deleteCategory?id=?',$vo.id)"
+                            >删除</button>
+                        #end
+                    </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function(){
+            $('#categoryTable').treeTable({
+                expandLevel:2,
+                theme:'default'
+            });
+        });
+
+    </script>
+</div>

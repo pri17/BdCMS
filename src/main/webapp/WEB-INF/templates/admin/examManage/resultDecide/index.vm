@@ -1,0 +1,862 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', YaHei, Arial, Helvetica, sans-serif;
+    }
+
+    .rdmain a {
+        font-size: 17px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    a:hover {
+        border-bottom: 1px solid #333;
+    }
+
+    input {
+        width: 130px;
+        height: 23px;
+        box-sizing: border-box;
+    }
+
+    select {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1024px;
+        height: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+    }
+
+    .head {
+        height: 36px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .head span {
+        font-size: 17px;
+        color: #333;
+        height: 28px;
+        line-height: 28px;
+        padding: 0 26px;
+        border: 1px solid #ccc;
+        background-color: #e4ecee;
+        margin: 7px 0 0 20px;
+        display: inline-block;
+        border-top-left-radius: 3px;
+        -moz-border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        -moz-border-top-right-radius: 3px;
+    }
+
+    .rdmain {
+        height: 80px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .rdmain-a {
+        width: 200px;
+        float: left;
+        height: 100%;
+    }
+
+    .rdmain-a a {
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        text-align: center;
+        margin-right: 4px;
+        display: inline-block;
+        background-color: #79b6ec;
+        margin-top: 8px;
+    }
+
+    .rdmain-a a:first-child {
+        margin-left: 10px;
+    }
+
+    .rdmain-a span {
+        height: 20px;
+        width: 100%;
+        background-color: #c1c1c1;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .rdmain-b {
+        width: 200px;
+        float: left;
+        height: 100%;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+    .rdmain-b span {
+        font-size: 17px;
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 8px 0 0 14px;
+    }
+
+    .rdmain-b em {
+        font-style: normal;
+        height: 20px;
+        width: 100%;
+        background-color: #c1c1c1;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .rdnav {
+        height: 38px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .rdnav-a {
+        width: 60%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+    }
+
+    /*.rdnav-a span{font-size: 17px;font-weight: bold;color: #003366;margin-left: 20px;margin-right: 24px;}*/
+    .rdnav-a span {
+        font-size: 17px;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 3px 0 0 14px;
+    }
+
+    .rdnav-a a {
+        font-size: 13px;
+        height: 18px;
+        border: 2px solid #7cb7ec;
+        color: #003366;
+        font-weight: bold;
+        padding-left: 50px;
+        padding-right: 15px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+    }
+
+    .rdcontent {
+        height: 135px;
+    }
+
+    .rdcon-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        padding: 10px 0;
+    }
+
+    .rdcon-a .con-aa {
+        width: 30%;
+        float: left;
+    }
+
+    .rdcon-a p {
+        margin-bottom: 8px;
+    }
+
+    .rdcon-a input {
+        width: 130px;
+        height: 28px;
+    }
+
+    .rdcon-a select {
+        width: 120px;
+        height: 28px;
+    }
+
+    .rdcon-a .con-aa span {
+        font-size: 14px;
+        width: 85px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+
+    .rdcon-a .con-ab {
+        width: 24%;
+        float: left;
+    }
+
+    .rdcon-a .con-ab span {
+        font-size: 14px;
+        width: 84px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .rdcon-a .con-ac {
+        width: 23%;
+        float: left;
+    }
+
+    .rdcon-a .con-ac span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .rdcon-a .con-ad {
+        width: 22%;
+        float: left;
+    }
+
+    .rdcon-a .con-ad span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .rdcon-a .con-ad p a {
+        width: 74px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .rdcon-a .con-ae {
+        width: 5%;
+        float: left;
+    }
+
+    .rdcon-a .con-ae span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .rdcon-a .con-ae p a {
+        margin-top: 25px;
+        width: 74px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    /*.rdcon-a .con-ae input,button{margin-top:25px;width:74px;height:30px;background-color: #79b6ec;float: right;}*/
+
+    .rdcon-a .con-ae input .button {
+        margin-top: 25px;
+        width: 74px;
+        height: 30px;
+        background-color: #79b6ec;
+        float: right;
+    }
+
+    .rdcon-b {
+        width: 180px;
+        height: 100%;
+        float: left;
+        border-left: 1px solid #ccc;
+    }
+
+    .rdcon-b p:first-child {
+        margin-top: 13px;
+    }
+
+    .rdcon-b p {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .rdcon-b p input {
+        width: 160px;
+        height: 26px;
+    }
+
+    .rdcon-b p a {
+        font-size: 18px;
+        width: 80px;
+        height: 36px;
+        line-height: 36px;
+        background-color: #cee3fe;
+        display: inline-block;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    .resultDecideav-b {
+        width: 40%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+        background-color: #cee3fe;
+        border-left: 1px solid #ccc;
+        background-color: #cee3fe;
+    }
+    select{border: 1px solid #cccccc;}
+</style>
+<div class="bjui-pageHeader" style="background-color: #eaf1f6;" oncontextmenu=self.event.returnValue=false>
+
+
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+    ##        <div class="rdmain">
+    ##            <div class="rdmain-b">
+    ##                <span id="reloadSearch" data-toggle="reloadsearch" data-clear-query="true" style="cursor:pointer">刷新列表</span>
+    ##                <span id="exportFindExcel" style="cursor:pointer">导出列表</span>
+    ##                <em>信息</em>
+    ##            </div>
+    ##            <div class="rdmain-b">
+    ##                <span id="judgmentResult" data-toggle="doajax" data-confirm-msg="确定要批量审核?" data-url="" onclick="judgment()" data-callback="judgmentCallback" style="cursor:pointer">判断审核</span>
+    ##                <span id="cancelChecked" data-toggle="doajax" data-confirm-msg="确定要撤销该用户信息吗？" data-url="" onclick="cancelVerify()" style="cursor:pointer">撤销</span>
+    ##                <em>总检审核</em>
+    ##            </div>
+    ##        </div>
+
+        <div class="rdnav">
+            <div class="rdnav-a" style="background-color: #cee3fe;">
+            ##                <span>信息筛选</span>
+                <button class="btn btn-default" id="searchBtnRd" type="submit" style="margin-left: 10px;cursor:pointer;">查询</button>
+                <button class="btn btn-default" id="" style="display: none" type="submit">查询</button>
+                <button id="reloadSearch" data-toggle="reloadsearch" data-clear-query="true" class="btn btn-default"
+                        style="cursor:pointer;margin-left: 6px;">清空查询
+                </button>
+                <button id="exportFindExcel" class="btn btn-default" style="cursor:pointer;margin-left: 6px;">导出列表</button>
+                <button id="judgmentResult" data-toggle="doajax" data-confirm-msg="确定要批量审核?" data-url=""
+                        onclick="judgment()" data-callback="judgmentCallback" class="btn btn-default"
+                        style="cursor:pointer;margin-left: 6px;">判断审核
+                </button>
+            ##                <button id="cancelChecked" data-toggle="doajax" data-confirm-msg="确定要撤销该用户信息吗？" data-url="" onclick="cancelVerify()" class="btn btn-default" style="cursor:pointer">撤&nbsp;&nbsp;销</button>
+            </div>
+            <div class="resultDecideav-b">
+                <span style="margin-left: 10%;">审核医生</span>
+                <input type="text" id="autoDoctorName" disabled name="autoDoctorName" class="form-control"
+                       value="$!examAutoDoctor.name">
+                <button type="button" class="btn btn-default" id="showAutoDoctor" data-url="">编辑</button>
+                <button type="button" class="btn btn-default" disabled id="changeAutoDoctor" data-url="">保存</button>
+            </div>
+        </div>
+
+        <div class="rdcontent">
+            <div class="rdcon-a" style="background-color: white;">
+                <div class="con-ab">
+
+                <p><span>体检号</span><input id="examNumber" name="examNumber" type="text" value="$!query.examNumber" style="width: 120px;"></p>
+
+                <p><span>姓名</span><input id="memberName" name="memberName" type="text" value="$!memberName" style="width: 120px;"></p>
+                    #if($!currentAgenciesCode == 132)
+
+                    <p><span>地段区域</span><select name="areaId" id="areaId" data-width="120">
+                        <option value="">全部</option>
+                        #LoadBean("examAreaService")
+                        #foreach($el in $examAreaService.getRootExamArea())
+                            <option value="$!el.id"
+                                #if($!el.id==$!currentAreaId)
+                                    selected
+                                #end
+                                    >$!el.areaName</option>
+                        #end
+                    #end
+
+                </select>
+                </p>
+
+                #else
+                    <input type="hidden" name="areaId" value="$!currentAreaId">
+                <p><span>地段区域</span><select name="areaIdHidden" id="areaIdHidden" data-width="130" disabled>
+                    <option value="">全部</option>
+                    #LoadBean("examAreaService")
+                    #foreach($el in $examAreaService.getRootExamArea())
+                        <option value="$!el.id"
+                            #if($!el.id==$!currentAreaId)
+                                selected
+                            #end
+                                >$!el.areaName</option>
+                    #end
+                #end
+
+                </select>
+                </p>
+
+                #end
+
+                </div>
+                <div class="con-aa">
+
+                    <p><span>身份证件号</span><input id="idCardNum" name="idCardNum" type="text" value="$!idCardNum" size="18"></p>
+                    <p><span>工作单位</span><input id="workUnit" name="workUnit" type="text" value="$!query.workUnit" size="18"></p>
+                    <p><span>体检结果</span><select id="verifyConclusion" name="verifyConclusion"
+                                                value="$!query.verifyConclusion" data-width="130" data-emptytxt="请选择">
+                        <option value=""
+                            #if(""==$!query.verifyConclusion)
+                                selected
+                            #end>全部
+                        </option>
+                        <option value="1"
+                            #if(1==$!query.verifyConclusion)
+                                selected
+                            #end>合格
+                        </option>
+                        <option value="2"
+                            #if(2==$!query.verifyConclusion)
+                                selected
+                            #end>不合格
+                        </option>
+                        <option value="0"
+                            #if(0==$!query.verifyConclusion)
+                                selected
+                            #end>未判断
+                        </option>
+                    </select>
+                    </p>
+                </div>
+                <div class="con-ac">
+                    <p><span>体检日期</span><input id="beginTime" name="beginTime" type="text" value="$!beginTime"
+                                                 data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期" style="width: 120px;"></p>
+
+                    <p><span></span><input id="endTime" name="endTime" type="text" value="$!endTime" style="width: 120px;"
+                                                 data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期"></p>
+                    <p><span>审核</span><select id="verifyState" name="verifyState" value="$!query.verifyState"
+                                              data-width="130" data-emptytxt="请选择">
+                        <option value=""
+                            #if(""==$!query.verifyState)
+                                selected
+                            #end>全部
+                        </option>
+                        <option value="1"
+                            #if(1==$!query.verifyState)
+                                selected
+                            #end>审核
+                        </option>
+                        <option value="2"
+                            #if(2==$!query.verifyState)
+                                selected
+                            #end>未审核
+                        </option>
+                    </select>
+                    ##                        <input id="isRdQuery" name="isRdQuery" value="123" type="hidden"/>
+                    </p>
+                </div>
+                <div class="con-ad">
+                    <p><span>行业分类</span><select name="parentId" id="rdOpenCategory" onchange="resultDecideAddOption()"
+                                                data-width="130" data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        #LoadBean("examCategoryService")
+                        #foreach($rootVo in $examCategoryService.getRootCategory())
+                            <option value="$rootVo.id"
+                                #if($rootVo.id==$!parentId)
+                                    selected
+                                #end
+                                    >
+                                $rootVo.categoryName
+                            </option>
+                        #end
+                    #end
+                    </select></p>
+                    <p><span></span><select name="rdOpenCategoryLevelTwo" id="rdOpenCategoryLevelTwo" data-width="130"
+                                            data-emptytxt="请选择">
+                    ##                        <option value="">全部</option>
+                    </select>
+                    </p>
+                    <input id="rdOpenCategoryLevelTwoId" name="rdOpenCategoryLevelTwoId"
+                           value="$!rdOpenCategoryLevelTwoId" type="hidden">
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="bjui-pageContent tableContent" style="margin-top: 10px;">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style" style="height: 40px;">
+            <th width="26px"><input id="rdAllIds" name="rdAllIds" type="checkbox" style="width: 30px;float: left;line-height: 40px;"
+                       value=""/></th>
+            <th style="text-align:center;">体检号</th>
+            <th style="text-align:center;">姓名</th>
+            <th style="text-align:center;">性别</th>
+            <th style="text-align:center;">身份证号</th>
+            <th style="text-align:center;">地段区域</th>
+            <th style="text-align:center;">行业分类</th>
+            <th style="text-align:center;">工作单位</th>
+            <th style="text-align:center;">体检日期</th>
+            <th style="text-align:center;">体检结论</th>
+            <th style="text-align:center;">审核</th>
+            <th style="text-align:center;">审核医生</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color" id="rdList">
+            #foreach($vo in $page.list)
+            <tr>
+                <td style="text-align:center;"><input id="rdIds" name="rdIds" type="checkbox" style="width: 30px;float: left;line-height: 40px;"
+                           value="$!vo.id"/></td>
+                <td style="text-align:center;">$!vo.examNumber</td>
+                <td style="text-align:center;">$!vo.name</td>
+                #if($!vo.sex==1)
+                    <td style="text-align:center;">男</td>
+                #else
+                    <td style="text-align:center;">女</td>
+                #end
+                <td style="text-align:center;">$!vo.idCardNum</td>
+                <td style="text-align:center;">$!vo.areaName</td>
+                <td style="text-align:center;">$!vo.categoryName</td>
+                <td style="text-align:center;">$!vo.workUnit</td>
+                <td style="text-align:center;">$!vo.getExamTimeStr()</td>
+                #if($!vo.verifyConclusion==0)
+                    <td style="text-align:center;">未判断</td>
+                #elseif($!vo.verifyConclusion==1)
+                    <td style="text-align:center;">合格</td>
+                #elseif($!vo.verifyConclusion==2)
+                    <td style="text-align:center;">不合格</td>
+                #end
+                #if($!vo.verifyState==1)
+                    <td style="text-align:center;">审核</td>
+                #elseif($!vo.verifyState==2)
+                    <td style="text-align:center;">未审核</td>
+                #end
+                <td style="text-align:center;">$!vo.verifyName</td>
+            </tr>
+            #end
+        <script>
+            var tid = getNavEle( "#rdOpenCategoryLevelTwoId").val();
+            //                    resultDecideAddOption(tid);
+            //                    //行业类别二级选项卡
+            //                    var resultDecideAddOption = function (tid) {
+            getNavEle( ".rdCategoryLevelTwoClass").remove();
+            var pid = getNavEle( "#rdOpenCategory").val();
+            $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                    {
+                        pid: pid
+                    },
+                    function (data) {
+                        if (data.categoryList.length > 0) {
+                            var html = "";
+                            for (var i = 0; i < data.categoryList.length; i++) {
+                                var category = data.categoryList[i];
+                                if (category.id == tid) {
+                                    html += "<option class='rdCategoryLevelTwoClass' value='" + category.id + "' selected>" + category.categoryName + "</option>";
+                                } else {
+                                    html += "<option class='rdCategoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                                }
+                            }
+                            getNavEle( "#rdOpenCategoryLevelTwo").append(html);
+                        }
+                    }
+            );
+            //                    }
+        </script>
+        </tbody>
+    </table>
+</div>
+<input type="hidden" id="pageCurrentFind" value="$page.pageCurrent">
+<input type="hidden" id="pageCountFind" value="$page.pageCount">
+<input type="hidden" id="pageSizeFind" value="$page.pageSize">
+#page($page)
+<script>
+
+    //点击医生的显示按钮
+    getNavEle( '#showAutoDoctor').click(function () {
+
+        getNavEle( '#autoDoctorName').attr('disabled', false);
+        //自身变为不可用,开放修改按钮
+        getNavEle( '#showAutoDoctor').attr('disabled', true);
+        getNavEle( '#changeAutoDoctor').attr('disabled', false);
+
+    });
+
+    //点击修改按钮
+    getNavEle( '#changeAutoDoctor').click(function () {
+        var doctorName = getNavEle( '#autoDoctorName').val();
+
+        if (doctorName.length <= 0) {
+
+            getNavEle( this).alertmsg('error', '请输入审核医生姓名!', {
+                displayMode: 'none',
+                displayPosition: '',
+                okName: '确定',
+                title: '错误提示'
+            })
+
+        } else {
+
+            $.post("#U('updateAutoDoctor')", {doctorName: doctorName}, function (data) {
+
+                data = $.parseJSON(data);
+
+                if (data) {
+                    if (data.statusCode == 200) {
+
+                        getNavEle( this).alertmsg('ok', '修改审核医生成功');
+
+                        //将按钮还原
+                        getNavEle( '#autoDoctorName').attr('disabled', true);
+                        //自身变为不可用,开放修改按钮
+                        getNavEle( '#showAutoDoctor').attr('disabled', false);
+                        getNavEle( '#changeAutoDoctor').attr('disabled', true);
+
+//                        var examMemberId = data.message;
+
+                    } else if (data.statusCode == 300) {
+                        getNavEle( this).alertmsg('error', data.message, {
+                            displayMode: 'none',
+                            displayPosition: '',
+                            okName: '确定',
+                            title: '错误提示'
+                        })
+                    }
+
+                }
+
+
+            });
+
+        }
+
+
+    })
+
+
+    getNavEle( document).ready(function () {
+
+        //全选或全不选
+        getNavEle( "#rdAllIds").click(function () {
+            if (this.checked) {
+                getNavEle( "#rdList [name=rdIds]:checkbox").attr("checked", true);
+            } else {
+                getNavEle( "#rdList [name=rdIds]:checkbox").attr("checked", false);
+            }
+        });
+
+        getNavEle( "#rdList [name=rdIds]:checkbox").click(function () {
+
+            if (getNavEle( this).attr("checked") == 'checked') {
+
+                getNavEle( this).attr("checked", true);
+
+            } else {
+
+                getNavEle( this).attr("checked", false);
+            }
+
+            allchk();
+
+        });
+
+    });
+
+
+    function allchk() {
+        var chknum = getNavEle( "#rdList [name=rdIds]:checkbox").size();//选项总个数
+        var chk = 0;
+        getNavEle( "#rdList [name=rdIds]:checkbox").each(function () {
+            if (getNavEle( this).attr("checked") == 'checked') {
+                chk++;
+            }
+        });
+
+        if (chknum == chk) {//全选
+            getNavEle( "#rdAllIds").attr("checked", true);
+        } else {//不全选
+            getNavEle( "#rdAllIds").attr("checked", false);
+        }
+    }
+
+
+
+    ##    //撤销审核
+    ##    var cancelVerify = function () {
+    ##
+    ##        var examIds = "";
+    ##        //查出所有已选择的体检数据
+    ##        getNavEle( "tbody [type='checkbox']").each(function(){
+    ##            if (getNavEle( this).attr("checked")) {
+    ##                examIds += getNavEle( this).val()+",";
+    ##            }
+    ##        });
+    ##        if(examIds==''){
+    ##            getNavEle( this).alertmsg('error', "未选择需要撤销审核的用户");
+    ##            return;
+    ##        }
+    ##        $.getJSON("#U("/admin/examManage/resultDecide/cancelChecked")",
+    ##                {
+    ##                    examIds:examIds
+    ##                },
+    ##                function (data) {
+    ##                    if (data.statusCode==300) {
+    ##                        getNavEle( this).alertmsg('error', data.message);
+    ##                    } else {
+    ##                        getNavEle( this).alertmsg('ok', data.message);
+    ##                        getNavEle( "#reloadSearch").click();
+    ##                    }
+    ##                });
+    ##
+    ##    }
+
+
+    //    getNavEle( "#cancelChecked").on("click",function(e){
+    //
+    //    });
+
+
+    getNavEle( "#exportFindExcel").on("click", function (e) {
+        var pageCurrent = getNavEle( '#pageCurrentFind').val();
+        var pageCount = getNavEle( '#pageCountFind').val();
+        var pageSize = getNavEle( '#pageSizeFind').val();
+        var areaId = getNavEle( '.rdcontent #areaId').val();
+        var rdOpenCategoryLevelTwoId = getNavEle( '.rdcontent #rdOpenCategoryLevelTwoId').val();
+        var memberName   = encodeURI(encodeURI(getNavEle( '.rdcontent #memberName').val()));
+        var idCardNum = getNavEle( '.rdcontent #idCardNum').val();
+        var examNumber = getNavEle( '.rdcontent #examNumber').val();
+        var workUnit = encodeURI(encodeURI(getNavEle( '.rdcontent #workUnit').val()));
+        var beginTime = getNavEle( '.rdcontent #beginTime').val();
+        var endTime = getNavEle( '.rdcontent #endTime').val();
+        var verifyConclusion = getNavEle( '.rdcontent #verifyConclusion').val();
+        var verifyState = getNavEle( '.rdcontent #verifyState').val();
+        window.open("#U("/admin/examManage/resultDecide/exportFindExcel")" + "?pageCurrent="
+                + pageCurrent + "&pageCount=" + pageCount + "&pageSize=" + pageSize+ "&areaId=" + areaId+
+                "&rdOpenCategoryLevelTwoId=" + rdOpenCategoryLevelTwoId+ "&memberName=" + memberName+ "&idCardNum=" + idCardNum+
+                "&examNumber=" + examNumber+"&workUnit="+ workUnit+ "&beginTime="+ beginTime+
+                "&endTime=" + endTime+ "&verifyConclusion=" + verifyConclusion+ "&verifyState=" + verifyState);
+    });
+
+    //行业类别二级选项卡
+    var resultDecideAddOption = function (tid) {
+        getNavEle( ".rdCategoryLevelTwoClass").remove();
+        var pid = getNavEle( "#rdOpenCategory").val();
+        $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                {
+                    pid: pid
+                },
+                function (data) {
+                    if (data.categoryList.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.categoryList.length; i++) {
+                            var category = data.categoryList[i];
+                            if (category.id == tid) {
+                                html += "<option class='rdCategoryLevelTwoClass' value='" + category.id + "' selected>" + category.categoryName + "</option>";
+                            } else {
+                                html += "<option class='rdCategoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                            }
+                        }
+                        getNavEle( "#rdOpenCategoryLevelTwo").append(html);
+                    }
+                }
+        );
+    }
+    //点击全选按钮
+    getNavEle( "#rdAllIds").on("click", function (e) {
+        if (getNavEle( this).attr("checked")) {
+            getNavEle( "[type='checkbox']").each(function () {
+                getNavEle( this).attr("checked", 'true');
+//                examIds += getNavEle( this).val()+",";
+            });
+        } else {
+            getNavEle( "[type='checkbox']").each(function () {
+                getNavEle( this).removeAttr("checked");
+            });
+        }
+    });
+
+    //判断审核
+    var judgment = function () {
+        var examIds = "";
+        //查出所有已选择的体检数据
+        getNavEle( "tbody [name='rdIds']").each(function () {
+            if (getNavEle( this).attr("checked")) {
+                examIds += getNavEle( this).val() + ",";
+            }
+        });
+        if (examIds == '') {
+            getNavEle( this).alertmsg('error', "未选择审核内容");
+            return;
+        }
+        getNavEle( "#judgmentResult").attr("data-url", "#U("/admin/examManage/resultDecide/batchAudit?examIds=")" + examIds);
+    };
+    //点击审核按钮回调
+    function judgmentCallback() {
+        getNavEle( "#reloadSearch").click();
+    }
+    ;
+
+    //撤销审核
+    var cancelVerify = function () {
+
+        var examIds = "";
+        //查出所有已选择的体检数据
+        getNavEle( "tbody [name='rdIds']").each(function () {
+            if (getNavEle( this).attr("checked")) {
+                examIds += getNavEle( this).val() + ",";
+            }
+        });
+        if (examIds == '') {
+            getNavEle( this).alertmsg('error', "未选择需要撤销审核的用户");
+            return;
+        }
+        $.getJSON("#U("/admin/examManage/resultDecide/cancelChecked")",
+                {
+                    examIds: examIds
+                },
+                function (data) {
+                    if (data.statusCode == 300) {
+                        getNavEle( this).alertmsg('error', data.message);
+                    } else {
+                        getNavEle( this).alertmsg('ok', data.message);
+                        getNavEle( "#reloadSearch").click();
+                    }
+                });
+
+    }
+
+
+    //    getNavEle( "#cancelChecked").on("click",function(e){
+    //
+    //    });
+
+</script>

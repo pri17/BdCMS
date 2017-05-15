@@ -1,0 +1,241 @@
+<style>
+    *{margin:0;padding:0;}
+    /*a{font-size:14px;color:#333;text-decoration: none;}*/
+    a:hover{text-decoration:underline;}
+    body{font-family:'Microsoft YaHei',YaHei,Arial,Helvetica,sans-serif;}
+    .container{width:1024px;margin:0 auto;height:820px;border:1px solid #999;}
+    .head{height:36px;border-bottom: 1px solid #999;}
+    .head span{font-size: 18px;font-weight: bolder; height:30px;line-height:30px; width:98px;display: inline-block; border:1px solid #999;background: #e4ecee;margin:5px 0 0 20px;text-align: center;border-top-left-radius: 3px;-moz-border-top-left-radius:3px; border-top-right-radius: 3px;-moz-border-top-right-radius:3px;}
+    /*head ---结束*/
+    .nav1{height:40px;background: #dbeaf9;border:1px solid #999;}
+    .nav1 span{font-size: 16px; height:28px;line-height:28px; width:120px;display: inline-block; border:1px solid #999;background: #e4ecee;margin:5px 0 0 20px;text-align: center;border-radius: 4px;-moz-border-radius:4px;}
+    .nav1 span img{margin-right: 10px;vertical-align: middle;margin-top: -4px;}
+    /*nav ---结束*/
+    .main{height:260px;}
+    .content-im{width:150px;height:200px;border:1px solid #797979;float:left;margin:18px 0 0 30px;border-radius: 6px;-moz-border-radius:6px;text-align:center;/*line-height: 228px;*/}
+    /*content-im ---结束*/
+    .content-xi-i{width:235px;float:left;height:220px;margin:18px 0 0 0;}
+    .content-xi-i span{width:84px;text-align:right;display: inline-block;}
+    .content-xi-i input{width:150px;height:26px;box-sizing:border-box;}
+    .content-xi-i .main-a, .content-xi-i .main-b{position: relative;}
+    .content-xi-i input.con-a{width:200px;position: absolute;left:84px;top:0;}
+    .content-xi-i input.con-b{width:440px;position: absolute;left:84px;top:0;}
+    .content-xi-i p{margin-bottom: 12px;}
+    /*content-xi ---结束*/
+    .content-lei-i{width:480px;float:left;margin:18px 0 0 60px;}
+    .content-lei-i span{width:84px;text-align:right;display: inline-block;}
+    .content-lei-i input{width:230px;height:26px;box-sizing:border-box;}
+    .content-lei-i input.con-c{width:150px;}
+    .content-lei-i input.con-d{width:80px;}
+    .content-lei-i p{margin-bottom: 12px;}
+    .content-lei-i p span.con-min{width:70px;}
+    /*content-lei ---结束*/
+    /*main ---结束*/
+    .footer{margin-top: 18px;}
+    .footer-a-i{height:100px;width:484px;border:1px solid #999;float:left;margin:0 26px 0 30px;}
+    .footer-b-i a{font-size: 40px;text-align: center;line-height: 100px; border:1px solid #999;float:left;height:100px;width:150px;border-radius: 6px;-moz-border-radius:6px;background: #ecf2f3;margin-right: 26px;}
+    .footer-b-i a:hover{color: red;}
+    .footer-c-i{width:276px;float: left;border:1px solid #999;height:100px;}
+    /*footer ---结束*/
+</style>
+<div class="bjui-pageHeader" style="background-color: white; min-width: 1300px;">
+<!--head 结束-->
+<input type="hidden" id="IntestinalErrMSG" class="btn-red" data-toggle="alertmsg" data-options="{type:'error', msg:'请先扫描条形码获取体检人员信息！'}"/>
+<div class="nav1"><span><img src="/assets/hplus/img/exam/ren.png" alt="">肠检采样</span></div>
+<!--nav 结束-->
+<div class="main clearfix" id="intestinalContentDiv">
+    <div class="content-im"><img id="intestinalImgIcon" src="" style="width:150px;height: 200px;border: 1px solid #797979;border-radius: 6px;"></div>
+    <div class="content-xi-i">
+        <p><span>体检号：</span><input id="medicalNum" type="text"></p>
+        <p ><span>姓名：</span><input id="medicalName" type="text" readonly></p>
+        <p><span>体检日期：</span><input id="medicalExamDay" type="text" class="con-c" readonly></p>
+        <p><span>出生日期：</span><input id="medicalBirthDay" type="text" readonly></p>
+        <p ><span>地区：</span><input id="medicalArea" type="text" readonly></p>
+        <p style="line-height: 2" class="main-b"><span>备注：</span><input id="medicalRemark" type="text" class="con-b" readonly></p>
+    </div>
+    <div class="content-lei-i">
+        <p><span>体检类别：</span><input id="medicalCate" type="text" class="con-c" readonly></p>
+        <p><span>性别：</span><input id="medicalSex" type="text" class="con-d" readonly></p>
+        <p><span>身份证号：</span><input id="medicalId" type="text" readonly></p>
+        <p><span>行业：</span><input id="medicalIndustry" type="text" readonly></p>
+        <p><span>工作单位：</span><input id="medicalUnit" type="text" readonly></p>
+    </div>
+</div>
+</div>
+<div class="bjui-pageContent" style="min-width: 1300px; padding: 2px 5px;">
+<div class="nav1"><span><img src="/assets/hplus/img/exam/ren.png" alt="">肠检采样</span></div>
+<div class="footer clearfix">
+    <div class="footer-a-i"><span style="line-height: 100px;margin-left: 20px;font-size: 40px;color: #0a6aa1">无肠检项目</span></div>
+    <div class="footer-b-i"><a href="javascript:void(0);">采样</a></div>
+    <div class="footer-c-i"><span style="line-height: 100px;margin-left: 20px;font-size: 40px;"></span></div>
+</div>
+    </div>
+<script>
+    getNavEle( document).ready(function () {
+        getNavEle( '.content-xi-i #medicalNum').focus();
+        getNavEle( '.content-xi-i #medicalNum').on("keydown",function (event) {
+            var examNumber = getNavEle( '.content-xi-i #medicalNum').val();
+                var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+                var code = theEvent.keyCode;
+                if (code == 13) {
+                if(examNumber==''){
+                    getNavEle( '#IntestinalErrMSG').click();
+                    getNavEle( '.content-xi-i #medicalNum').focus();
+                    getNavEle( '.content-xi-i #medicalNum').select();
+                    return false;
+                }
+//                if()
+                if(examNumber.indexOf("132")==-1||examNumber.indexOf("132")>3){
+                    getNavEle( this).alertmsg("error","请在乡镇肠检进行采集！");
+                    return false;
+                }
+                $.post("#U('checkMemberExamForIntestinal')",
+                        {examNumber:examNumber},function(data){
+                            data= $.parseJSON(data);
+                            if(data.errorMsg){
+                                getNavEle( this).alertmsg("error",data.errorMsg);
+                                getNavEle( '.content-xi-i #medicalNum').focus();
+                                getNavEle( '.content-xi-i #medicalNum').select();
+                                return false;
+                            }else if(data.fla){//已取样后 仍旧调取之前的取样号
+                                getNavEle( '.footer-a-i span').text('肠道带菌检查');
+                                getNavEle( '.footer-c-i span').text(data.num);
+                                getNavEle( '#intestinalContentDiv #medicalName').val(data.name);
+                                getNavEle( '#intestinalContentDiv #medicalBirthDay').val(data.birthDate);
+                                getNavEle( "#intestinalContentDiv #intestinalImgIcon").attr("src",data.icon);
+                                getNavEle( '#intestinalContentDiv #medicalWorkCate').val();
+                                getNavEle( '#intestinalContentDiv #medicalExamDay').val(data.examTime);
+                                getNavEle( '#intestinalContentDiv #medicalArea').val(data.area);
+                                getNavEle( '#intestinalContentDiv #medicalHis').val('');
+                                getNavEle( '#intestinalContentDiv #medicalRemark').val();
+                                getNavEle( '#intestinalContentDiv #medicalCate').val("从业人员体检");
+                                getNavEle( '#intestinalContentDiv #medicalSex').val((data.sex == 0) ? "女" : "男");
+                                getNavEle( '#intestinalContentDiv #medicalNation').val();
+                                getNavEle( '#intestinalContentDiv #medicalId').val(data.idCard);
+                                getNavEle( '#intestinalContentDiv #medicalIndustry').val(data.cate);
+                                getNavEle( '#intestinalContentDiv #medicalUnit').val(data.workUnit);
+                                getNavEle( '.content-xi-i #medicalNum').focus();
+                                getNavEle( '.content-xi-i #medicalNum').select();
+
+                            } else{
+                                $.post("#U('/admin/examBusiness/examMedical/findMemberExamByNumber')",
+                                        {examNumber:examNumber},function(data){
+                                            data= $.parseJSON(data);
+
+                                            if(data) {
+                                                getNavEle( '#intestinalContentDiv #medicalName').val(data.name);
+                                                getNavEle( '#intestinalContentDiv #medicalBirthDay').val(data.birthday);
+                                                getNavEle( "#intestinalContentDiv #intestinalImgIcon").attr("src",data.icon);
+                                                getNavEle( '#intestinalContentDiv #medicalWorkCate').val();
+                                                getNavEle( '#intestinalContentDiv #medicalExamDay').val(data.examTimeStr);
+                                                getNavEle( '#intestinalContentDiv #medicalArea').val(data.areaName);
+//                                                data.anamnesis
+                                                getNavEle( '#intestinalContentDiv #medicalHis').val('');
+                                                getNavEle( '#intestinalContentDiv #medicalRemark').val();
+                                                getNavEle( '#intestinalContentDiv #medicalCate').val("从业人员体检");
+                                                getNavEle( '#intestinalContentDiv #medicalSex').val((data.sex == 0) ? "女" : "男");
+                                                getNavEle( '#intestinalContentDiv #medicalNation').val();
+                                                getNavEle( '#intestinalContentDiv #medicalId').val(data.idCardNum);
+                                                getNavEle( '#intestinalContentDiv #medicalIndustry').val(data.categoryName);
+                                                getNavEle( '#intestinalContentDiv #medicalUnit').val(data.workUnit);
+
+                                                $.post("#U('generateIntestinalTestNumber')",
+                                                        {examNumber:examNumber},function(data){
+                                                            data= $.parseJSON(data);
+                                                            if (data) {
+                                                                getNavEle( '.footer-a-i span').text('肠道带菌检查');
+                                                                getNavEle( '.footer-c-i span').text(data);
+                                                                getNavEle( '.content-xi-i #medicalNum').focus();
+                                                                getNavEle( '.content-xi-i #medicalNum').select();
+                                                            }
+                                                        });
+                                            }else{
+                                                getNavEle( this).alertmsg("error","获取信息失败，请扫描正确的条形码！");
+                                                getNavEle( '.content-xi-i #medicalNum').focus();
+                                                getNavEle( '.content-xi-i #medicalNum').select();
+                                            }
+
+                                        });
+                            }
+                        });
+
+##                $.post("#U('/admin/examBusiness/examMedical/findMemberExamByNumber')",
+##                        {examNumber:examNumber},function(data){
+##                            data= $.parseJSON(data);
+##                            console.info(data);
+##                            if(data) {
+##                                getNavEle( '#intestinalContentDiv #medicalName').val(data.examMember.name);
+##                                getNavEle( '#intestinalContentDiv #medicalBirthDay').val(data.examMember.birthday);
+##                                getNavEle( '#intestinalContentDiv #medicalWorkCate').val();
+##                                getNavEle( '#intestinalContentDiv #medicalExamDay').val(data.examTimeStr);
+##                                getNavEle( '#intestinalContentDiv #medicalArea').val(data.examArea.areaName);
+##                                getNavEle( '#intestinalContentDiv #medicalHis').val(data.examMember.anamnesis);
+##                                getNavEle( '#intestinalContentDiv #medicalRemark').val();
+##                                getNavEle( '#intestinalContentDiv #medicalCate').val("从业人员体检");
+##                                getNavEle( '#intestinalContentDiv #medicalSex').val((data.examMember.sex == 0) ? "女" : "男");
+##                                getNavEle( '#intestinalContentDiv #medicalNation').val();
+##                                getNavEle( '#intestinalContentDiv #medicalId').val(data.examMember.idCardNum);
+##                                getNavEle( '#intestinalContentDiv #medicalIndustry').val();
+##                                getNavEle( '#intestinalContentDiv f#medicalUnit').val(data.workUnit);
+##                                $.getJSON("#U('/admin/examBusiness/examMedical/checkMemberExam')",
+##                                        {
+##                                            examNumber:examNumber
+##                                        },function(data){
+##                                            if(data.statusCode==300){
+##                                                getNavEle( this).alertmsg("error",data.message);
+##                                                getNavEle( '.content-xi-i #medicalNum').focus();
+##                                                return false;
+##                                            }else{
+##                                                $.post("#U('generateIntestinalTestNumber')",
+##                                                        {examNumber:examNumber},function(data){
+##                                                            data= $.parseJSON(data);
+##                                                            console.info(data);
+##                                                            if (data!=null) {
+##                                                                getNavEle( '.footer-a-b span').text('肠道带菌检查');
+##                                                                getNavEle( '.footer-c-b span').text(data);
+##                                                            } else {
+##                                                                getNavEle( this).alertmsg("error","当前没有需要体检的肠检项目！");
+##                                                            }
+##                                                        });
+##                                            }
+##                                        });
+##                            }else{
+##                                getNavEle( this).alertmsg("error","获取信息失败，请扫描正确的条形码！");
+##                            }
+##                        });
+            };
+        });
+
+##        getNavEle( '.footer-b-i a').on('click',function(){
+##            var examNumber = getNavEle( '.content-xi-i #medicalNum').val();
+##            //TODO
+##            if(examNumber==''){
+##                getNavEle( this).alertmsg("error","请先扫描条形码获取体检人员信息！");
+##                getNavEle( '.content-xi-i #medicalNum').focus();
+##                return false;
+##            }
+##
+##            $.getJSON("#U('/admin/examBusiness/examMedical/checkMemberExam')",
+##                    {
+##                        examNumber:examNumber
+##                    },function(data){
+##                        if(data.statusCode==300){
+##                            getNavEle( this).alertmsg("error",data.message);
+##                            getNavEle( '.content-xi-i #medicalNum').focus();
+##                            return false;
+##                        }else{
+##                            $.post("#U('generateIntestinalTestNumber')",
+##                                    {examNumber:examNumber},function(data){
+##                                        data= $.parseJSON(data);
+##                                        console.info(data);
+##                                        getNavEle( '.footer-a-i span').text('肠道带菌检查');
+##                                        getNavEle( '.footer-c-i span').text(data);
+##                                    });
+##                        }
+##                    });
+##        });
+    })
+</script>
+
+##</body>
+##</html>

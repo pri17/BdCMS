@@ -1,0 +1,334 @@
+@function px2rem($px) {
+  $rem : 32px;
+  @return ($px/$rem) + rem;
+}
+
+.gray {
+  background-color: #EAEBEB;
+}
+section,
+header,
+.info-box {
+  background-color: #fff;
+}
+.title {
+  font-size: px2rem(18px);
+  line-height: px2rem(40px);
+  text-align: center;
+  background: #666;
+  color: #FFF;
+}
+.notice-content {
+  padding: 1.75rem .25rem 0;
+  margin-bottom: 4rem;
+  h1 {
+    font-size: px2rem(16px);
+    font-weight: bold;
+    letter-spacing: px2rem(4px);
+    text-align: center
+  }
+  p {
+    font-size: px2rem(14px);
+    line-height: 1.3;
+    margin: 0;
+  }
+}
+.custom-btn {
+  font-size: px2rem(16px);
+  width: px2rem(80px);
+  height: px2rem(32px);
+  border: 1px solid #807A71;
+  color: #FFF;
+  background: #06F;
+  letter-spacing: px2rem(4px);
+}
+.custom-btn-big {
+  font-size: px2rem(16px);
+  width: px2rem(227px);
+  height: px2rem(32px);
+  border: 1px solid #807A71;
+  background: #06F;
+  letter-spacing: px2rem(4px);
+  color: #FFF;
+}
+/* reservation */
+.reservation {
+  font-size: px2rem(17px);
+  padding: .75rem 0 .25rem 0 ;
+  label {
+    padding-right: 0 !important;
+    text-align: left !important;
+  }
+  input {
+    width: 100%;
+    height: px2rem(23px);
+  }
+  .form-group {
+    margin-bottom: px2rem(2px);
+  }
+  .necessary {
+    color: #F00;
+  }
+  .col-xs-7 {
+    padding-right: 9px;
+    + .necessary {
+      margin-left: 6px;
+    }
+  }
+  .container-fluid {
+    .row {
+      margin-top: px2rem(5px);
+    }
+  }
+  .get-code-box {
+    display: inline-block;
+    margin-left: -4px;
+    padding: 0 10px;
+    .get-code {
+      padding: 0;
+      background-color: #fff;
+      border: 1px solid #A9A9A9;
+      font-size: px2rem(16px);
+    }
+    + .necessary {
+      margin-left: 11px;
+    }
+  }
+  .check-code {
+    padding-right: 10px;
+  }
+  .gender > label {
+    padding-left: 0;
+  }
+}
+
+/* exam-payment */
+.exam-payment {
+  .search-tool {
+    padding: px2rem(13px) 15px px2rem(10px);
+    div {
+      padding-right: 0;
+    }
+    div + div {
+      padding-left: 0;
+    }
+    input {
+      height: px2rem(25px);
+    }
+    button {
+      font-size: px2rem(13px);
+      background-color: #06F;
+      border: 1px solid #807A71;
+      border-radius: 5px;
+      color: #FFF;
+      letter-spacing: px2rem(4px);
+      width: px2rem(80px);
+      height: px2rem(25px);
+      line-height: px2rem(25px);
+    }
+  }
+  .info-box {
+    border: 1px solid #797979;
+    padding: px2rem(10px) px2rem(15px);
+    table {
+      td,th {
+        text-align: center;
+        padding: 0;
+        font-size: px2rem(17px);
+        line-height: 1.5;
+      }
+      margin-bottom: 0;
+    }
+  }
+  .remind {
+    font-size: px2rem(10px);
+  }
+  button {
+    width: px2rem(110px);
+    height: px2rem(40px);
+    background-color: #06F;
+    border: 1px solid #807A71;
+    letter-spacing: px2rem(4px);
+    line-height: px2rem(25px);
+    font-size: px2rem(16px);
+    color: #FFF;
+    display: block;
+    margin: 0 auto;
+  }
+}
+/* wechat-pay */
+.pay-head {
+  text-align: center;
+  p {
+    margin: 0;
+  }
+  .pay-title {
+    font-size: px2rem(16px);
+    line-height: px2rem(50px);
+    height: px2rem(50px);
+  }
+  .pay-cost {
+    font-size: px2rem(36px);
+    line-height: px2rem(41px);
+    height: px2rem(80px);
+  }
+  img {
+    max-width: 320px;
+    //width: px2rem(320px);
+    //height: px2rem(186px);
+  }
+}
+.recheck {
+  padding-top: 15px;
+  .info-box {
+    padding-bottom: px2rem(55px);
+    min-height: px2rem(350px);
+    position: relative;
+    button {
+      $to-left: px2rem(55px);
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      margin-left: -$to-left;
+    };
+  }
+}
+.pay-detail {
+  border-top: 1px solid #797979;
+  border-bottom: 1px solid #797979;
+  padding: px2rem(25px) px2rem(23px) px2rem(20px);
+  text-align: left;
+
+  p {
+    margin: 0;
+    font-size: px2rem(16px);
+  }
+  span {
+    float: right;
+  }
+}
+.pay-now {
+  display: block;
+  margin: px2rem(40px) auto;
+  width: px2rem(245px);
+  height: px2rem(40px);
+  border: 1px solid #797979;
+  color: #fff;
+  font-size: px2rem(16px);
+  background-color: #33CC00;
+}
+.outer-box,
+.inner-box {
+  background-color: #fff;
+  padding: px2rem(8px);
+  border: 1px solid #797979;
+}
+.certificate {
+  padding: px2rem(8px);
+}
+.inner-box + .inner-box {
+  margin-top: 10px;
+}
+.inner-box {
+  padding-bottom: 0;
+  p {
+    margin: 0;
+  }
+  .certificate-head {
+    text-align: center;
+    .img-box {
+      //display: inline-block;
+      img {
+        width: px2rem(60px);
+        height: px2rem(40px);
+      }
+    }
+    p {
+      font-size: px2rem(16px);
+    }
+  }
+  .certificate-content {
+    p {
+      font-size: px2rem(11px);
+      line-height: 1.2;
+    }
+    .certificate-code {
+      width: px2rem(48px);
+      height: px2rem(48px);
+    }
+    .media-right {
+      padding-left: 5px;
+      img {
+        width: px2rem(77px);
+        height: px2rem(108px);
+      }
+      p {
+        text-align: center;
+        //font-size: px2rem(11px);
+      }
+    }
+  }
+  &.notice {
+    h3 {
+      text-align: center;
+      font-size: px2rem(12px);
+      margin-top:.5em;
+    }
+    p {
+      font-size: px2rem(12px);
+      margin-bottom: 3px;
+    }
+  }
+}
+.qualified {
+  background-color: #33CC00;
+}
+.unqualified {
+  background-color: #FF0000;
+}
+.to-check {
+  background-color: #FFFF00;
+}
+.no-check {
+  background-color: #CCCCCC;
+}
+.arrow-right,
+.arrow-down,
+.arrow-left {
+  width: px2rem(20px);
+  height: px2rem(20px);
+}
+.exam-process {
+  //display: inline-block;
+  //text-align: center;
+  padding-top: 15px;
+  button {
+    letter-spacing: normal;
+  }
+  .process-detail {
+    position: relative;
+    padding: 15px 0;
+    .line-box {
+      //position: absolute;
+      display: inline-block;
+      border: 1px solid #797979;
+      font-size: px2rem(13px);
+    }
+  }
+  .line-two {
+    display: none;
+    margin-top: px2rem(30px);
+    .box-payment {
+      position: relative;
+      .arrow-down {
+        position: absolute;
+        top: - px2rem(30px);
+        left: 0;
+      }
+    }
+  }
+  .line-two.active {
+    display: block;
+  }
+
+}

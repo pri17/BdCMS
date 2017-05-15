@@ -1,0 +1,99 @@
+##点击该条记录进行收费确认
+<style>
+    .content-im{width:200px;height:228px;border:1px solid #797979;float: left;margin:40px 0 0 60px;border-radius: 6px;-moz-border-radius:6px;text-align:center;line-height: 228px;}
+    .content-ti{width:360px;margin-top: 16px;float:left;height:300px;}
+    .content-ti p{margin-bottom: 12px;}
+    .content-ti span{width:104px;height:24px;display: inline-block;text-align:right;}
+    .content-ti input{width:200px;height:26px;box-sizing:border-box;}
+    .content-ti input.con-a{width:160px;}
+    .content-ti select{width:200px;height:26px;}
+    .content-ti .content-work{margin-top:2px;}
+    .content-ti p.content-dan{height:54px;}
+    .content-ti p.content-dan span{height:50px;float:left;line-height: 50px;}
+    /*content-ti ---结束*/
+    .eacheck{width:700px;margin-left: 20px;float:left;}
+    .check-de span{height:30px;line-height: 30px;padding: 6px 20px;border:1px solid #555;border-bottom:none;text-decoration:none;}
+    .check-de .check-dea{background: #e4ecee;}
+    .eacheck table{border-collapse: collapse;}
+    /*check ---结束*/
+    .trtd td{border:1px solid #797979;}
+    .trtd td{height:30px;text-align:center;}
+    .no1{width:80px;}
+    .no2{width:240px;}
+    .no3{width:140px;}
+</style>
+<div class="bjui-pageContent" style="100%;">
+    <form action="#U('review')" data-reload-navtab="false" method="post" class="pageForm" data-toggle="validate" >
+        <div style="width:100%;height:300px;">
+            <div class="content-ti">
+                <span  class="middle red" value="" style="width: 230px;">提示:本次体检是第$!memberExam.recheckTag次复检</span>
+
+                <input type="hidden" name="memberExamId" value="$!memberExam.id"/>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">体检号：</label>
+                        <input data-val="" name="examNumber" id="j_dialog_name" readonly value="$!memberExam.examNumber" size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">姓名：</label>
+                        <input data-val="" name="name" id="j_dialog_name" readonly value="$!memberExam.examMember.name" size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">身份证号：</label>
+                        <input name="" id="j_dialog_name" value="$!memberExam.examMember.idCardNum" readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">乡镇：</label>
+                        <input name="" id="j_dialog_name" value="$!memberExam.examArea.areaName"  readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">上次体检日期：</label>
+                        <input name="createTime" id="j_dialog_name" value="$!memberExam.upExamTimeStr"  readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">复检费应收：</label>
+                        <input name="workUnit" id="j_dialog_name" value="$!memberExam.examPay.payMoney" readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="j_dialog_name" class="control-label x90">复检日期：</label>
+                        <input name="workUnit" id="j_dialog_name" value="$!memberExam.examTimeStr" readonly size="20" class="form-control" style="width: 200px;" aria-required="true" type="text">
+                    </div>
+            </div>
+            <img id="memberIcon" class="content-im" src="$!memberExam.examMember.icon"/>
+        </div>
+        <div class="eacheck">
+            <div class="check-de">
+                <span class="check-dea">带复检项目</span>
+            </div>
+        ##      体检登记表
+            <div class="trtd aa">
+                <table style="border: 1px;width: 600px;">
+                    <tr>
+                        <td class="no1">项目名称</td>
+                        <td class="no2">体检结果</td>
+                        <td class="no1">上限</td>
+                        <td class="no1">下限</td>
+                        <td class="no2">单位</td>
+                    </tr>
+                    #foreach($vo in $!examBIList)
+                    <tr>
+                        <td class="no1">$!vo.projectName</td>
+                        <td class="no2">$!vo.examResult</td>
+                        <td class="no1"></td>
+                        <td class="no1"></td>
+                        <td class="no2"></td>
+                    </tr>
+                    #end
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn btn-close" >关闭</button></li>
+##        <li><button type="submit"  class="btn-default" >保存</button></li>
+    </ul>
+</div>
+<script>
+
+</script>

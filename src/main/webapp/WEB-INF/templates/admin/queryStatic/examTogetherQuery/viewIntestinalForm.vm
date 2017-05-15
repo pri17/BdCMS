@@ -1,0 +1,91 @@
+##乡镇肠检单预览
+<style>
+    p,span{color:#333;}
+    .list{width:630px;height:890px;border:1px solid #797979;background-color: #eef3fa;}
+    .pow{font-size: 26px;color:#333;text-align: center;margin:32px 0 28px 0;}
+    .list p{margin-left: 28px}
+    .num{margin-right: 156px;}
+    .cun{margin-right: 134px;}
+    .time{margin-right: 134px;}
+    table{border-collapse:collapse;margin:12px 0 0 10px;}
+    table, td {border:1px solid #797979;}
+    td{height:60px;text-align: center;color:#333;}
+    td.t-one{width:140px;}
+    td.t-two{width:80px;}
+</style>
+
+
+<div class="bjui-pageContent">
+    <div class="list" style="border: 1px solid #fff;">
+        <div class="pow">常熟市食品、公共场所从业人员肠检单</div>
+        <p style=" margin-bottom: 4px;"><span class="num">代码：$!user.areaCode </span><span>送检者：$!printUser</span>
+        <span class="cun">乡镇：$!user.areaName</span><span class="time" id="sendExamTime"></span><span>页码：1/1页</span></p>
+        <table>
+            <tr>
+                <td class="t-one">体检编号<br/>（贴条形码处）</td>
+                <td class="t-two">姓名</td>
+                <td class="t-two">编号</td>
+                <td class="t-one">体检编号<br/>（贴条形码处）</td>
+                <td class="t-two">姓名</td>
+                <td class="t-two">编号</td>
+            </tr>
+
+##            #foreach($vo in $!examMemberExams)
+##            <tr>
+##                <td class="t-one"><img src=""></td>
+##                <td class="t-two">$!vo.examMember.name</td>
+##                <td class="t-two">$!vo.ExamIntestinal.testNumber</td>
+##
+##                <td class="t-one"></td>
+##                <td class="t-two"></td>
+##                <td class="t-two"></td>
+##            </tr>
+##            #end
+            <input type="hidden" id="hiddenExamMemberList" value="$!examMemberExams">
+            #foreach($vo in $!examMemberExams)
+
+                #if($!velocityCount % 2 != 0)
+                    <tr>
+                        <td class="t-one"> <img class="tjCodeImg" code-data="$!vo.examNumber"  alt="" style="width: 160px;height: 60px;"></td>
+                        <td class="t-two">$!vo.name</td>
+                        <td class="t-two">$!vo.ExamIntestinal.testNumber</td>
+##                    </tr>
+                #else
+##                    <tr>
+                        <td class="t-one"><img class="tjCodeImg" code-data="$!vo.examNumber"  alt="" style="width: 160px;height: 60px;"></td>
+                        <td class="t-two">$!vo.name</td>
+                        <td class="t-two">$!vo.ExamIntestinal.testNumber</td>
+                </tr>
+            #end
+            #end
+
+        </table>
+    </div>
+</div>
+
+<script src="../assets/printExam/js/JsBarcode.code128.min.js"></script>
+<script>
+    var tjCodeImgs=$(".tjCodeImg");
+    for(var i=0;i<tjCodeImgs.length;i++){
+        JsBarcode(tjCodeImgs[i],$(tjCodeImgs[i]).attr("code-data"),{displayValue:false,height:40,width:2});
+    }
+
+
+
+    var today = new Date(), time = today.getTime();
+    $('#sendExamTime').html("送检日期:"+today.formatDate("yyyy-MM-dd"));
+
+
+//    alert('1');
+//    alert($('#hiddenExamMemberList').val());
+//    var examMemberList = $('#hiddenExamMemberList').val();
+//    alert(examMemberList);
+//    var examMemberListJson =eval('(' + examMemberList + ')');
+//    alert(examMemberListJson);
+//    for (int i=0;i<examMemberListJson.size();i++){
+//        var examMember = examMemberList[i];
+//        alert(examMember);
+//        JsBarcode(".tjCodeImgex"+amMember.id, examMember.examNumber,{displayValue:false,height:80,width:5});
+//    }
+
+</script>

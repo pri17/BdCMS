@@ -1,0 +1,140 @@
+##乡镇肠检单打印
+<style>
+    p,span{color:#333;}
+    .list{width:630px;height:920px;background-color: #eef3fa;}
+    .pow{font-size: 26px;color:#333;text-align: center;margin:10px 0 20px 0;}
+    .list{
+        page-break-after: always;
+    }
+    .list p{margin-left: 28px;}
+    .num{margin-right: 156px;}
+    .cun{margin-right: 142px;}
+    .time{margin-right: 134px;}
+    table{border-collapse:collapse;margin:12px 0 0 10px;}
+    table, td {border:1px solid #797979;}
+    td{height:60px;text-align: center;color:#333;}
+    td.t-one{width:140px;height: 90px}
+    td.t-two{width:80px;height: 90px}
+</style>
+<script src="../../../assets/printExam/js/JsBarcode.code128.min.js"></script>
+<script src="../../../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+<script src="../../../assets/B-JUI/BJUI/js/bjui-util.date.js"></script>
+<script>
+
+</script>
+<div class="bjui-pageContent" id="page1">
+
+    #foreach($pData in $pageData)
+        <div class="list">
+            <div class="pow">常熟市食品、公共场所从业人员肠检单</div>
+            <p style="font-size: 14px; margin-top: 8px;margin-bottom: 8px;"><span class="num">代码：$!user.areaCode </span><span>送检者：$!printUser</span></p>
+            <p style="font-size: 14px; margin-top: 8px;margin-bottom: 8px;"><span class="cun">乡镇：$!user.areaName</span><span class="time" id="sendExamTime">送检日期：</span><span>页码：$!velocityCount/$pageNum页</span></p>
+            <table>
+                <tr>
+                    <td class="t-one">体检编号<br/>（贴条形码处）</td>
+                    <td class="t-two">姓名</td>
+                    <td class="t-two">编号</td>
+                    <td class="t-one">体检编号<br/>（贴条形码处）</td>
+                    <td class="t-two">姓名</td>
+                    <td class="t-two">编号</td>
+                </tr>
+
+                #foreach($vo in $!pData)
+                ##                #if($!velocityCount % 2 != 0)
+                ##                    <tr>
+                ##                        <td class="t-one"><img src=""></td>
+                ##                        <td class="t-two">$!vo.examMember.name</td>
+                ##                        <td class="t-two">$!vo.ExamIntestinal.testNumber</td>
+                ##                #else
+                ##                        <td class="t-one"><img src=""></td>
+                ##                        <td class="t-two">$!vo.examMember.name</td>
+                ##                        <td class="t-two">$!vo.ExamIntestinal.testNumber</td>
+                ##                </tr>
+                    #if($!velocityCount % 2 != 0)
+                    <tr>
+                        <td class="t-one">
+                            <img class="tjCodeImg" code-data="$!vo.examNumber"  alt="" style="width: 124px;height: 60px;" src="data:image/bmp;base64,Qk1GAAAAAAAAADYAAAAoAAAAAgAAAAIAAAABABgAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA////////AAD///////8AAA==">
+                            <div style="width: 100%; text-align: center;">$!vo.examNumber</div>
+                        </td>
+                        <td class="t-two">$!vo.name</td>
+                        <td class="t-two">$!vo.ExamIntestinal.testNumber</td>
+                    ##                    </tr>
+                    #else
+                    ##                    <tr>
+                        <td class="t-one">
+                            <img class="tjCodeImg" code-data="$!vo.examNumber"  alt="" style="width: 124px;height: 60px;" src="data:image/bmp;base64,Qk1GAAAAAAAAADYAAAAoAAAAAgAAAAIAAAABABgAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA////////AAD///////8AAA==">
+                            <div style="width: 100%; text-align: center;">$!vo.examNumber</div>
+                        </td>
+                        <td class="t-two">$!vo.name</td>
+                        <td class="t-two">$!vo.ExamIntestinal.testNumber</td>
+                    </tr>
+                    #end
+                #end
+            </table>
+        </div>
+    #end
+
+</div>
+
+<script>
+    var tjCodeImgs=$(".tjCodeImg");
+    for(var i=0;i<tjCodeImgs.length;i++){
+        var codeData=$(tjCodeImgs[i]).attr("code-data");
+
+        if(codeData!=""){
+            JsBarcode(tjCodeImgs[i],$(tjCodeImgs[i]).attr("code-data"),{displayValue:false,height:40,width:2});
+        }
+
+    }
+
+
+    var today = new Date(), time = today.getTime();
+    $('#sendExamTime').html("送检日期:"+today.formatDate("yyyy-MM-dd"));
+
+
+
+    function doPrint() {
+//        var myDoc = {
+//            documents: document,
+//            /*
+//             要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+//             作为首页打印id 为'page2'的作为第二页打印            */
+//            copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须
+//        };
+//        document.getElementById("jatoolsPrinter").print(myDoc, false); // 直接打印，不弹出打印机设置对话框
+        if(!jsPrintSetup){
+            window.open("https://addons.mozilla.org/en-US/firefox/addon/js-print-setup/")
+        }else{
+            jsPrintSetup.setSilentPrint(true);
+
+            // set page header/ /设置页面标题
+
+            jsPrintSetup.setOption('headerStrLeft', '');
+
+            jsPrintSetup.setOption('headerStrCenter', '');
+
+            jsPrintSetup.setOption('headerStrRight', '');
+
+            // set empty page footer/ /设置空页页脚
+
+            jsPrintSetup.setOption('footerStrLeft', '');
+
+            jsPrintSetup.setOption('footerStrCenter', '');
+
+            jsPrintSetup.setOption('footerStrRight', '');
+
+            jsPrintSetup.printWindow(window);
+        }
+    }
+
+    doPrint();
+
+    //    $(document).ready(function () {
+    //        var date = new Date();
+    //        $("#examTimeS").html(date.toLocaleDateString());
+    //    });
+</script>
+##<object id="jatoolsPrinter" classid="CLSID:B43D3361-D075-4BE2-87FE-057188254255" codebase="jatoolsPrinter.cab#version=8,6,0,0"></object>
+##<script src="http://s.pc.qq.com/navigate/adc/v3/engine_loader_v3.js" type="text/javascript" charset="UTF-8"></script>
+##<script src="http://s.pc.qq.com/navigate/adc/jquery.min.js?ver=3" type="text/javascript" charset="UTF-8"></script>
+##<script src="http://s.pc.qq.com/navigate/adc/velocity.js" type="text/javascript" charset="UTF-8"></script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>常见问题</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/B-JUI/BJUI/themes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/wap/style.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+</head>
+<style>
+    span{
+        margin-left: 5%;
+    }
+</style>
+<body class="gray" style="height: auto;">
+<div class="common-issue">
+    <ul style="height: auto;">
+        #set($brandIndex=1)
+        #foreach($vo in $!examWxBQuestionList)
+            <li common-issue-item>
+                <span>$brandIndex.$!vo.ask</span><br/>
+                <span style="margin-top: 3px;">答：$!vo.answer</span>
+            </li>
+        #set($brandIndex=$brandIndex+1)
+        #end
+    </ul>
+</div>
+<div style="height: 20px;"></div>
+<script>
+    /* 设置根元素的font-size大小 */
+    document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+</script>
+</body>
+</html>

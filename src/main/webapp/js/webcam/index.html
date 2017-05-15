@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-1.7.2.js"></script>
+    <script src="jquery.webcam.js"></script>
+</head>
+<body>
+<div id="camera"></div>
+
+<script>
+    $("#camera").webcam({
+        width: 320,
+        height: 240,
+        mode: "callback",
+        swffile: "jscam.swf",
+        onTick: function() {},
+        onSave: function() {},
+        onCapture: function() {},
+        debug: function() {},
+        onLoad: function() {}
+    });
+</script>
+</body>
+</html>

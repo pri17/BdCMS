@@ -1,0 +1,118 @@
+<div class="bjui-pageContent">
+    <style>
+
+    </style>
+
+    </br>
+    </br>
+    <input type="hidden" id="resultDescriptionId" />
+    <input type="hidden" id="descriptionId" />
+    <input type="hidden" id="descriptionVal" />
+    <input type="hidden" id="resultId" value="$!id" />
+    <input type="hidden" id="projectId" value="$!result.projectId"/>
+    <input type="text" name="tags" data-width="313px"  value="" data-toggle="tags" data-url="#U("/admin/examBusiness/examBlodResult/findBlodDescription?id=?",$!id)" ><span class="middle red">*</span>&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-default" type="button" id="upBtn" data-toggle="dialog" data-id="entryblodResultTree" data-width="900" data-height="800" data-url="#U("toUpIntestinal?projectId=?",$!result.projectId)" >编辑</button>
+    <button class="btn btn-default" type="button" id="joinBtn" data-toggle="dialog" data-id="entryblodResultTwo" data-width="800" data-height="400" data-type="post"  data-url=""  onclick="joinIntestinal();">加入</button>
+##    <form action="#U('entryBlodResult')"
+##          data-reload-navtab="false"
+##          method="post" class="pageForm" data-toggle="validate" >
+##        <input type="hidden" name="blodId" value="$!blodId"/>
+##        <div class="people_mess clearfix">
+##            <div class="peo_m">人员信息</div>
+##
+##            <p class="peo_time"><span>体检日期</span><input type="text" value="$date.format('yyyy-MM-dd HH:mm:ss',$!blod.memberExam.examTime)" readonly></p>
+##            <p><span>体检号</span><input type="text" value="$!blod.examNumber" readonly></p>
+##            <p><span>姓名</span><input type="text" class="in_last" value="$!blod.memberExam.examMember.name" readonly></p>
+##        </div>
+##        <div class="pro_list">
+##            <div>体检项目列表</div>
+##            <table class="blod_result_tab">
+##                <tbody>
+##                <tr class="tr_h">
+##                    <td class="no1"></td>
+##                    <td class="no2">项目名称</td>
+##                    <td class="no3">合格</td>
+##                    <td class="no4">体检结果</td>
+##                    <td class="no5">备注</td>
+##                    <td class="no6">复查</td>
+##                    <td class="no7">判断人</td>
+##                    <td class="no8">判断日期</td>
+##                </tr>
+##                    #foreach($!vo in $!blodIntestinalList)
+##                    <tr>
+##                        <td class="no1"></td>
+##                        <td class="no2">$!vo.projectName</td>
+##                        <td class="no3"><input type="checkbox" name="isQualified$!vo.projectId"  ></td>
+##
+##                        <td class="no4">
+##                            <select name="blodResult$!vo.projectId" s="$!vo.projectId">
+##                                #if($!vo.projectId==5)
+##                                    <option value="阴性">阴性</option>
+##                                    <option value="阳性">阳性</option>
+##                                #elseif($!vo.projectId==7)
+##                                    <option value="<90"><90</option>
+##                                    <option value=">90">>90</option>
+##                                #elseif($!vo.projectId==8)
+##                                    <option value="阴性">阴性</option>
+##                                    <option value="阳性">阳性</option>
+##                                #end
+##                            </select>
+##                        </td>
+##                        <td class="no5">必检项目</td>
+##                        <td class="no6"><input type="checkbox" name="isRecheck$!vo.projectId" id="blodResultSel$!vo.projectId"></td>
+##                        #if(!$vo.doctorName)
+##                            <td class="no7"></td>
+##                        #else
+##                            <td class="no7">$vo.doctorName</td>
+##                        #end
+##                        #if(!$vo.decideTime)
+##                            <td class="no8"></td>
+##                        #else
+##                            <td class="no8">$date.format('yyyy-MM-dd HH:mm:ss',$!vo.decideTime)</td>
+##                        #end
+##                    </tr>
+##                    #end
+##
+##                </tbody>
+##            </table>
+##        </div>
+##
+##    </form>
+</div>
+<div class="bjui-pageFooter">
+</div>
+<script>
+    $("input[name='tags']").on('aftercreated.bjui.tags', function(e, data) {
+        if(data.item){
+
+            // 当前选定项的值(object，具体值由返回JSON决定)
+            var description  = data.item.label;
+            $("#descriptionVal").val(description);
+            $("#descriptionId").val(data.item.value);
+        }else if(data.value){
+            var descriptionId = data.value;
+            $("#resultDescriptionId").val(descriptionId);
+            $("#descriptionVal").val(descriptionId);
+        }
+
+
+    })
+
+    // 加入描述
+    function joinIntestinal() {
+        var description = encodeURI(encodeURI($("#descriptionVal").val()));
+        var descriptionId = $("#descriptionId").val();
+        var projectId = $("#projectId").val();
+
+        if(description.length>0){
+            var url = "#U('toJoinIntestinal?')description="+description+"&descriptionId="+descriptionId+"&projectId="+projectId;
+//        console.info(url);
+            $('#joinBtn').attr("data-url",url);
+        }else{
+            $(this).alertmsg('error', '请输入相关术语!', {displayMode:'slide', displayPosition:'topcenter', okName:'确定', title:'错误提示'})
+        }
+
+
+    }
+
+</script>

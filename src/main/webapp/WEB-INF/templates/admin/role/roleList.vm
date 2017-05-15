@@ -1,0 +1,117 @@
+    <script type="text/javascript">
+        var url="#U('jurisdiction')";
+        function do_open_layout03(event, treeId, treeNode) {
+            var loadUrl=url+"?id="+treeNode.id;
+            $("#layout-menu03").bjuiajax('doLoad',{
+                target:"#layout-03",
+                url:loadUrl
+            })
+
+            event.preventDefault()
+        }
+
+    </script>
+    <div class="bjui-pageContent">
+        <div style="float:left; width:200px;">
+            <ul id="layout-menu03" class="ztree" data-toggle="ztree" data-expand-all="true" data-on-click="do_open_layout03">
+                #foreach($vo in $page.list)
+                    <li data-id="$vo.id" >$vo.role</li>
+                #end
+            </ul>
+        </div>
+        <div id="layout-03" style="height:100%; overflow:hidden;">
+           #* <div  id="roleMenu" >
+                <table v-for="menu in tree" class="table table-bordered table-hover table-striped table-top" id="item">
+                    <tr v-for="c in menu.childrend" class="check-box">
+                        <td v-if="$index==0" v-bind:rowspan="menu.childrend.length" style="border: solid 1 black;width: 300px" class="check-box">
+                            {{menu.name}}
+                            <input type="checkbox" class="checkApp" v-bind:value="menu.id" v-model="checkedList"  v-on:click="checkedAll(menu)">
+                        </td>
+                       <td style="border: solid 1 black;width: 300px" class="check-box">
+                           {{c.name}}
+                           <input type="checkbox"  v-bind:value="c.id"  v-model="checkedList" v-on:click="checkedSecond(c)">
+                       </td>
+                        <td >
+                            <span v-for="t in c.childrend" >{{t.name}}
+                                <input type="checkbox"  v-bind:value="t.id"    v-model="checkedList">
+                            </span>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>*#
+        </div>
+    </div>
+
+
+    <script>
+     /* $.getJSON("#U("/admin/menu/getMenuTree")",function (treeData, result) {
+          var roleMenuVm=  new Vue({
+              el:"#roleMenu",
+              data:{
+                  tree:treeData,
+                  checkedList:[
+                      21
+                  ]
+              },
+              methods:{
+                  isRoot:function (v) {
+                      console.log(v.parentId)
+                      if(v.parentId >0){
+                          return false;
+                      }else{
+                          return true;
+                      }
+                  },
+                  checkedAll:function (el) {
+                      if(this.checkedList.indexOf(el.id)<0){
+                          //之前未选中，操作为选中操作
+
+                          this.checkedList.push(
+                                  el.id
+                          );
+                          for(var i=0;i<el.childrend.length;i++){
+                              var c=el.childrend[i];
+                              this.checkedList.push(c.id);
+                              for(var j=0;j<c.childrend.length;j++){
+                                  console.log(c.childrend.length)
+                                  var t=c.childrend[j];
+                                  this.checkedList.push(t.id);
+                              }
+                          }
+
+                      }else{
+                          //之前选中，操作为，取消选中
+                          this.checkedList.$remove(el.id);
+                          for(var i=0;i<el.childrend.length;i++){
+                              var c=el.childrend[i];
+                              this.checkedList.$remove(c.id)
+                              for(var j=0;j<c.childrend.length;j++){
+                                  var t=c.childrend[j];
+                                  this.checkedList.$remove(t.id);
+                              }
+                          }
+                      }
+                  },
+                  checkedSecond:function (se) {
+                      if(this.checkedList.indexOf(se.id)<0){
+                          this.checkedList.push(
+                                  se.id
+                          );
+                          for(var j=0;j<se.childrend.length;j++){
+                              var t=se.childrend[j];
+                              this.checkedList.push(t.id);
+                          }
+                      }else {
+                          this.checkedList.$remove(se.id);
+                          for(var j=0;j<se.childrend.length;j++){
+                              var t=se.childrend[j];
+                              this.checkedList.$remove(t.id);
+                          }
+                      }
+                  }
+
+              }
+          })
+      })*/
+    </script>

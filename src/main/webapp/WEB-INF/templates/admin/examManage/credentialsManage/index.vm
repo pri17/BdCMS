@@ -1,0 +1,840 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', YaHei, Arial, Helvetica, sans-serif;
+    }
+
+    .cmmain a {
+        font-size: 17px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    a:hover {
+        border-bottom: 1px solid #333;
+    }
+
+    input {
+        width: 130px;
+        height: 23px;
+        box-sizing: border-box;
+    }
+
+    select {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1024px;
+        height: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+    }
+
+    .head {
+        height: 36px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .head span {
+        font-size: 17px;
+        color: #333;
+        height: 28px;
+        line-height: 28px;
+        padding: 0 26px;
+        border: 1px solid #ccc;
+        background-color: #e4ecee;
+        margin: 7px 0 0 20px;
+        display: inline-block;
+        border-top-left-radius: 3px;
+        -moz-border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        -moz-border-top-right-radius: 3px;
+    }
+
+    .cmmain {
+        height: 80px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .cmmain-b {
+        width: 200px;
+        float: left;
+        height: 100%;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+    .cmmain-b span {
+        font-size: 17px;
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 8px 0 0 14px;
+    }
+
+    .cmmain-b em {
+        font-style: normal;
+        height: 20px;
+        width: 100%;
+        background-color: #c1c1c1;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .cmnav {
+        height: 38px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .cmnav-a {
+        width: 100%;
+        /*height: 100%;*/
+        float: left;
+        line-height: 38px;
+    }
+
+    /*.cmnav-a span {*/
+    /*font-size: 17px;*/
+    /*font-weight: bold;*/
+    /*color: #003366;*/
+    /*margin-left: 20px;*/
+    /*margin-right: 24px;*/
+    /*}*/
+    .cmnav-a span {
+        font-size: 17px;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 3px 0 0 14px;
+    }
+
+    .cmnav-a a {
+        font-size: 13px;
+        height: 18px;
+        border: 2px solid #7cb7ec;
+        color: #003366;
+        font-weight: bold;
+        padding-left: 50px;
+        padding-right: 15px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+    }
+
+    .cmcontent {
+        height: 112px;
+    }
+
+    .cmcon-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        padding-top: 20px;
+    }
+
+    .cmcon-a .con-aa {
+        width: 24%;
+        float: left;
+    }
+
+    .cmcon-a p {
+        margin-bottom: 8px;
+    }
+
+    .cmcon-a input {
+        width: 130px;
+        height: 28px;
+    }
+
+    .cmcon-a select {
+        width: 130px;
+        height: 28px;
+    }
+
+
+    .cmcon-a .con-aa span {
+        font-size: 14px;
+        width: 62px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 14px;
+    }
+
+    .cmcon-a .con-ab {
+        width: 29%;
+        float: left;
+    }
+
+    .cmcon-a .con-ab span {
+        font-size: 14px;
+        width: 70px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .cmcon-a .con-ac {
+        width: 23%;
+        float: left;
+    }
+
+    .cmcon-a .con-ac span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .cmcon-a .con-ad {
+        width: 21%;
+        float: left;
+    }
+
+    .cmcon-a .con-ad span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .cmcon-a .con-ad p a {
+        width: 74px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .cmcon-a .con-ae span {
+        font-size: 14px;
+        width: 70px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 14px;
+    }
+
+    .cmcon-a .con-ae p a {
+        margin-top: 3px;
+        margin-right: 16px;
+        width: 70px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .cmcon-a .con-ae button {
+        width: 60px;
+        height: 30px;
+
+        /*background-color: #79b6ec;*/
+        float: right;
+    }
+
+    .cmcon-b {
+        width: 180px;
+        height: 100%;
+        float: left;
+        border-left: 1px solid #ccc;
+    }
+
+    .cmcon-b p:first-child {
+        margin-top: 13px;
+    }
+
+    .cmcon-b p {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .cmcon-b p input {
+        width: 160px;
+        height: 26px;
+    }
+
+    .cmcon-b p a {
+        font-size: 18px;
+        width: 80px;
+        height: 36px;
+        line-height: 36px;
+        background-color: #cee3fe;
+        display: inline-block;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    select{border: 1px solid #cccccc;}
+</style>
+<script src="../js/EcardJs/print.js"></script>
+<object id="mfc" classid="clsid:35B8CFBC-F978-49A9-BC76-CCC9DE109FCB"
+        codebase="../assets/JSP280E.ocx" height="0" width="0" style="display: none;"></object>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+    <div class="nav">
+        <div class="cmnav-a" style="background-color: #cee3fe;">
+            <button style="cursor:pointer;margin-left: 10px;" class="btn btn-default" id="searchBtnCm" type="submit">查询</button>
+            <button style="cursor:pointer;margin-left: 6px;" id="reloadSearch" data-toggle="reloadsearch" data-clear-query="true"
+                    class="btn btn-default"
+                    style="cursor:pointer;margin-left: 6px;">刷新列表
+            </button>
+            <button id="exportExcel" data-toggle="exportOption" class="btn btn-default" style="cursor:pointer;margin-left: 6px;">
+                导出列表
+            </button>
+            <button id="printCredentialsCard" class="btn btn-default" style="cursor:pointer;margin-left: 6px;">打&nbsp;&nbsp;印</button>
+            <button id="reviewCredentialsCard" class="btn btn-default" style="cursor:pointer">预&nbsp;&nbsp;览
+            </button>
+        </div>
+    </div>
+
+        #pageInput($page)
+        <button class="btn btn-default" id="" style="display: none" type="submit">查询</button>
+        <div class="cmcontent" style="height: 165px;">
+            <div class="cmcon-a" style="background-color: white;">
+                <div class="con-aa">
+                    <p><span>体检号</span><input id="examNumber" name="examNumber" type="text" value="$!examNumber"></p>
+                    <p><span>姓名</span><input id="memberName" name="memberName" type="text" value="$!memberName"></p>
+
+
+                    <p><span>行业分类</span><select name="parentId" id="credentialsCategory" onchange="addOptionCM()"
+                                                data-width="130" data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        #LoadBean("examCategoryService")
+                        #foreach($rootVo in $examCategoryService.getRootCategory())
+                            <option value="$rootVo.id"
+                                #if($rootVo.id==$parentId)
+                                    selected
+                                #end
+                            >
+                                $rootVo.categoryName
+                            </option>
+                        #end
+                    #end
+                    </select></p>
+                    <p><span></span><select name="credentialsCategoryLevelTwo" id="credentialsCategoryLevelTwo"
+                                            data-width="130"
+                                            data-emptytxt="请选择">
+
+                    </select>
+                    </p>
+                    <input id="credentialsCategoryLevelTwoId" name="credentialsCategoryLevelTwoId"
+                           value="$!credentialsCategoryLevelTwoId" type="hidden">
+
+                    <input type="hidden" value="$!ecardAdd" id="ecardAdd" name="ecardAdd">
+                </div>
+                <div class="con-ab">
+                    <p><span>身份证件号</span><input style="width: 180px;" id="idCardNum" name="idCardNum" type="text" value="$!idCardNum"></p>
+                    <p><span>健康证号</span><input style="width: 180px;" id="eCardNumber" name="eCardNumber" type="text"
+                                               value="$!eCardNumber"></p>
+                    <p><span>工作单位</span><input style="width: 180px;" id="workUnit" name="workUnit" type="text" value="$!workUnit"></p>
+                    #if($!currentAgenciesCode == 132)
+                    <p><span>地段区域</span><select name="areaId" id="areaId" data-width="130" style="width: 110px;">
+                        <option value="">全部</option>
+                        #LoadBean("examAreaService")
+                        #foreach($el in $examAreaService.getRootExamArea())
+                            <option value="$!el.id"
+                                #if($!el.id==$!currentAreaId)
+                                    selected
+                                #end
+                                    >$!el.areaName</option>
+                        #end
+                    #end
+                </select>
+                </p>
+
+                #else
+                    <input type="hidden" name="areaId" value="$!currentAreaId">
+                <p><span>地段区域</span><select style="width: 110px; name="areaIdHidden" id="areaId" data-width="130" disabled>
+                    <option value="">全部</option>
+                    #LoadBean("examAreaService")
+                    #foreach($el in $examAreaService.getRootExamArea())
+                        <option value="$!el.id"
+                            #if($!el.id==$!currentAreaId)
+                                selected
+                            #end
+                                >$!el.areaName</option>
+                    #end
+                #end
+                    </select>
+                </p>
+                #end
+
+
+                </div>
+                <div class="con-ac">
+                    <p><span>体检日期</span><input id="beginExamTime" name="beginExamTime" type="text"
+                                               value="$!beginExamTime" data-toggle="datepicker" data-nobtn="true"
+                                               placeholder="点击选择日期"></p>
+                    <p><span></span><input id="endExamTime" name="endExamTime" type="text" value="$!endExamTime"
+                                           data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期"></p>
+                    <p><span>发证日期</span><input id="beginIssueTime" name="beginIssueTime" type="text" style="width: 130px;"
+                                               value="$!beginIssueTime" data-toggle="datepicker" data-nobtn="true"
+                                               placeholder="点击选择日期"></p>
+                    <p><span></span><input id="endIssueTime" name="endIssueTime" type="text" value="$!endIssueTime" style="width: 130px;"
+                                           data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期"></p>
+
+
+                </div>
+                <div class="con-ad">
+
+                    <p><span>审核日期</span><input id="beginAuditTime" name="beginAuditTime" type="text"
+                                               value="$!beginAuditTime" data-toggle="datepicker" data-nobtn="true"
+                                               placeholder="点击选择日期"></p>
+                    <p><span></span><input id="endAuditTime" name="endAuditTime" type="text" value="$!endAuditTime"
+                                           data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期"></p>
+                    <p><span>是否打印</span><select id="isRechekPrint" name="isRechekPrint" value="$!isRechekPrint"
+                                                data-width="130"
+                                                data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        <option value="1"
+                            #if(1==$!isRechekPrint)
+                                selected
+                            #end>已打印
+                        </option>
+                        <option value="0"
+                            #if(0==$!isRechekPrint)
+                                selected
+                            #end>未打印
+                        </option>
+
+                    </select>
+                    ##                        <input id="isCmQuery" name="isCmQuery" value="123" type="hidden"/>
+                    </p>
+                    <p style="margin-left:2px;font-size: 14px;margin-top: 14px;"><input id="eCardAddCheckbox" type="checkbox" name="checkbox"
+                                                        style="width: 20px; height: 20px;vertical-align: middle;margin-top:-2px; margin-bottom:1px;"
+                        #if($!ecardAdd=="1") checked="checked" #end>累加健康体检人员查询结果</p>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table id="credentialsTable" name="credentialsTable"
+           class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style" style="font-size: 12px!important;">
+        ##            <th><input id="allChecked" type="checkbox" style="width: 30px;float: left;line-height: 40px;"
+        ##                       value=""/><span style="line-height: 40px;">选择</span></th>
+            <th width="26px"><input id="allCredentialsIds" name="allCredentialsIds"
+                       style="width: 30px;float: left;line-height: 40px;"
+                       type="checkbox"></th>
+            <th style="text-align:center;font-size: 12px!important;">健康证号</th>
+            <th style="text-align:center;font-size: 12px!important;">体检号</th>
+            <th style="text-align:center;font-size: 12px!important;">姓名</th>
+            <th style="text-align:center;width: 36px;font-size: 12px!important;">性别</th>
+            <th style="text-align:center;font-size: 12px!important;">身份证号</th>
+            <th style="text-align:center;width: 60px;font-size: 12px!important;">地段区域</th>
+            <th style="text-align:center;width: 130px;font-size: 12px!important;">工作单位</th>
+            <th style="text-align:center;font-size: 12px!important;">行业分类</th>
+            <th style="text-align:center;width: 76px;font-size: 12px!important;">体检日期</th>
+            <th style="text-align:center;width: 76px;font-size: 12px!important;">审核日期</th>
+            <th style="text-align:center;width: 76px;font-size: 12px!important;">发证日期</th>
+            <th style="text-align:center;width: 76px;font-size: 12px!important;">有效期</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color" id="credentialsList">
+            #foreach($vo in $page.list)
+            <tr>
+                <td style="text-align:center;"><input id="credentialsIds" name="credentialsIds" value="$!vo.id"
+                           style=" width: 25px; margin: 0px; padding: 0px; background: rgb(255, 255, 255);"
+                           type="checkbox"></td>
+                <td class="jkzh" style="text-align:center;">$!vo.eCardNumber</td>
+                <td class="tjh" style="text-align:center;">$!vo.examNumber</td>
+                <td width="50px" class="xm" style="text-align:center;">$!vo.name</td>
+                <td style="text-align:center;">$!vo.sexStr</td>
+                <td class="sfzh" style="text-align:center;">$!vo.idCardNum</td>
+                <td style="text-align:center;">$!vo.areaName</td>
+                <td style="text-align:center;">$!vo.workUnit</td>
+                <td style="text-align:center;">$!vo.categoryName</td>
+                <td style="text-align:center;">$!vo.examTimeStr</td>
+                <td style="text-align:center;" class="shrq">$!vo.auditTimeStr</td>
+                <td style="text-align:center;">$!vo.issueTimeString</td>
+                <td style="text-align:center;">$!vo.expTimeStr</td>
+                <td style="text-align:center;" class="xb hidden">$!vo.sexStr</td>
+                <td style="text-align:center;" class="age hidden">$!vo.memberAge</td>
+                <td style="text-align:center;" class="qrUrl hidden">$!vo.qrCodeUrl</td>
+                <td style="text-align:center;" class="iconUrl hidden">$!vo.iconUrl</td>
+                <td style="text-align:center;" class="bianhao hidden">$!vo.examNumber</td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+    <input type="hidden" id="pageCurrent" value="$page.pageCurrent">
+    <input type="hidden" id="pageCount" value="$page.pageCount">
+    <input type="hidden" id="pageSize" value="$page.pageSize">
+</div>
+#page($page)
+<script>
+
+    getNavEle( document).ready(function () {
+
+
+        getNavEle( "#eCardAddCheckbox").click(function () {
+
+            var eCardAdd = 0;
+
+            if (this.checked) {
+
+                getNavEle( "#eCardAddCheckbox").attr("checked", true);
+
+                eCardAdd = 1;
+
+            } else {
+                getNavEle( "#eCardAddCheckbox").attr("checked", false);
+
+                eCardAdd = 0;
+            }
+
+            getNavEle( '#ecardAdd').val(eCardAdd);
+        });
+
+
+        //全选或全不选
+        getNavEle( "#allCredentialsIds").click(function () {
+            if (this.checked) {
+                getNavEle( "#credentialsList [name=credentialsIds]:checkbox").attr("checked", true);
+            } else {
+                getNavEle( "#credentialsList [name=credentialsIds]:checkbox").attr("checked", false);
+            }
+        });
+
+        //设置全选复选框
+        getNavEle( "#credentialsList [name=credentialsIds]:checkbox").click(function () {
+            if (getNavEle( this).attr("checked") == 'checked') {
+                getNavEle( this).attr("checked", true);
+            } else {
+                getNavEle( this).attr("checked", false);
+            }
+            allchk();
+        });
+    });
+
+    function allchk() {
+        var chknum = getNavEle( "#credentialsList [name=credentialsIds]:checkbox").size();//选项总个数
+        var chk = 0;
+        getNavEle( "#credentialsList [name=credentialsIds]:checkbox").each(function () {
+            if (getNavEle( this).attr("checked") == 'checked') {
+                chk++;
+            }
+        });
+
+        if (chknum == chk) {//全选
+            getNavEle( "#allCredentialsIds").attr("checked", true);
+        } else {//不全选
+            getNavEle( "#allCredentialsIds").attr("checked", false);
+        }
+    }
+
+    var printLine = new Array();
+    getNavEle( '#printCredentialsCard').click(function () {
+
+        var selected = getNavEle( "#credentialsList [name=credentialsIds]:checked");
+
+        var valArr = new Array;
+
+        if (printLine.length > 0) {
+            getNavEle( this).alertmsg('error', "正在打印中，当前不允许添加打印！");
+            return false;
+        } else if (selected.length == 0) {
+            getNavEle( this).alertmsg('error', "请选择用户进行打印操作！");
+            return false;
+        } else {
+
+            var parentTd = null, o = null;
+
+            selected.each(function () {
+
+                parentTd = getNavEle( this).parent('td');
+
+                o = {
+                    xingming: parentTd.siblings('td.xm').text(),
+                    xingbie: parentTd.siblings('td.xb').text(),
+                    shenfenzhenghao: parentTd.siblings('td.sfzh').text(),
+                    jiankangzhenghao: parentTd.siblings('td.jkzh').text(),
+                    tijianhao: parentTd.siblings('td.tjh').text(),
+                    shenheriqi: parentTd.siblings('td.shrq').text(),
+                    icon: parentTd.siblings('td.iconUrl').text(),
+                    age: parentTd.siblings('td.age').text(),
+                    qr: parentTd.siblings('td.qrUrl').text(),
+                    bianhao: parentTd.siblings('td.bianhao').text()
+                };
+
+                //alert(o.xingming);
+                printLine.unshift(o);
+
+            });
+
+            startPrintLine();
+        }
+
+
+    });
+
+    var printLineInterval, currentObj;
+
+    function startPrintLine() {
+        printOne();
+        printLineInterval = window.setInterval(function () {
+            printOne();
+        }, 10000);
+    }
+
+    function printOne() {
+
+
+        switch (0) {
+            case 0: // 准备就绪
+
+
+                currentObj = printLine.pop();
+
+                if (currentObj != undefined) {
+
+
+//                    urrentObj.xingming, currentObj.xingbie, currentObj.age,
+// currentObj.shenfenzhenghao
+//                            , currentObj.jiankangzhenghao,
+// currentObj.tijianhao,
+//                            currentObj.shenheriqi, currentObj.icon,
+// currentObj.qr
+                    //alert(currentObj.icon);
+                    //alert(currentObj.qr);
+
+                    //把  yyyy-mm-dd 转换成 yyyy月mm月dd
+                    var strDate = currentObj.shenheriqi
+                    strDate = strDate.replace(/-/g,"/");
+                    var time1 = new Date(strDate);
+                    var strTimeData = formatDate(time1);
+
+
+                    localService.pvcPrint({
+                        Name: currentObj.xingming,
+                        Sex: currentObj.xingbie,
+                        Age: currentObj.age,
+                        Id: currentObj.shenfenzhenghao,
+                        No: "苏"+ currentObj.jiankangzhenghao +"号",
+                        Date: strTimeData,
+                        Dept: "常熟市疾病预防控制中心",
+                        Jkno:  currentObj.tijianhao,
+                        Photo: currentObj.icon,
+                        Qrcode: currentObj.qr
+                    },function (res) {
+                        updateDaYinBiaoJi(currentObj.bianhao, function () {
+
+                        }, function (errMsg) {
+                            //更新错误信息
+                        });
+
+                    },function(msg){
+                        alert(msg);
+                    });
+
+//                    var ret = 0;
+//                        xingming, xingbie,memberAge, shenfenzhenghao, jiankangzhenghao, tijianhao ,fazhengqiri, memberIcon,qrCodeUrl
+//                    var ret = startPrint(currentObj.xingming, currentObj.xingbie, currentObj.age, currentObj.shenfenzhenghao
+//                            , currentObj.jiankangzhenghao, currentObj.tijianhao,
+//                            currentObj.shenheriqi, currentObj.icon, currentObj.qr);
+//                     alert(currentObj.xingming, currentObj.xingbie, currentObj.shenfenzhenghao
+//                     , currentObj.jiankangzhenghao, currentObj.tijianhao, currentObj.fazhengqiri, currentObj.bianhao);
+//                    if (ret == 0) {
+////                            getNavEle( '#print-text').text(currentObj.xingming + '：正在打印').removeClass('hidden');
+////                        getNavEle( '#'+currentObj.bianhao).remove();/
+////                        alert("更新");
+//
+////                        alert("printLine---"+printLine.length);
+//                        //更新数据库操作
+//                        updateDaYinBiaoJi(currentObj.bianhao, function () {
+//
+//                        }, function (errMsg) {
+//                            //更新错误信息
+//                        });
+//                    } else if (ret == 1) {
+//                        alert("打印机驱动不对");
+//                    } else if (ret == 2) {
+//                        alert("网络照片不能解析请检测网络");
+//                    } else if (ret == 3) {
+//                        alert("本地照片不能解析请检测");
+//                    }
+                } else {
+//                    alert('打印结束');
+//                        getNavEle( '#print-line').empty().addClass('hidden');
+//                        getNavEle( '#print-text').empty().addClass('hidden');
+                    window.clearInterval(printLineInterval);
+                }
+                break;
+            case -1:
+                alert('打印机脱机或未连接');
+//                    getNavEle( '#print-line').prepend('以下未打印，请重新添加');
+                window.clearInterval(printLineInterval);
+                break;
+            case -2:
+                alert('卡片用完');
+//                    getNavEle( '#print-line').prepend('以下未打印，请重新添加');
+                window.clearInterval(printLineInterval);
+                break;
+            case -3:
+                alert('色带用完');
+//                    getNavEle( '#print-line').prepend('以下未打印，请重新添加');
+                window.clearInterval(printLineInterval);
+                break;
+            case -4:
+                alert('打印机忙碌');
+//                    getNavEle( '#print-line').prepend('以下未打印，请重新添加');
+                window.clearInterval(printLineInterval);
+                break;
+
+            case -6:
+                alert('卡片卡在通道里面，请排出卡片');
+//                    getNavEle( '#print-line').prepend('以下未打印，请重新添加');
+                window.clearInterval(printLineInterval);
+                break;
+        }
+    }
+
+    // 更新打印标记
+    function updateDaYinBiaoJi(bianhao, successCallBack, errorCallBack) {
+        $.post('#U("/admin/examManage/credentialsManage/updatePrint")', {
+            bianhao: bianhao,
+        }, function (data) {
+            if (data.statusCode == 200) {
+                successCallBack();
+            } else {
+                errorCallBack(data.message);
+            }
+        }, 'json');
+    }
+
+
+    //    getNavEle( "#searchBtnCm").click(function () {
+    //        getNavEle( "#isCmquery").val("1");
+    //    });
+    //行业类别二级选项卡
+    var addOptionCM = function () {
+        getNavEle( ".credentialsCategoryLevelTwoClass").remove();
+        var pid = getNavEle( "#credentialsCategory").val();
+        $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                {
+                    pid: pid
+                },
+                function (data) {
+                    if (data.categoryList.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.categoryList.length; i++) {
+                            var category = data.categoryList[i];
+                            html += "<option class='credentialsCategoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                        }
+                        getNavEle( "#credentialsCategoryLevelTwo").append(html);
+                    }
+                }
+        );
+    }
+    //导出列表
+    getNavEle( "#exportExcel").on("click", function () {
+        var pageCurrent = getNavEle( '#pageCurrent').val();
+        var pageCount = getNavEle( '#pageCount').val();
+        var pageSize = getNavEle( '#pageSize').val();
+        var areaId = getNavEle( '.cmcontent #areaId').val();
+        var credentialsCategoryLevelTwo = getNavEle( '.cmcontent #credentialsCategoryLevelTwoId').val();
+        var memberName   = encodeURI(encodeURI(getNavEle( '.cmcontent #memberName').val()));
+        var idCardNum = getNavEle( '.cmcontent #idCardNum').val();
+        var examNumber = getNavEle( '.cmcontent #examNumber').val();
+        var workUnit = encodeURI(encodeURI(getNavEle( '.cmcontent #workUnit').val()));
+        var eCardNumber = getNavEle( '.cmcontent #eCardNumber').val();
+        var beginExamTime = getNavEle( '.cmcontent #beginExamTime').val();
+        var endExamTime = getNavEle( '.cmcontent #endExamTime').val();
+        var beginIssueTime = getNavEle( '.cmcontent #beginIssueTime').val();
+        var endIssueTime = getNavEle( '.cmcontent #endIssueTime').val();
+        var beginAuditTime = getNavEle( '.cmcontent #beginAuditTime').val();
+        var endAuditTime = getNavEle( '.cmcontent #endAuditTime').val();
+        var isRechekPrint = getNavEle( '.cmcontent #isRechekPrint').val();
+        window.open("#U("/admin/examManage/credentialsManage/exportExcel")" + "?pageCurrent="
+                + pageCurrent + "&pageCount=" + pageCount + "&pageSize=" + pageSize+ "&areaId=" + areaId+
+                "&credentialsCategoryLevelTwo=" + credentialsCategoryLevelTwo+ "&memberName=" + memberName+ "&idCardNum=" + idCardNum+
+                "&examNumber=" + examNumber+"&workUnit="+ workUnit+ "&eCardNumber="+ eCardNumber+
+                "&beginExamTime=" + beginExamTime+ "&endExamTime=" + endExamTime+ "&beginIssueTime=" + beginIssueTime+
+                "&endIssueTime=" + endIssueTime+ "&beginAuditTime=" + beginAuditTime+ "&endAuditTime=" + endAuditTime+
+                "&isRechekPrint=" + isRechekPrint);
+    });
+
+    //预览健康证
+    getNavEle( "#reviewCredentialsCard").on("click", function () {
+        //预览健康证时，通过checkbox获取需要预览的数据id，补全健康证地址
+        var credentialID = new Array();
+        //查出所有已选择的体检数据
+        getNavEle( "tbody [type='checkbox']").each(function () {
+            if (getNavEle( this).attr("checked")) {
+                credentialID.push(getNavEle( this).val());
+            }
+        });
+        if (credentialID.length > 1) {
+            getNavEle( this).alertmsg('error', "只能选择一张健康证进行预览！");
+            return false;
+        }
+        if (credentialID == '') {
+            getNavEle( this).alertmsg('error', "未选择需要预览的健康证！");
+            return false;
+        }
+        var urll = "#U('viewCredential?id=')" + credentialID[0];
+
+        getNavEle( this).dialog({
+            id: 'dialogCredentials',
+            url: urll,
+            title: '健康证预览',
+            width: '400',
+            height: '285',
+            fresh: true,
+            mask: true
+        });
+//        getNavEle( this).attr("data-url", urll);
+//        getNavEle( this).attr("data-toggle", "dialog");
+//        getNavEle( this).attr("data-id", "dialogCredentials");
+//        getNavEle( this).attr("data-title", "健康证预览");
+//        getNavEle( this).attr("data-width", "400");
+//        getNavEle( this).attr("data-height", "285");
+//        getNavEle( this).attr("data-mask", true);
+//        getNavEle( this).attr("data-fresh",true);
+//        getNavEle( "#reloadSearch").click();
+    });
+
+
+    var formatDate = function (date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        m = m < 10 ? '0' + m : m;
+        var d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        return y + '年' + m + '月' + d;
+    };
+
+</script>

@@ -1,0 +1,39 @@
+<div class="bjui-pageContent">
+    <form action="#U('updateExamPayItem')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden" name="id" value="$!examPayItem.id"/>
+
+        <div class="form-group">
+            <label class="control-label x85">项目名称：</label>
+            <input type="text"   name="name" value="$!examPayItem.name"
+                   data-rule="required;" size="30"
+            />
+            <span class="middle red">*</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">扫码方式：</label>
+            <input type="text"   name="scan" value="$!examPayItem.scan"
+                   data-rule="required;" size="30"
+            />
+            <span class="middle red">*</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">收费方式：</label>
+            <input type="text"   name="type" value="$!examPayItem.type"
+                   data-rule="required;" size="30"
+            />
+            <span class="middle red">*</span>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn btn-close" >关闭</button></li>
+        <li><button type="submit"  class="btn-default" >保存</button></li>
+    </ul>
+</div>
+<script>
+
+</script>

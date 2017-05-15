@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>体检进程</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/wap/style-recheck.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../assets/printExam/js/JsBarcode.code128.min.js"></script>
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+##    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../assets/machineCss/js/sweetalert-dev.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+    function alertNotice(title, text, type) {
+        swal({
+            title: title,
+            text: text,
+            type: type,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定"
+        });
+    };
+    #if(!$openId)
+        alertNotice("", "openId为空", "error");
+    #end
+
+        #if($error)
+            alertNotice("", "$error", "error");
+        #end
+</script>
+</body>
+</html>

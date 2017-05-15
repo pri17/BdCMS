@@ -1,0 +1,669 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', YaHei, Arial, Helvetica, sans-serif;
+    }
+
+    .erqmain a {
+        font-size: 17px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    a:hover {
+        border-bottom: 1px solid #333;
+    }
+
+    input {
+        /*width: 130px;*/
+        height: 23px;
+        box-sizing: border-box;
+    }
+
+    select {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1024px;
+        height: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+    }
+
+    .head {
+        height: 36px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .head span {
+        font-size: 17px;
+        color: #333;
+        height: 28px;
+        line-height: 28px;
+        padding: 0 26px;
+        border: 1px solid #ccc;
+        background-color: #e4ecee;
+        margin: 7px 0 0 20px;
+        display: inline-block;
+        border-top-left-radius: 3px;
+        -moz-border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        -moz-border-top-right-radius: 3px;
+    }
+
+    .erqmain {
+        height: 80px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .erqmain-a {
+        width: 200px;
+        float: left;
+        height: 100%;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+    .erqmain-a em {
+        font-style: normal;
+        height: 20px;
+        width: 100%;
+        background-color: #c1c1c1;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .erqmain-a span {
+        font-size: 17px;
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 8px 0 0 14px;
+    }
+
+    .erqmain-a a {
+        width: 80px;
+        height: 44px;
+        /*line-height: 44px;*/
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        text-align: center;
+        margin-right: 4px;
+        display: inline-block;
+        background-color: #79b6ec;
+        margin-top: 8px;
+    }
+
+    .erqmain-a a:first-child {
+        margin-left: 20px;
+    }
+
+    /*.erqmain-a span {*/
+    /*height: 20px;*/
+    /*width: 100%;*/
+    /*background-color: #c1c1c1;*/
+    /*text-align: center;*/
+    /*display: inline-block;*/
+    /*line-height: 20px;*/
+    /*margin-top: 6px;*/
+    /*font-size: 14px;*/
+    /*}*/
+
+    .erqnav {
+        height: 38px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .erqnav-a {
+        width: 70%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+        background-color: #cee3fe;
+    }
+
+    /*.erqnav-a span {*/
+    /*font-size: 17px;*/
+    /*font-weight: bold;*/
+    /*color: #003366;*/
+    /*margin-left: 20px;*/
+    /*margin-right: 24px;*/
+    /*}*/
+    .erqnav-a span {
+        font-size: 17px;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 3px 0 0 14px;
+    }
+
+    .erqnav-a a {
+        font-size: 13px;
+        height: 18px;
+        border: 2px solid #7cb7ec;
+        color: #003366;
+        font-weight: bold;
+        padding-left: 50px;
+        padding-right: 15px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+    }
+
+    .erqnav-b {
+        width: 30%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+        background-color: #cee3fe;
+        border-left: 1px solid #ccc;
+    }
+
+    /*.erqnav-b span {*/
+    /*font-size: 17px;*/
+    /*font-weight: bold;*/
+    /*color: #003366;*/
+    /*margin: 0 10px;*/
+    /*}*/
+
+    .erqnav-b a {
+        font-size: 13px;
+        height: 18px;
+        border: 2px solid #7cb7ec;
+        color: #003366;
+        font-weight: bold;
+        padding-left: 10px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+    }
+
+    .rqcontent {
+        height: 112px;
+    }
+
+    .erqcon-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        padding-top: 20px;
+    }
+
+    .erqcon-a p {
+        margin-bottom: 8px;
+    }
+
+    .erqcon-a input {
+        width: 120px;
+        height: 28px;
+    }
+
+    .erqcon-a select {
+        width: 120px;
+        height: 28px;
+    }
+
+    .erqcon-a .con-aa {
+        width: 24%;
+        float: left;
+    }
+
+    .erqcon-a .con-aa span {
+        font-size: 14px;
+        width: 62px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .erqcon-a .con-aa select {
+        margin-left: 14px;
+    }
+
+    .erqcon-a .con-ab {
+        width: 29%;
+        float: left;
+    }
+
+    .erqcon-a .con-ab span {
+        font-size: 14px;
+        width: 70px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .erqcon-a .con-ac {
+        width: 23%;
+        float: left;
+    }
+
+    .erqcon-a .con-ac span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .erqcon-a .con-ad {
+        width: 22%;
+        float: left;
+    }
+
+    .erqcon-a .con-ad span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .erqcon-a .con-ad p a {
+        width: 94px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .erqcon-b {
+        width: 25%;
+        height: 100%;
+        float: left;
+        border-left: 1px solid #ccc;
+    }
+
+    .erqcon-b p:first-child {
+        margin-top: 20px;
+    }
+
+    .erqcon-b p {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .erqcon-b p input {
+        width: 60px;
+        height: 28px;
+    }
+
+    .erqcon-b p a {
+        font-size: 18px;
+        width: 80px;
+        height: 36px;
+        line-height: 36px;
+        background-color: #cee3fe;
+        display: inline-block;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    .check-de a {
+        margin-left: 20px;
+        height: 30px;
+        line-height: 30px;
+        padding: 6px 20px;
+        border: 1px solid #555;
+        border-bottom: none;
+        text-decoration: none;
+    }
+
+    .check-de .check-dea {
+        background: #e4ecee;
+    }
+    select{border: 1px solid #cccccc;}
+</style>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+        <div class="erqnav">
+            <div class="erqnav-a">
+            ##                <span>信息筛选</span>
+                <button style="cursor:pointer;margin-left: 10px;" class="btn btn-default" id="searchResultQuery" type="submit">查询</button>
+                <button class="btn btn-default" id="" style="display: none" type="submit">查询</button>
+                <button id="reloadSearch" class="btn btn-default" data-toggle="reloadsearch" data-clear-query="true"
+                        style="cursor:pointer;margin-left: 6px;">清空查询
+                </button>
+                <button id="exportResultQueryExcel" class="btn btn-default" style="cursor:pointer;margin-left: 6px;">导出列表</button>
+            </div>
+            <div class="erqnav-b">
+            ##                <span>条码扫描</span>
+            ##                <a style="background-color: white;">条形码编号</a>
+                <span style="margin-left: 10%;">条形码编号</span>
+                <input type="text" id="examNumber" name="examNumber" class="form-control" size="10" data-rule="number">
+                <button type="button" class="btn btn-default" id="resultQueryCommitCode"
+                        onclick="resultQueryByNumber();">确认
+                </button>
+            </div>
+        </div>
+        <div class="rqcontent" style="background-color: white;height:100px;">
+            <div class="erqcon-a">
+                <div class="con-aa">
+                    <p><span>体检号</span><input type="text" id="examNumber" name="searchExamNumber"  class="jksearchExamNumber" value="$!searchExamNumber"></p>
+                    <p><span>姓名</span><input type="text" id="name" name="name" value="$!name"></p>
+
+               </div>
+                <div class="con-ab">
+                    <p><span>身份证件号</span><input style="width: 180px;" type="text" id="idCard" name="idCard" value="$!idCard"></p>
+                    #if($!currentAgenciesCode == 132)
+
+                    <p><span>地段区域</span><select style="margin-left: 0px;" name="areaId" id="areaId" data-width="130">
+                        <option value="">全部</option>
+                        #LoadBean("examAreaService")
+                        #foreach($el in $examAreaService.getRootExamArea())
+                            <option value="$!el.id"
+                                #if($!el.id==$!currentAreaId)
+                                    selected
+                                #end
+                                    >$!el.areaName</option>
+                        #end
+                    #end
+
+                </select>
+                </p>
+
+                #else
+                    <input type="hidden" name="areaId" value="$!currentAreaId">
+                <p><span>地段区域</span><select style="margin-left: 0px;" name="areaIdHidden" id="areaIdHidden" data-width="130" disabled>
+                    <option value="">全部</option>
+                    #LoadBean("examAreaService")
+                    #foreach($el in $examAreaService.getRootExamArea())
+                        <option value="$!el.id"
+                            #if($!el.id==$!currentAreaId)
+                                selected
+                            #end
+                                >$!el.areaName</option>
+                    #end
+                #end
+
+                </select>
+                </p>
+
+                #end
+
+                </div>
+                <div class="con-ac">
+                    <p><span>体检日期</span><input type="text" id="startTime" name="startTime" value="$!startTime" data-toggle="datepicker"
+                                               data-nobtn="true"
+                                               placeholder="点击选择日期" data-width="130"></p>
+                    <p><span></span><input type="text" id="endTime" name="endTime" value="$!endTime" data-toggle="datepicker"
+                                           data-nobtn="true"
+                                           placeholder="点击选择日期" data-width="130"></p>
+
+                </div>
+                <div class="con-ad">
+                    <p><span>项目结果</span><select name="verifyConclusion" id="verifyConclusion" data-width="130">
+                        <option value="">全部</option>
+
+                        <option value="0"
+                            #if(0==$!verifyConclusion)
+                                selected
+                            #end>未判断
+                        </option>
+                        <option value="1"
+                            #if(1==$!verifyConclusion)
+                                selected
+                            #end>合格
+                        </option>
+                        <option value="2"
+                            #if(2==$!verifyConclusion)
+                                selected
+                            #end>不合格
+                        </option>
+                    ##                        <option value="0">未判断</option>
+                    ##                        <option value="1">合格</option>
+                    ##                        <option value="2">不合格</option>
+                    </select>
+                    </p>
+
+                    <p><span>收费</span><select name="payState" id="payState" data-width="130" data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        <option #if($!payState=="2") selected #end value="2">已收费</option>
+                        <option #if($!payState=="1") selected #end value="1">未收费</option>
+                    </select>
+                    </p>
+
+                </div>
+            </div>
+        ##            <div class="erqcon-b">
+        ##                <p>条形码编号</p>
+        ##                <p><input type="text" id="examNumber" name="examNumber" class="form-control" size="10" data-rule="number"></p>
+        ##                <p><button type="button" class="btn btn-default" data-id="dialog-normal" data-toggle="dialog" data-width="800" data-height="600" id="resultQueryCommitCode" data-url="">确认</button></p>
+        ##            </div>
+        </div>
+    </form>
+</div>
+
+<div class="bjui-pageContent tableContent" style="margin-top: 10px;">
+    <div class="check-de" style="height: 35px;line-height: 40px;">
+        <a id="checkA" class="check-dea">相关$page.total记录</a>
+    </div>
+    <div style="width:48%;float: left;overflow: auto;height: 300px;">
+        <table class="table table-bordered table-top" data-selected-multi="true">
+            <thead>
+            <tr class="first-tr-style">
+                <th style="text-align: center;width: 50px;">姓名</th>
+                <th style="text-align: center;">体检号</th>
+                <th style="text-align: center;">身份证号</th>
+                <th style="text-align: center;">工作单位</th>
+                <th style="text-align: center;">体检日期</th>
+                <th style="text-align: center;" width="40px">收费</th>
+            </tr>
+            </thead>
+            <tbody class="hover-color">
+                #foreach($vo in $page.list)
+                <tr align="center" name="leftMemberExam" n="$!vo.id" e="$!vo.examNumber">
+                    <td style="text-align: center;">$!vo.name</td>
+                    <td style="text-align: center;">$!vo.examNumber</td>
+                    <td style="text-align: center;">$!vo.idCardNum</td>
+                    <td style="text-align: center;">$!vo.workUnit</td>
+                    <td style="text-align: center;">$!vo.examTimeStr</td>
+                    <td style="text-align: center;">$!vo.payStateStr</td>
+                </tr>
+                #end
+            </tbody>
+        </table>
+    </div>
+    <table class="table table-bordered table-top"
+           style="width:50%;">
+        <thead>
+        <tr class="first-tr-style">
+            <th style="text-align: center;" width="80px">体检项目</th>
+            <th style="text-align: center;" width="100px">结果判断</th>
+            <th style="text-align: center;">体检结果</th>
+            <th style="text-align: center;" width="60px">判断人</th>
+            <th style="text-align: center;">判断日期</th>
+            <th style="text-align: center;" width="40px">复检</th>
+            <th style="text-align: center;" width="40px">备注</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color" id="rightBlodIntestinal">
+            #foreach($vo in $!blodIntestinalList)
+            <tr>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+#page($page)
+<input type="hidden" id="pageCurrentFind" value="$page.pageCurrent">
+<input type="hidden" id="pageCountFind" value="$page.pageCount">
+<input type="hidden" id="pageSizeFind" value="$page.pageSize">
+<script>
+    var currentTab=$.CurrentNavtab;
+
+    $("#examNumber").on("onkeydown", function (event) {
+        var examNumber = $.CurrentNavtab.find('#examNumber').val();
+
+            var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+            var code = theEvent.keyCode;
+            if (code == 32) {
+            if (examNumber == '') {
+                $(this).alertmsg("error", "请先扫描或者输入条形码！");
+                return false;
+            }
+                $.CurrentNavtab.find("#searchResultQuery").submit();
+        }
+        ;
+    });
+
+    function resultQueryByNumber() {
+
+        var examNumber = $.CurrentNavtab.find('#examNumber').val();
+
+        if (examNumber == '') {
+            $(this).alertmsg("error", "请先扫描或者输入条形码！");
+            return false;
+        }
+        $.CurrentNavtab.find("#searchResultQuery").submit();
+
+    }
+
+
+    $.CurrentNavtab.find("#searchBtnExr").click(function () {
+        $.CurrentNavtab.find("#isExrQuery").val("1");
+    });
+    $.CurrentNavtab.find("#exportResultQueryExcel").on("click", function (e) {
+        var pageCurrent = $.CurrentNavtab.find('#pageCurrentFind').val();
+        var pageCount = $.CurrentNavtab.find('#pageCountFind').val();
+        var pageSize = $.CurrentNavtab.find('#pageSizeFind').val();
+        var name = $.CurrentNavtab.find(".rqcontent #name").val();
+        var idCard = $.CurrentNavtab.find(".rqcontent #idCard").val();
+        var examNumber = $.CurrentNavtab.find(".rqcontent #examNumber").val();
+        var areaId = $.CurrentNavtab.find(".rqcontent #areaIdHidden").val();
+        var startTime = $.CurrentNavtab.find(".rqcontent #startTime").val();
+        var endTime = $.CurrentNavtab.find(".rqcontent #endTime").val();
+        var verifyConclusion = $.CurrentNavtab.find(".rqcontent #verifyConclusion").val();
+        var payState = $.CurrentNavtab.find(".rqcontent #payState").val();
+        window.open("#U("/admin/queryStatic/examResultQuery/exportResultQueryExcel")" + "?pageCurrent="
+                + pageCurrent + "&pageCount=" + pageCount + "&pageSize=" + pageSize+ "&areaId=" + areaId+
+                "&payState=" + payState+ "&name=" + name+ "&idCard=" + idCard+
+                "&examNumber=" + examNumber+"&startTime="+ startTime+"&endTime=" + endTime+
+                "&verifyConclusion=" + verifyConclusion);
+    });
+
+    $.CurrentNavtab.find('#resultQueryCommitCode').click(function () {
+
+        var examNumber = $.CurrentNavtab.find('#examNumber').val();
+
+
+        if (examNumber.length <= 0) {
+
+            $(this).alertmsg('error', '请填写或者扫描对应的体检号!', {
+                displayMode: 'slide',
+                displayPosition: 'middlecenter',
+                okName: '确定',
+                title: '错误提示'
+            })
+
+
+        } else {
+            var url = "#U('toConfirmFee?examNumber=')" + examNumber + "";
+
+            $.CurrentNavtab.find('#commitCode').attr("data-url", url);
+        }
+
+
+    })
+
+    //单击左边列表中的一行 显示具体数据
+    $.CurrentNavtab.find("tr[name='leftMemberExam']").click(function () {
+        var examNumber = $(this).attr("e");
+        $.post("#U('/admin/examManage/examResult/findSelectedResultDetail')",
+                {examNumber: examNumber}, function (data) {
+                    if (data) {
+                        data = $.parseJSON(data);
+//                        console.info(data);
+//                        console.info(data.length);
+                        var html = "";
+                        var rightBlodIntestinal = $.CurrentNavtab.find('#rightBlodIntestinal');
+                        $.CurrentNavtab.find('#rightBlodIntestinal').empty();
+                        for (var i = 0; i < data.length; i++) {
+//                            html+="<tbody id='entryblodResultRight'>";
+                            var everyResult = data[i];
+//                            console.info('======' + everyResult);
+                            html += " <tr  align='center'>";
+                            html += "<td>" + everyResult.projectName + "</td>";
+
+                            html += "<td>" + everyResult.isQualifiedStr + "</td>";
+
+//                            if (everyResult.isQualified == 0) {//未判断
+//
+//                                html += "<td><label><input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"'  disabled value='2'   type='radio'>合格</input></label>  <label><input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"' disabled value='1'   type='radio'>不合格</label><label></input>  <input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"' checked disabled disabled value='0'  type='radio'>未判断</input></label></td>";
+//
+//                            } else if (everyResult.isQualified == 1) {//不合格
+//                                html += "<td><label><input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"'  disabled value='2'  type='radio'>合格</input></label> <label> <input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"' checked disabled value='1'  type='radio'>不合格</input></label><label>  <input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"' disabled value='0'  type='radio'>未判断</input></label></td>";
+//
+//
+//                            } else if (everyResult.isQualified == 2) {//合格
+//
+//                                html += "<td><label><input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"' checked disabled value='2'  type='radio'>合格</input></label><label>  <input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"' disabled value='1'  type='radio'>不合格</input></label><label>  <input name='radio"+everyResult.id+"' id='j_form_radio-"+everyResult.id+"' disabled value='0'   type='radio'>未判断</input></label></td>";
+//
+//                            }
+                            if (everyResult.examResult != null) {
+                                html += "<td>" + everyResult.examResult + "</td>";
+                            } else {
+                                html += "<td></td>";
+                            }
+
+                            if (everyResult.doctorName != null) {
+                                html += "<td>" + everyResult.doctorName + "</td>";
+                            } else {
+                                html += "<td></td>";
+                            }
+
+
+//                            if (everyResult.isRecheck == 1) {
+//                                html += "<td><input type='checkbox' checked disabled name='isRecheck' id='isRecheck' data-toggle='icheck'></td>"
+//                            } else if (everyResult.isRecheck == 0) {
+//                                html += "<td><input type='checkbox' disabled name='isRecheck' id='isRecheck' data-toggle='icheck'></td>"
+//                            }
+
+                            html += "<td>" + everyResult.judgeTimeStr + "</td>";
+
+                            html += "<td>" + everyResult.recheckTagStr + "</td>";
+                            if (everyResult.remark != null) {
+                                html += "<td>" + everyResult.remark + "</td>";
+                            } else {
+                                html += "<td></td>";
+                            }
+                            html += "</tr>";
+
+//                            html+="</tbody>";
+                        }
+                        rightBlodIntestinal.append(html);
+                    } else {
+                        $.CurrentNavtab.find('#rightBlodIntestinal').empty();
+                    }
+                });
+
+    })
+
+
+</script>

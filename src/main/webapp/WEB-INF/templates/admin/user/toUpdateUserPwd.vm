@@ -1,0 +1,45 @@
+<div class="bjui-pageContent">
+    <form action="#U('updateUserPwd')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden" name="uid" value="$!user.uid"/>
+
+##            <div class="form-group">
+##                <label class="control-label x85">原密码：</label>
+##                <input type="password"   name="oldPwd" value=""
+##                       data-rule="required" size="30"
+##                />
+##            </div>
+            <div class="form-group">
+                <label class="control-label x85">新密码：</label>
+                <input type="password" id="newPwd"   name="newPwd" value=""
+                       data-rule="required" size="30"
+                />
+            </div>
+            <div class="form-group">
+                <label class="control-label x85">确认密码：</label>
+                <input type="password" id="pwd"   name="submitPwd" value=""
+                       data-rule="required;match(newPwd)" size="30"
+                />
+            </div>
+        <div class="add-role-button">
+            <ul>
+                <li><button type="button" class="btn-close">关闭</button></li>
+                <li><button type="submit"  class="btn-default">保存</button></li>
+            </ul>
+        </div
+    </form>
+</div>
+>
+<script>
+    $(function(){
+
+        function clearPwd(){
+            $("#newPwd").val("");
+            $("#pwd").val("");
+        }
+
+        clearPwd();
+    });
+</script>

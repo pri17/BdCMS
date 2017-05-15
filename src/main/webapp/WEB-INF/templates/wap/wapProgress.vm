@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>体检进程</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../assets/B-JUI/BJUI/themes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/wap/style.css">
+    <link rel="stylesheet" href="../../../assets/wap/sweetalert.css">
+    <script src="../../../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../../../assets/machineCss/js/sweetalert.min.js"></script>
+</head>
+<body class="gray">
+<section name="progressSection" class="container exam-payment exam-process gray">
+    <div class="info-box">
+##        <div class="search-tool" style="padding-left: 0px;">
+##            <div class="row" style="margin-bottom: 5px;">
+##                <div class="col-xs-8">
+##                    <input id="userName" type="text" placeholder="请输入要查询的用户名" />
+##                </div>
+##            </div>
+##            <div class="row">
+##                <div class="col-xs-8">
+##                    <input id="idCardNumber" type="text" placeholder="请输入身份证号码" />
+##                </div>
+##                <div class="col-xs-4">
+##                    <button id="searchBtn">搜索</button>
+##                </div>
+##            </div>
+##        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>体检项目</th>
+                <th>进程状态</th>
+            </tr>
+            </thead>
+            <tbody id="progressTable">
+##            #if($!size>0)
+##                #foreach($vo in $!examBlodIntestinalList)
+##                <tr>
+##                    <td>$!vo.projectName</td>
+##                    #if($!vo.isQualified==0)
+##                        <td class="no-check">未判断</td>
+##                    #elseif($!vo.isQualified==1)
+##                        <td class="qualified">合格</td>
+##                    #elseif($!vo.isQualified==2)
+##                        <td class="unqualified">不合格</td>
+##                    #elseif($!vo.isQualified==3)
+##                        <td class="to-check">已采集</td>
+##                    #end
+##                </tr>
+##                #end
+##            #else
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="progressTree" class="process-detail" >
+##            <div class="line-one">
+##                <span class="line-box qualified box-register">登记</span>
+##                <span><img class="arrow-right" src="../assets/images/wap/right.png" alt="" /></span>
+##                <span class="line-box qualified box-payment">缴费</span>
+##                <span><img class="arrow-right" src="../assets/images/wap/right.png" alt="" /></span>
+##                <span class="line-box qualified box-examination">体检</span>
+##                <span><img class="arrow-right" src="../assets/images/wap/right.png" alt="" /></span>
+##                <span class="line-box unqualified box-check">审核</span>
+##                <span><img class="arrow-right" src="../assets/images/wap/right.png" alt="" /></span>
+##                <span class="line-box unqualified box-certificate">发证</span>
+##            </div>
+##            <div class="line-two active">
+##                <div>
+##                    <span class="line-box box-certificate">发证</span>
+##                    <span><img class="arrow-left" src="../assets/images/wap/left.png" alt=""></span>
+##                    <span class="line-box box-check">审核</span>
+##                    <span><img class="arrow-left" src="../assets/images/wap/left.png" alt=""></span>
+##                    <span class="line-box box-reexamination">复检</span>
+##                    <span><img class="arrow-left" src="../assets/images/wap/left.png" alt=""></span>
+##                    <span class="box-payment">
+##                        <span class="line-box">缴费</span>
+##                        <img class="arrow-down" src="../assets/images/wap/down.png" alt="">
+##                    </span>
+##                </div>
+##            </div>
+##            <div class="line-two active">
+##                <div>
+##                    <span class="box-payment" style="margin-left: 1.7rem;">
+##                        <span class="line-box box-certificate">缴费</span>
+##                        <img class="arrow-down" src="../assets/images/wap/down.png" alt="">
+##                     </span>
+##                    <span><img class="arrow-right" src="../assets/images/wap/right.png" alt=""></span>
+##                    <span class="line-box box-check">复检</span>
+##                    <span><img class="arrow-right" src="../assets/images/wap/right.png" alt=""></span>
+##                    <span class="line-box box-reexamination">审核</span>
+##                    <span><img class="arrow-right" src="../assets/images/wap/right.png" alt=""></span>
+##                    <span class="line-box">发证</span>
+##                </div>
+##            </div>
+        </div>
+        <div id="recheckDiv" class="row" style="display: none;">
+            <div class="col-xs-12">
+                <button id="recheckNotice" style="width: 3.8rem;">复检通知单</button>
+            </div>
+            <div class="col-xs-6">
+                <button id="recheckPay" onclick="location.href='./wapFee.do'" class="pull-left" style="width: 3.8rem;">复检缴费</button>
+            </div>
+        </div>
+        <div id="eCardDiv" class="row" style="display: none;">
+            <div class="col-xs-12">
+                <button id="goToEcard" style="width: 3.8rem;">电子健康证</button>
+            </div>
+        </div>
+    </div>
+</section>
+<input id="openId" name="openId" value="$!openId" hidden/>
+<script>
+    $(document).ready(function () {
+        /* 设置根元素的font-size大小 */
+        document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+        document.getElementsByTagName('html')[0].style.height = window.innerHeight + 'px';
+
+        //复检通知单
+        $("#recheckNotice").click(function () {
+            var openId = $("#openId").val();
+            window.location.replace("http://"+window.location.host+"/wap/wapReviewNotice.do?openId="+openId);
+        });
+
+        //电子健康证
+        $("#goToEcard").click(function () {
+            var openId = $("#openId").val();
+            window.location.replace("http://"+window.location.host+"/wap/showECard.do?openId="+openId);
+        });
+
+        //如果有项目未完成，体检块不变绿色（除：血检-肠检已采集）
+        function searchProgress() {
+            var openId = $("#openId").val();
+/*            if (openId == "" || openId == null) {
+                alertNotice("", "openId为空", "error");
+                return false;
+            }*/
+            $.getJSON("http://" + window.location.host + "/wap/queryWapProgress.do",
+                    {
+                        openId: openId
+                    },
+                    function (data) {
+           /*             if (data.error != "" && data.error != null) {
+                            alertNotice("", data.error, "error");
+                        }*/
+                        if (data.examBlodIntestinalList!="" && data.examBlodIntestinalList!=null) {
+                            var blodList = data.examBlodIntestinalList;
+                            var html = "";
+//                            var psList=data.examPayList;
+//                            for(var i=0;i<psList.length;i++){
+//                                var examPay=psList[i];
+//                                html+="<tr>";
+//
+//                                html+="<td>缴费</td>"
+//
+//
+//                                if(examPay.payState==1){
+//                                    html+="<td class='no-check'>未缴费</td>"
+//                                }else{
+//                                    html+="<td class='qualified'>已缴费</td>"
+//                                }
+//                                html+="</tr>"
+//                            }
+
+                            for (var i=0;i<blodList.length;i++) {
+                                var vo = blodList[i];
+                                html += "<tr>";
+                                html += "<td>"+vo.projectName+"</td>";
+                                if(vo.isQualified==0)
+                                    html += "<td class='no-check'>未判断</td>";
+                                else if(vo.isQualified==1)
+                                    html += "<td class='qualified'>合格</td>";
+                                else if(vo.isQualified==2)
+                                    html += "<td class='unqualified'>不合格</td>";
+                                else if(vo.isQualified==3)
+                                    html += "<td class='to-check'>已采集</td>";
+                                html += "</tr>";
+                            }
+                            $("#progressTable").html(html);
+                        }
+                        var progressHtml = "";
+                        if (data.exams!="" && data.exams!=null) {
+                            var exam = data.exams[0];
+//                            var examPay = data.exams[0].examPay;
+                            progressHtml += "<div class='line-one'>";
+                            progressHtml += "<span class='line-box qualified box-register'>登记</span>";
+                            progressHtml += '<span><img class="arrow-right" src="../assets/images/wap/right.png" alt="" /></span>';
+                            //判断是否缴费
+                            if (exam.payState==1) {
+                                progressHtml += '<span class="line-box unqualified box-payment">缴费</span>';
+                            } else if (exam.payState==2) {
+                                progressHtml += '<span class="line-box qualified box-payment">缴费</span>';
+                            }
+                            progressHtml += '<span><img class="arrow-right" src="../assets/images/wap/right.png" alt="" /></span>';
+                            //判断是否体检
+                            if (data.examBlodIntestinalList!="" && data.examBlodIntestinalList!=null) {
+                                var blodList = data.examBlodIntestinalList;
+//                                var qType = 0;
+//                                for (var i = 0; i < blodList.length; i++) {
+//                                    var vo = blodList[i];
+//                                    if (vo.isQualified > 0 ) {
+//                                        qType = 1;
+//                                        break;
+//                                    }
+//                                }
+                                qType=data.recheck[0];
+                                if (qType==0) {
+                                    progressHtml += '<span class="line-box  no-check box-examination">体检</span>';
+                                } else {
+                                    progressHtml += '<span class="line-box  qualified box-examination">体检</span>';
+                                }
+                            }
+                            progressHtml += '<span><img class="arrow-right" src="../assets/images/wap/right.png" alt="" /></span>';
+
+                            //判断是否审核、发证
+                            if(exam.verifyConclusion==0){
+                                progressHtml += '<span class="line-box no-check box-check">审核</span>';
+                            } else if(exam.verifyConclusion==1){
+                                progressHtml += '<span class="line-box qualified box-check">审核</span>';
+                            } else if(exam.verifyConclusion==2){
+                                progressHtml += '<span class="line-box unqualified box-check">审核</span>';
+                            }
+                            progressHtml += '<span><img class="arrow-right" src="../assets/images/wap/right.png" alt="" /></span>';
+
+                            //判断是否发证
+                            if (exam.eCardId!=null && exam.eCardId!="") {
+                                progressHtml += '<span class="line-box qualified box-certificate">发证</span>';
+                                $("#eCardDiv").show();
+                            } else {
+                                progressHtml += '<span class="line-box no-check box-certificate">发证</span>';
+                                $("#eCardDiv").hide();
+                            }
+                            progressHtml += '</div>';
+
+                            if (data.exams.length>1) {
+                                for (var i=1;i<data.exams.length;i++) {
+
+                                    var reviewExam = data.exams[i];
+//                                    var reviewExamPay = data.exams[i].examPay;
+//                                    $.getJSON("http://" + window.location.host + "/wap/queryBlodByExamId.do",
+//                                            {
+//                                                examId: reviewExam.id
+//                                            },
+//                                            function (data) {
+//                                                console.info(data);
+                                                if (data.examBlodIntestinalList!="" && data.examBlodIntestinalList!=null) {
+                                                    if (i%2==1) {
+                                                        progressHtml += '<div class="line-two active">';
+                                                        progressHtml += '<div>';
+                                                        //判断是否发证
+                                                        if (reviewExam.eCardId!=null && reviewExam.eCardId!="") {
+                                                            progressHtml += '<span class="line-box qualified box-certificate">发证</span>';
+                                                            $("#eCardDiv").show();
+                                                        } else {
+                                                            progressHtml += '<span class="line-box no-check box-certificate">发证</span>';
+                                                            $("#eCardDiv").hide();
+                                                        }
+//                                                        progressHtml += '<span class="line-box box-certificate">发证</span>';
+                                                        progressHtml += '<span><img class="arrow-left" src="../assets/images/wap/left.png" alt=""></span>';
+                                                        //判断是否审核、发证
+                                                        if(reviewExam.verifyConclusion==0){
+                                                            progressHtml += '<span class="line-box no-check box-check">审核</span>';
+                                                        } else if(reviewExam.verifyConclusion==1){
+                                                            progressHtml += '<span class="line-box qualified box-check">审核</span>';
+                                                        } else if(reviewExam.verifyConclusion==2){
+                                                            progressHtml += '<span class="line-box unqualified box-check">审核</span>';
+                                                        }
+                                                        progressHtml += '<span><img class="arrow-left" src="../assets/images/wap/left.png" alt=""></span>';
+
+                                                        var blodList = data.examBlodIntestinalList;
+                                                        var qType = data.recheck[i];
+//                                                        for (var k = 0; k < blodList.length; k++) {
+//                                                            var vo = blodList[k];
+//                                                            if (vo.isQualified>0 &vo.recheckTag==i ) {
+//                                                                qType = 1;
+//                                                                break;
+//                                                            }
+//                                                        }
+                                                        if (!qType) {
+                                                            progressHtml += '<span class="line-box no-check box-reexamination">复检</span>';
+                                                        } else {
+                                                            progressHtml += '<span class="line-box qualified box-reexamination">复检</span>';
+                                                        }
+
+//                                                        progressHtml += '<span class="line-box qualified box-reexamination">复检</span>';
+
+
+                                                        progressHtml += '<span><img class="arrow-left" src="../assets/images/wap/left.png" alt=""></span>';
+                                                        progressHtml += '<span class="box-payment">';
+                                                        //判断是否缴费
+                                                        if (reviewExam.payState==1) {
+                                                            progressHtml += '<span class="line-box unqualified box-payment">缴费</span>';
+                                                        } else if (reviewExam.payState==2) {
+                                                            progressHtml += '<span class="line-box qualified box-payment">缴费</span>';
+                                                        }
+                                                        progressHtml += '<img class="arrow-down" src="../assets/images/wap/down.png" alt="">';
+                                                        progressHtml += '</span>';
+                                                        progressHtml += '</div>';
+                                                        progressHtml += '</div>';
+                                                    } else {
+                                                        progressHtml += '<div class="line-two active">';
+                                                        progressHtml += '<div>';
+                                                        progressHtml += '<span class="box-payment" style="margin-left: 1.5rem;">';
+                                                        //判断是否缴费
+                                                        progressHtml += '<span class="line-box ';
+                                                        if (reviewExam.payState==1) {
+                                                            progressHtml += 'unqualified';
+                                                        } else if (reviewExam.payState==2) {
+                                                            progressHtml += 'qualified';
+                                                        }
+                                                        progressHtml += ' box-payment">缴费</span>';
+//                                                        progressHtml += '<span class="line-box box-certificate">缴费</span>';
+                                                        progressHtml += '<img class="arrow-down" src="../assets/images/wap/down.png" alt="">';
+                                                        progressHtml += '</span>';
+                                                        progressHtml += '<span><img class="arrow-right" src="../assets/images/wap/right.png" alt=""></span>';
+//                                                        progressHtml += '<span class="line-box qualified box-check">复检</span>';
+
+                                                        var blodList = data.examBlodIntestinalList;
+                                                        var qType = data.recheck[i];
+                                                        if (!qType) {
+                                                            progressHtml += '<span class="line-box no-check box-reexamination">复检</span>';
+                                                        } else {
+                                                            progressHtml += '<span class="line-box qualified box-reexamination">复检</span>';
+                                                        }
+                                                        progressHtml += '<span><img class="arrow-right" src="../assets/images/wap/right.png" alt=""></span>';
+//                                                        progressHtml += '<span class="line-box box-reexamination">审核</span>';
+                                                        //判断是否审核、发证
+                                                        if(reviewExam.verifyConclusion==0){
+                                                            progressHtml += '<span class="line-box no-check box-check">审核</span>';
+                                                        } else if(reviewExam.verifyConclusion==1){
+                                                            progressHtml += '<span class="line-box qualified box-check">审核</span>';
+                                                        } else if(reviewExam.verifyConclusion==2){
+                                                            progressHtml += '<span class="line-box unqualified box-check">审核</span>';
+                                                        }
+                                                        progressHtml += '<span><img class="arrow-right" src="../assets/images/wap/right.png" alt=""></span>';
+                                                        //判断是否发证
+                                                        if (reviewExam.eCardId!=null && reviewExam.eCardId!="") {
+                                                            progressHtml += '<span class="line-box qualified box-certificate">发证</span>';
+                                                            $("#eCardDiv").show();
+                                                        } else {
+                                                            progressHtml += '<span class="line-box no-check box-certificate">发证</span>';
+                                                            $("#eCardDiv").hide();
+                                                        }
+//                                                        progressHtml += '<span class="line-box">发证</span>';
+                                                        progressHtml += '</div>';
+                                                        progressHtml += '</div>';
+                                                    }
+                                                }
+//                                            }
+//                                    );
+                                }
+                            }
+                        }
+                        $("#progressTree").html(progressHtml);
+                    });
+        }
+        searchProgress();
+
+        function alertNotice(title, text, type) {
+            swal({
+                title: title,
+                text: text,
+                type: type,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确定"
+            });
+        };
+    });
+</script>
+</body>
+</html>

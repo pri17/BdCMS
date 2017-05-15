@@ -1,0 +1,82 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+            <label>姓名：</label>
+            <input type="text" id="customNo" value="$!query.name" name="name" class="form-control" size="10">&nbsp;
+            <label>身份证号：</label>
+            <input type="text" id="customNo" value="$!query.idCard" name="idCard" class="form-control" size="10">&nbsp;
+
+            <button type="submit" class="btn btn-default" >查询</button>&nbsp;
+            <button class="btn btn-default" href="javascript:;"
+                    data-toggle="reloadsearch" data-clear-query="true"
+            >清空查询</button>
+            &nbsp;&nbsp;&nbsp;
+
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table t able-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">姓名</th>
+            <th align="center">身份证号</th>
+            <th align="center">微信open_id</th>
+            <th align="center" width="220">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $wechatList)
+            <input type="hidden" value="$!vo.bindId" id="bind">
+            <tr>
+                <td align="center">$!vo.name</td>
+                <td align="center">$!vo.idCard</td>
+                <td align="center">$!vo.openID</td>
+                <td align="center">
+                    <button type="button" class="btn btn-default" href="#U('delete?id=?',$vo.bindId)"
+                            data-toggle="doajax" data-confirm-msg="确定要解绑吗？">解绑</button>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+</div>
+##<script>
+##    //删除用户信息
+##    getNavEle( '#deleteExam').on("click", function () {
+##
+##            getNavEle( this).alertmsg('confirm', '确认删除所选中的用户?', {
+##                displayMode: 'slide',
+##                displayPosition: 'topcenter',
+##                okName: '确定',
+##                cancelName: '取消',
+##                title: '错误提示',
+##                okCall: 'goToDelete'
+##            })
+##
+##    });
+##    var deleteVals = ;
+##
+##    function goToDelete() {
+##        $.post("#U("/admin/systemSetting/wechatUnbind/delete")",
+##                {
+##                    bindID: deleteVals
+##                },
+##                function (data) {
+##
+##                    var obj = JSON.parse(data);
+##
+##                    if (obj.statusCode == 300) {
+##                        getNavEle( this).alertmsg('error', obj.message);
+##                    } else {
+##
+##                        getNavEle( this).alertmsg('ok', obj.message);
+##                        getNavEle( "#reloadSearch").click();
+##                    }
+##                });
+##    }
+##
+##</script>

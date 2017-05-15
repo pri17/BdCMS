@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BdCMS:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="BdCMS-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="BdCMS:war exploded" />
+    </root>
+  </artifact>
+</component>

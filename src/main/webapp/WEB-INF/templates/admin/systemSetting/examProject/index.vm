@@ -1,0 +1,41 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+##        #pageInput($page)
+        <div class="bjui-searchBar new-add-right">
+            <button href="#U('toAddExamProject')" class="btn btn-default"
+               data-toggle="dialog"
+               data-id="addExamProject"
+               data-title="添加体检项目"
+               data-width="600"
+               data-height="240"
+            >&nbsp;添加体检项目&nbsp;</button>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent" style="top: 30px;bottom: 0px">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">体检项目</th>
+            <th align="center">项目价格</th>
+            <th align="center" width="220">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in ${projectLists})
+            <tr>
+                <td align="center">$!vo.projectName</td>
+                <td align="center">$!vo.projectPrice</td>
+                <td align="center">
+                    <button   data-toggle="dialog" data-id="updateExamProject" data-width="600"  data-height="240" class="btn btn-default" href="#U('toUpdateExamProject?id=?',$vo.id)"
+                    >编辑</button>
+                    <button type="button" class="btn btn-default" href="#U('deleteExamProject?id=?',$vo.id)"
+                       data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</button>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+</div>
+###page($page)

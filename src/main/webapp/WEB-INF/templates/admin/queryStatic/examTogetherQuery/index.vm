@@ -1,0 +1,1185 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', YaHei, Arial, Helvetica, sans-serif;
+    }
+
+    .etqmain a {
+        font-size: 17px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    a:hover {
+        border-bottom: 1px solid #333;
+    }
+
+    input {
+        width: 130px;
+        height: 23px;
+        box-sizing: border-box;
+    }
+
+    select {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1024px;
+        height: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+    }
+
+    .head {
+        height: 36px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .head span {
+        font-size: 17px;
+        color: #333;
+        height: 28px;
+        line-height: 28px;
+        padding: 0 26px;
+        border: 1px solid #ccc;
+        background-color: #e4ecee;
+        margin: 7px 0 0 20px;
+        display: inline-block;
+        border-top-left-radius: 3px;
+        -moz-border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        -moz-border-top-right-radius: 3px;
+    }
+
+    .etqmain {
+        height: 80px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .etqmain-a {
+        width: 484px;
+        float: left;
+        height: 100%;
+    }
+
+    .etqmain-a a {
+        width: 80px;
+        height: 44px;
+        /*line-height: 44px;*/
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        text-align: center;
+        margin-right: 4px;
+        display: inline-block;
+        background-color: #79b6ec;
+        margin-top: 8px;
+    }
+
+    .etqmain-a a:first-child {
+        margin-left: 10px;
+    }
+
+    /*.etqmain-a span {*/
+    /*height: 20px;*/
+    /*width: 100%;*/
+    /*background-color: #c1c1c1;*/
+    /*text-align: center;*/
+    /*display: inline-block;*/
+    /*line-height: 20px;*/
+    /*margin-top: 6px;*/
+    /*font-size: 14px;*/
+    /*}*/
+
+    .etqmain-a em {
+        font-style: normal;
+        height: 20px;
+        width: 100%;
+        background-color: #c1c1c1;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+    .etqmain-a a,
+    .etqmain-a span {
+        display: inline-block;
+        font-size: 17px;
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 8px 0 0 12px;
+    }
+
+    .etqmain-b {
+        width: 200px;
+        float: left;
+        height: 100%;
+        border-left: 1px solid #ccc;
+    }
+
+    .etqmain-b a {
+        width: 80px;
+        height: 44px;
+        /*line-height: 44px;*/
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        text-align: center;
+        margin-right: 4px;
+        display: inline-block;
+        background-color: #79b6ec;
+        margin-top: 21px;
+    }
+
+    .etqmain-b span {
+        font-size: 17px;
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 8px 0 0 14px;
+    }
+
+    .etqmain-b em {
+        font-style: normal;
+        height: 20px;
+        width: 100%;
+        background-color: #c1c1c1;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .etqnav {
+        height: 38px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .etqnav-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+    }
+
+    .etqnav-a span {
+        font-size: 17px;
+        font-weight: bold;
+        color: #003366;
+        margin-left: 20px;
+        margin-right: 24px;
+    }
+
+    .etqnav-a a {
+        font-size: 13px;
+        height: 18px;
+        border: 2px solid #7cb7ec;
+        color: #003366;
+        font-weight: bold;
+        padding-left: 50px;
+        padding-right: 15px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+    }
+
+    .etqcontent {
+        height: 165px;
+    }
+
+    .etqcon-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        padding-top: 20px;
+    }
+
+    .etqcon-a .con-aa {
+        float: left;
+    }
+
+    .etqcon-a p {
+        margin-bottom: 8px;
+    }
+
+    .etqcon-a input {
+        width: 130px;
+        height: 28px;
+    }
+
+    .etqcon-a select {
+        width: 130px;
+        height: 28px;
+    }
+
+    .etqcon-a .con-aa {
+        width: 24%;
+    }
+
+    .etqcon-a .con-aa span {
+        font-size: 14px;
+        width: 70px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .etqcon-a .con-ab {
+        width: 29%;
+        float: left;
+    }
+
+    .etqcon-a .con-ab span {
+        font-size: 14px;
+        width: 70px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 14px;
+    }
+
+    .etqcon-a .con-ac {
+        width: 24%;
+        float: left;
+    }
+
+    .etqcon-a .con-ac span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .etqcon-a .con-ad {
+        width: 22%;
+        float: left;
+    }
+
+    .etqcon-a .con-ad span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .etqcon-a .con-ad p a {
+        width: 74px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .etqcon-a .con-ae {
+        width: 12%;
+        float: left;
+    }
+
+    .etqcon-a .con-ae span {
+        font-size: 14px;
+        /*width: 60px;*/
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .etqcon-a .con-ae p a {
+        margin-lefe: 4%;
+        width: 74px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+    select{border: 1px solid #cccccc;}
+</style>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+        <div class="etqmain">
+            <div class="etqmain-a">
+                <a style="cursor:pointer;color: #FFF;" id="searchBtnEt">查询</a>
+                <span id="reloadSearch" data-toggle="reloadsearch" data-clear-query="true"
+                      style="cursor:pointer;color: #FFF;">清空查询</span>
+                <span id="exportTogetherExcel" data-toggle="exportOption" style="cursor:pointer;color: #FFF;">导出列表</span>
+                <span id="changeMemberExam" style="cursor:pointer;color: #FFF;">修改</span>
+                #if($!roleCode.equals("admin"))
+                    <span id="deleteExam" data-toggle="doajax" data-url="" style="cursor:pointer;color: #FFF;">删除</span>
+                #else
+                    <span id="" data-toggle="doajax" data-url="" style="cursor:pointer;background-color: gray;">删除</span>
+                #end
+                <em style="color: #fff;">信息</em>
+            </div>
+            <div class="etqmain-b">
+                #if($!userAgenciesCode==132)
+                    <span id="" style="cursor:pointer;background-color: gray;">打印</span>
+                    <span id="" style="cursor:pointer;background-color: gray;">预览</span>
+                #else
+                    <span id="printIntestinal" style="cursor:pointer;color: #FFF;">打印</span>
+                    <span id="viewIntestinal" style="cursor:pointer;color: #FFF;">预览</span>
+                #end
+                <em style="color: #fff;">肠检单</em></div>
+            <div class="etqmain-b">
+                <span id="printExam" style="cursor:pointer;color: #FFF;">打印</span>
+                <span id="viewExam" style="cursor:pointer;color: #FFF;">预览</span>
+                <em style="color: #fff;">体检表</em></div>
+            <div class="etqmain-b">
+                <span id="printTurn" style="cursor:pointer;color: #FFF;">打印</span>
+                <span id="viewTurn" style="cursor:pointer;color: #FFF;">预览</span>
+                <em style="color: #fff;">流转单</em></div>
+        </div>
+        <div class="etqcontent" style="height: 165px;">
+            <div class="etqcon-a" style="background-color: white;">
+                <div class="con-aa">
+                    <p><span>体检号</span><input type="text" id="examNumber" name="examNumber" value="$!examNumber"></p>
+                    <p><span>姓名</span><input type="text" id="name" name="name" value="$!name"></p>
+                    <p><span>行业分类</span>
+                        <select style="margin-left: -4px;" name="parentId" id="togetherQueryOpenCategory"
+                                data-emptytxt="请选择" onchange="togetherQueryAddOption()">
+                            <option value="">全部</option>
+                            #LoadBean("examCategoryService")
+                            #foreach($rootVo in $examCategoryService.getRootCategory())
+                                <option value="$rootVo.id"
+                                    #if($rootVo.id==$parentId)
+                                        selected
+                                    #end
+                                        >
+                                    $rootVo.categoryName
+                                </option>
+                            #end
+                        #end
+                        </select>
+                    </p>
+                    <p><span></span><select name="togetherCategoryLevelTwo"
+                                            id="togetherCategoryLevelTwo"
+                                            data-emptytxt="请选择">
+                    </select></p>
+                    <input id="togetherCategoryLevelTwoId" name="togetherCategoryLevelTwoId"
+                           value="$!togetherCategoryLevelTwoId" type="hidden">
+
+##                    <input type="hidden" value="$!togetherQAdd" name="togetherQAdd">
+
+                </div>
+                <div class="con-ab">
+
+                    <p><span>身份证件号</span><input style="width: 180px;" type="text" id="idCard" name="idCard" value="$!idCard"></p>
+                    <p><span>健康证号</span><input style="width: 180px;" type="text" id="eCardNumber" name="eCardNumber" value="$!eCardNumber"></p>
+                    <p><span>工作单位</span><input style="width: 180px;" type="text" id="workUnit" name="workUnit" value="$!workUnit"></p>
+
+
+                    #if($!currentAgenciesCode == 132)
+
+                    <p><span>地段区域</span>
+                    <select style="margin-left: -4px;" name="areaId" id="areaId" data-width="130">
+                        <option value="">全部</option>
+                        #LoadBean("examAreaService")
+                        #foreach($el in $examAreaService.getRootExamArea())
+                            <option value="$!el.id"
+                                #if($!el.id==$!currentAreaId)
+                                    selected
+                                #end
+                                    >$!el.areaName</option>
+                        #end
+                    #end
+                </select>
+                </p>
+
+                #else
+                    <input type="hidden" name="areaId" value="$!currentAreaId">
+                <p><span>地段区域</span>
+                <select style="margin-left: -4px;" name="areaIdHidden" id="areaId" data-width="130" disabled>
+                    <option value="">全部</option>
+                    #LoadBean("examAreaService")
+                    #foreach($el in $examAreaService.getRootExamArea())
+                        <option value="$!el.id"
+                            #if($!el.id==$!currentAreaId)
+                                selected
+                            #end
+                                >$!el.areaName</option>
+                    #end
+                #end
+
+                </select>
+                </p>
+                #end
+                </div>
+                <div class="con-ac">
+                    <p><span>体检日期</span><input type="text" id="startTime" name="startTime" value="$!startTime" data-toggle="datepicker"
+                                               data-nobtn="true"
+                                               placeholder="点击选择日期"></p>
+                    <p><span></span><input type="text" id="endTime" name="endTime" value="$!endTime" data-toggle="datepicker"
+                                           data-nobtn="true"
+                                           placeholder="点击选择日期"></p>
+
+                    <p><span>排序方式</span>
+                        <select style="margin-left: -4px;" name="sortByTime" id="sortByTime" data-toggle="" data-width="130">
+                            <option value="">请选择</option>
+                            <option value="1"
+                                #if(1==$!sortByTime)
+                                    selected
+                                #end>按体检日期升序
+                            </option>
+                            <option value="2"
+                                #if(2==$!sortByTime)
+                                    selected
+                                #end>按体检日期降序
+                            </option>
+                        </select>
+                    </p>
+                    <p><span>来源</span><select name="channel" id="channel" data-toggle="" data-width="130"
+                                              data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        <option value="1"
+                            #if(1==$!channel)
+                                selected
+                            #end>电脑端
+                        </option>
+                        <option value="2"
+                            #if(2==$!channel)
+                                selected
+                            #end>微信
+                        </option>
+                        <option value="3"
+                            #if(3==$!channel)
+                                selected
+                            #end>自助机
+                        </option>
+                        <option value="4"
+                            #if(4==$!channel)
+                                selected
+                            #end>企业
+                        </option>
+                    </select>
+                    </p>
+                </div>
+                <div class="con-ad">
+
+                    <p><span>体检结果</span><select name="isRecheck" id="isRecheck" data-toggle="" data-width="130"
+                                                data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        <option value="0"
+                            #if(0==$!isRecheck)
+                                selected
+                            #end>合格
+                        </option>
+                        <option value="1"
+                            #if(1==$!isRecheck)
+                                selected
+                            #end>不合格
+                        </option>
+                        </select>
+                    </p>
+                    <p><span>收费方式</span><select name="payType" id="payType" data-toggle="" data-width="130">
+                        <option value="">全部</option>
+                        #LoadBean("examPayTypeService")
+                        #foreach($el in $examPayTypeService.getAllPayType())
+                            <option value="$!el.id"
+                                #if($!el.id==$!payType)
+                                    selected
+                                #end
+                                    >$!el.name</option>
+                        #end
+                    #end
+                    </select>
+                    </p>
+                    <p><span>收费状态</span><select name="payState" id="payState" data-toggle="" data-width="130">
+                        <option value="">全部</option>
+                        <option value="1"
+                            #if(1==$!payState)
+                                selected
+                            #end>未收费
+                        </option>
+                        <option value="2"
+                            #if(2==$!payState)
+                                selected
+                            #end>已收费
+                        </option>
+                    </select>
+                    </p>
+##                    <p><input id="togetherQAddBox" type="checkbox"
+##                              name="togetherQAdd" #if($!togetherQAdd=="1") checked="checked"
+##                        #end style="width: 20px;"><span style="width: 170px;vertical-align: 60%;">累加健康体检人员查询结果</span></p>
+                </div>
+
+            </div>
+        </div>
+    ##        </div>
+    </form>
+</div>
+<input type="hidden" id="pageCurrentFind" value="$page.pageCurrent">
+<input type="hidden" id="pageCountFind" value="$page.pageCount">
+<input type="hidden" id="pageSizeFind" value="$page.pageSize">
+<input type="hidden" id="userAgenciesCode" value="$userAgenciesCode">
+<div id="etqTableDive" class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th width="26px">
+                <input id="etAllIds" name="etAllIds"
+                       style="width: 30px;float: left;line-height: 40px;"
+                       type="checkbox">
+            </th>
+            <th style="text-align: center;" width="80px">体检号</th>
+            <th style="text-align: center;" width="140px">健康证号</th>
+            <th style="text-align: center;" width="50px">姓名</th>
+            <th style="text-align: center;" width="40px">性别</th>
+            <th style="text-align: center;">身份证号</th>
+            <th style="text-align: center;">地段区域</th>
+            <th style="text-align: center;">工作单位</th>
+            <th style="text-align: center;">行业分类</th>
+            <th style="text-align: center;">体检日期</th>
+            <th style="text-align: center;">是否复检</th>
+            <th style="text-align: center;">手机号码#*收费方式*#</th>
+            <th style="text-align: center;">是否收费</th>
+            <th style="text-align: center;">来源</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color" id="etList">
+            #foreach($vo in $page.list)
+            <tr>
+                <td style="text-align: center;">
+                    <input id="etIds" name="etIds" value="$!vo.id"  i="$!vo.recheckTag"
+                           style=" width: 25px; margin: 0px; padding: 0px; background: rgb(255, 255, 255);"
+                           type="checkbox">
+                </td>
+                <td style="text-align: center;">$!vo.examNumber</td>
+                <td style="text-align: center;">$!vo.eCardNumber</td>
+                <td style="text-align: center;">$!vo.name</td>
+                <td style="text-align: center;">$!vo.sexStr</td>
+                <td style="text-align: center;">$!vo.idCardNum</td>
+                <td style="text-align: center;">$!vo.areaName</td>
+                <td style="text-align: center;">$!vo.workUnit</td>
+                <td style="text-align: center;">$!vo.categoryStr</td>
+                <td style="text-align: center;">$!vo.examTimeStr</td>
+                <td style="text-align: center;">$!vo.recheckTagStr</td>
+                <td style="text-align: center;">$!vo.mobile#*$!vo.payTypeStr*#</td>
+                <td style="text-align: center;">$!vo.payTypeStr#*$!vo.payStateStr*#</td>
+                <td style="text-align: center;">$!vo.channelStr</td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+
+</div>
+#page($page)
+<div id="printDiv"></div>
+<iframe id="printExamETPrint" src="#" style="width:0px; height:0px;"></iframe>
+<script>
+
+    getNavEle( "#searchBtnEt").click(function () {
+        getNavEle( "#pagerForm").submit();
+        getNavEle( "#isEtQuery").val("1");
+    });
+    getNavEle( "#exportTogetherExcel").on("click", function (e) {
+        var pageCurrent = getNavEle( '#pageCurrentFind').val();
+        var pageCount = getNavEle( '#pageCountFind').val();
+        var pageSize = getNavEle( '#pageSizeFind').val();
+        var areaId = getNavEle( '.etqcontent #areaId').val();
+        var togetherCategoryLevelTwoId  = getNavEle( '.etqcontent #togetherCategoryLevelTwoId').val();
+        var name = encodeURI(encodeURI(getNavEle( '.etqcontent #name').val()));
+        var idCard = getNavEle( '.etqcontent #idCard').val();
+        var eCardNumber = getNavEle( '.etqcontent #eCardNumber').val();
+        var workUnit = encodeURI(encodeURI(getNavEle( '.etqcontent #workUnit').val()));
+        var startTime = getNavEle( '.etqcontent #startTime').val();
+        var endTime = getNavEle( '.etqcontent #endTime').val();
+        var examNumber = getNavEle( '.etqcontent #examNumber').val();
+        var channel = getNavEle( '.etqcontent #channel').val();
+        var payType = getNavEle( '.etqcontent #payType').val();
+        var payState = getNavEle( '.etqcontent #payState').val();
+        window.open("#U("/admin/queryStatic/examTogetherQuery/exportTogetherExcel")" + "?pageCurrent="
+                + pageCurrent + "&pageCount=" + pageCount + "&pageSize=" + pageSize+ "&areaId=" + areaId+
+                "&togetherCategoryLevelTwoId=" + togetherCategoryLevelTwoId+ "&name=" + name+ "&idCard=" + idCard+
+                "&eCardNumber=" + eCardNumber+"&workUnit="+ workUnit+ "&startTime="+ startTime+
+                "&endTime=" + endTime+ "&examNumber=" + examNumber+ "&channel=" + channel+ "&payType=" + payType+ "&payState=" + payState);
+    });
+
+    var deleteVals ='';
+
+    getNavEle( document).ready(function () {
+
+
+//        getNavEle( "#togetherQAddBox").click(function () {
+//
+//            var togetherQAdd = 0;
+//
+//            if (this.checked) {
+//
+//                getNavEle( "#togetherQAddBox").attr("checked", true);
+//
+//                togetherQAdd = 1;
+//
+//            } else {
+//                getNavEle( "#togetherQAddBox").attr("checked", false);
+//
+//                togetherQAdd = 0;
+//            }
+//
+//            getNavEle( '#togetherQAdd').val(togetherQAdd);
+//        });
+
+
+        //全选或全不选
+        getNavEle( "#etAllIds").click(function () {
+            if (this.checked) {
+                getNavEle( "#etList [name=etIds]:checkbox").attr("checked", true);
+            } else {
+                getNavEle( "#etList [name=etIds]:checkbox").attr("checked", false);
+            }
+        });
+
+        //设置全选复选框
+        getNavEle( "#etList [name=etIds]:checkbox").click(function () {
+            if (getNavEle( this).attr("checked") == 'checked') {
+                getNavEle( this).attr("checked", true);
+            } else {
+                getNavEle( this).attr("checked", false);
+            }
+            allchk();
+        });
+    });
+
+    function allchk() {
+        var chknum = getNavEle( "#etList [name=etIds]:checkbox").size();//选项总个数
+        var chk = 0;
+        getNavEle( "#etList [name=etIds]:checkbox").each(function () {
+            if (getNavEle( this).attr("checked") == 'checked') {
+                chk++;
+            }
+        });
+
+        if (chknum == chk) {//全选
+            getNavEle( "#etAllIds").attr("checked", true);
+        } else {//不全选
+            getNavEle( "#etAllIds").attr("checked", false);
+        }
+    }
+
+    //行业类别二级选项卡
+    var togetherQueryAddOption = function () {
+        getNavEle( ".categoryLevelTwoClass").remove();
+        var pid = getNavEle( "#togetherQueryOpenCategory").val();
+        $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                {
+                    pid: pid
+                },
+                function (data) {
+                    if (data.categoryList.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.categoryList.length; i++) {
+                            var category = data.categoryList[i];
+                            html += "<option class='categoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                        }
+                        getNavEle( "#togetherCategoryLevelTwo").append(html);
+                    }
+                }
+        );
+    }
+    //页面加载时，调用一次addOption方法，对行业类别加默认值
+    togetherQueryAddOption();
+
+    //修改用户信息
+    getNavEle( '#changeMemberExam').click(function () {
+//        console.info("into");
+//        var isRemark = 0;
+//        if (getNavEle( '#isRemark').checked) {
+//            isRemark = 1;
+//        }
+        var valArr = new Array;
+        getNavEle( "#etList [name=etIds]:checkbox[checked]").each(function (i) {
+            valArr[i] = getNavEle( this).val();
+        });
+//        console.info("valArr.length" + valArr.length);
+        if (valArr.length > 0) {
+            if (valArr.length >= 2) {
+                getNavEle( this).alertmsg('error', '不可同时修改多个用户信息操作!', {
+                    displayMode: 'slide',
+                    displayPosition: 'topcenter',
+                    okName: '确定',
+                    title: '错误提示'
+                })
+                return false;
+            } else {
+               /* //弹出弹框 修改用户信息
+                var url = "#U('toChangeMember?memberExamId=')" + valArr[0] + "&time="+ new Date().getTime();
+                alert(url);
+                getNavEle( this).attr("href", url);
+                getNavEle( this).attr("data-toggle", "dialog");
+                getNavEle( this).attr("data-id", "viewCredential");
+                getNavEle( this).attr("data-title", "修改");
+                getNavEle( this).attr("data-width", "1100");
+                getNavEle( this).attr("data-height", "600");*/
+
+
+                var url = "#U('toChangeMember?memberExamId=')" + valArr[0] + "&time="+ new Date().getTime();
+
+                $(this).dialog({
+                    id:'toChangeMemberDialog',
+                    url:url,
+                    title:'修改',
+                    width:1100,
+                    height:600
+                })
+
+
+            }
+        } else {
+            getNavEle( this).alertmsg('error', '请选择相应用户进行修改操作!', {
+                displayMode: 'slide',
+                displayPosition: 'topcenter',
+                okName: '确定',
+                title: '错误提示'
+            })
+            return false;
+        }
+    })
+
+##    //删除用户信息
+##    var deleteExamList = function () {
+##        getNavEle( this).alertmsg('info', '确定删除该用户?', {
+##            displayMode: 'slide',
+##            displayPosition: 'topcenter',
+##            okName: '确定',
+##            title: '确认提示'
+##        })
+##        var valArr = new Array;
+##        getNavEle( "#list [name=ids]:checkbox[checked]").each(function (i) {
+##            valArr[i] = getNavEle( this).val();
+##        });
+##        if (valArr.length > 0) {
+##            var vals = valArr.join(',');
+##            console.info("vals=" + vals);
+##            var url = "#U('batchDeletes?memberExamIds=')" + vals;
+##            getNavEle( '#deleteExam').attr("data-url", url);
+##        } else {
+##            getNavEle( this).alertmsg('error', '请选择相应用户进行修改操作!', {
+##                displayMode: 'slide',
+##                displayPosition: 'topcenter',
+##                okName: '确定',
+##                title: '错误提示'
+##            })
+##            return false;
+##        }
+##    }
+
+
+    //删除用户信息
+    getNavEle( '#deleteExam').on("click", function () {
+        var deleteValArr = new Array;
+        getNavEle( "[name=etIds]:checked").each(function (i) {
+            deleteValArr[i] = getNavEle( this).val();
+        });
+
+
+        if (deleteValArr.length > 0) {
+            deleteVals = deleteValArr.join(",");
+            getNavEle( this).alertmsg('confirm', '确认删除所选中的用户?', {
+                displayMode: 'slide',
+                displayPosition: 'topcenter',
+                okName: '确定',
+                cancelName: '取消',
+                title: '错误提示',
+                okCall: 'goToDelete'
+            })
+
+        } else {
+            getNavEle( this).alertmsg('error', '请选择相应用户进行修改操作!', {
+                displayMode: 'slide',
+                displayPosition: 'topcenter',
+                okName: '确定',
+                title: '错误提示'
+            })
+            return false;
+        }
+    });
+
+    //预览肠检单
+    getNavEle( "#viewIntestinal").on("click", function (e) {
+        //预览肠检单时，通过checkbox获取需要预览的数据id，补全肠检单地址
+        var credentialID = "";
+        //查出所有已选择的体检数据
+        getNavEle( "tbody [type='checkbox']").each(function () {
+            if (getNavEle( this).attr("checked")) {
+                credentialID += getNavEle( this).val() + ",";
+            }
+
+        })
+
+        if (credentialID == '') {
+            getNavEle( this).alertmsg('error', "未选择需要预览的肠检单！");
+            return false;
+        }
+        var urll = '#U("viewIntestinalForm")?ids=' + credentialID;
+//        getNavEle( this).attr("href", urll);
+//        getNavEle( this).attr("data-toggle", "dialog");
+//        getNavEle( this).attr("data-id", "viewIntestinal");
+//        getNavEle( this).attr("data-title", "肠检单预览");
+//        getNavEle( this).attr("data-width", "680");
+//        getNavEle( this).attr("data-height", "600");
+//        getNavEle( "#reloadSearch").click();
+        getNavEle( this).dialog({id:'dialogiewIntestinalForm', url:urll, title:'肠检单预览',width:'700',height:'700',fresh:true,mask:true});
+
+    });
+
+
+    //打印肠检单
+    getNavEle( "#printIntestinal").on("click", function () {
+        var ids = "";
+        getNavEle( "#etList [name=etIds]:checkbox[checked]").each(function (i) {
+//            alert("printIntestinal=="+getNavEle( this).val());
+            ids += getNavEle( this).val() + ",";
+        });
+        if (ids.length == 0) {
+            getNavEle( this).alertmsg('error', "未选择需要打印的肠检单！");
+            return false;
+        }
+        var urll = '#U("printViewIntestinalForm")?ids=' + ids;
+
+        getNavEle( '#printExamETPrint').attr('src',urll);
+//        getNavEle( this).attr("href", urll);
+//        getNavEle( this).attr("data-toggle", "dialog");
+//        getNavEle( this).attr("data-id", "viewExam");
+//        getNavEle( this).attr("data-title", "打印的页面");
+//        getNavEle( this).attr("data-width", "680");
+//        getNavEle( this).attr("data-height", "600");
+    });
+    //预览体检单
+    getNavEle( "#viewExam").on("click", function (e) {
+        //预览体检单时，通过checkbox获取需要预览的数据id，补全体检单地址
+        //查出所有已选择的体检数据
+        var valArr = new Array;
+        getNavEle( "#etList [name=etIds]:checkbox[checked]").each(function (i) {
+            valArr[i] = getNavEle( this).val();
+        });
+        if (valArr.length > 1) {
+            getNavEle( this).alertmsg('error', '不可同时预览多个用户的体检表!', {
+                displayMode: 'slide',
+                displayPosition: 'topcenter',
+                okName: '确定',
+                title: '错误提示'
+            })
+            return false;
+        }
+        if (valArr.length == 0) {
+            getNavEle( this).alertmsg('error', "未选择需要预览的体检单！");
+            return false;
+        }
+        var urll = '#U("viewExaminationForm")?id=' + valArr[0];
+##        getNavEle( this).attr("href", urll);
+##        getNavEle( this).attr("data-toggle", "dialog");
+##        getNavEle( this).attr("data-id", "viewExam");
+##        getNavEle( this).attr("data-title", "体检单预览");
+##        getNavEle( this).attr("data-width", "700");
+##        getNavEle( this).attr("data-height", "600");
+##        getNavEle( "#reloadSearch").click();
+        getNavEle( this).dialog({id:'dialogViewExaminationForm', url:urll, title:'体检单预览',width:'700',height:'700',fresh:true,mask:true});
+
+    });
+    //打印体检单
+    getNavEle( "#printExam").on("click", function () {
+//        console.info("printExam click");
+        var ids = "";
+        getNavEle( "#etList [name=etIds]:checkbox[checked]").each(function (i) {
+            ids += getNavEle( this).val() + ",";
+        });
+        if (ids.length == 0) {
+            getNavEle( this).alertmsg('error', "未选择需要打印的体检单！");
+            return false;
+        }
+//        console.info("printExam ids:" + ids);
+        var urll = '#U("printViewExaminationForm")?ids=' + ids;
+//        getNavEle( this).attr("href", urll);
+//        getNavEle( this).attr("data-toggle", "dialog");
+//        getNavEle( this).attr("data-id", "viewExam");
+//        getNavEle( this).attr("data-title", "打印的页面");
+//        getNavEle( this).attr("data-width", "750");
+//        getNavEle( this).attr("data-height", "600");
+
+        getNavEle( '#printExamETPrint').attr('src',urll);
+    });
+
+
+
+    ////////////////////////////////////流转单预览打印//////////////////////////////////////////////////////////
+    //预览流转单
+    getNavEle( "#viewTurn").on("click", function (e) {
+
+        var  userAgenciesCode = getNavEle( '#userAgenciesCode').val();
+
+        //预览流转单时，通过checkbox获取需要预览的数据id，补全流转单地址
+        //查出所有已选择的体检数据
+        var valArr = new Array;
+        var valRecheckTag = new Array;
+        getNavEle( "#etList [name=etIds]:checkbox[checked]").each(function (i) {
+            valArr[i] = getNavEle( this).val();
+            valRecheckTag[i] = getNavEle( this).attr('i');
+        });
+        if (valArr.length > 1) {
+            getNavEle( this).alertmsg('error', '不可同时预览多个用户的流转单!', {
+                displayMode: 'slide',
+                displayPosition: 'topcenter',
+                okName: '确定',
+                title: '错误提示'
+            })
+            return false;
+        }
+        if (valArr.length == 0) {
+            getNavEle( this).alertmsg('error', "未选择需要预览的流转单！");
+            return false;
+        }
+
+        var urll = '';
+
+        var titleStr = '';
+
+        if (valRecheckTag[0] == 0){//否
+
+            if(userAgenciesCode == 132){
+                urll = '#U("jkViewTransferForm")?id=' + valArr[0];e
+            }else{
+                urll = '#U("viewTransferForm")?id=' + valArr[0];
+            }
+
+        }else if(valRecheckTag[0]>0){//是
+
+            if(userAgenciesCode == 132){
+                urll = '#U("jkRecheckViewTransferForm")?id=' + valArr[0];
+            }else{
+                urll = '#U("unqualifiedNotice")?id=' + valArr[0];
+            }
+        }
+
+        getNavEle( this).dialog({id:'dialogViewTransferFormView', url:urll, title:'流转单预览',width:'700',height:'700',fresh:true,mask:true});
+
+
+//        getNavEle( this).attr("href", urll);
+//        getNavEle( this).attr("data-toggle", "dialog");
+//        getNavEle( this).attr("data-id", "viewTurn");
+//        getNavEle( this).attr("data-title", "流转单预览");
+//        getNavEle( this).attr("data-width", "600");
+//        getNavEle( this).attr("data-height", "700");
+//        getNavEle( "#reloadSearch").click();
+    });
+    //打印流转单
+    getNavEle( "#printTurn").on("click", function () {
+        var  userAgenciesCode = getNavEle( '#userAgenciesCode').val();
+
+        //预览流转单时，通过checkbox获取需要预览的数据id，补全流转单地址
+        //查出所有已选择的体检数据
+        var valArr = new Array;
+        var valRecheckTag = new Array;
+        getNavEle( "#etList [name=etIds]:checkbox[checked]").each(function (i) {
+            valArr[i] = getNavEle( this).val();
+            valRecheckTag[i] = getNavEle( this).attr('i');
+        });
+        if (valArr.length > 1) {
+            getNavEle( this).alertmsg('error', '不可同时打印多个用户的流转单!', {
+                displayMode: 'slide',
+                displayPosition: 'topcenter',
+                okName: '确定',
+                title: '错误提示'
+            })
+            return false;
+        }
+        if (valArr.length == 0) {
+            getNavEle( this).alertmsg('error', "未选择需要打印的流转单！");
+            return false;
+        }
+
+        var urll = '';
+
+        if (valRecheckTag[0] == 0){//否
+
+            if(userAgenciesCode == 132){
+
+                // wanglu 打印流转单地址
+                var protocol = window.location.protocol
+                var host = window.location.host;
+                urll = protocol + "//" + host + "/admin/examBusiness/examAdd/jkPrintViewTransferForm.do" +
+                        '?id=' + valArr[0];
+
+##                urll = '#U("jkMachinePrintViewTransferForm")?id=' + valArr[0];
+            }else{
+                urll = '#U("examCheckForm")?id=' + valArr[0];
+            }
+
+        }else if(valRecheckTag[0]>0){//是
+
+            if(userAgenciesCode == 132){
+                urll = '#U("jkRecheckPrintViewTransferForm")?id=' + valArr[0];
+
+##                urll = '#U("jkMachineRecheckPrintViewTransferForm")?id=' + valArr[0];
+            }else{
+                urll = '#U("printUnqualifiedNotice")?id=' + valArr[0];
+            }
+        }
+
+
+        getNavEle( '#printExamETPrint').attr('src',urll);
+//        getNavEle( this).dialog({id:'dialogViewTransferFormPrint', url:urll, title:'流转单打印',width:'600',height:'700',fresh:true,mask:true});
+
+    });
+    /**
+     * 删除操作
+     */
+    function goToDelete() {
+        $.post("#U("/admin/queryStatic/examTogetherQuery/batchDeletes")",
+                {
+                    memberExamIds: deleteVals
+                },
+                function (data) {
+
+                    var obj = JSON.parse(data);
+
+                    if (obj.statusCode == 300) {
+                        getNavEle( this).alertmsg('error', obj.message);
+                    } else {
+
+                        getNavEle( this).alertmsg('ok', obj.message);
+                        getNavEle( "#reloadSearch").click();
+                    }
+                });
+    }
+</script>
+
+<script>
+
+    //体检单打印回调
+    function printOkReturn(examMemberId){
+
+        alert("printOkReturn");
+
+        //更新此打印记录
+        $.post("#U("/EtqUpdatePhysicalPrint")",
+                {
+                    examMemberId: memberExamId
+                },
+                function (data) {
+
+                });
+
+    }
+
+    function printFailureReturn(){
+
+        getNavEle( this).alertmsg('error', "体检单打印失败!");
+    }
+
+    //复检单打印回调
+    function printRecheckOkReturn(examMemberId){
+
+
+        //更新此打印记录
+        $.post("#U("/EtqUpdatePhysicalPrint")",
+                {
+                    examMemberId: examMemberId
+                },
+                function (data) {
+
+                });
+
+
+    }
+
+    function printRecheckFailureReturn(){
+
+        getNavEle( this).alertmsg('error', "流转单打印失败!");
+    }
+
+
+
+
+
+    $(function(){
+        getNavEle('#examNumber').on("keydown", function(event) {
+            var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+            var code = theEvent.keyCode;
+            if (code == 13) {
+
+                getNavEle( "#pagerForm").submit();
+            };
+        });
+
+
+
+
+
+
+    });
+
+
+
+    function setCategoryIdAndCategoryLevelTwo(){
+        var parentId = "$!categoryParentId";
+        var togetherCategoryLevelTwoId = "$!togetherCategoryLevelTwoId";
+
+        $("#togetherQueryOpenCategory").val(parentId);
+
+
+
+        togetherQueryAddOptionNew(togetherCategoryLevelTwoId);
+    }
+
+
+    setCategoryIdAndCategoryLevelTwo();
+
+
+    //行业类别二级选项卡
+    function togetherQueryAddOptionNew(togetherCategoryLevelTwoId) {
+        getNavEle( ".categoryLevelTwoClass").remove();
+        var pid = getNavEle( "#togetherQueryOpenCategory").val();
+        $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                {
+                    pid: pid
+                },
+                function (data) {
+                    if (data.categoryList.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.categoryList.length; i++) {
+                            var category = data.categoryList[i];
+
+
+                            if(togetherCategoryLevelTwoId == category.id){
+                                html += "<option class='categoryLevelTwoClass' selected value='" + category.id + "'>" + category.categoryName + "</option>";
+                            }
+
+                            html += "<option class='categoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                        }
+                        getNavEle( "#togetherCategoryLevelTwo").append(html);
+                    }
+                }
+        );
+    }
+
+
+</script>

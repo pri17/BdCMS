@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常熟市疾病预防控制中心</title>
+    <style>
+        body{margin: 0;}
+        li{list-style: none;}
+        ul{padding: 0;}
+        .clearfix{clear:both}
+        /*.control-h{width: 100%;background: #03568A;color: #fff; height:11.2rem;line-height: 11.2rem;*/
+            /*text-align: center;font-size: 4.6rem;}*/
+        .banner-box{width: 100%; height: 43.8rem; overflow:hidden;}
+        .banner-box img{height: 100%;max-width:100%}
+        .center-box {width: 100%;,height:36rem;margin: 0}
+        .center-box li{width:50%;height: 50%;float:left;margin: 0;}
+        /*.center-box li{width: 50%;height: 20rem;color: #319EFF;float:left;margin: 1.6rem 0;}*/
+        /*.center-box div{width: 100%;text-align: center}*/
+        /*.chart-box{height: 14rem;overflow:hidden;}*/
+        .chart-box{height:18rem;overflow: hidden;}
+        .chart-box img{width:100%;height:100%;}
+        /*.chart-box img{height: 13rem;}*/
+        /*.chart-tet{height:3.6rem; line-height: 3.6rem; text-align: center;font-size:2.7rem;}*/
+        /*.control-f{width: 100%;height:5.6rem;background: #1967A4;position: fixed;left: 0;*/
+            /*bottom:0;margin-top: -5.6rem;*/
+            /*color: #fff;line-height: 5.6rem;font-size: 2.7rem;text-align: center;}*/
+        .comtrol-f {width:100%; height:20.2rem;left:0;bottom:0;}
+        .control-f img {width:100%;height: 100%;}
+
+    </style>
+</head>
+<body>
+##<div class="control-h">
+##    健康证办理
+##</div>
+<div class="banner-box">
+    <img src="/img/topbanner.jpg">
+</div>
+<div>
+    <ul class="center-box">
+        <li onclick="jumpPage(1)">
+            <div class="chart-box">
+                <img src="/img/btn-reg.jpg">
+            </div>
+##            <div class="chart-tet">体检登记</div>
+        </li>
+##        <li onclick="jumpPage(2)">
+##            <div class="chart-box"><img src=""></div>
+##            <div class="chart-tet">体检缴费</div>
+##        </li>
+        <li onclick="jumpPage(3)">
+            <div class="chart-box"><img src="/img/btn-inform.jpg"></div>
+##            <div class="chart-tet">复检通知</div>
+        </li>
+        <li onclick="jumpPage(4)">
+            <div class="chart-box"><img src="/img/btn-process.jpg"></div>
+##            <div class="chart-tet">体检进程</div>
+        </li>
+        <li onclick="jumpPage(5)">
+            <div class="chart-box"><img src="/img/btn-elec.jpg"></div>
+##            <div class="chart-tet">电子健康</div>
+        </li>
+##        <li onclick="jumpPage(6)">
+##            <!--<div class="chart-box"><img></div>-->
+##            <!--<div class="chart-tet">体检登记</div>-->
+##        </li>
+        <div class="clearfix"></div>
+    </ul>
+</div>
+<div class="control-f">
+    <img src="/img/footbanner.jpg">
+    #*版权所有：常熟疾控中心*********#
+
+</div>
+<script>
+    function jumpPage(i){
+        switch (i)
+        {
+            case 1:
+                window.location.href="/wap/wapNotice.do";
+                break;
+            case 2:
+                window.location.href="/wap/wapFee.do";
+                break;
+            case 3:
+                window.location.href="/wap/wapReviewNotice.do";
+                break;
+            case 4:
+                window.location.href="/wap/wapProgress.do";
+                break;
+            case 5:
+                window.location.href="/wap/showECard.do";
+                break;
+            case 6:
+                window.location.href="/wap/wapProgress.do";
+                break;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,718 @@
+<style>
+    .feemain {
+        height: 80px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .feemain-a {
+        width: 400px;
+        float: left;
+        height: 100%;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+    .feemain-a span {
+        font-size: 17px;
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 8px 0 0 14px;
+    }
+
+    .feemain-a em {
+        font-style: normal;
+        height: 20px;
+        width: 100%;
+        background-color: #c1c1c1;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .feenav {
+        height: 38px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .feenav-a {
+        width: 70%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+        background-color: #cee3fe;
+    }
+
+    .feenav-a span {
+        font-size: 17px;
+        font-weight: bold;
+        color: #003366;
+        margin-left: 20px;
+        margin-right: 24px;
+    }
+
+    .feenav-a a {
+        font-size: 13px;
+        height: 18px;
+        border: 2px solid #7cb7ec;
+        color: #003366;
+        font-weight: bold;
+        padding-left: 50px;
+        padding-right: 15px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+    }
+
+    .feenav-b {
+        width: 30%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+        background-color: #cee3fe;
+        border-left: 1px solid #ccc;
+    }
+
+    /*.feenav-b span {*/
+    /*font-size: 17px;*/
+    /*font-weight: bold;*/
+    /*color: #003366;*/
+    /*margin: 0 10px;*/
+    /*}*/
+
+    .feenav-b a {
+        font-size: 13px;
+        height: 18px;
+        border: 2px solid #7cb7ec;
+        color: #003366;
+        font-weight: bold;
+        padding-left: 10px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+    }
+
+    .feecontent {
+        height: 128px;
+    }
+
+    .feecon-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        margin-top: 10px;
+    }
+
+    .feecon-a p {
+        margin-bottom: 8px;
+        height: 28px;
+    }
+
+    .feecon-a input {
+        width: 120px;
+        height: 28px;
+    }
+
+    /*.feecon-a .con-aa span input {*/
+    /*width: 100px;*/
+    /*height: 28px;*/
+    /*}*/
+
+    .feecon-a select {
+        width: 120px;
+        height: 28px;
+    }
+
+    .feecon-a .con-aa {
+        width: 30%;
+        float: left;
+    }
+
+    .feecon-a .con-aa span {
+        font-size: 14px;
+        width: 85px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .feecon-a .con-aa .input {
+        margin-left：14px;
+    }
+
+    .feecon-a .con-aa select .input {
+        margin-left: 14px;
+    }
+
+    .feecon-a .con-ab {
+        width: 23%;
+        float: left;
+    }
+
+    .feecon-a .con-ab span {
+        font-size: 14px;
+        width: 85px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .feecon-a .con-ab .input {
+        margin-left：14px;
+    }
+
+    .feecon-a .con-ab select .input {
+        margin-left: 14px;
+    }
+
+    .feecon-a .con-ac {
+        width: 23%;
+        float: left;
+    }
+
+    .feecon-a .con-ac span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .feecon-a .con-ad {
+        width: 22%;
+        float: left;
+    }
+
+    .feecon-a .con-ad span {
+        font-size: 14px;
+        width: 65px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .feecon-a .con-ad p a {
+        width: 94px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .feecon-a .con-ae {
+        width: 5%;
+        float: left;
+    }
+
+    .feecon-b {
+        width: 20%;
+        height: 100%;
+        float: left;
+        border-left: 1px solid #ccc;
+    }
+
+    .feecon-b p:first-child {
+        margin-top: 20px;
+    }
+
+    .feecon-b p {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .feecon-b p input {
+        width: 160px;
+        height: 28px;
+    }
+
+    .feecon-b p a {
+        font-size: 18px;
+        width: 80px;
+        height: 36px;
+        line-height: 36px;
+        background-color: #cee3fe;
+        display: inline-block;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    select{border: 1px solid #cccccc;}
+</style>
+## 页面上方“刷新列表”按钮单击显示全部数据（即筛选条件为空或全部）。
+## “批量确定”按钮，在选中多人后，单击“批量确定”按钮，提示“是否批量确定”，
+## 如果是，就将选中人收费状态改为已收费，收费员改为账号名字，
+## 收费日期改为当天，是否已经打印发票改为是，收费方式改为现金。
+## 单击“批量取消”按钮，就将选中人的收费状态改为未收费，
+## 收费员改为空，收费日期改为空，是否已经打印发票改为否，收费方式改为空。
+<div class="bjui-pageHeader feediv" style="background-color: #eaf1f6; border: 1px solid #999;margin-bottom: 4px;height: 182px;">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post" style="margin-top: -14px;">
+        #pageInput($page)
+
+        <div class="feenav">
+            <div class="feenav-a">
+                <button class="btn-default" id="searchBtnFeewx" type="submit" style="cursor:pointer;margin-left: 15px;" >查询</button>
+                <button class="btn-default" id="hiddenFeeSearchwx" style="display: none" type="submit">查询</button>
+                <button class="btn-default" data-toggle="reloadsearch" data-clear-query="true" style="cursor:pointer;">
+                    清空查询
+                </button>
+                <button class="btn-default" id="confirmDataBatchwx" data-toggle="doajax" data-confirm-msg="确定要批量确认吗？"
+                        style="cursor:pointer">批量确认
+                </button>
+                <button class="btn-default" id="revocateDataBatchwx" data-toggle="doajax" data-confirm-msg="确定要批量撤销吗?"
+                        style="cursor:pointer">批量撤销
+                </button>
+
+                <button i class="btn-default" id="importwx" style="cursor:pointer">导出列表</button>
+                <span>收费总金额:$!totalFee元</span>
+            </div>
+            <div class="feenav-b">
+                <span style="margin-left: 10%;">条形码编号</span>
+                <input type="text" id="examnumberIdwx" name="examnumberId" class="form-control" size="10" data-rule="number" >
+                <button type="button" class="btn btn-default" id="commitCodewx" data-url="" >搜索</button>
+            </div>
+        </div>
+        <div class="feecontent" style="background-color: white; height: 142px;">
+            <div class="feecon-a">
+                <div class="con-ab">
+                    <p><span>体检号</span><input type="text" id="" value="$!examNumber" name="examNumber" style="width: 120px;"
+                                              data-rule="number"></p>
+                    <p><span>姓名</span><input type="text" id="" value="$!name" name="name" style="width: 120px;"></p>
+                    #if($!currentAgenciesCode == 132)
+
+                    <p><span>地段区域</span><select name="areaId" id="areaIdwx" data-width="130" >
+                        <option value="0">全部</option>
+                        #LoadBean("examAreaService")
+                        #foreach($el in $examAreaService.getRootExamArea())
+                            <option value="$!el.id"
+                                #if($!el.id==$!areaId)
+                                    selected
+                                #end
+                                    >$!el.areaName</option>
+                        #end
+                    #end
+
+                #else
+                <p><span>地段区域</span><select name="areaId" id="areaIdwx" data-width="130" readonly="readonly"">
+                    <option value="">全部</option>
+                    #LoadBean("examAreaService")
+                    #foreach($el in $examAreaService.getRootExamArea())
+                        <option value="$!el.id"
+                            #if($!el.id==$!currentAreaId)
+                                selected
+                            #end
+                                >$!el.areaName</option>
+                    #end
+                #end
+
+                #end
+
+                </select>
+                </p>
+                </div>
+                <div class="con-aa">
+                    <p style="height: 28px;"><span>身份证号</span><input type="text" id="" value="$!idCard" name="idCard" size="18"
+                                               data-rule="ID_card"></p>
+
+                    <p><span>工作单位</span><input type="text" id="" value="$!workUnit" name="workUnit" size="18"></p>
+
+                    <p><span>是否打印</span><select name="isPrint" id="isPrintwx" data-width="85" data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        <option #if($!isPrint=="1") selected #end value="1">是</option>
+                        <option #if($!isPrint=="0") selected #end value="0">否</option>
+                    </select>
+                    </p>
+
+
+                </div>
+                <div class="con-ac">
+                    <p><span>体检日期</span>
+                        <input name="startTime" value="$!startTime" data-toggle="datepicker" type="text" data-nobtn="true"
+                                                 placeholder="点击选择日期"> </p>
+                    <p><span></span>
+                        <input name="endTime" value="$!endTime" data-toggle="datepicker" type="text" data-nobtn="true"
+                                                 placeholder="点击选择日期"></p>
+
+
+                    <p><span>是否复检</span><select name="isRecheck" id="" data-width="130" data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        <option #if($!isRecheck=="1") selected #end value="1">是</option>
+                        <option #if($!isRecheck=="0") selected #end value="0">否</option>
+                    </select></p>
+                </div>
+                <div class="con-ad">
+                    <p><span>收费日期</span>
+                        <input name="startTimePay" value="$!startTimePay" data-toggle="datepicker" type="text" data-nobtn="true"
+                               placeholder="点击选择日期">
+                    </p>
+                    <p><span></span>
+                        <input name="endTimePay" value="$!endTimePay" data-toggle="datepicker" type="text" data-nobtn="true"
+                               placeholder="点击选择日期">
+                    </p>
+                    <p ><input  type="checkbox" id="feeAddCheckboxwx"
+                        #if($!feeAdd=="1") checked="checked" #end  style="width: 20px;height: 20px;vertical-align:middle; margin-top:-2px; margin-bottom:1px;margin-left: 8px;">
+                        <span style="width: 169px;height: 20px; line-height: 20px; margin-left: -4px;">累加健康体检人员查询结果</span></p>
+
+                    <input type="hidden" value="$!feeAdd" id="feeAddwx" name="feeAdd">
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="tableContent clearfix bjui-pageContent">
+    <table class="table table-bordered table-top">
+        <thead>
+        <tr class="first-tr-style">
+            <th width="26px" style="text-align:center;"><input id="feeAllIdswx" name="feeAllIds"
+                                    style="width: 30px;float: left;line-height: 40px;"
+                                    type="checkbox"></th>
+            <th style="text-align:center;">体检号</th>
+            <th style="text-align:center;">姓名</th>
+            <th style="text-align:center;" width="151px">身份证号</th>
+            <th style="text-align:center;">工作单位</th>
+            <th style="text-align:center;">地段区域</th>
+            <th style="text-align:center;">体检日期</th>
+            <th style="text-align:center;">金额</th>
+           #* <th style="text-align:center;">收费状态</th>
+            <th style="text-align:center;">收费员</th>*#
+            <th style="text-align:center;">收费日期</th>
+            <th style="text-align:center;">打印发票</th>
+            #*<th style="text-align:center;">收费方式</th>*#
+            <th style="text-align:center;">是否复检</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color" id="feeListwx">
+            #foreach($vo in $page.list)
+            <tr  i="$!vo.id"  >
+                <td style="text-align:center;"><input id="feeIds" name="feeIds" value="$!vo.id"
+                           style=" width: 25px; margin: 0px; padding: 0px; background: rgb(255, 255, 255);"
+                           type="checkbox"></td>
+                <td style="text-align:center;"  name="clickFeeAction">$!vo.examNumber</td>
+                <td style="text-align:center;" name="clickFeeAction">$!vo.name</td>
+                <td style="text-align:center;" name="clickFeeAction">$!vo.idCard</td>
+                <td style="text-align:center;" name="clickFeeAction">$!vo.workUnit</td>
+                <td style="text-align:center;" name="clickFeeAction">$!vo.areaName</td>
+                <td style="text-align:center;" name="clickFeeAction">$!vo.examTimeStr</td>
+                <td style="text-align:center;" name="clickFeeAction">$!vo.payMoney</td>
+                #*<td style="text-align:center;" name="clickFeeAction">$!vo.payStateStr</td>
+                <td style="text-align:center;" name="clickFeeAction">$!vo.realName</td>*#
+                <td style="text-align:center;" name="clickFeeAction">$!vo.payTimeStr</td>
+                <td style="text-align:center;" name="clickFeeAction">
+##                    #if($!vo.examPay.isPrint==1)
+##                        <span>已打印</span>
+##                    #elseif($!vo.examPay.isPrint==0)
+##                        <span>未打印</span>
+##                    #end
+                    $!vo.isPrintStr
+                </td>
+                #*<td name="clickFeeAction" style="text-align: center;">
+                    $!vo.payTypeStr
+                </td>*#
+                <td name="clickFeeAction" style="text-align: center;">
+                ##                    #if($!vo.isRecheck==1)
+##                        <span>是</span>
+##
+##                    #elseif($!vo.isRecheck==0)
+##                        <span>否</span>
+##                    #end
+                    $!vo.recheckTagStr
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+#page($page)
+<script>
+
+
+    $(document).ready(function () {
+        $("#searchBtnFeewx").click(function () {
+            $("#isFeeQuery").val("1");
+        });
+
+
+        //全选或全不选
+        $("#feeAllIdswx").click(function () {
+            if (this.checked) {
+                $("#feeListwx [name=feeIds]:checkbox").attr("checked", true);
+            } else {
+                $("#feeListwx [name=feeIds]:checkbox").attr("checked", false);
+            }
+        });
+
+        $("#feeAddCheckboxwx").click(function () {
+
+            var feeAdd = 0;
+
+            if (this.checked) {
+
+                $("#feeAddCheckboxwx").attr("checked", true);
+
+                feeAdd = 1;
+
+            } else {
+                $("#feeAddCheckboxwx").attr("checked", false);
+
+                feeAdd = 0;
+            }
+
+           /* alert(feeAdd);*/
+
+            $('#feeAddwx').val(feeAdd);
+        });
+
+
+
+        $("#feeListwx [name=feeIds]:checkbox").click(function () {
+
+                if ($(this).attr("checked") == 'checked') {
+
+                    $(this).attr("checked", true);
+
+                } else {
+
+                    $(this).attr("checked", false);
+                }
+
+                allchk();
+
+        });
+
+        //条码扫描
+        $('#examnumberIdwx').focus();
+        $('#examnumberIdwx').on("keydown", function(event) {
+            var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+            var code = theEvent.keyCode;
+            if (code == 13) {
+
+                commitFeeInfo();
+            };
+        });
+
+        $('#commitCodewx').click(function(){
+
+            commitFeeInfo();
+
+        });
+
+
+        function  commitFeeInfo(){
+
+            var examNumber = $('#examnumberIdwx').val();
+
+            if (examNumber == '') {
+                $(this).alertmsg('error', '请填写或者扫描对应的体检号!', {
+                    displayMode: 'none',
+                    displayPosition: '',
+                    okName: '确定',
+                    title: '错误提示'
+                })
+            } else {
+                //先去根据体检号查询出记录 然后再进行弹框
+                $.post("#U('/admin/fee/wxfee/scanBack')", {examNumber: examNumber}, function (data) {
+
+                    data = $.parseJSON(data);
+                    if (data) {
+                        if(data.statusCode == 200){
+
+                            var examPayId = data.message;
+
+
+                            //弹出弹框 修改用户信息
+                            var url = "#U('toCommitFee?id=')" + examPayId;
+//                                $(this).attr("href", url);
+//                                $(this).attr("data-toggle", "dialog");
+//                                $(this).attr("data-id", "viewCredential");
+//                                $(this).attr("data-title", "体检收费-确认收费");
+//                                $(this).attr("data-width", "800");
+//                                $(this).attr("data-height", "500");
+                            $(this).dialog({id:'feeCommitDialog', url:url, title:'体检收费-确认收费',width:'960',height:'400'});
+
+                        }else if(data.statusCode == 300){
+                            $(this).alertmsg('error', data.message, {
+                                displayMode: 'none',
+                                displayPosition: '',
+                                okName: '确定',
+                                title: '错误提示'
+                            })
+                        }
+
+                    }
+
+
+
+                });
+
+            }
+
+        }
+
+
+
+
+
+    });
+
+    //获取选中选项的值
+    //    $("#getValue").click(function () {
+    //        var valArr = new Array;
+    //        $("#list [name=ids]:checkbox[checked]").each(function (i) {
+    //
+    //            valArr[i] = $(this).val();
+    //        });
+    //        var vals = valArr.join(',');
+    //        console.info("vals==" + vals);
+    //    });
+
+
+    function allchk() {
+        var chknum = $("#feeListwx [name=feeIds]:checkbox").size();//选项总个数
+        var chk = 0;
+        $("#feeListwx [name=feeIds]:checkbox").each(function () {
+            if ($(this).attr("checked") == 'checked') {
+                chk++;
+            }
+        });
+
+        if (chknum == chk) {//全选
+            $("#feeAllIdswx").attr("checked", true);
+        } else {//不全选
+            $("#feeAllIdswx").attr("checked", false);
+        }
+    }
+
+
+
+
+    //批量撤销
+    $('#revocateDataBatchwx').click(function () {
+
+        var valArr = new Array;
+        $("#feeListwx [name=feeIds]:checkbox[checked]").each(function (i) {
+
+            valArr[i] = $(this).val();
+        });
+
+        if (valArr.length <= 0) {
+
+            $(this).alertmsg('error', '请选择相应的记录进行操作!', {
+                displayMode: 'none',
+                displayPosition: '',
+                okName: '确定',
+                title: '错误提示'
+            })
+
+
+        } else {
+
+            var vals = valArr.join(',');
+
+            var url = "#U('batchProcess?ids=')" + vals + "&tag=2";
+
+            $('#revocateDataBatchwx').attr("href", url);
+        }
+
+
+    });
+
+    //批量确定
+    $('#confirmDataBatchwx').click(function () {
+
+        var valArr = new Array;
+
+        $("#feeListwx [name=feeIds]:checkbox[checked]").each(function (i) {
+
+            valArr[i] = $(this).val();
+        });
+
+        if (valArr.length <= 0) {
+
+            $(this).alertmsg('error', '请选择相应的记录进行操作!', {
+                displayMode: 'none',
+                displayPosition: '',
+                okName: '确定',
+                title: '错误提示'
+            })
+
+
+        } else {
+
+            var vals = valArr.join(',');
+
+            var url = "#U('batchProcess?ids=')" + vals + "&tag=1";
+
+            $('#confirmDataBatchwx').attr("href", url);
+        }
+
+
+    });
+
+
+
+
+    var intervalTimer = null;
+
+    $("td[name='clickFeeAction']").click(function(){
+        clearTimeout(intervalTimer); //取消上次延时未执行的方法
+        intervalTimer = setTimeout(function () {
+
+        }, 300);
+
+    });
+
+    $("td[name='clickFeeAction']").dblclick(function(){
+        var parentTag = $(this).parent('tr');
+
+        var id = parentTag.attr("i");
+
+        clearTimeout(intervalTimer);
+
+        //弹出弹框 修改用户信息
+        $(this).dialog({
+                    id:'feeCommitDialog',
+                    width:'960',
+                    height:'400',
+                    url:"#U('toCommitFee?')id="+id,
+                    title:'体检收费-确认收费'
+        });
+
+    });
+   getNavEle("#importwx").click(function exportData(){
+       var valArr = new Array;
+
+       $("#feeListwx [name=feeIds]:checkbox[checked]").each(function (i) {
+
+           valArr[i] = $(this).val();
+       });
+
+       if (valArr.length <= 0) {
+
+           $(this).alertmsg('error', '请选择需要导出的记录', {
+               displayMode: 'none',
+               displayPosition: '',
+               okName: '确定',
+               title: '错误提示'
+           })
+
+
+       } else {
+           var vals = valArr.join(',');
+          window.open("#U('exportWXPay')?ids="+vals)
+       }
+   });
+
+</script>

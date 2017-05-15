@@ -1,0 +1,81 @@
+<ul id="bjui-hnav-navbar">
+    <input type="hidden" id="menus" name="menus" value="$menuTree.name">
+
+
+    #foreach( $mhead in $menuTree.childrend)
+        <li class="active">
+            <a href="javascript:;" data-toggle="slidebar">
+                $mhead.name</a>
+            <div class="items hide" data-noinit="true">
+                #foreach($m in $mhead.childrend)
+                    <ul  class="ztree ztree_main"
+                         id="mleft_${m.id}"
+                         data-toggle="ztree" data-on-click="MainMenuClick"
+                         data-expand-all="false" data-faicon="list"
+                         data-title="remark" data-tit="$m.name">
+                        #foreach($mone in $m.childrend)
+                            <li data-id="$mone.id" data-pid="$mone.parentId"
+                                data-faicon="folder-open-o"
+                                data-url="#U($mone.url)?tabid=table_$mone.id"
+                                data-remark=""
+                                data-tabid="table_$mone.id"
+                                data-faicon-close="folder-o">
+                                $mone.name</li>
+##                            #foreach($mtwo in $mone.childrend)
+##                                <li data-id="$mtwo.id" data-pid="$mtwo.parentId"
+##                                    data-faicon="folder-open-o"
+##                                    data-url="#U($mtwo.url)"
+##                                    data-remark=""
+##                                    data-tabid="table_$mtwo.id"
+##                                    data-faicon-close="folder-o">
+##                                    $mtwo.name</li>
+##                            #end
+
+                        #end
+
+                    </ul>
+                #end
+
+
+
+            </div>
+        </li>
+    #end
+
+
+##    #foreach( $mhead in $menuTree.childrend)
+##        <li>
+##            <a href="javascript:;" data-toggle="slidebar">
+##                $mhead.name</a>
+##            <div class="items hide" data-noinit="true">
+##                <ul  class="ztree ztree_main"
+##                     id="mleft_${mhead.id}"
+##                     data-toggle="ztree" data-on-click="MainMenuClick"
+##                     data-expand-all="false" data-faicon="check-square-o"
+##                     data-title="remark">
+##                    #foreach($m in $mhead.childrend)
+##                        <li data-id="$m.id" data-pid="$m.parentId"
+##                            data-faicon="folder-open-o"
+##                            data-remark=""
+##                            data-faicon-close="folder-o">
+##                            $m.name</li>
+##                        #foreach($mc in $m.childrend)
+##                            <li data-id="$mc.id" data-pid="$mc.parentId"
+##                                data-faicon="folder-open-o"
+##                                data-url="#U($mc.url)"
+##                                data-remark=""
+##                                data-tabid="table_$mc.id"
+##                                data-faicon-close="folder-o">
+##                                $mc.name</li>
+##                        #end
+##
+##                    #end
+##
+##                </ul>
+##
+##
+##            </div>
+##        </li>
+##    #end
+
+</ul>

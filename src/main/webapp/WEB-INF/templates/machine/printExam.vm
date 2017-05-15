@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>常熟市疾病预防控制中心欢迎使用自助系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/machineCss/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/buttons.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/style.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../assets/machineCss/js/sweetalert.min.js"></script>
+    <script src="../js/machine/machinePrint.js"></script>
+
+
+</head>
+<body class="print container">
+
+<object id="ExamReader" codebase="../assets/FirstActivex.cab#version=1,3,3,1"
+        classid="CLSID:F225795B-A882-4FBA-934C-805E1B2FBD1B"
+        width="0" height="0">
+    <param name="_Version" value="65536"/>
+    <param name="_ExtentX" value="2646"/>
+    <param name="_ExtentY" value="1323"/>
+    <param name="_StockProps" value="0"/>
+</object>
+
+##<a href="javascript: history.go(-1)"
+##   class="pull-left go-back button button-glow button-border button-primary burron-rounded button-go-back">返&nbsp;&nbsp;回</a>
+<div class="main-content ">
+##    <h1>常熟市疾病预防控制中心</h1>
+    <p class="big-font-size">欢迎您使用自助系统</p>
+    <p class="pls-wait big-font-size" id="pls-wait">请将身份证放置在感应区...</p>
+##    <div>
+##  <span class="count-down">
+##    <span class="time-font-size">倒计时</span>
+##    <span class="time" id="countDown">30</span>
+##    <span  class="time-font-size">秒</span>
+##  </span>
+##    ##        <button id="eCardPrintBack">返回</button>
+##    </div>
+</div>
+<input type="hidden" id="memberPhoto" >
+<input type="hidden" id="memberName" >
+<input type="hidden" id="memberAddress" >
+<input type="hidden" id="memberSex" >
+
+<script>
+
+    var timeOutStr = 6000;
+    var secs = 30;
+    var timerId;
+    var isInit = false;
+    var requestTag = false;
+
+
+var readIdCard=0;
+    //读取身份证信息
+    function openXZXCard() {
+
+        var obj = document.getElementById("ExamReader");
+        if (false == isInit) {
+            //设置端口号，1表示串口1，2表示串口2，依此类推；1001表示USB。0表示自动选择
+            obj.setPortNum(3);
+            isInit = true;
+        }
+        //使用重复读卡功能
+        obj.Flag = 0;
+        obj.BaudRate = 115200;
+        //读卡
+        var rst = obj.ReadCard();
+        readIdCard++;
+        //返回0x90表示读卡成功，0x01表示端口打开失败，0x02表示接收数据超时，0x41表示读卡失败，其它的错误号表示其它的错误。
+        if (0x90 == rst) {
+
+            requestTag = true;
+
+//            alert('obj.CardNo()='+obj.CardNo());
+
+            $('#memberPhoto').val(obj.GetImage());
+            $('#memberName').val(obj.NameL());
+            $('#memberAddress').val(obj.Address());
+            $('#memberSex').val(obj.SexL());
+
+            //根据idcardNum获取数据 是否有打印的card
+            queryMemberInfo(obj.CardNo());
+
+        } else {
+            if(readIdCard>10){
+                if (0x01 == rst) {
+//            alert("端口打开失败!请联系工作人员");
+
+                    swal({
+                        title: "端口打开失败!",
+//                text: "端口打开失败!请联系工作人员",
+                        timer: timeOutStr
+                    }, function () {
+                        clearBack();
+                    });
+                } else if (0x02 == rst) {
+//            alert("接收数据超时!请联系工作人员");
+
+                    swal({
+                        title: "接收数据超时!",
+//                text: "接收数据超时!请联系工作人员",
+                        timer: timeOutStr
+                    }, function () {
+                        clearBack();
+                    });
+                } else if (0x41 == rst) {
+//            alert("读卡失败!请联系工作人员");
+
+                    swal({
+                        title: "读卡失败!",
+//                text: "读卡失败!请联系工作人员",
+                        timer: timeOutStr
+                    }, function () {
+                        clearBack();
+                    });
+                } else {
+//            alert("其他错误!请联系工作人员");
+
+                    swal({
+                        title: "其他错误!",
+//                text: "其他错误!",
+                        timer: timeOutStr
+                    }, function () {
+                        clearBack();
+                    });
+                }
+            }else{
+                setTimeout(openXZXCard(),2000);
+            }
+        }
+
+
+    }
+
+    //根据身份证号码，获取数据
+    function queryMemberInfo(idCardNum) {
+
+        //测试
+        queryByIdCardNum(idCardNum);
+
+
+    }
+
+
+    function queryByIdCardNum(idCardNum) {
+        $("#pls-wait").html("身份证读取成功，正在查询....")
+        var isUpdateSuccess = 0;
+
+        $.getJSON("#U("/machine/getExamPhysicalByIdCardNumber")",
+                {
+                    idCardNumber: idCardNum,
+                    _t:new Date().getTime()
+                },
+                function (data) {
+//                    alert(data);
+
+                    //修改成功
+                    if (data.errorMsg != null) {
+
+                        swal({
+                            title: data.errorMsg,
+//                            text: ,
+                            timer: timeOutStr
+
+                        }, function () {
+                            clearBack();
+
+                        });
+
+                    } else {
+
+                        var examMemberExam = eval('(' + data.examMemberExam + ')');
+
+//                        var examMember = examMemberExam.examMember;
+
+//                        alert(examMember.isIdCardIcon);
+
+                        //2017-01-21 新增 将用户姓名进行更新 用身份证姓名填充
+//                        updateMemberName(examMember.id);
+
+                        var recheckTag = examMemberExam.recheckTag;
+                        updateMember(examMemberExam.id,examMemberExam.memberId,1,recheckTag);
+                        //判断用户是否有头像
+//                        if (examMemberExam.isIdCardIcon==0){
+//                            //如果该头像不是身份证头像 ：后台或者微信登记
+////                            updateMemberPhoto(examMember.id);
+//
+//
+//
+//                        }else{
+//                            updateMember(examMemberExam.id,examMemberExam.memberId,0,recheckTag);
+//                        }
+
+
+
+
+
+
+
+                    }
+                }
+        )
+
+    }
+
+##    //更新用户的头像
+##    function updateMemberPhoto(memberId){
+##
+##        var memberPhotoStr = $('#memberPhoto').val();
+##
+##        $.post("#U("/machine/updateMemberPhoto")",
+##                {
+##                    memberId:memberId,
+##                    memberPhoto: memberPhotoStr
+##                }
+##        );
+##
+##    }
+
+    //更新用户的姓名
+    function updateMember(id,memberId,tag,recheckTag){
+
+        var memberNameStr = $('#memberName').val();
+        var memberAddressStr = $('#memberAddress').val();
+        var memberPhotoStr = $('#memberPhoto').val();
+        var memberSexStr = $('#memberSex').val();
+
+        $.getJSON("#U("/machine/updateMemberInfo")",
+                {
+                    id:id,
+                    memberId:memberId,
+                    memberPhoto: memberPhotoStr,
+                    memberName: memberNameStr,
+                    memberAddress:memberAddressStr,
+                    memberSex:memberSexStr,
+                    tag:tag,
+                    _t:new Date().getTime()
+                },function (data) {
+//                    alert(data);
+                    if (data.statusCode == 200) {
+
+
+                            var urll = '';
+
+                            if (recheckTag == 0) {//否 体检单
+                                swal({   title: "正在打印体检单，请稍候...",
+                                    showConfirmButton: false });
+
+                                urll = '#U("jkMachinePrintViewTransferForm")?id=' + id;
+
+                            } else if (recheckTag > 0) {//是  复检单
+                                swal({   title: "正在打印复检单，请稍候...",
+                                    showConfirmButton: false });
+
+                                urll = '#U("jkMachineRecheckPrintViewTransferForm")?id=' + id;
+
+                            }
+
+                            $('#printExamPrint').attr('src', urll);
+
+
+//                        $(this).dialog({id:'printPhysicalExamDialog', url:urll, title:'体检流转单打印',width:'550',height:'360'});
+
+                            clearInterval(timerId);
+                            return;
+
+
+
+
+                    } else {
+
+                        swal({
+                            title: "操作失败",
+//
+                            showCancelButton: false,
+                            confirmButtonText: "确定!",
+                            closeOnConfirm: true
+                        },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                        clearInterval(timerId);
+                                        return;
+                                    }
+                                });
+
+                    }
+                }
+        );
+
+
+    }
+
+    function clearBack() {
+
+//        alert("parent");
+
+        clearInterval(timerId);
+        goBackUp();
+        return;
+
+    }
+    //返回上一层
+    function goBackUp() {
+
+        window.history.go(-1);
+    }
+
+
+    /**
+     * 打印页面隐藏了 回调parent显示成功
+     */
+    function machinePrintSuccess(examMemberId) {
+
+//        alert("success=" + examMemberId);
+        updatePhysicalPrint(examMemberId);
+
+
+
+
+    }
+
+    /**
+     * 打印页面隐藏了 回调parent显示失败
+     */
+    function machinePrintFail() {
+
+//        alert("fail");
+
+        swal({
+                    title: "打印失败!",
+//                    text: "打印失败,请联系工作人员",
+
+                    showCancelButton: false,
+                    confirmButtonText: "确定!",
+                    closeOnConfirm: true
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        goBackUp();
+                    }
+                });
+
+    }
+
+    //更新打印状态
+    function updatePhysicalPrint(memberExamId) {
+//        alert("memberExamId=" + memberExamId);
+        $.post("#U("/machine/updatePhysicalPrint")",
+                {
+                    examMemberId: memberExamId
+                },
+                function (data) {
+                    if (data.statusCode == 300) {
+
+                    } else {
+                        window.location.href = "http://" + window.location.host + "/machine/printExamSuccess.do";
+                    }
+                });
+    }
+
+
+
+
+    $(document).ready(function () {
+        //初始化识别设备
+
+        $(document).bind('contextmenu',function(){
+            return false;
+        });
+
+    });
+</script>
+
+<iframe id="printExamPrint" src="#" style="width:0px; height:0px;"></iframe>
+<script>
+
+
+    setTimeout(function () {
+        openXZXCard();
+    },2000);
+</script>
+</body>
+</html>

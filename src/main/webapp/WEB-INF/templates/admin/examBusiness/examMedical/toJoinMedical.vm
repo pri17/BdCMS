@@ -1,0 +1,61 @@
+<div class="bjui-pageContent">
+    <form action="#U('joinMedical')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden" name="projectId" value="$!projectId"/>
+        <input type="hidden" name="descriptionId" value="$!descriptionId"/>
+        <input type="hidden" name="type" value="$!qualified"/>
+        <input type="hidden" name="description" value="$!description"/>
+        <div class="form-group">
+            <br/>
+            <label class="control-label x85">项目名称：</label>
+            内科检查
+
+##            <label class="control-label x85"></label>
+##            <textarea style="margin-left: 108px;" cols="45" rows="10" name="content" value="" data-toggle="autoheight"></textarea>
+        </div>
+        <div class="form-group">
+            <br/>
+            <label class="control-label x85">合格标记：</label>
+            #if($!qualified==1)
+                <td>合格</td>
+            #elseif($!qualified==2)
+                <td>不合格</td>
+            #end
+##            <select name="type" id="type">
+##                <option value="1">合格</option>
+##                <option value="2">不合格</option>
+##            </select>
+        </div>
+##        <div class="form-group">
+##            <br/>
+##            <label class="control-label x85">描述：</label>
+##            <span>有病确定要将以上信息添加到</span>
+##        </div>
+        <div class="form-group">
+            <br/>
+            <label class="control-label x85">描述：</label>
+            <textarea cols="30" rows="3"  name="" disabled data-toggle="">$!description</textarea>
+        </div>
+        <div class="form-group">
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-weight: bold;margin-left:70px;font-size: 15px;">确定要将以上信息添加到体检用语表中吗？</span>
+
+        </div>
+        <div class="add-role-button">
+            <ul>
+                <li><button id="closeMedical" type="button" class="btn btn-close" >关闭</button></li>
+                <li><button type="submit"  class="btn-default" >保存</button></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<script>
+//    $('#closeMedical').on('click',function(){
+//        $('#freshMedical').click();
+//    });
+</script>

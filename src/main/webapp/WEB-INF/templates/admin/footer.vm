@@ -1,0 +1,14 @@
+</div>
+    #parse("/admin/foot.vm")
+
+
+<script src="#U('/asset/hplus/js/content.min.js?v=1.0.0')"></script>
+<script src="#U('/asset/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js')"></script>
+<script src="#U('/asset/hplus/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js')"></script>
+<script src="#U('/asset/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js')"></script>
+
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/table_basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:01 GMT -->
+</html>

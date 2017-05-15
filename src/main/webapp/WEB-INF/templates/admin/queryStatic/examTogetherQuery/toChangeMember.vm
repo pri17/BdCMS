@@ -1,0 +1,526 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        font-size: 14px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', YaHei, Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        width: 1024px;
+        margin: 0 auto;
+        height: 820px;
+        border: 1px solid #999;
+    }
+
+    .head {
+        height: 36px;
+        border-bottom: 1px solid #999;
+    }
+
+    .head span {
+        font-size: 18px;
+        height: 30px;
+        line-height: 30px;
+        width: 98px;
+        display: inline-block;
+        border: 1px solid #999;
+        background: #e4ecee;
+        margin: 5px 0 0 20px;
+        text-align: center;
+        border-top-left-radius: 3px;
+        -moz-border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        -moz-border-top-right-radius: 3px;
+    }
+
+    /*head ---结束*/
+    .banner {
+        height: 166px;
+    }
+
+    .banner .roam {
+        background: white;
+        width: 292px;
+        height: 146px;
+        border: 1px solid #797979;
+        margin: 10px 12px 10px 20px;
+        float: left;
+    }
+
+    .banner .roam a {
+        font-size: 18px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #797979;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        display: inline-block;
+        text-align: center;
+        padding: 0 18px;
+        background: #79b6ec;
+        margin: 20px 14px 0 14px;
+    }
+
+    .banner .roam-a, .banner .camera-a {
+        height: 40px;
+        line-height: 40px;
+        background: #c1c1c1;
+        text-align: center;
+        color: #fff;
+        margin-top: 24px;
+    }
+
+    .banner .camera a {
+        font-size: 18px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #797979;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        display: inline-block;
+        text-align: center;
+        padding: 0 18px;
+        background: #79b6ec;
+        margin: 20px 7px 0 10px;
+    }
+
+    .banner .camera {
+        background: white;
+        float: left;
+        height: 146px;
+        width: 197px;
+        border: 1px solid #797979;
+        margin-top: 10px;
+    }
+
+    /*banner ---结束*/
+    .content-ti {
+        width: 360px;
+        margin-top: 16px;
+        float: left;
+        height: 340px;
+    }
+
+    .content-ti p {
+        margin-bottom: 12px;
+    }
+
+    .content-ti span {
+        width: 104px;
+        height: 24px;
+        display: inline-block;
+        text-align: right;
+    }
+
+    .content-ti input {
+        width: 200px;
+        height: 26px;
+        box-sizing: border-box;
+    }
+
+    .content-ti input.con-a {
+        width: 160px;
+    }
+
+    .content-ti select {
+        width: 200px;
+        height: 26px;
+    }
+
+    .content-ti .content-work {
+        margin-top: 2px;
+    }
+
+    .content-ti p.content-dan {
+        height: 54px;
+    }
+
+    .content-ti p.content-dan span {
+        height: 50px;
+        float: left;
+        line-height: 50px;
+    }
+
+    /*content-ti ---结束*/
+    .content-xi {
+        width: 190px;
+        float: left;
+        height: 306px;
+        margin: 16px 20px 0 0;
+    }
+
+    .content-xi input {
+        width: 130px;
+        height: 24px;
+        box-sizing: border-box;
+    }
+
+    .content-xi p {
+        margin-bottom: 12px;
+    }
+
+    .content-xi p.content-xix span {
+        margin-left: -32px;
+    }
+
+    /*content-xi ---结束*/
+    .content-xb {
+        width: 210px;
+        float: left;
+        height: 306px;
+        margin-top: 16px;
+    }
+
+    .content-xb span {
+        width: 80px;
+        display: inline-block;
+        height: 24px;
+        text-align: right;
+    }
+
+    .content-xb p {
+        margin-bottom: 12px;
+    }
+
+    .content-xb p.content-xbb {
+        height: 56px;
+    }
+
+    .content-xb p.content-xbb span {
+        height: 56px;
+        float: left;
+        line-height: 56px;
+    }
+
+    .content-xb p.content-xbb select {
+        margin-bottom: 6px;
+    }
+
+    .content-xb p.content-xbbb {
+        height: 28px;
+    }
+
+    .content-xb p.content-xbbb span {
+        height: 28px;
+        float: left;
+        line-height: 28px;
+    }
+
+    .content-xb p.content-xbbb select {
+        margin-bottom: 6px;
+    }
+
+    .content-xb input, .content-xb select {
+        width: 130px;
+        height: 26px;
+        box-sizing: border-box;
+    }
+
+    /*content-xd ---结束*/
+    .content-im {
+        width: 150px;
+        height: 200px;
+        border: 1px solid #797979;
+        float: left;
+        margin: 16px 0 0 60px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        text-align: center;
+        line-height: 200px;
+    }
+
+    /*content-im ---结束*/
+    .check {
+        width: 980px;
+        float: left;
+        margin-left: 20px;
+    }
+
+    .check-de a {
+        height: 30px;
+        line-height: 30px;
+        padding: 6px 20px;
+        border: 1px solid #555;
+        border-bottom: none;
+        text-decoration: none;
+    }
+
+    .check-de .check-dea {
+        background: #e4ecee;
+    }
+
+    .check table {
+        border-collapse: collapse;
+        margin-top: 1px;
+    }
+
+    /*check ---结束*/
+    td {
+        border: 1px solid #797979;
+    }
+
+    td {
+        height: 30px;
+        text-align: center;
+    }
+
+    .no1 {
+        width: 80px;
+    }
+
+    .no2 {
+        width: 240px;
+    }
+
+    .no3 {
+        width: 140px;
+    }
+</style>
+<form action="#U('changeMember')"
+      data-reload-navtab="false"
+      method="post" class="pageForm" data-toggle="validate">
+<div class="bjui-pageContent">
+
+        <input type="hidden" id="memberExamId" name="memberExamId" value="$!memberExam.id">
+        <div class="content-ti">
+            <p><span>体检号：</span><input id="examNum" readonly="readonly"  name="examNum" type="text"  value="$!memberExam.examNumber" ></p>
+            <p><span>身份证号码：</span><input id="idCardNum" name="idCardNum" type="text"  value="$!examMember.idCardNum">&nbsp;
+            </p>
+            <p><span>联系地址：</span><input id="address" name="address" type="text"   value="$!examMember.idCardAddress"></p>
+            <p><span>工作单位：</span><input id="workUnit"  name="workUnit" type="text"  value="$!memberExam.workUnit"></p>
+            <p><span>体检机构：</span><select name="agenciesId" disabled="disabled"  id="agenciesId"  >
+                <option value="">请选择体检机构</option>
+                #LoadBean("examAgenciesService")
+                #foreach($el in $examAgenciesService.getList())
+                    <option  value="$!el.id" #if($!el.id==$!memberExam.agenciesId) selected
+                    #end>$!el.agenciesName</option>
+                #end
+            #end
+                </select></p>
+            <p><span>体检套餐：</span>
+                <select name="packageId" id="packageId" disabled="disabled"  >
+                    <option value="">请选择套餐</option>
+                    #LoadBean("examPackageService")
+                    #foreach($el in $examPackageService.getList())
+                        <option value="$!el.id" #if($!el.id == $memberExam.packageId) selected
+                        #end>$!el.name</option>
+##                        <option  value="$!el.id">$!el.name</option>
+                    #end
+                #end
+                </select>
+            </p>
+            <p><span>体检费用：</span><input id="packageMoney" readonly="readonly"  name="packageMoney" type="text"  value="$!examPay.payMoney"></p>
+        </div>
+        <div class="content-xb">
+            <p><span>姓名：</span><input id="name" name="name" type="text"   value="$!examMember.name" ></p>
+            <p><span>出生日期：</span><input id="birthday"  name="birthday" type="text"   value="$!examMember.birthday"></p>
+            #*<p><input id="isRemark" name="isRemark" type="checkbox" name="checkbox" value="$!memberExam.examPay.isRemark"
+            #if($!memberExam.examPay.isRemark==1)
+                checked
+            #end
+            >&nbsp;备注</p>*#
+        </div>
+        <div class="content-xb">
+            <p class="content-xbbb"><span>性别：</span>
+                <select id="sex" name="sex">
+                    <option value="1" #if($!examMember.sex==1) selected
+                    #end
+                    >男</option>
+                    <option value="0" #if($!examMember.sex==0) selected
+                    #end >女</option>
+                </select>
+            </p>
+            <p><span>年龄：</span><input id="age" name="age" type="text"  value="$!memberExam.age"></p>
+            <p><span>联系电话：</span><input id="mobile" name="mobile" type="text"  value="$!memberExam.mobile" onkeydown="supplyMobile();"></p>
+            <p class="content-xbb"><span>行业类别：</span>
+                <select name="parentId" id="openCategoryCm"data-emptytxt="请选择" onchange="addOptionEtqCm()">
+                ##                <option value="">请选择</option>
+                    #LoadBean("examCategoryService")
+                    #foreach($rootVo in $examCategoryService.getRootCategory())
+                        <option value="$rootVo.id"
+                            #if($rootVo.id==$examCategory.parentId)
+                                selected
+                            #end
+                        >
+                            $rootVo.categoryName
+                        </option>
+                    #end
+                #end
+                </select>
+                <select name="categoryId"  id="openCategoryLevelTwoCm" data-emptytxt="请选择">
+                ##                <option value="">请选择</option>
+                </select>
+            </p>
+            <p class="content-xbbb"><span>地域区段：</span>
+                <select name="areaId" id="areaId" disabled="disabled">
+                    <option value="">请选择</option>
+                    #LoadBean("examAreaService")
+                    #foreach($el in $examAreaService.getRootExamArea())
+                        <option value="$!el.id" #if($!el.id == $!memberExam.areaId) selected
+                        #end>$!el.areaName</option>
+                    #end
+                #end
+                </select>
+            </p>
+            <p><span>体检日期：</span><input type="text" readonly="readonly"  name="" value="$!memberExam.examTimeStr"></p>
+        </div>
+        <img id="memberIcon" class="content-im" src="$!examMember.icon"/>
+
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li>
+            <button type="button" class="btn-close" >关闭</button>
+        </li>
+        <li>
+            <button type="submit" class="btn-default" >保存</button>
+        </li>
+    </ul>
+</div>
+</form>
+<script>
+    $(document).ready(function () {
+        $("#isRemark").click(function () {
+            var isRemark = 0;
+            if (this.checked) {
+                $("#isRemark").attr("checked", true);
+                isRemark = 1;
+            } else {
+                $("#isRemark").attr("checked", false);
+                isRemark = 0;
+            }
+            $('#isRemark').val(isRemark);
+        });
+    });
+    //行业类别二级选项卡
+    var addOptionEtqCm = function () {
+//        console.info("addOptionCm.begin");
+        $(".categoryLevelTwoClass").remove();
+        var pid = $("#openCategoryCm").val();
+        $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                {
+                    pid: pid
+                },
+                function (data) {
+//                    console.info("addOptionCm.data:"+data.categoryList);
+                    if (data.categoryList.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.categoryList.length; i++) {
+                            var category = data.categoryList[i];
+                            html += "<option class='categoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                        }
+//                        console.info("addOptionCm.append");
+                        $("#openCategoryLevelTwoCm").append(html);
+
+                        var examCategoryId = "$!examCategory.id";
+
+                        console.log(examCategoryId);
+
+                        $("#openCategoryLevelTwoCm").val(examCategoryId);
+                    }
+                    if (data.examCategoryPackage!=null) {
+                        $("#packageId").val(data.examCategoryPackage.packageId);
+//                        packageChangeEa();
+                    }
+                }
+        );
+//        console.info("addOptionCm.end");
+    }
+    //页面加载时，调用一次addOption方法，对行业类别加默认值
+    addOptionEtqCm();
+    //选择套餐，同时下方表格显示所选套餐内容
+    var packageChangeEa = function () {
+        $("#packageMoney").val("");
+        //通过套餐id查询该套餐，并回填价格
+        var packageId = $("#packageId").val();
+        $.getJSON("#U("/admin/examBusiness/examAdd/getPackageById")",
+                {
+                    packageId:packageId
+                },
+                function (data) {
+                    $("#packageMoney").val(data.examPackage.money);
+                }
+        );
+    }
+//    packageChangeEa();
+    //保存并打印
+    $("#updateMember").on("click", function () {
+        var name = $("#name").val();
+        var sex = $("#sex").val();
+        var birthday = $("#birthday").val();
+        var address = $("#address").val();
+        var idCardNum = $("#idCardNum").val();
+        var mobile = $("#mobile").val();
+        var workUnit = $("#workUnit").val();
+        var age = $("#age").val();
+        var areaCode = $("#areaIdCm").val();
+        var packageId = $("#packageId").val();
+        var packageMoney = $("#packageMoney").val()
+        var isRemark = $('#isRemark').val();
+        var memberExamId = $('#memberExamId').val();
+        var categoryId = $('#openCategoryLevelTwoCm').val();
+
+        if (idCardNum != '' || idCardNum != null) {
+            // 身份证号码为15位或者18位，15位时全为数字，
+            // 18位前17位为数字，最后一位是校验位，可能为数字或字符X
+            var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+            if (reg.test(idCardNum) === false) {
+                $(this).alertmsg('error', "身份证输入不合法");
+                return false;
+            }
+        }
+
+        $.post("#U("/admin/queryStatic/examTogetherQuery/changeMember")",
+                {
+                    name:name,
+                    sex:sex,
+                    birthday:birthday,
+                    address:address,
+                    idCardNum:idCardNum,
+                    mobile:mobile,
+                    workUnit:workUnit,
+                    age:age,
+                    areaCode:areaCode,
+                    packageId:packageId,
+                    packageMoney:packageMoney,
+                    isRemark:isRemark,
+                    memberExamId:memberExamId,
+                    categoryId:categoryId
+                },
+                function (data) {
+                    if (data.statusCode == 300) {
+                        $(this).alertmsg('error', data.msg);
+                    } else {
+                        $(this).alertmsg('ok', data.msg);
+                    }
+                });
+    });
+
+    //补充手机号
+    var supplyMobile = function (event) {
+        var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+        var code = theEvent.keyCode;
+        if (code == 13) {
+            var mobile = $("#mobile").val();
+            if (mobile == "00") {
+                $("#mobile").val("00000000000");
+            }
+        }
+    }
+
+
+
+</script>

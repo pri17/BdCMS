@@ -1,0 +1,118 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('adminIndex')" method="post" >
+        #pageInput($page)
+
+        <div class="bjui-searchBar adminLabel heard-query" >
+                &nbsp;&nbsp;
+                <label>姓名：</label>
+                <input type="text" id="" value="$!realName" name="realName" class="form-control" size="8">&nbsp;
+                <label>登录名：</label>
+                <input type="text" id="" value="$!username" name="username" class="form-control" size="10">&nbsp;
+
+                <label>所在单位：</label>
+                <select name="agenciesId" id="addAgencies"  data-toggle="selectpicker" data-width="170"
+                        data-emptytxt="请选择">
+                    <option value="">全部</option>
+                    #LoadBean("examAgenciesService")
+                    #foreach($el in $examAgenciesService.getAllAgencies())
+                        <option  value="$!el.id"
+                            #if($!el.id==$!agenciesId)
+                                 selected
+                            #end
+                        >$!el.agenciesName</option>
+                    #end
+                #end
+                </select>&nbsp;
+                <label>角色：</label>
+                <select name="roleId" id="updateAdminRole"  data-toggle="selectpicker" data-width="110"
+                        data-emptytxt="请选择角色">
+                    <option value="">全部</option>
+                    #LoadBean("roleService")
+                    #foreach($el in $roleService.getAllRole())
+                        <option  value="$!el.id"
+                            #if($!el.id==$!roleId)
+                                 selected
+                            #end
+                        >$!el.role</option>
+                    #end
+                #end
+                </select>&nbsp;
+
+                <button type="submit" class="btn-default" >查询</button>&nbsp;
+                <button class="btn btn-default" href="javascript:;"
+                   data-toggle="reloadsearch" data-clear-query="true"
+                   >清空查询</button>
+                <button style="margin-right:30px;float: right;" href="#U('toAddAdminUser?roleId=?',$!roleId)" class="btn btn-default"
+                        data-toggle="dialog"
+                        data-id="addAdminUser"
+                        data-title="新增"
+                        data-width="620"
+                        data-height="500"
+                        >&nbsp;新增用户&nbsp;
+                </button>
+                <div class="clearfix"></div>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">姓名</th>
+            <th align="center">登录名</th>
+            <th align="center">所在单位</th>
+            <th align="center">角色名</th>
+            <th align="center">所在区域</th>
+            <th align="center">电话</th>
+        ##            <th>头像</th>
+            <th align="center">状态</th>
+        ##            <th>所在城市</th>
+            <th align="center" width="220">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr>
+                #if($vo.role && $vo.user)
+                    <td align="center">$!vo.user.realName</td>
+                    <td align="center">$!vo.user.username</td>
+                    <td align="center">$!vo.user.agenciesName</td>
+                    <td align="center">$!vo.role.role</td>
+                    <td align="center">$!vo.user.areaName</td>
+                    <td align="center">$!vo.user.mobile</td>
+                ##                #if($!vo.user.userImg().empty)
+                ##                    <td></td>
+                ##                #else
+                ##                    <td>
+                ##                        <img src="$!vo.user.userImg()"  height="50" width="50">
+                ##                    </td>
+                ##                #end
+
+                    #if($!vo.user.status=="enable")
+                        <td align="center">启用</td>
+                    #elseif($!vo.user.status=="disable")
+                        <td align="center">禁用</td>
+                    #end
+                ##                    <td>$!vo.user.area.name</td>
+                    <td align="center">
+
+                        <button   data-toggle="dialog" data-id="updateVipUser" data-width="560"  class="btn btn-default" href="#U('toUpAdminUser?uid=?&roleId=?',$vo.uid,$vo.role.id)"
+                              data-height="380"
+                        >修改</button>
+                        <button   data-toggle="dialog" data-id="updateUserPwdAdmin" data-height="220" data-width="563"  class="btn btn-default" href="#U('toUpdateUserPwd?uid=?',$vo.uid)"
+                        >重置密码</button>
+                        #if($!vo.user.status=="enable")
+                            <button   data-toggle="doajax"  data-confirm-msg="确定禁用吗？" title="禁用用户"  class="btn btn-default" href="#U('toStartStop?uid=?',$vo.uid)">禁用</button>
+                        #elseif($!vo.user.status=="disable")
+                            <button   data-toggle="doajax"  data-confirm-msg="确定启用吗？" title="启用用户"  class="btn btn-default" href="#U('toStartStop?uid=?',$vo.uid)">启用</button>
+                        #end
+                    </td>
+                #end
+
+
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+#page($page)

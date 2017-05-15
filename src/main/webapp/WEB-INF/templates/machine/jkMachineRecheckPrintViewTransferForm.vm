@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>体检单打印</title>
+    <script src="/myJs/es6-promise.auto.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/printExam/css/style-recheck-machine.css"/>
+    <!--疾控体检单打印-->
+    <script src="/myJs/html2canvas.min.js"></script>
+    <script src="../js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+    <script src="../assets/machineCss/js/sweetalert.min.js"></script>
+    <script src="../assets/printExam/js/JsBarcode.code128.min.js"></script>
+    <script src="/js/LocalServiceApi.js"></script>
+</head>
+<body>
+
+
+
+##<button id="jkMachineRecheckPrintViewTransferFormAction">打印</button>
+<div id="tk" class="jkMachineRecheckView" style="background: #ffffff;padding-top: 10px">
+
+    <table width="100%" style="text-align:center;">
+        <tbody>
+        <tr>
+            <td colspan="2" style="font-size: 28px;">从业人员预防性健康检查不合格告知书</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="ticket top" style="height: 300px;width: 560px">
+
+        <tbody>
+        <tr style="height: 102px;">
+            <td colspan="2" class="re-code">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="titleImgCode" alt="" style="width: 220px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">
+                        #if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr style="height: 80px;">
+            <td colspan="2">
+                <p style="font-size: 21px;">$!examMemberExam.name：</p>
+                <p style="font-size: 19px;  margin: 0px; padding: 0px; margin-top: -5px;height: 140px">&emsp;&emsp;
+                    $!resultString
+                </p>
+            </td>
+        </tr>
+
+        <tr style="height: 22px;">
+            <td class="t-r" style="padding-bottom: 0;font-size: 21px;">常熟市疾病预防控制中心</td>
+
+        </tr>
+        <tr style="height: 22px;">
+            <td class="t-r" style="padding-bottom: 0;font-size: 21px;">$!examMemberExam.examTimeShort</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border=0 cellspacing=0 class="inner-table" style="font-size: 26px;margin-bottom: 0px;margin-top: 20px">
+        <tr>
+            <td colspan="2" class="head">体 检 流 程</td>
+        </tr>
+        <tr>
+            <td class="head half">项&emsp;&emsp;目</td>
+            <td class="head half">完 成 情 况</td>
+        </tr>
+        <tr>
+            <td>&emsp;1.复检缴费$!examMemberExam.payMoney元</td>
+            <td style="text-align: center">
+                #if($isPay)
+                    已缴费
+                #end
+            </td>
+        </tr>
+
+        #foreach($vo in $resultList)
+            <tr>
+                <td>&emsp;$!vo.name</td>
+                <td></td>
+            </tr>
+        #end
+
+    </table>
+
+
+    <table style="margin-top: 20px">
+        <tr class="notice" >
+            <td colspan="2" style="height: 30px;font-size: 22px;">友情提示：</td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2" style="height: 30px;font-size: 22px;">&emsp;&emsp;体检完成5个工作日后，可凭身份证在大厅自助机上</td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2" style="height: 30px;font-size: 22px;">打印健康证，如有疑问请咨询工作人员。</td>
+        </tr>
+
+    </table>
+
+
+    <table class="ticket" style="margin-top:22px;margin-left: -10px;">
+        <tbody>
+        <tr>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="" style="width: 215px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">#if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="" style="width: 215px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">#if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="" style="width: 215px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">#if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="" style="width: 215px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">#if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<input type="hidden" id="examMemberId" value="$!examMemberExam.id">
+<img src="" id="s"/>
+
+
+</body>
+</html>
+
+
+<script>
+
+    JsBarcode(".tjCodeImg", "$!examMemberExam.examNumber", {displayValue:false,height:80,width:5});
+    JsBarcode(".titleImgCode", "$!examMemberExam.examNumber", {displayValue:false,height:80,width:3});
+
+    d = "";
+    var timeOutStr = 4000;
+
+    function machinePrintRecheckForm() {
+        html2canvas(document.getElementById("tk")).then(function(canvas) {
+            d = canvas.toDataURL();
+
+            s.src = d;
+            var i = d.indexOf(",");
+            d = d.substr(i + 1);
+
+//                var returnResult = printX.printImage(d, 200, 'com5', 115200);
+            localService.k532Print(d,function () {
+                var memeberExamId = $('#examMemberId').val();
+
+                parent.machinePrintSuccess(memeberExamId);
+            },function (msg) {
+                parent.machinePrintFail();
+
+            })
+        });
+
+
+
+
+
+    }
+
+    //
+    //    $('#jkMachineRecheckPrintViewTransferFormAction').click(function () {
+    //
+    //        var returnResult = printX.printImage(d, 200, 'com5', 115200);
+    //
+    //
+    //        if (returnResult) {
+    ////                $(this).alertmsg('ok', "打印成功");
+    //            alert("打印成功");
+    //
+    //            var memeberExamId = $('#memberExamId').val();
+    //
+    //            updatePhysicalPrint(memeberExamId);
+    //
+    //
+    //        } else {
+    ////                $(this).alertmsg('error', "打印失败");
+    ////                $.CurrentDialog.dialog('closeCurrent');
+    //            alert("打印失败");
+    //        }
+    //    });
+
+    ##    /**
+    ##     * 更新打印状态
+    ##     */
+    ##    function updatePhysicalPrint(memberExamId) {
+    ##        $.post("#U("/updatePhysicalPrint")",
+    ##                {
+    ##                    examMemberId: memberExamId
+    ##                },
+    ##                function (data) {
+    ##                    if (data.statusCode == 300) {
+    ##                        parentBack();
+    ##                        window.close();
+    ##
+    ##                    } else {
+    ##                        window.location.href = "http://" + window.location.host + "/machine/printExamSuccess.do";
+    ##                        window.close();
+    ##                    }
+    ##                });
+    ##    }
+
+    //    function parentBack() {
+    //
+    //        parent.clearBack();
+    //
+    //    }
+    machinePrintRecheckForm();
+
+</script>

@@ -1,0 +1,49 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+##            <label>科室名称：</label>
+##            <input type="text"  value="$!query.departmentName" name="departmentName" class="form-control" size="15">&nbsp;
+##
+##            <button type="submit" class="btn-default" >查询</button>&nbsp;
+##
+##            <button class="btn btn-default" href="javascript:;"
+##                    data-toggle="reloadsearch" data-clear-query="true"
+##            >清空查询</button>
+            &nbsp;&nbsp;&nbsp;
+            <button  href="#U('toAddIndexImage')" class="btn btn-default new-add-right"
+                     data-toggle="dialog"
+                     data-id="addSysLog"
+                     data-title="添加图标"
+                     data-width="600"
+                     data-height="430"
+            >&nbsp;添加图标&nbsp;</button>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">图标名称</th>
+            <th align="center" width="220">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr>
+                <td align="center">$!vo.title</td>
+                <td align="center">
+                    <button   data-toggle="dialog" data-id="updateExamIndexImage" data-width="600" data-height="430" class="btn btn-default" href="#U('toUpdateIndexImage?id=?',$vo.id)"
+                    >编辑</button>
+                    <button type="button" class="btn btn-default" href="#U('delete?id=?',$vo.id)"
+                            data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</button>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+</div>
+#page($page)

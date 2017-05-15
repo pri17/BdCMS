@@ -1,0 +1,55 @@
+<div class="bjui-pageContent">
+    <form action="#U('updateUser')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden" name="uid" value="$!user.uid"/>
+
+        <div class="form-group">
+            <label class="control-label x85">用户名：</label>
+            <input type="text"   name="username" value="$!user.username"
+                   data-rule="required" size="30"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">昵称：</label>
+            <input type="text"   name="nickname" value="$!user.nickname"
+                   data-rule="required" size="30"
+            />
+        </div>
+    ##        <div class="form-group">
+    ##            <label class="control-label x85">用户密码：</label>
+    ##            <input type="password"   name="password" value="$!user.password"
+    ##                   data-rule="required" size="30"
+    ##            />
+    ##        </div>
+##        <div class="form-group">
+##            <label class="control-label x85">昵称：</label>
+##            <input type="text"   name="nickname" value="$!user.nickname"
+##                   data-rule="" size="30"
+##            />
+##        </div>
+        <div class="form-group">
+            <label class="control-label x85">手机号码：</label>
+            <input type="text"   name="mobile" value="$!user.mobile"
+                   data-rule="required" size="30"
+                   data-rule="mobile" readonly
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">邮箱：</label>
+            <input type="text"   name="email" value="$!user.email"
+                   size="30" data-rula="email"
+            />
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+        <li><button type="submit"  class="btn-default" data-icon="save">保存</button></li>
+    </ul>
+</div>
+<script>
+
+</script>

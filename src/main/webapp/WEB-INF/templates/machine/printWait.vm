@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>常熟市疾病预防控制中心欢迎使用自助系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/machineCss/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/buttons.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/style.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+</head>
+<body class="print container">
+<a href="javascript: history.go(-1)" class="pull-left go-back button button-glow button-border button-primary burron-rounded">返回</a>
+
+<div class="main-content">
+    <h1>常熟市疾病预防控制中心</h1>
+    <p>欢迎使用自助系统</p>
+    <p class="pls-wait" id="pls-wait">请将身份证放置在感应区...</p>
+    <div>
+  <span class="count-down">
+    <span>倒计时</span>
+    <span class="time" id="countDown">30</span>
+    <span>秒</span>
+  </span>
+        <button id="backBtn">返回</button>
+    </div>
+</div>
+<script>
+
+    var secs = 30;
+    for(var i=1;i<=secs;i++) {
+        window.setTimeout("update(" + i + ")", i * 1000);
+    }
+    function update(num) {
+        if(num == secs) {
+            //返回上一层页面
+            window.history.go(-1);
+        }
+        else {
+            var printnr = secs-num;
+           $('#countDown').val(printnr);
+        }
+    }
+
+    //返回上一层
+    $('#backBtn').click(function () {
+        window.history.go(-1);
+    })
+</script>
+</body>
+</html>

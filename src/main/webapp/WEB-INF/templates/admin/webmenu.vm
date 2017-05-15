@@ -1,0 +1,14 @@
+<ul id="bjui-hnav-navbar">
+    <li class="active">
+        <a href="javascript:;" data-toggle="slidebar">
+            PAGE1</a>
+    </li>
+    <li>
+        <a href="javascript:;" data-toggle="slidebar">
+            PAGE2</a>
+    </li>
+    <li>
+        <a href="javascript:;" data-toggle="slidebar">
+            PAGE3</a>
+    </li>
+</ul>

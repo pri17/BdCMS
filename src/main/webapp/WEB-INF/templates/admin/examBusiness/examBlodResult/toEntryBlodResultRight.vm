@@ -1,0 +1,56 @@
+<div class="bjui-pageContent">
+    <style>
+
+    </style>
+
+    </br>
+    </br>
+    <input type="hidden" id="resultDescriptionId" />
+    <input type="hidden" id="descriptionId" />
+    <input type="hidden" id="descriptionVal" />
+    <input type="hidden" id="resultId" value="$!id" />
+    <input type="hidden" id="projectId" value="$!result.projectId"/>
+    <input type="text" name="tags" data-width="313px"  value="" data-toggle="tags" data-url="#U("findBlodDescription?id=?",$!id)" ><span class="middle red">*</span>&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-default" type="button" id="upBtn" data-toggle="dialog" data-id="entryblodResultTree" data-width="830" data-height="800" data-url="#U("toUpBlod?projectId=?",$!result.projectId)" >编辑</button>
+    <button class="btn btn-default" type="button" id="joinBtn" data-toggle="dialog" data-id="entryblodResultTwo" data-width="600" data-height="400" data-type="post"  data-url=""  onclick="joinBlod();">加入</button>
+
+</div>
+<div class="bjui-pageFooter">
+</div>
+<script>
+    $("input[name='tags']").on('aftercreated.bjui.tags', function(e, data) {
+        if(data.item){
+
+            // 当前选定项的值(object，具体值由返回JSON决定)
+            var description  = data.item.label;
+            $("#descriptionVal").val(description);
+            $("#descriptionId").val(data.item.value);
+        }else if(data.value){
+            var descriptionId = data.value;
+            $("#resultDescriptionId").val(descriptionId);
+            $("#descriptionVal").val(descriptionId);
+        }
+
+    })
+
+    // 加入描述
+    function joinBlod() {
+        var description = encodeURI(encodeURI($("#descriptionVal").val()));
+        var descriptionId = $("#descriptionId").val();
+        var projectId = $("#projectId").val();
+
+        if (description.length>0){
+
+            var url = "#U('toJoinBlod?')description="+description+"&descriptionId="+descriptionId+"&projectId="+projectId;
+            $('#joinBtn').attr("data-url",url);
+
+        }else{
+
+            $(this).alertmsg('error', '请输入相关术语!', {displayMode:'slide', displayPosition:'topcenter', okName:'确定', title:'错误提示'})
+        }
+
+
+
+    }
+
+</script>

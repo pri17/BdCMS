@@ -1,0 +1,156 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar heard-query">
+        ##            <label>机构代码：</label>
+        ##            <input type="text" id="customNo" value="$!query.agenciesCode" name="agenciesCode" class="form-control" size="10">&nbsp;
+
+
+
+            <label>工作单位名称：</label>
+            <input type="text" id="unitName" value="$!query.unitName" name="unitName" class="form-control" size="20">&nbsp;
+##            <div id="content"></div>
+            <button type="submit" class="btn btn-default">查询</button>
+            &nbsp;
+            <button class="btn btn-default" href="javascript:;"
+                    data-toggle="reloadsearch" data-clear-query="true"
+            >清空查询</button>
+            <button style="float: right;" href="#U('toAddExamUnit')" class="btn btn-default"
+                    data-toggle="dialog"
+                    data-id="addExamUnit"
+                    data-title="添加工作单位"
+                    data-width="600"
+                    data-height="190"
+                    >&nbsp;添加工作单位&nbsp;
+            </button>
+            <div class="clearfix"></div>
+        </div>
+
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table data-id="examUnit" class="table table-bordered table-top"
+           data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">工作单位名称</th>
+            <th align="center" width="320">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr>
+                <td align="center">$!vo.unitName</td>
+                <td align="center">
+                    <button data-toggle="dialog" data-id="updateExamPayItem" data-width="600" data-height="190" class="btn btn-default"
+                            href="#U('toUpdateExamUnit?id=?',$vo.id)"
+                    >编辑
+                    </button>
+                    <button type="button" class="btn btn-default" href="#U('delete?id=?',$vo.id)"
+                            data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除
+                    </button>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+</div>
+#page($page)
+
+
+<script>
+
+        getNavEle( document).ready(function(){
+
+
+//            getNavEle( "#unitName").autocomplete("businessSetting/examUnit/completeUnit.do?q="+getNavEle( "#unitName").val(),{
+//                dataType:"json",
+//                delay:20,
+//                minChars:0,
+//                width:250,
+//                scrollHeight:300,
+//                autoFill:true,
+//                multiple:true,
+//                parse: function(data) {
+//                    return $.map(data, function(row) {
+//                        return {
+//                            data: row,
+//                            value: row.unitName,
+//                            result: row.unitName
+//                        }
+//                    });
+//                },
+//                formatItem: function(row,i,max) {//格式化列表中的条目 row:条目对象,i:当前条目数,max:总条目数
+//                    return  row.unitName;
+//                },
+//                formatMatch: function(row,i,max) {//配合formatItem使用，作用在于，由于使用了formatItem，所以条目中的内容有所改变，而我们要匹配的是原始的数据，所以用formatMatch做一个调整，使之匹配原始数据
+//                    return row.unitName;
+//                },
+//                formatResult: function(row,i,max) {//定义最终返回的数据，比如我们还是要返回原始数据，而不是formatItem过的数据
+//                    return row.unitName;
+//                }
+//            }).result(function(event,row,formatted){
+//               alert(data.unitName);
+//            });
+
+            $.ajax({
+                contentType: "application/json",
+                url: "businessSetting/examUnit/completeUnit.do?q="+getNavEle( "#unitName").val(),
+                dataType: "json",
+                success: function (data) {
+                    if (data == null) {
+                    }
+                    else if (data != null ) {
+                        getNavEle( "#unitName").autocomplete(data, {
+                            minChars: 1,                    //最少输入字条
+                            max: 12,
+                            autoFill: false,                //是否选多个,用","分开
+                            mustMatch: false,               //是否全匹配, 如数据中没有此数据,将无法输入
+                            matchContains: true,            //是否全文搜索,否则只是前面作为标准
+                            scrollHeight: 220,
+                            width: 147,
+                            multiple: false,
+                            formatItem: function (row, i, max) {                    //显示格式
+                                return "<span style='width:72px;'>" + row.unitName + "</span>";
+                            },
+                            formatMatch: function (row, i, max) {               //以什么数据作为搜索关键词,可包括中文,
+                                return row.unitName;
+                            },
+                            formatResult: function (row) {                      //返回结果
+                                return row.unitName;
+                            }
+                        }).result(function (event, data, formatted) {
+                            getNavEle( "#unitName").val(data.unitName);
+                            //alert(data.unitName);
+                            //根据最终返回的数据做处理
+                        });
+                    }
+//                    else if (msg != null && msg.msg == 'login_timeout') {
+//                        alert('登入超时！');
+//                        window.location.href = '../Logout.aspx';
+//                    }
+                }
+            });
+        });
+
+
+    getNavEle( '#printRM').click(function(){
+
+        getNavEle( document).dialog({
+            target:"#print_exam_dialog",
+            title:"图片裁剪",
+            width:600,
+            height:700
+        })
+
+
+    });
+
+
+
+
+
+
+</script>

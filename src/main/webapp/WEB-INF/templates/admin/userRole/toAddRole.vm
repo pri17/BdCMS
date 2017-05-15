@@ -1,0 +1,189 @@
+<style>
+    .check-box input{
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+        margin-top: -3px;
+    }
+</style>
+<div class="bjui-pageContent">
+    <form action="#U('addRole')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+##        <input type="hidden" name="menus" v-model="menus" value="">
+        <input type="hidden" name="" value=""/>
+        <div class="form-group">
+            <label class="control-label x85">角色名：</label>
+            <input type="text" id="roleName"   name="role" value=""
+            data-rule="required;role;remote[#U('checkRoleName')]"  size="30"
+            />
+            <span class="middle red">*</span>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label x85">描述：</label>
+            <textarea cols="30" rows="2" name="description" value="" data-toggle="autoheight" style="height: 45px"></textarea>
+        </div>
+
+
+            <div id="layout-02" style="height:100%; overflow:hidden;" ms-controller="userRole">
+                <div  id="roleMenu" >
+##                    <input type="hidden" name="id" value="$!query.id"/>
+##                    <input type="hidden" name="menusList" v-model="menusList" value="">
+                     <input type="hidden" name="menusList"  ms-duplex="@menusList">
+
+##                    <div v-for=" rootMenu in tree" >
+                        <div ms-for="el in @tree" >
+                        <table ms-for="menu in el.childrend" class="table table-bordered table-hover table-striped table-top" id="item" style="width: 600px" >
+                            <tr ms-for="(cIndex,c) in menu.childrend" class="check-box">
+                                <td ms-if="cIndex==0" ms-attr="{rowspan:menu.childrend.length}" style="border: solid 1 black;width: 150px" class="check-box">
+
+                                    <input type="checkbox" style="width: 25px;height: 25px;" class="checkApp" ms-attr="{value:menu.id}" ms-duplex-number="@checkedList"  ms-on-click="@checkedAll(menu)"/>
+                                    <span>{{menu.name}}</span>
+                                </td>
+                                <td style="border: solid 1 black;width: 150px" class="check-box">
+
+                                    <input type="checkbox" style="width: 25px;height: 25px;"  ms-attr="{value:c.id}" ms-duplex-number="@checkedList"  ms-on-click="@checkedSecond(c)"/>
+                                    {{c.name}}
+                                </td>
+                                <td style="width: 384px;">
+                                    <span style="width: 166px;display: inline-block;" ms-for="(tIndex,t) in c.childrend"  >
+                                        <input  type="checkbox"  style="width: 25px;height: 25px;"
+                                                ms-attr="{value:t.id}"    ms-duplex-number="@checkedList"
+                                                ms-on-click="@checkedThir(t)">{{t.name}}
+                                       <span> <br ms-if="(tIndex+1)%2==0"/>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+    <div class="add-role-button">
+        <ul>
+            <li><button type="button" class="btn-close" >关闭</button></li>
+            <li><button type="submit"  class="btn-default" >保存</button></li>
+
+        </ul>
+    </div>
+                </div>
+            </div>
+##    <div class="bjui-pageFooter">
+##        <ul>
+##            <li><button type="button" class="btn-close" >关闭</button></li>
+##            <li><button type="submit"  class="btn-default" >保存</button></li>
+##        </ul>
+##    </div>
+
+    </form>
+</div>
+
+    <script>
+
+        userRoleVM.checkedList=[];
+        avalon.scan(document.body);
+
+
+##    $.getJSON("#U("/admin/menu/getMenuTree")",function (treeData, result) {
+##        var checkedMenus="$!checked";
+##        if(checkedMenus==""){
+##            checkedMenus="[]";
+##        }
+##        checkedMenus=eval(checkedMenus);
+##
+##        var roleMenuVm=  new Vue({
+##            el:"#roleMenu",
+##            data:{
+##                tree:treeData,
+##                checkedList:checkedMenus
+##            },
+##            methods:{
+##                isRoot:function (v) {
+##                    if(v.parentId >0){
+##                        return false;
+##                    }else{
+##                        return true;
+##                    }
+##                },
+####                checkedAll:function (el) {
+####                    if(this.checkedList.indexOf(el.id)<0){
+####                        //之前未选中，操作为选中操作
+####
+####                        this.checkedList.push(
+####                                el.id
+####                        );
+####                        this.checkedList.push(el.parentId);
+####                        for(var i=0;i<el.childrend.length;i++){
+####                            var c=el.childrend[i];
+####                            this.checkedList.push(c.id);
+####                            for(var j=0;j<c.childrend.length;j++){
+####                                var t=c.childrend[j];
+####                                this.checkedList.push(t.id);
+####                            }
+####                        }
+####
+####                    }else{
+####                        //之前选中，操作为，取消选中
+####                        this.checkedList.$remove(el.id);
+####                        for (var i=0;i<el.childrend.length;i++){
+####                            var c=el.childrend[i];
+####                            this.checkedList.$remove(c.id);
+####                            for(var j=0;j<c.childrend.length;j++){
+####                                var t=c.childrend[j];
+####                                this.checkedList.$remove(t.id);
+####                            }
+####                        }
+####                        for(var i=0;i<el.childrend.length;i++){
+####                            var c=el.childrend[i];
+####                            this.checkedList.$remove(c.id)
+####                            for(var j=0;j<c.childrend.length;j++){
+####                                var t=c.childrend[j];
+####                                this.checkedList.$remove(t.id);
+####                            }
+####                        }
+####                    }
+####                },
+####                checkedSecond:function (se) {
+####                    if(this.checkedList.indexOf(se.id)<0){
+####                        this.checkedList.push(
+####                                se.id
+####                        );
+####                        this.checkedList.push(se.parentId);
+####                        for(var j=0;j<se.childrend.length;j++){
+####                            var t=se.childrend[j];
+####                            this.checkedList.push(t.id);
+####                        }
+####                    }else {
+####                        this.checkedList.$remove(se.id);
+####                        if (this.checkedList.indexOf(se.id)<0){
+####                            for (var i=0;i<se.childrend.length;i++){
+####                                var t=se.childrend[i];
+####                                this.checkedList.$remove(t.id);
+####                            }
+####                        }
+####                        for(var j=0;j<se.childrend.length;j++){
+####                            var t=se.childrend[j];
+####                            this.checkedList.$remove(t.id);
+####                        }
+####                    }
+####                },
+####                checkedThir:function (th) {
+####                    if(this.checkedList.indexOf(th.id)<0){
+####                        this.checkedList.push(th.id);
+####                        this.checkedList.push(th.parentId);
+####
+####                    }else {
+####                        this.checkedList.$remove(th.id);
+####
+####                    }
+####                },
+##
+##
+##            },
+##            computed: {
+##                menusList: function () {
+##                    return JSON.stringify(this.$data.checkedList)
+##                }
+##            }
+##        })
+##    })
+</script>

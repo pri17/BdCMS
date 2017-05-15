@@ -1,0 +1,72 @@
+<div class="bjui-pageContent">
+    <form action="#U('addIndexImage')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <div class="form-group">
+            <label class="control-label x85">图标名称：</label>
+            <input type="text"  name="title" value=""
+                    size="20"
+            />
+            <span class="middle red">*</span>
+        </div>
+
+        <div>
+            <a id="headUploadBtnEa" href="javascript:void(0)" onclick="uploadSelectFile()"
+               class="btn btn-default"
+               style="width: 100px;display: inline-block;margin-left: 85px;margin-top: 16px;">上传图标</a>
+            <input id="uploadImageFile" type="file" style="display: none"/>
+            <input id="imgUrl" name="url" type="text" style="display: none"/>
+            <img id="eamemberIcon" name="url" class="eacontent-im"  src="$!examIndexImage.url"/>
+        </div>
+
+        <div class="add-role-button">
+            <ul>
+                <li><button type="button" class="btn btn-close" >关闭</button></li>
+                <li><button type="submit"  class="btn-default" >保存</button></li>
+            </ul>
+        </div>
+
+        <div id="image-cut-dialog-target" data-noinit="true" class="hide">
+
+            <div id="cutImageTarget" class="rel origin ma" style="text-align: center">
+                <img id="uploadImgCanvas" style="max-width: 480px;max-height: 500px;margin: auto"/>
+            </div>
+            <div style="margin-top: 10px;text-align: center">
+                <a href="javascript:cutImageSave()" class="btn btn-default">确定</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    function uploadSelectFile() {
+        return $('#uploadImageFile').click();
+    }
+    $('#uploadImageFile').change(function () {
+        var file=$('#uploadImageFile')[0].files[0];
+        var reader=new FileReader();
+        reader.onload= function (e) {
+            $('#uploadImgCanvas').attr('src', e.target.result);
+            $(document).dialog({
+                target: "#image-cut-dialog-target",
+                title: "剪裁照片",
+                width: 500,
+                height: 500
+            });
+
+            $('#uploadImgCanvas').cropper({
+
+            });
+        };
+        reader.readAsDataURL(file);
+    });
+    function cutImageSave() {
+        var c = $('#uploadImgCanvas').cropper('getCroppedCanvas');
+        var imageData= c.toDataURL();
+
+        $("#eamemberIcon").attr("src", imageData);
+        $("#imgUrl").val(imageData);
+        $("#image-cut-dialog-target").dialog("closeCurrent");
+    }
+</script>

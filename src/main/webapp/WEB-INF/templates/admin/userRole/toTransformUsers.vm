@@ -1,0 +1,24 @@
+## 未使用
+<div class="bjui-pageContent">
+    <form action="#U('transformUsers?id=?',$!role.id)"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden" name="fromId" value="$!role.id"/>
+        <div class="form-group">
+            <label class="control-label x85">角色：</label>
+            <select name="toId"  data-toggle="selectpicker" data-width="170">
+                #rootRoles($!role.id)
+            </select>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" >关闭</button></li>
+        <li><button type="submit"  class="btn-default" >保存</button></li>
+    </ul>
+</div>
+<script>
+
+</script>

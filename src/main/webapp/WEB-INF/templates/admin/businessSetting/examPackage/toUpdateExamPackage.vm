@@ -1,0 +1,74 @@
+<div class="bjui-pageContent">
+    <form action="#U('updateExamPackage')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden" name="id" value="$!examPackage.id"/>
+        <input id="projectId" type="hidden" name="projectId" value="$!examPackage.projectId"/>
+        <input id="projectIdNameStr" type="hidden" name="projectIdNameStr" value="$!examPackage.projectIdNameStr"/>
+
+        <div class="form-group">
+            <label class="control-label x85">体检套餐名称：</label>
+            <input type="text"   name="name" value="$!examPackage.name"
+                   data-rule="required;" size="30"
+            />
+            <span class="middle red">*</span>
+        </div>
+        <div class="form-group" id="projectChecked" ms-controller="projectPrice">
+            <label class="control-label x85">体检套餐项目：</label>
+            #foreach($vo in $!examProjectList)
+                <tr>
+                    <td><input style="width: 16px; margin-top: -6px;vertical-align:middle;margin-top:-2px; margin-bottom:1px;" type="checkbox" value="$!vo.id|$!vo.projectName" name="projectIds" ms-duplex="@checkedIds">$!vo.projectName</td>
+                </tr>&nbsp;&nbsp;
+            #end
+
+            <br/><br/>
+            <label class="control-label x85">体检套餐费用：</label>
+
+##            <span id="backPrice">{{@projectMoneyValue}}</span>
+            <input name="money" readonly="readonly" ms-duplex="@projectMoneyValue">
+
+        </div>
+        <div class="add-role-button">
+            <ul>
+                <li><button type="button" class="btn btn-close" >关闭</button></li>
+                <li><button type="submit"  class="btn-default" >保存</button></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<script>
+//    $(document).ready(function(){
+    //格式:5|戊肝,8|甲肝
+    var projectIdNameStr = $("#projectIdNameStr").val();
+    //格式:["5|戊肝", "8|甲肝"]
+    var idsList = projectIdNameStr.split(",");
+    var tP = "";
+    avalon.scan(document.body);
+    projectPriceVM.checkedIds=idsList;
+
+##    var examPackageBind = new Vue({
+##        el: '#projectChecked',
+##        data: function() {
+##            return {
+##                checkedIds: idsList
+##            }
+##        },
+##        computed: {
+##            totalPriceC: function () {
+##                $.getJSON("#U("/admin/businessSetting/examPackage/countPrice")",
+##                        {
+##                            projectIds:idsList.toString()
+##                        },
+##                        function (totalPrice) {
+##                            tP = totalPrice;
+##                            $("#backPrice").html(tP);
+##                        });
+##                return this.checkedIds;
+##            }
+##        }
+##    });
+
+//    });
+</script>

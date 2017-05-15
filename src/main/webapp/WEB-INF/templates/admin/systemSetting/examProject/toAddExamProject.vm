@@ -1,0 +1,31 @@
+<div class="bjui-pageContent">
+    <form action="#U('addExamProject')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <div class="form-group">
+            <label class="control-label x85">体检项目名称：</label>
+            <input class = "" type="text"   name="projectName" value="$!examProject.projectName"
+                   data-rule="required;remote[#U('checkProjectName')]" size="30"
+            />
+##            class = "row-input required"
+            <span class="middle red">*</span>
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">项目价格：</label>
+            <input type="text"   name="projectPrice" value="$!examProject.projectPrice"
+                   data-rule="required;number" size="30"
+            /><span class="middle red">*</span>
+        </div>
+        <div class="add-role-button">
+            <ul>
+                <li><button type="button" class="btn btn-close" >关闭</button></li>
+                <li><button type="submit"  class="btn-default" >保存</button></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<script>
+
+</script>

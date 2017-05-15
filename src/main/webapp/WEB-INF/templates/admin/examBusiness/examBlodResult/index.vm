@@ -1,0 +1,420 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" class="blodResultForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar" id="blodSearch">
+            <div style="margin-bottom: 10px;">
+                <label>&nbsp;&nbsp;&nbsp;体检号：</label>
+                <input type="text" id="examNumberBlod" value="$!examNumber" name="examNumber" class="form-control" size="17">&nbsp;&nbsp;
+                <label class="row-label">开始时间：</label>
+                <input type="text" name="beginTime" size="17" id="j_custom_issuedate" value="$!beginTime" data-toggle="datepicker" data-rule="date">&nbsp;&nbsp;
+
+
+                <label>录入状态：</label>
+                <select name="entryState" id="entryState"  data-toggle="selectpicker" data-width="170"
+                        data-emptytxt="请选择">
+                    <option value="">全部</option>
+                </select>
+                <button type="submit" class="btn-default" style="margin-left:10px; width: 70px;">查询</button>
+            </div>
+            <label>所在地区：</label>
+            <select name="areaId" id="addArea"  data-toggle="selectpicker" data-width="170"
+                    data-emptytxt="请选择">
+                <option value="">全部</option>
+                #LoadBean("examAreaService")
+                #foreach($el in $examAreaService.getRootExamArea())
+                    <option value="$!el.id"
+                        #if($!el.id==$!areaId)
+                            selected
+                        #end
+                    >
+                        $!el.areaName</option>
+                #end
+            #end
+            </select>&nbsp;&nbsp;
+            <label class="row-label">结束时间：</label>
+            <input type="text" name="endTime"  size="17" id="j_custom_indate" value="$!endTime" data-toggle="datepicker" data-rule="date">&nbsp;&nbsp;
+            <label>体检套餐：</label>
+            <select name="packageId" id="addPackage"  data-toggle="selectpicker" data-width="170"
+                    data-emptytxt="请选择">
+                <option value="">全部</option>
+                #LoadBean("examPackageService")
+                #foreach($el in $examPackageService.getAllPackage())
+                    <option  value="$!el.id"
+                        #if($!el.id==$!packageId)
+                             selected
+                        #end
+                    >$!el.name</option>
+                #end
+            #end
+            </select>&nbsp;&nbsp;
+            <button class="btn btn-default" id="" href="javascript:;" style="margin-left: 2px;"
+                                           data-toggle="reloadsearch" data-clear-query="true"
+                                           >清空查询</button>&nbsp;&nbsp;&nbsp;
+            <button style="width:88px;height: 66px!important; margin-top: -38px;" class="btn btn-default" id="defaultBlodResult" onclick="defaultSelectedResultBlod();"
+                    data-toggle="doajax" >默认值</button>
+        </div>
+    </form>
+</div>
+
+<div class="bjui-pageContent tableContent" >
+    <div style="float: left;height: 400px; overflow: auto;">
+        <div style="padding-right: 5px;padding-left: 0px;">
+            <table class="table table-bordered  table-top"  data-selected-multi="true">
+                <thead>
+                <tr class="first-tr-style">
+##                    <th align="center"><input id="allCheck" type="checkbox" style="width: 30px;float: left;line-height: 40px;" value=""/></th>
+                    <th style="width: 80px;" align="center">采样日期</th>
+                    <th style="width: 80px;" align="center">体检号</th>
+                    <th style="width: 80px;" align="center">检验号</th>
+                    <th style="width: 80px;" align="center">姓名</th>
+        ##            <th align="center">就业单位</th>
+        ##            <th align="center">户口所在地</th>
+        ##            <th align="center">体检日期</th>
+        ##            <th align="center">IHA</th>
+        ##            <th align="center">DDIA</th>
+        ##            <th align="center">COPT</th>
+        ##            <th align="center">粪检</th>
+                </tr>
+                </thead>
+                <tbody class="hover-color">
+                    #foreach($vo in $page.list)
+                    <tr align="center" name="entryblodResultTr" id="entryblodResultTr$!vo.memberExamId"  s="$!vo.id">
+##                        <td><input type="checkbox" style="width: 30px;float: left;line-height: 40px;" value="$!vo.id" /></td>
+                        <td style="width:70px;">$date.format('yyyy-MM-dd',$!vo.createTime)</td>
+                        <td style="width:70px;">$!vo.examNumber</td>
+##                        #if($!vo.examMember.sex==0)
+##                            <td>女</td>
+##                        #elseif($!vo.examMember.sex==1)
+##                            <td>男</td>
+##                        #end
+                        <td style="width:30px;">$!vo.testNumber</td>
+                        <td style="width:40px;">$!vo.memberExam.name</td>
+        ##                <td>$!vo.examMember.idCardAddress</td>
+        ##                <td>$!vo.examTime</td>
+        ##                <td>$!vo.IHA</td>
+        ##                <td>$!vo.DDIA</td>
+        ##                <td>$!vo.COPT</td>
+        ##                <td>$!vo.STOOL</td> id="entryblodResult$!vo.id" s="$!vo.id" data-toggle="dialog" data-width="830" data-height="500"  data-title="录入" data-url="#U('toEntryblodResult?id=?',$!vo.id)"
+
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-8" style="float: left; padding: 0;">
+        <table class="table table-bordered table-top" data-selected-multi="true">
+            <thead>
+            <tr class="first-tr-style">
+                <th align="center">项目名称</th>
+                <th align="center">体检结果</th>
+                <th style="width: 80px;" align="center">合格标志</th>
+                <th style="width: 62px;" align="center">判断人</th>
+                <th align="center">判断日期</th>
+                <th align="center">备注</th>
+                <th align="center">复检标志</th>
+            ##            <th align="center">IHA</th>
+            ##            <th align="center">DDIA</th>f
+            ##            <th align="center">COPT</th>
+            ##            <th align="center">粪检</th>
+            </tr>
+            </thead>
+            <tbody id="entryblodResultRight" class="hover-color">
+                #foreach($vo in $!blodIntestinalList)
+                ##                        #if($!vo.projectId!=7)
+                <tr  align="center" id="entryblodResultRightTr$!vo.id" s="$!vo.id" data-id="entryblodResultOne" data-toggle="dialog" data-width="850" data-height="800"  data-title="查看" data-url="#U('toUpExamResult?id=?',$!vo.id)" >
+                ##                            #else <tr align="center">
+                ##                        #end
+                    <td style="width:64px;">$!vo.projectName</td>
+                    #if(!$!vo.examResult)
+                        <td style="width:70px;"></td>
+                    #else
+                        <td style="width:70px;">$!vo.examResult</td>
+                    #end
+                    #if($!vo.isQualified==0)
+                        <td style="width:50px;">未判断</td>
+                    #elseif($!vo.isQualified==1)
+                        <td style="width:50px;">合格</td>
+                    #elseif($!vo.isQualified==2)
+                        <td style="width:50px;">不合格</td>
+                    #elseif($!vo.isQualified==3)
+                        <td style="width:50px;">已采集</td>
+                    #end
+                    <td style="width:50px;">$!vo.doctorName</td>
+                    #if(!$!vo.judgeTime)
+                        <td style="width:70px;"></td>
+                    #else
+                        <td style="width:70px;">$date.format('yyyy-MM-dd',$!vo.judgeTime)</td>
+                    #end
+                    <td style="width:120px;">$!vo.remark</td>
+                    #if($!vo.recheckTag==0)
+                        <td style="width:50px;">初检</td>
+                    #else
+                        <td style="width:50px;">$!vo.recheckTag次复检</td>
+                    #end
+                ##                <td>$!vo.DDIA</td>
+                ##                <td>$!vo.COPT</td>
+                ##                <td>$!vo.STOOL</td>
+
+                </tr>
+                #end
+            </tbody>
+        </table>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<script>
+
+    getNavEle( "#examNumberBlod").on("keydown",function(event){
+        var examNumber = getNavEle( "#examNumberBlod").val();
+
+            var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+            var code = theEvent.keyCode;
+            if (code == 13) {
+            $.getJSON("#U('checkIsCollect')",
+                    {examNumber:examNumber,type:""},function(data){
+                        if(data.errorMsg){
+                            getNavEle( this).alertmsg("error",data.errorMsg);
+                            getNavEle( '#examNumberBlod').focus();
+                            return false;
+                        }
+                    });
+        };
+    });
+
+    var intervalTimer = null;
+
+    getNavEle( "tr[name='entryblodResultTr']").click(function(){
+        var blodId = getNavEle( this).attr("s");
+        clearTimeout(intervalTimer); //取消上次延时未执行的方法
+        intervalTimer = setTimeout(function () {
+            $.post("#U('findSelectedBlodDetail')",
+                    {blodId:blodId},function(data){
+                        if(data) {
+                            data = $.parseJSON(data);
+                            var html="";
+                            var entryblodResultRight = getNavEle( '#entryblodResultRight');
+                            getNavEle( '#entryblodResultRight').empty();
+                            for(var i=0;i<data.length;i++){
+//                            html+="<tbody id='entryblodResultRight'>";
+                                var entryblodResult = data[i];
+                                html+=" <tr  align='center' data-id='entryblodResultOne' id='entryblodResultRightTr"+entryblodResult.id+"' s='"+entryblodResult.examBlodId+"' data-toggle='dialog' data-width='830' data-height='800'  data-title='查看' data-url='#U('toUpExamResult?')id="+entryblodResult.id+"'>";
+                                html+="<td style='width:50px;'>"+entryblodResult.projectName+"</td>";
+                                if(typeof(entryblodResult.examResult)=='undefined'){
+                                    html+="<td style='width:70px;'></td>";
+                                }else{
+                                    html+="<td style='width:70px;'>"+entryblodResult.examResult+"</td>";
+                                }
+                                if(entryblodResult.isQualified==0) {
+                                    html += "<td style='width:30px;'>未判断</td>";
+                                }else if(entryblodResult.isQualified==1){
+                                    html += "<td style='width:30px;'>合格</td>";
+                                }else if(entryblodResult.isQualified==2) {
+                                    html += "<td style='width:30px;'>不合格</td>";
+                                }else if(entryblodResult.isQualified==3) {
+                                    html += "<td style='width:30px;'>已采集</td>";
+                                }
+                                if(typeof(entryblodResult.doctorName)=='undefined'){
+                                    html+="<td style='width:30px;'></td>";
+                                }else{
+                                    html+="<td style='width:30px;'>"+entryblodResult.doctorName+"</td>";
+                                }
+                                if(typeof(entryblodResult.judgeTime)=='undefined'){
+                                    html+="<td style='width:70px;'></td>";
+                                }else{
+                                    html+="<td style='width:70px;'>"+format(entryblodResult.judgeTime, 'yyyy-MM-dd')+"</td>";
+                                }
+//                            html+="<td>"+entryblodResult.decideTime+"</td>";
+                                if(typeof(entryblodResult.remark)=='undefined'){
+                                    html+="<td style='width:120px;'></td>";
+                                }else{
+                                    html+="<td style='width:120px;'>"+entryblodResult.remark+"</td>";
+                                }
+                                if(entryblodResult.recheckTag==0) {
+                                    html += "<td style='width:50px;'>初检</td>";
+                                }else{
+                                    html += "<td style='width:50px;'>"+entryblodResult.recheckTag+"次复检</td>";
+                                }
+                                html+="</tr>";
+
+//                            html+="</tbody>";
+                            }
+                            entryblodResultRight.append(html);
+                        }else{
+                            getNavEle( '#entryblodResultRight').empty();
+                        }
+                    });
+        }, 300);
+    })
+
+    /**
+     * 鼠标移到左侧血检信息列请求的血检结果信息；todo待改为单击
+     */
+    getNavEle( "tr[name='entryblodResultTr']").dblclick(function(){
+        var id = getNavEle( this).attr("s");
+        clearTimeout(intervalTimer); //取消上次延时未执行的方法
+        getNavEle( document).dialog({id:'entryBlodResultDialog',width:'850',height:'520', url:"#U('toEntryblodResult?')id="+id, title:'录入'});
+
+    });
+
+    // 毫秒数转日期
+    var format = function(time, format){
+        var t = new Date(time);
+        var tf = function(i){return (i < 10 ? '0' : '') + i};
+        return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a){
+            switch(a){
+                case 'yyyy':
+                    return tf(t.getFullYear());
+                    break;
+                case 'MM':
+                    return tf(t.getMonth() + 1);
+                    break;
+                case 'mm':
+                    return tf(t.getMinutes());
+                    break;
+                case 'dd':
+                    return tf(t.getDate());
+                    break;
+                case 'HH':
+                    return tf(t.getHours());
+                    break;
+                case 'ss':
+                    return tf(t.getSeconds());
+                    break;
+            }
+        })
+    }
+
+    /**
+     * 选中
+     */
+    getNavEle( "#allCheck").on("click",function(e){
+        if(getNavEle( this).attr("checked")) {
+            getNavEle( "[type='checkbox']").each(function(){
+                getNavEle( this).attr("checked",'true');
+            });
+        } else {
+            getNavEle( "[type='checkbox']").each(function(){
+                getNavEle( this).removeAttr("checked");
+            });
+        }
+    });
+
+##    function defaultSelectedResultBlod(){
+##        var resultIds = "";
+##        getNavEle( "tbody [type='checkbox']").each(function(){
+##            if (getNavEle( this).attr("checked")) {
+##                resultIds += getNavEle( this).val()+",";
+##            }
+##            console.info(resultIds);
+##        });
+##        getNavEle( "#defaultSelectedResult").attr("data-url","#U("defaultSelectedResult?resultIds=")"+resultIds);
+##    };
+
+    //默认值操作
+    function defaultSelectedResultBlod(){
+        var beginTime = getNavEle( "#blodSearch #j_custom_issuedate").val();
+        var endTime = getNavEle( "#blodSearch #j_custom_indate").val();
+        var entryState = getNavEle( "#blodSearch #entryState").val();
+        var areaId = getNavEle( "#blodSearch #addArea").val();
+        var packageId = getNavEle( "#blodSearch #addPackage").val();
+        var examNumber = getNavEle( "#blodSearch #examNumberBlod").val();
+##        getNavEle( "#defaultBlodResult").attr("data-url","#U('defaultSelectedResult?')beginTime="+beginTime+"&endTime="+
+##                endTime+"&entryState="+entryState+"&areaId="+areaId+"&packageId="+packageId+"&examNumber="+examNumber+"&type=blod");
+        getNavEle( document).bjuiajax("doAjax",{url:"#U('defaultSelectedResult?')beginTime="+beginTime+"&endTime="+
+        endTime+"&entryState="+entryState+"&areaId="+areaId+"&packageId="+packageId+"&examNumber="+examNumber+"&type=blod",
+            confirmMsg:"确定要执行此操作吗？未录入的结果会被置为合格！",
+            callback:"defaultBlodResultCallback"});
+    };
+
+    //默认值操作回调
+    function defaultBlodResultCallback(){
+        getNavEle( ".blodResultForm").submit();
+    };
+
+
+    function saveBlodResult(){
+        var results = {};
+        getNavEle( "#entry_blod_result tr:gt(0)").each(function(i){
+            var data = new Object();
+            getNavEle( this).find("select[jsonName],input[jsonName]").each(function(){
+                var name = getNavEle( this).attr("jsonName");
+                if(name=="isQualified"){
+                    if(getNavEle( this).is(":checked")){
+                        data[name]="1";
+                    }else{
+                        data[name]="2";
+                    }
+                }else{
+                    data[name]= getNavEle( this).val();
+                }
+
+            });
+            results[i]=data;
+        });
+        results=JSON.stringify(results);
+
+        $.post("#U('/admin/examManage/examResult/entryResultDecide')",
+                {results:results},function(data){
+                    data= $.parseJSON(data);
+                    if(data) {
+                        getNavEle( this).alertmsg("ok","录入成功！")
+                        getNavEle( document).dialog("close","entryBlodResultDialog");
+                        getNavEle( ".blodResultForm").submit();
+                    }else{
+                    }
+                });
+
+    };
+
+    Array.prototype.remove=function(obj){
+        for(var i =0;i <this.length;i++){
+            var temp = this[i];
+            if(temp == obj){
+                for(var j = i;j <this.length;j++){
+                    this[j]=this[j+1];
+                }
+                this.length = this.length-1;
+            }
+        }
+    };
+
+    function upExamResult(){
+        var upIdLength = getNavEle( "#upResultDescription input[name='upIdLength']").val();
+        var updescription = getNavEle( "#upResultDescription input[name='upDescription']").val();
+        var upId = getNavEle( "#upResultDescription input[name='upId']").val();
+        var examId = getNavEle( "input[name='examId']").val();
+
+//        if(typeof(upIdLength)=="undefined"||upIdLength=="" ){
+//            getNavEle( this).alertmsg("error","请选择一项！");
+//            return false;
+//        }
+
+        $.post("#U('upExamResult')",
+                {
+                    upIdLength:upIdLength,
+                    updescription:updescription,
+                    upId:upId,
+                },function(data){
+                    data= $.parseJSON(data);
+//                    alert(JSON.stringify(data));
+                    if(data) {
+                        if(data.statusCode==300){
+                            getNavEle( this).alertmsg("error",data.message);
+                            return false;
+                        }else{
+                            getNavEle( document).dialog("close","entryblodResultOne");
+                            setTimeout(function(){
+                                getNavEle( "#entryblodResultTr"+examId).click();
+                            },1000);
+                        }
+
+                    }
+                });
+
+    };
+
+</script>
+
+#page($page)

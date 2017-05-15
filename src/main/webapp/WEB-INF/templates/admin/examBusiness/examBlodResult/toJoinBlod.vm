@@ -1,0 +1,55 @@
+<div class="bjui-pageContent">
+    <form action="#U('joinBlod')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden"  name="projectId" value="$!projectId"/>
+        <input type="hidden" name="descriptionId" value="$!descriptionId"/>
+        <div class="form-group">
+            <br/>
+            <label class="control-label x85">项目名称：</label>
+            血检检查
+
+        ##            <label class="control-label x85"></label>
+        ##            <textarea style="margin-left: 108px;" cols="45" rows="10" name="content" value="" data-toggle="autoheight"></textarea>
+        </div>
+##        <div class="form-group">
+##            <br/>
+##            <label class="control-label x85">合格标记：</label>
+##            #if($!qualified==0)
+##                <td>不合格</td>
+##            #elseif($!qualified==1)
+##                <td>合格</td>
+##            #end
+##        </div>
+    ##        <div class="form-group">
+    ##            <br/>
+    ##            <label class="control-label x85">描述：</label>
+    ##            <span>有病确定要将以上信息添加到</span>
+    ##        </div>
+        <div class="form-group">
+            <br/>
+            <label class="control-label x85">描述：</label>
+            <textarea style="border:0px;" cols="30" rows="3" readonly name="description"  data-toggle="">$!description </textarea>
+        </div>
+        <div class="form-group">
+            <br/>
+            <br/>
+            <br/>
+            <span style="font-weight: bold;margin-left:70px;font-size: 15px;">确定要将以上信息添加到体检用语表中吗？</span>
+
+        </div>
+    </form>
+    <div class="add-role-button">
+        <ul>
+            <li><button type="button" class="btn btn-close" >关闭</button></li>
+            <li><button type="submit"  class="btn-default" >保存</button></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    //    $('#closeMedical').on('click',function(){
+    //        $('#freshMedical').click();
+    //    });
+</script>

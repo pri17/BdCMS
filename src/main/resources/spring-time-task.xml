@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--&lt;!&ndash; 每天更新流水号的时间 如果发现执行的时间大于数据库的时间 则进行清0操作  每天 00:00分执行&ndash;&gt;-->
+    <!--<bean id="flowNumberTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
+        <!--<property name="jobDetail" ref="flowNumberJobDetail"/>-->
+        <!--&lt;!&ndash;定义执行时间&ndash;&gt;-->
+        <!--<property name="cronExpression" value="0 0 0 * * ?" />-->
+    <!--</bean>-->
+
+    <!--<bean id="flowNumberJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">-->
+        <!--<property name="durability" value="true" />-->
+        <!--<property name="jobClass" value="com.bidanet.bdcms.job.FlowNumberJob"></property>-->
+        <!--&lt;!&ndash; 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 &ndash;&gt;-->
+    <!--</bean>-->
+
+
+    <!-- 每天对体检的人员进行自动审核，合格进健康证 不合格进复检 未判断则不处理  每天 12 18分执行-->
+    <bean id="autoResultDecideTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="autoResultDecideJobDetail"/>
+        <!--定义执行时间-->
+        <property name="cronExpression" value="0 0 12,18 * * ? " />
+    </bean>
+
+    <bean id="autoResultDecideJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="durability" value="true" />
+        <property name="jobClass" value="com.bidanet.bdcms.job.AutoResultDecideJob"></property>
+        <!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+    </bean>
+
+    <!--&lt;!&ndash; 每半个小时执行一次，检查未全部完成体检项目的微信注册人员，并进行推送  每天 6:00执行&ndash;&gt;-->
+    <!--<bean id="checkExamFinishTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
+        <!--<property name="jobDetail" ref="checkExamFinishJobDetail"/>-->
+        <!--&lt;!&ndash;定义执行时间&ndash;&gt;-->
+        <!--<property name="cronExpression" value="* * * * 1/2 ? " />-->
+    <!--</bean>-->
+
+    <!--<bean id="checkExamFinishJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">-->
+        <!--<property name="durability" value="true" />-->
+        <!--<property name="jobClass" value="com.bidanet.bdcms.job.CheckExamFinishJob"></property>-->
+        <!--&lt;!&ndash; 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 &ndash;&gt;-->
+    <!--</bean>-->
+
+
+
+
+
+
+
+    <!-- 定义核心调度器 -->
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <!-- 延时启动，这个很重要，必须要有足够长的时间让你的应用先启动完成后再让 Scheduler启动，
+       这里设置30秒,如果你的应用启动时间较长，要相应增加startupDelay的时间-->
+        <!-- <property name="startupDelay" value="30"/> -->
+        <property name="triggers">
+            <list>
+                <!--<ref bean="flowNumberTrigger"/>-->
+                <ref bean="autoResultDecideTrigger"/>
+                <!--<ref bean="checkExamFinishTrigger"/>-->
+                <ref bean="autoNewAndOldDataExchangeTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+
+
+
+
+
+
+
+<!--新老数据对接定时器-->
+
+    <!-- -->
+    <bean id="autoNewAndOldDataExchangeTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="autoNewAndOldDataExchangeJobDetail"/>
+        <!--定义执行时间-->
+        <property name="cronExpression" value="0 0 12,18 * * ?" />
+    </bean>
+
+    <bean id="autoNewAndOldDataExchangeJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="durability" value="true" />
+        <property name="jobClass" value="com.bidanet.bdcms.job.AutoNewAndOldDataExchangeJob"></property>
+        <!-- 是否允许任务并发执行。当值为false时，表示必须等到前一个线程处理完毕后才再启一个新的线程 -->
+    </bean>
+</beans>

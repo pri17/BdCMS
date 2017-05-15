@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    var url="#U('menus')";
+    function do_open_layout01(event, treeId, treeNode) {
+//        console.log()
+//        if (treeNode.isParent) {
+//            var zTree = $.fn.zTree.getZTreeObj(treeId)
+//
+//            zTree.expandNode(treeNode)
+//            return
+//        }
+
+        var loadUrl=url+"?parentId="+treeNode.id;
+        $("#layout-tree01").bjuiajax('doLoad',{
+            target:"#layout-01",
+            url:loadUrl
+        })
+
+        event.preventDefault()
+    }
+</script>
+<div class="bjui-pageContent">
+    <div style="float:left; width:200px;">
+        <ul id="layout-tree01" class="ztree" data-toggle="ztree" data-expand-all="true" data-on-click="do_open_layout01">
+            #foreach($vo in $page.list)
+                <li data-id="$vo.id" data-pid="$vo.parentId"    >$vo.name</li>
+            #end
+        </ul>
+    </div>
+    <div style="margin-left:210px; height:99.9%; overflow:hidden;">
+        <div style="height:100%; overflow:hidden;">
+            <fieldset style="height:100%;">
+                <div id="layout-01" style="height:100%; overflow:hidden;">
+
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>

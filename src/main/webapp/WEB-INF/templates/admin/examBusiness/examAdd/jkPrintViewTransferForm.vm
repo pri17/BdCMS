@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>体检单打印</title>
+    <link rel="stylesheet" type="text/css" href="../../../assets/printExam/css/style-desktop.css" />
+    <!--疾控体检单打印-->
+    <script src="../../../assets/printExam/js/html2canvas.js"></script>
+    <script src="../../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../../assets/printExam/js/JsBarcode.code128.min.js"></script>
+    <script src="/js/LocalServiceApi.js"></script>
+</head>
+<body >
+##<object id="printX" classid="clsid:8d7d8518-ca58-4863-b94d-3c616fda7b35" width="0" height="0" align="center" HSPACE=0 VSPACE=0></object>
+##<button  id="jkPrintViewTransferFormAction" >打印</button>
+
+
+<div id="tk" class="jkPrintView" style="background: #ffffff">
+
+    <table width="100%" style="text-align:center">
+        <tbody >
+        <tr >
+            <td colspan="2" style="font-size: 28px;" >从业人员预防性健康检查流转单</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="ticket top" style="height: 500px" >
+
+        <tbody>
+        <tr>
+            <td>
+                <span class="item" style="font-size: 21px;">体 检 号：</span>
+                <dl class="bar-code" style="margin: 0px">
+                    <dt class="bar-img">
+#*                        <img src="$!examMemberExam.examNumberIcon" alt="">*#
+                        <img class="tjCodeImg" alt="">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">
+                        #if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber
+                    </dd>
+                </dl>
+            </td>
+            <td>
+                <dl style="margin-top: 0px;margin-bottom: 0px;">
+                    <dt style="height: 88px;line-height: 100px;font-size: 21px;font-weight:normal;">
+                        姓&emsp;名：<span class="name" style="font-size: 21px;">$!examMemberExam.name</span>
+                    </dt>
+                    <dd style="width:80px;font-size: 21px;" >
+                        性&emsp;别：<span class="sex" style="font-size: 21px;">$!examMemberExam.sexStr</span>
+                    </dd>
+                </dl>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="font-size: 21px;">
+                身份证号：<span class="id-card" style="font-size:23px" >$!examMemberExam.idCardNum</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="font-size: 21px;">
+                工作单位：<span class="work-unit" style="font-size: 21px;">$!examMemberExam.workUnit</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 21px;">
+                体检日期：<span class="exam-date" style="font-size: 21px;">$!examMemberExam.examTimeShort</span>
+            </td>
+            <td  style="font-size: 21px;">
+                行  业：<span class="vocation" id="hyText" style="font-size: 21px;">$!examMemberExam.categoryName</span>
+            </td>
+        </tr>
+
+        <tr style="height:320px">
+            <td colspan="2">
+                <table border=0 cellspacing=0 class="inner-table" style="font-size: 24px;margin-bottom: 2px;">
+                    <tr>
+                        <td colspan="2" class="head" style="font-size: 24px;">体 检 流 程</td>
+                    </tr>
+                    <tr>
+                        <td class="head half" style="font-size: 24px;">项&emsp;&emsp;目</td>
+                        <td class="head half" style="font-size: 24px;">完 成 情 况</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 24px;">&emsp;1.缴费$!examMemberExam.payMoney元</td>
+                        <td  style="text-align: center">
+                            #if($isPay)
+                                已缴费
+                            #end
+                        </td>
+                    </tr>
+                    #foreach($examP in $examProject)
+                        <tr>
+                            <td style="font-size: 24px;">&emsp;$examP</td>
+                            <td  style="text-align: center">
+                               #* #if($isPay)
+                                    已缴费
+                                #end*#
+                            </td>
+                        </tr>
+                    #end
+                </table>
+            </td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2">友情提示：</td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2">&emsp;&emsp;体检完成5个工作日后，可凭身份证在大厅自助机上</td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2">打印健康证，如有疑问请咨询工作人员。</td>
+        </tr>
+        </tbody>
+    </table>
+    #* 为了打印需要。*#
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+
+    <table class="ticket" style="margin-top: 5px;width: 550px;height: 400px;
+    margin-left: 0px;">
+        <tbody>
+        <tr>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">#if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">#if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">#if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">#if($!tag)<span>*</span>&nbsp;#end$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<input type="hidden" id="examMemberId" value="$!examMemberExam.id">
+<img src="" id="s" style="float: right;"/>
+
+
+
+</body>
+</html>
+
+<script>
+    JsBarcode(".tjCodeImg", "$!examMemberExam.examNumber",{displayValue:false,height:80,width:5});
+
+    ////    alert($("#tk").outerHeight());
+    //    d="";
+    //    html2canvas(document.getElementById("tk"), {
+    //        height:$("#tk").outerHeight(),
+    //        onrendered: function(canvas) {
+    //            d = canvas.toDataURL();
+    //
+    //            s.src=d;
+    //            var i = d.indexOf(",");
+    //            d = d.substr(i + 1)
+    //        }
+    //    });
+    //
+    //
+    //        $('#jkPrintViewTransferFormAction').click(function () {
+    //
+    ////            alert('intoJkPrint');
+    //
+    //            var returnResult = printX.printImage(d, 200, 'com5', 115200);
+    //
+    //
+    //            if (returnResult) {
+    //                $(this).alertmsg('ok', "打印成功");
+    ////                $(this).close();
+    //                $.CurrentDialog.dialog('closeCurrent');
+    //            } else {
+    //                $(this).alertmsg('error', "打印失败");
+    //
+    //                $.CurrentDialog.dialog('closeCurrent');
+    //            }
+    //        })
+
+    d="";
+
+
+    function printExamAddForm(){
+
+        html2canvas(document.getElementById("tk"), {
+            height:$("#tk").outerHeight(),
+            onrendered: function(canvas) {
+
+                d = canvas.toDataURL();
+
+                s.src=d;
+                var i = d.indexOf(",");
+                d = d.substr(i + 1);
+
+//                var returnResult = printX.printImage(d, 170, 'com5', 115200);
+
+                localService.print(d,function () {
+                    var memeberExamId = $('#examMemberId').val();
+
+                    parent.examAddPrintSuccess(memeberExamId);
+
+                },function () {
+                    parent.examAddPrintFail();
+                })
+
+
+
+            }
+        });
+
+
+    }
+
+//    printExamAddForm();
+
+    bowerPrint.rmPrint();
+</script>

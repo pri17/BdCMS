@@ -1,0 +1,54 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+            <label>机构代码：</label>
+            <input type="text" id="customNo" value="$!query.agenciesCode" name="agenciesCode" class="form-control" size="10">&nbsp;
+            <label>体检机构：</label>
+            <input type="text" id="customNo" value="$!query.agenciesName" name="agenciesName" class="form-control" size="10">&nbsp;
+
+            <button type="submit" class="btn btn-default" >查询</button>&nbsp;
+            <button class="btn btn-default" href="javascript:;"
+               data-toggle="reloadsearch" data-clear-query="true"
+               >清空查询</button>
+            &nbsp;&nbsp;&nbsp;
+            <button href="#U('toAddAgencies')" class="btn btn-default new-add-right"
+               data-toggle="dialog"
+               data-id="addUser"
+               data-title="新增"
+               data-width="600"
+               data-height="270"
+            >&nbsp;新增&nbsp;</button>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">机构代码</th>
+            <th align="center">体检机构</th>
+            <th align="center">地段区域</th>
+            <th align="center" width="220">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr>
+                <td align="center">$!vo.agenciesCode</td>
+                <td align="center">$!vo.agenciesName</td>
+                <td align="center">$!vo.areaName</td>
+                <td align="center">
+                    <button   data-toggle="dialog" data-id="updateUser" data-width="600" data-height="270"  class="btn btn-default" href="#U('toUpdateAgencies?id=?',$vo.id)"
+                       >编辑</button>
+                    <button type="button" class="btn btn-default" href="#U('delete?id=?',$vo.id)"
+                       data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</button>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+</div>
+#page($page)

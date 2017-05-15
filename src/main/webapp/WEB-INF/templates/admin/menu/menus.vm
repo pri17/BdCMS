@@ -1,0 +1,49 @@
+
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('menus?parentId=?',$!query.parentId)" method="post">
+        #pageInput($page)
+        <div class="bjui-searchBar">
+            <label>菜单名称：</label>
+            <input type="text" id="role" value="$!query.name" name="name" class="form-control" size="10">&nbsp;
+            <input type="hidden" value="$!query.id" name="id" class="form-control"/>
+            <button type="submit" class="btn-default" data-icon="search">查询</button>&nbsp;
+            <a class="btn btn-orange" href="javascript:void(0);"
+               data-toggle="reloadsearch" data-clear-query="true"
+               data-icon="undo">清空查询</a>
+            <a href="#U('toAddMenu?parentId=?',$!query.parentId)" class="btn btn-default"
+               data-toggle="dialog"
+               data-id="addMenu"
+               data-title="添加菜单"
+            >&nbsp;新建&nbsp;</a>
+        </div>
+
+    </form>
+</div>
+<div class="bjui-pageContent tableContent" >
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true">
+        <thead>
+        <tr >
+            <th>菜单名称</th>
+            <th>URL</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($vo in $page.list)
+            <tr>
+                <td>$!vo.name</td>
+                <td>$!vo.url</td>
+
+                <td>
+                    <a   data-toggle="dialog" data-id="menu" data-width="600"
+                         class="btn btn-green" href="#U('toUpdateMenu?id=?',$vo.id)">编辑</a>
+                    <a type="button" class="btn btn-red" href="#U('deleteMenus?id=?',$vo.id)"
+                       data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</a>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+
+#page($page)

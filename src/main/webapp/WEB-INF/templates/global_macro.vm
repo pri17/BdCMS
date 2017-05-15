@@ -1,0 +1,343 @@
+##分页 样式宏
+#macro(page $page)
+<div class="bjui-pageFooter">
+    <div class="pages" style="float: left">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="10000">全部</option>
+            </select>
+        </div>
+        <span>&nbsp;条，共 $!page.total 条</span>
+    </div>
+    <div style="float: right" class="pagination-box paging-device" data-toggle="pagination"
+         data-total="$!page.total" data-page-size="$!page.pageSize"
+         data-page-current="$!page.pageCurrent">
+    </div>
+    <div style="clear: both"></div>
+</div>
+#end
+##分页隐藏域宏
+#macro(pageInput $page)
+<input type="hidden" name="pageSize" value="$!page.pageSize">
+<input type="hidden" name="pageCurrent" value="$!page.pageCurrent">
+#end
+
+
+#macro(rootCategory $categiryId)
+    #LoadBean("categoryService")
+        #foreach($rootVo in $categoryService.getRoot())
+        <option value="$rootVo.id"
+            #if($rootVo.id==$categiryId)
+                selected
+            #end
+        >
+
+            $rootVo.name
+        </option>
+        #end
+    #end
+#end
+
+
+#macro(rootArea $categiryId)
+
+    #LoadBean("areaService")
+    #foreach($rootVo in $areaService.getRoot())
+    <option value="$rootVo.id"
+        #if($rootVo.id==$categiryId)
+            selected
+        #end
+    >
+
+        $rootVo.name
+    </option>
+    #end
+#end
+#end
+
+#macro(rootAreaCity $aPraentId $categiryId)
+    #LoadBean("areaService")
+    #foreach($rootVo in $areaService.getOpenCityByPid($aPraentId))
+    <option value="$rootVo.id"
+        #if($rootVo.id==$categiryId)
+            selected
+        #end
+    >
+
+        $rootVo.name
+    </option>
+    #end
+#end
+#end
+
+#macro(rootAreaDistrict $aPraentId $categiryId $dDistrictId)
+    #LoadBean("districtService")
+    #foreach($rootVo in $districtService.getRootDistrict($categiryId))
+    <option value="$rootVo.id"
+        #if($rootVo.id==$dDistrictId)
+            selected
+        #end
+    >
+
+        $rootVo.name
+    </option>
+    #end
+#end
+#end
+
+#macro(rootRoles $roleId)
+    #LoadBean("roleService")
+    #foreach($rootVo in $roleService.getOtherRole($roleId))
+    <option value="$rootVo.id">
+        $rootVo.role
+    </option>
+    #end
+#end
+#end
+
+#macro(rootShop $shopId)
+    #LoadBean("shopStoreService")
+    #foreach($rootVo in $shopStoreService.getSelShop())
+    <option value="$rootVo.id"
+        #if($rootVo.id==$shopId)
+            selected
+        #end>
+        $rootVo.name
+    </option>
+    #end
+#end
+#end
+
+
+
+#macro(imgUpload $id $name $val)
+
+<div id="${id}Res" class="row" >
+    <div class="col-sm-12">
+        <input name="$name" type="hidden" value="{{getImgs}}"/>
+        <ul>
+
+            <li v-if="multiple" style="float: left">
+                <div style="width: 60px;margin-top: 30px; margin-left: 147px;">
+                    <a href="javascript:void(0)"
+                       style="margin: 5px"
+                       v-on:click="setAllWater"
+                       class="btn btn-default btn-sm btn-block">
+                        水印</a>
+
+                    <a href="javascript:void(0)"
+                       style="margin: 5px"
+                       v-on:click="claerAllWater"
+                       class="btn btn-default btn-sm btn-block">去水印</a>
+
+                    <a href="javascript:void(0)"
+                       style="margin: 5px"
+                       v-on:click="clearItem"
+                       class="btn btn-danger btn-sm btn-block">清空</a>
+                </div>
+
+            </li>
+
+
+            <li v-for="item in items" style="float: left" track-by="$index">
+                <div style="width: 200px;height:200px;margin:8px ;text-align: center;">
+                   <span class="imgbox" v-bind:href="item.url+'big'">
+                       <img v-bind:src="item.url+'mini'"  width="180" height="150"/>
+                   </span>
+                    <div style="margin-top: 5px">
+                        <a href="javascript:void(0)"
+                           class="btn  btn-sm" v-on:click="setWater($index)"
+                           v-bind:class="item.water?'btn-primary':'btn-default'"
+                        >水印</a>
+
+                        <a href="javascript:void(0)"
+
+                           class="btn   btn-sm" v-on:click="clearWater($index)"
+                           v-bind:class="item.water?'btn-default':'btn-primary'"
+                        >无水印</a>
+
+                        <a href="javascript:void(0)"
+                           class="btn btn-danger btn-sm" v-on:click="remove($index)">删除</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+</div>
+<script>
+
+        #if($val)
+        var ${id}imgsItems=$!val;
+
+        #else
+
+        var ${id}imgsItems=[];
+        #end
+
+    var multiple= $("#${id}[multiple]").length>0;
+
+    var vmItems=new Array();
+    for(var i=0;i<${id}imgsItems.length;i++){
+        var url=${id}imgsItems[i];
+
+        vmItems[i]={
+            url:url,
+            water:url.lastIndexOf('-w.')>0
+        };
+
+    }
+
+    var ${id}ResVm = new Vue({
+        el: '#${id}Res',
+        data: {
+            multiple:multiple,
+            items:vmItems,
+        },
+        methods:{
+            remove:function(index){
+                this.items.$remove(this.items[index]);
+            },
+            clearWater:function(index){
+                var url= this.items[index].url;
+                url=url.replace("-w.","-n.");
+                this.items[index].url=url;
+                this.items[index].water=false;
+            },
+            setWater:function(index){
+                var url= this.items[index].url;
+                url=url.replace("-n.","-w.");
+                this.items[index].url=url;
+                this.items[index].water=true;
+            },
+            setAllWater: function () {
+                for(var i=0;i<this.items.length;i++){
+                    this.setWater(i);
+                }
+            },
+            claerAllWater: function () {
+                for(var i=0;i<this.items.length;i++){
+                    this.clearWater(i);
+                }
+            },
+            clearItem:function(){
+                this.items=[];
+            }
+        },
+        computed:{
+            getImgs:function(){
+                var rs=new Array();
+                $.each(this.items,function(i,item){
+                    rs.push(item.url);
+                })
+                return JSON.stringify(rs);
+            }
+        }
+    });
+    ##        ${id}ResVm.items.concat(${id}imgsItems);
+
+
+    setTimeout("$('.imgbox').fancybox();",500)
+    $(function () {
+        $('#${id}').fileupload({
+            url: "#U('/admin/file/uploadImg')",
+            dataType: 'json',
+            done: function (e, data) {
+                if(data.result.statusCode==undefined){
+                    for(var i=0;i<data.result.length;i++){
+                        if(multiple){
+                                ${id}ResVm.items.push({url:data.result[i]+"-w.",water:true});
+                        }else{
+                                ${id}ResVm.items=[];
+                                ${id}ResVm.items.push({url:data.result[i]+"-w.",water:true});
+                        }
+
+                    }
+
+                    setTimeout("$('.imgbox').fancybox();",500)
+                }else{
+                    alert("上传失败")
+                }
+            }
+        });
+    });
+
+
+
+</script>
+#end
+
+#macro(rootBusinessCircles $businessCirclesId)
+    #LoadBean("businessCirclesService")
+    #foreach($rootVo in $businessCirclesService.getBusinessCircles())
+    <option value="$rootVo.id"
+        #if($rootVo.id==$businessCirclesId)
+            selected
+        #end>
+        $rootVo.name
+    </option>
+    #end
+#end
+#end
+
+
+#macro(rootDistricts $cityId $districtId)
+    #LoadBean("districtService")
+    #foreach($disVo in $districtService.getRootDistrict($cityId))
+    <option value="$disVo.id"
+        #if($disVo.id==$districtId)
+            selected
+        #end>
+
+        $disVo.name
+    </option>
+    #end
+#end
+#end
+
+#macro(rootDistrictCircles $districtId $businessCircleId)
+    #LoadBean("businessCirclesService")
+    #foreach($districtVo in $businessCirclesService.getBusinessCirclesByDistrictId($districtId))
+    <option value="$districtVo.id"
+        #if($districtVo.id==$businessCircleId)
+            selected
+        #end>
+
+        $districtVo.name
+    </option>
+    #end
+#end
+#end
+
+#macro(rootUserRole $nowRoleId)
+    #LoadBean("roleService")
+    #foreach($rootVo in $roleService.getAllRole())
+    <option value="$rootVo.id"
+        #if($rootVo.id==$nowRoleId)
+            selected
+        #end>
+        $rootVo.agenciesName
+    </option>
+    #end
+#end
+#end
+
+
+<!--工作单位列表-->
+
+
+
+
+<!--体检套餐列表-->
+
+<!--体检业务-内科检查描述列表-->
+
+
+<!--体检业务-x线检查描述列表-->

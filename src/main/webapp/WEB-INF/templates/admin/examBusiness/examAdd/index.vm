@@ -1,0 +1,1312 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /*a{font-size:14px;color:#333;text-decoration: none;}*/
+    a:hover {
+        text-decoration: underline;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', YaHei, Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        width: 1024px;
+        margin: 0 auto;
+        height: 820px;
+        border: 1px solid #999;
+    }
+
+    .head {
+        height: 36px;
+        border-bottom: 1px solid #999;
+    }
+
+    .head span {
+        font-size: 18px;
+        height: 30px;
+        line-height: 30px;
+        width: 98px;
+        display: inline-block;
+        border: 1px solid #999;
+        background: #e4ecee;
+        margin: 5px 0 0 20px;
+        text-align: center;
+        border-top-left-radius: 3px;
+        -moz-border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        -moz-border-top-right-radius: 3px;
+    }
+
+    /*head ---结束*/
+    .banner {
+        height: 166px;
+    }
+
+    .banner .roam {
+        background: white;
+        width: 292px;
+        height: 146px;
+        border: 1px solid #797979;
+        margin: 10px 12px 10px 20px;
+        float: left;
+    }
+
+    .banner a {
+        font-size: 17px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 8px 0 0 14px;
+    }
+
+    .banner .roam-a, .banner .camera-a {
+        height: 20px;
+        line-height: 20px;
+        background: #c1c1c1;
+        text-align: center;
+        color: #fff;
+    }
+
+
+    .banner .camera {
+        background: white;
+        float: left;
+        height: 146px; /*width:197px;*/
+        border: 1px solid #797979;
+        margin-top: 10px;
+    }
+
+    /*banner ---结束*/
+    .content-ti {
+        width: 360px;
+        margin-top: 16px;
+        float: left;
+        height: 340px;
+    }
+
+    .content-ti p {
+        margin-bottom: 12px;
+    }
+
+    .content-ti span {
+        width: 104px;
+        height: 24px;
+        display: inline-block;
+        text-align: right;
+    }
+
+    .content-ti input {
+        width: 190px;
+        height: 26px;
+        box-sizing: border-box;
+    }
+
+    .content-ti input.con-a {
+        width: 160px;
+    }
+
+    .content-ti select {
+        width: 190px;
+        height: 26px;
+    }
+
+    .content-ti .content-work {
+        margin-top: 2px;
+    }
+
+    .content-ti p.content-dan {
+        height: 54px;
+    }
+
+    .content-ti p.content-dan span {
+        height: 50px;
+        float: left;
+        line-height: 50px;
+    }
+
+    /*content-ti ---结束*/
+    /*.content-xi{width:190px;float:left;height:306px;margin:16px 20px 0 0;}*/
+    /*.content-xi input{width:130px;height:24px;box-sizing:border-box;}*/
+    /*.content-xi p{margin-bottom: 12px;}*/
+    /*.content-xi p.content-xix span{margin-left: -32px;}*/
+    /*content-xi ---结束*/
+    .eacontent-xb {
+        width: 210px;
+        float: left;
+        height: 306px;
+        margin-top: 16px;
+    }
+
+    .eacontent-xb span {
+        width: 80px;
+        display: inline-block;
+        height: 24px;
+        text-align: right;
+    }
+
+    .eacontent-xb p {
+        margin-bottom: 12px;
+    }
+
+    .eacontent-xb p.eacontent-xbb {
+        height: 56px;
+    }
+
+    .eacontent-xb p.eacontent-xbb span {
+        height: 56px;
+        float: left;
+        line-height: 28px;
+    }
+
+    .eacontent-xb p.eacontent-xbb select {
+        margin-bottom: 6px;
+    }
+
+    .eacontent-xb p.eacontent-xbbb {
+        height: 28px;
+    }
+
+    .eacontent-xb p.eacontent-xbbb span {
+        height: 28px;
+        float: left;
+        line-height: 28px;
+    }
+
+    .eacontent-xb p.eacontent-xbbb select {
+        margin-bottom: 6px;
+    }
+
+    .eacontent-xb input, .eacontent-xb select {
+        width: 130px;
+        height: 26px;
+        box-sizing: border-box;
+    }
+
+    /*content-xd ---结束*/
+    .eacontent-im {
+        width: 150px;
+        height: 200px;
+        border: 1px solid #797979;
+        float: left;
+        margin: 16px 0 0 60px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        text-align: center;
+        line-height: 228px;
+    }
+
+    /*content-im ---结束*/
+    .eacheck {
+        width: 980px;
+        float: left;
+        margin-left: 20px;
+    }
+
+    .check-de a {
+        height: 30px;
+        line-height: 30px;
+        padding: 6px 20px;
+        border: 1px solid #555;
+        border-bottom: none;
+        text-decoration: none;
+    }
+
+    .check-de .check-dea {
+        background: #e4ecee;
+    }
+
+    .eacheck table {
+        border-collapse: collapse;
+        margin-top: 1px;
+        margin-bottom: 16px;
+    }
+
+    /*check ---结束*/
+    .trtd td {
+        border: 1px solid #797979;
+    }
+
+    .trtd td {
+        height: 30px;
+        text-align: center;
+    }
+
+    .no1 {
+        width: 80px;
+    }
+
+    .no2 {
+        width: 240px;
+    }
+
+    .no3 {
+        width: 140px;
+    }
+</style>
+<div class="bjui-pageContent" style="padding: 0;">
+    <div class="bjui-pageHeader">
+        <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+            <div class="bjui-searchBar banner" style="height: 58px">
+                <div class="button-box" >
+                    <a id="saveAndPrintEa" href="#" style="cursor:pointer;width: 120px;">保 存 并 打 印</a><a
+                        id="resetEa" href="#" style="cursor:pointer;width: 80px;">重 置</a>
+                    <a id="startCameraEa" href="#" style="cursor:pointer;width: 80px;">拍
+                        照</a>#*<a id="takePhoto" href="#" style="cursor:pointer;margin-top: 10px;">拍 照</a>*#
+                </div>
+            </div>
+        </form>
+    </div>
+    <div style="float: left;">
+        <div class="content-ti">
+        ##        <p><span>体检号：</span><input id="examNum" type="text" readonly></p>
+            <p style="height: 30px;"><span style="float: left; line-height: 24px;">身份证号码：</span><input style="float: left;" id="eaidCardNum" type="text" onkeydown="checkIdCardInfo();" value="">&nbsp;
+                <button id="eaidCardRead" type="button" onclick="readIdCardInfo()" style="width:50px;float: left;margin-left: 2px;">读取</button>
+            </p>
+            <p><span>联系地址：</span><input id="eaaddress" type="text"></p>
+            <p><span>工作单位：</span><input id="eaworkUnit" type="text" value=""></p>
+            <p><span>体检机构：</span><select name="eapackageId" id="eaagenciesId" disabled="disabled">
+                <option value="">请选择体检机构</option>
+                #LoadBean("examAgenciesService")
+                #foreach($el in $examAgenciesService.getList())
+
+                    <option value="$!el.id"  #if($!el.id==$!loginUserAgenciesId)
+                            selected
+                    #end>$!el.agenciesName</option>
+                #end
+            #end
+            </select></p>
+
+            <p><span>体检套餐：</span>
+                <select style="margin-left: -4px;" name="eapackageId" id="eapackageId" onchange="" disabled="disabled">
+                    <option value="">请选择套餐</option>
+                    #LoadBean("examPackageService")
+                    #foreach($el in $examPackageService.getList())
+                        <option value="$!el.id">$!el.name</option>
+                    #end
+                #end
+                </select>
+            </p>
+        ##            <input type="hidden" name="eapackageId" id="eapackageId" value="$!loginUserAgenciesId">
+            <p><span>体检费用：</span><input id="eapackageMoney" type="text" readonly></p>
+            <p><span>预约体检：</span><input type="text"></p>
+        </div>
+        <div class="eacontent-xb">
+            <p><span>姓名：</span><input id="eaname" type="text"></p>
+            <p><span>出生日期：</span><input id="eabirthday" type="text"></p>
+        </div>
+        <div class="eacontent-xb">
+            <p class="eacontent-xbbb"><span>性别：</span>
+                <select id="easex">
+                    <option value="">请选择</option>
+                    <option value="1">男</option>
+                    <option value="0">女</option>
+                </select>
+            </p>
+            <p><span>年龄：</span><input id="eaage" type="text"></p>
+            <p><span>联系电话：</span><input id="eamobile" type="text" onkeydown="supplyMobile();"></p>
+            <p class="eacontent-xbb"><span>行业类别：</span>
+                <select name="eaparentId" id="eaopenCategory" data-emptytxt="请选择" onchange="addOptionEa()">
+                    <option value="">请选择</option>
+                    #LoadBean("examCategoryService")
+                    #foreach($rootVo in $examCategoryService.getRootCategory())
+                        <option value="$rootVo.id"
+                            #if($rootVo.id==$eaparentId)
+                                selected
+                            #end
+                        >
+                            $rootVo.categoryName
+                        </option>
+                    #end
+                #end
+                </select>
+                <select name="cityId" id="eaopenCategoryLevelTwo" data-emptytxt="请选择" onchange="packageChangeEa()">
+                    <option value="">请选择</option>
+                </select>
+            </p>
+            <p class="eacontent-xbbb">
+                <span>地域区段：</span>
+                <select name="areaId" id="eaareaId" disabled="disabled">
+                    <option value="">请选择</option>
+                    #LoadBean("examAreaService")
+                    #foreach($el in $examAreaService.getRootExamArea())
+                        <option value="$!el.id"
+                            #if($!el.id==$!loginUserAreaId)
+                                selected
+                            #end
+                        >$!el.areaName</option>
+                    #end
+                #end
+                </select>
+            </p>
+        ##            <input type="hidden" name="eaareaId" value="$!loginUserAreaId">
+            <p><span>体检日期：</span><input id="eaexamTime" type="text" readonly></p>
+        </div>
+    ##    <input id="choseIcon" name="choseIcon" type="file" onchange="changeIcon()" />
+        <a id="headUploadBtnEa" href="javascript:void(0)" onclick="uploadSelectFile()"
+           class="btn btn-default"
+           style="width: 100px;display: inline-block;margin-left: 85px;margin-top: 16px;">上传头像</a>
+        <input id="uploadImageFile" type="file" style="display: none"/>
+        <img id="eamemberIcon" name="memberIcon" class="eacontent-im"/>
+
+        <span type="hidden" id="loginUserAreaCode" value="$!loginUserAreaCode">
+    </div>
+
+    <div class="eacheck">
+        <div class="check-de">
+            <a id="checkAEa" href="#" class="check-dea">体检登记</a><a id="checkBEa" href="#" class="check-deb">体检历史信息</a>
+        </div>
+    ##      体检登记表
+        <div id="tableAEa" class="trtd aa">
+            <table id="examCheckTableEa">
+                <tr>
+                    <td class="no1">编号</td>
+                    <td class="no2">项目名称</td>
+                    <td class="no1">上限</td>
+                    <td class="no1">下限</td>
+                    <td class="no2">单位</td>
+                    <td class="no3">费用</td>
+                    <td class="no3">备注</td>
+                </tr>
+                <tr class="tableANone">
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no1"></td>
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no3"></td>
+                    <td class="no3"></td>
+                </tr>
+                <tr class="tableANone">
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no1"></td>
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no3"></td>
+                    <td class="no3"></td>
+                </tr>
+                <tr class="tableANone">
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no1"></td>
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no3"></td>
+                    <td class="no3"></td>
+                </tr>
+                <tr class="tableANone">
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no1"></td>
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no3"></td>
+                    <td class="no3"></td>
+                </tr>
+                <tr class="tableANone">
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no1"></td>
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no3"></td>
+                    <td class="no3"></td>
+                </tr>
+                <tr class="tableANone">
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no1"></td>
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no3"></td>
+                    <td class="no3"></td>
+                </tr>
+            </table>
+        </div>
+    ##        体检历史信息表
+        <div id="tableBEa" class="trtd bb" style="display:none;">
+            <table id="examHistoryTable">
+                <tr>
+                    <td class="no1">编号</td>
+                    <td class="no2">体检号</td>
+                    <td class="no1">姓名</td>
+                    <td class="no1">健康证号</td>
+                    <td class="no2">体检日期</td>
+                    <td class="no3">备注</td>
+                </tr>
+                <tr class="tableBEaNone">
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no1"></td>
+                    <td class="no1"></td>
+                    <td class="no2"></td>
+                    <td class="no3"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+##    拍照取景框
+    <div id="image-cut-dialog-target" data-noinit="true" class="hide">
+
+        <div id="cutImageTarget" class="rel origin ma" style="text-align: center">
+            <img id="uploadImgCanvas" style="max-width: 480px;max-height: 500px;margin: auto"/>
+        </div>
+        <div style="margin-top: 10px;text-align: center">
+            <a href="javascript:cutImageSave()" class="btn btn-default">确定</a>
+        </div>
+
+
+
+    </div>
+
+    <div id="camel-dialog-target" class="hide">
+        <div id="Camera1" style="width:340px;height:240px">
+
+        </div>
+        <div style="margin-top: 10px;text-align: center">
+            <a href="javascript:cameraC.take(150/200)" class="btn btn-default">拍照</a>
+            <a href="javascript:saveCameraImg()" class="btn btn-default">保存</a>
+            <a href="javascript:cameraC.switchToCamera()" class="btn btn-default">重新拍照</a>
+        </div>
+    </div>
+
+</div>
+<script>
+//    getNavEle(document).ready(function () {
+//
+//    });
+
+    function uploadSelectFile() {
+        return getNavEle('#uploadImageFile').click();
+    }
+    getNavEle('#uploadImageFile').change(function () {
+        var file=getNavEle('#uploadImageFile')[0].files[0];
+        var reader=new FileReader();
+        reader.onload= function (e) {
+            getNavEle('#uploadImgCanvas').attr('src', e.target.result);
+            getNavEle(document).dialog({
+                target: "#image-cut-dialog-target",
+                title: "剪裁照片",
+                width: 500,
+                height: 550
+            });
+
+            getNavEle('#uploadImgCanvas').cropper({
+                aspectRatio: 150/200
+            });
+        };
+        reader.readAsDataURL(file);
+    });
+    function cutImageSave() {
+        var c = getNavEle('#uploadImgCanvas').cropper('getCroppedCanvas');
+        var imageData= c.toDataURL();
+
+        getNavEle("#eamemberIcon").attr("src", imageData);
+        getNavEle("#image-cut-dialog-target").dialog("closeCurrent");
+    }
+
+    getNavEle(document).ready(function () {
+        var myDate = new Date();
+        getNavEle("#eaexamTime").val(myDate.toLocaleDateString());
+        //alert(myDate);
+        $.ajax({
+            contentType: "application/json",
+            url: "businessSetting/examUnit/completeUnit.do?q="+getNavEle("#eaworkUnit").val(),
+            dataType: "json",
+            success: function (data) {
+                if (data == null) {
+                }
+                else if (data != null ) {
+                    getNavEle("#eaworkUnit").autocomplete(data, {
+                        minChars: 1,                    //最少输入字条
+                        max: 12,
+                        autoFill: false,                //是否选多个,用","分开
+                        mustMatch: false,               //是否全匹配, 如数据中没有此数据,将无法输入
+                        matchContains: true,            //是否全文搜索,否则只是前面作为标准
+                        scrollHeight: 200,
+                        width: 147,
+                        multiple: false,
+                        formatItem: function (row, i, max) {                    //显示格式
+                            return "<span style='width:72px;'>" + row.unitName + "</span>";
+                        },
+                        formatMatch: function (row, i, max) {               //以什么数据作为搜索关键词,可包括中文,
+                            return row.unitName;
+                        },
+                        formatResult: function (row) {                      //返回结果
+                            return row.unitName;
+                        }
+                    }).result(function (event, data, formatted) {
+                        //getNavEle("#eaworkUnit").val(data.unitName);
+//                        alert(data.unitName);
+                        //根据最终返回的数据做处理
+                    });
+                }
+
+            }
+        });
+
+    });
+
+    var isCameraPhoto = 0;
+    //拍照功能
+    var cameraC;
+    getNavEle("#startCameraEa").click(function () {
+        getNavEle(document).dialog({
+            target: "#camel-dialog-target",
+            title: "拍照",
+            width: 330,
+            height: 330
+        });
+        cameraC=new cameraCrop('Camera1',320,240);
+        cameraC.start();
+//            getNavEle('#CameraExample').photobooth().on("image", function (event, dataUrl) {
+////                getNavEle( "#gallery" ).append( '<img src="' + dataUrl + '" >');
+////                console.log(dataUrl);
+////                console.log("-->");
+//                getNavEle("#eamemberIcon").attr("src", dataUrl);
+//                getNavEle('#CameraExample').data("photobooth").destroy();
+//                getNavEle("#camel-dialog-target").dialog("closeCurrent");
+//            });
+//            getNavEle('#CameraExample').data("photobooth").resize(300, 300);
+//            getNavEle('#CameraExample').photobooth();
+
+    });
+    function saveCameraImg() {
+        isCameraPhoto = 1;
+        getNavEle("#eamemberIcon").attr("src", cameraC.getImgData());
+        getNavEle("#camel-dialog-target").dialog("closeCurrent");
+    }
+
+
+    //行业类别二级选项卡
+    var addOptionEa = function () {
+        getNavEle(".categoryLevelTwoClass").remove();
+        getNavEle(".examCheckTableTd").remove();
+        var pid = getNavEle("#eaopenCategory").val();
+        $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                {
+                    pid: pid
+                },
+                function (data) {
+                    if (data.categoryList.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.categoryList.length; i++) {
+                            var category = data.categoryList[i];
+                            html += "<option class='categoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                        }
+                        getNavEle("#eaopenCategoryLevelTwo").append(html);
+                    }
+                    if (data.examCategoryPackage != null) {
+                        getNavEle("#eapackageId").val(data.examCategoryPackage.packageId);
+//                        getNavEle('#eapackageIdHidden').val(data.examCategoryPackage.packageId);
+//                        packageChangeEa();
+                    }
+                }
+        );
+    }
+    //页面加载时，调用一次addOption方法，对行业类别加默认值
+    //    addOptionEa();
+    //选项卡切换
+    getNavEle("#checkAEa").on("click", function (e) {
+        getNavEle("#checkAEa").attr("style", "background:#e4ecee");
+        getNavEle("#checkBEa").attr("style", "background:#FFFFFF");
+        getNavEle("#tableBEa").hide();
+        getNavEle("#tableAEa").show();
+    });
+    getNavEle("#checkBEa").on("click", function (e) {
+        getNavEle("#checkBEa").attr("style", "background:#e4ecee");
+        getNavEle("#checkAEa").attr("style", "background:#FFFFFF");
+        getNavEle("#tableAEa").hide();
+        getNavEle("#tableBEa").show();
+    });
+    //通过出生日期计算年龄
+    var getAges = function (str) {
+        var yy = str.substring(0, 4);//截取年
+        var mm = str.substring(5, 7);//截取月
+        var dd = str.substring(8, 10);//截取日
+//        console.info(yy+","+mm+","+dd);
+        var days = new Date();
+        var gdate = days.getDate();
+        var gmonth = days.getMonth();
+        var gyear = days.getYear();
+        if (gyear < 2000) gyear += 1900;
+        var age = gyear - yy;
+        if ((mm == (gmonth + 1)) && (dd <= parseInt(gdate))) {
+            age = age;
+        } else {
+            if (mm <= (gmonth)) {
+                age = age;
+            } else {
+                age = age - 1;
+            }
+        }
+        if (age == 0)
+            age = age;
+        return age;
+//        var r = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
+//        if(r==null)
+//            return false;
+//        var d = new Date(r[1], r[3]-1, r[4]);
+//        if (d.getFullYear()==r[1]&&(d.getMonth()+1)==r[3]&&d.getDate()==r[4]) {
+//            var Y = new Date().getFullYear();
+////            console.info("年龄 = "+ (Y-r[1]) +" 周岁");
+//            return Y-r[1];
+//        } else {
+//            getNavEle(this).alertmsg("输入的日期格式错误！");
+//            return false;
+//        }
+    }
+
+
+
+
+    var isReadIdCard = false;
+    //身份证点击查询
+    var checkIdCardInfo = function (event) {
+        var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+        var code = theEvent.keyCode;
+        if (code == 13) {
+
+            keyDownidCardReadA();
+            //idCardReadA();
+        }
+    }
+    //补充手机号
+    var supplyMobile = function (event) {
+        var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+        var code = theEvent.keyCode;
+        if (code == 13) {
+            var mobile = getNavEle("#eamobile").val();
+            /*if (mobile == "00") {
+//                console.info("手机号为00，自动补位");
+                getNavEle("#eamobile").val("00000000000");
+            }*/
+        }
+        var mobile = getNavEle("#eamobile").val();
+        if(mobile.length>10){
+            getNavEle("#eamobile").val(mobile.substr(0,10));
+        }
+    }
+
+    var isInit = false;
+
+    //读取身份证信息
+    function readIdCardInfo() {
+        localService.getInfo(function (result) {
+            getNavEle("#eaidCardNum").val(result.Id);
+            getNavEle("#eaname").val(result.IdName);
+            getNavEle("#eabirthday").val(result.Birthday);
+            var sexVal = "";
+            if (result.Sex == "男") {
+                sexVal = 1;
+            } else {
+                sexVal = 0;
+            }
+            getNavEle("#easex").val(sexVal);
+            getNavEle("#eaaddress").val(result.Addr);
+
+            getNavEle("#eamemberIcon").attr("src", "data:image/bmp;base64," + result.Img);
+            isReadIdCard = true;
+            idCardReadA();
+        }, function () {
+            alert("读取失败");
+        })
+//        var result= cardReadReturnMsg();
+//        if(result!=false){
+//
+//        }
+    }
+
+    function idCardReadA() {
+        //alert(getNavEle("#eaidCardNum").val());
+//        getNavEle("#eaname").val("");
+//                        getNavEle("#easex").val("");
+//                        getNavEle("#eaaddress").val("");
+//                        getNavEle("#eamemberIcon").attr("src", "");
+//                        getNavEle("#eamobile").val("");
+//                        getNavEle("#eaworkUnit").val("");
+        //清空体检历史信息表中数据
+        getNavEle(".examHistoryTableTdEa").remove();
+
+        //根据身份证号码，提取生日
+        var idCardNum = getNavEle("#eaidCardNum").val();
+
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if (reg.test(idCardNum) === false) {
+            getNavEle(this).alertmsg('error', "身份证格式错误！");
+            return false;
+        }
+
+        var year = idCardNum.substring(6, 10);//截取年
+        var month = idCardNum.substring(10, 12);//截取月
+        var day = idCardNum.substring(12, 14);//截取日
+        var birthday = year + "-" + month + "-" + day;
+        getNavEle("#eabirthday").val(birthday);
+        //计算年龄
+        var age = getAges(birthday);
+        getNavEle("#eaage").val(age);
+        //查询该身份证是否注册，若已注册，则返回体检历史信息
+        $.getJSON("#U("/admin/examBusiness/munualEntry/checkIdCardRegister")",
+                {
+                    idCardNum: idCardNum
+                },
+                function (data) {
+                    var examMember;
+                    if (data.memberList != null) {
+                        examMember = data.memberList[0];
+                        if (examMember != null && examMember != "") {
+                            //判断是否是通过读卡器读取，如果不是，直接取数据库中的信息；如果是，再判断数据库中的照片是否为身份证照片
+                            //如果是，显示该照片，如果不是，显示身份证照片
+                            if (isReadIdCard) {
+                                getNavEle("#eamobile").val(examMember.mobile);
+                                getNavEle("#eaworkUnit").val(examMember.workUnit);
+                                /*if (examMember.isIdCardIcon == 1) {
+                                    getNavEle("#eamemberIcon").attr("src", examMember.icon);
+                                }*/
+                            } else {
+                                getNavEle("#eaname").val(examMember.name);
+                                getNavEle("#easex").val(examMember.sex);
+                                getNavEle("#eaaddress").val(examMember.idCardAddress);
+                                getNavEle("#eamemberIcon").attr("src", examMember.icon);
+                                getNavEle("#eamobile").val(examMember.mobile);
+                                getNavEle("#eaworkUnit").val(examMember.workUnit);
+                            }
+                        }
+                    }
+//                    if(data.memberList==null){
+//                        getNavEle("#eaname").val("");
+//                        getNavEle("#easex").val("");
+//                        getNavEle("#eaaddress").val("");
+//                        getNavEle("#eamemberIcon").attr("src", "");
+//                        getNavEle("#eamobile").val("");
+//                        getNavEle("#eaworkUnit").val("");
+//                    }
+                    isReadIdCard = false;
+                    if (data.examMemberExamList != null && data.examMemberExamList.length > 0) {
+                        var html = "";
+                        getNavEle(".tableBEaNone").hide();
+                        for (var i = 0; i < data.examMemberExamList.length; i++) {
+                            var exam = data.examMemberExamList[i];
+                            html += "<tr class=' examHistoryTableTdEa'>";
+                            html += "<td class='no1'>" + exam.id + "</td>";
+                            html += "<td class='no2'>" + exam.examNumber + "</td>";
+                            html += "<td class='no1'>" + exam.name + "</td>";
+                            html += "<td class='no1'>" + exam.examNumber + "</td>";
+                            html += "<td class='no2'>" + exam.examTimeStr + "</td>";
+                            html += "<td class='no3'></td>";
+                            html += "</tr>";
+                        }
+                        getNavEle("#examHistoryTable").append(html);
+                    }
+//                    if (data.hasEcard==1) {
+//                        getNavEle(this).alertmsg('info', "存在有效期超过三个月的健康证！");
+//                        return false;
+//                    }
+                }
+        );
+    }
+
+    //回车键检测身份证信息
+
+    function keyDownidCardReadA() {
+       // var idCardNum = getNavEle("#eaidCardNum").val();
+       // alert(111111111111);
+        //alert(getNavEle("#eaidCardNum").val());
+        getNavEle("#eaname").val("");
+                        getNavEle("#easex").val("");
+                        getNavEle("#eaaddress").val("");
+                        getNavEle("#eamemberIcon").attr("src", "");
+                        getNavEle("#eamobile").val("");
+                        getNavEle("#eaworkUnit").val("");
+        //清空体检历史信息表中数据
+        getNavEle(".examHistoryTableTdEa").remove();
+
+        //根据身份证号码，提取生日
+        var idCardNum = getNavEle("#eaidCardNum").val();
+        //alert(idCardNum);
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if (reg.test(idCardNum) === false) {
+            getNavEle(this).alertmsg('error', "身份证格式错误！");
+            return false;
+        }
+
+        var year = idCardNum.substring(6, 10);//截取年
+        var month = idCardNum.substring(10, 12);//截取月
+        var day = idCardNum.substring(12, 14);//截取日
+        var birthday = year + "-" + month + "-" + day;
+        getNavEle("#eabirthday").val(birthday);
+        //计算年龄
+        var age = getAges(birthday);
+        getNavEle("#eaage").val(age);
+
+        //查询该身份证是否注册，若已注册，则返回体检历史信息
+        $.getJSON("#U("/admin/examBusiness/munualEntry/checkIdCardRegister")",
+                {
+                    idCardNum: idCardNum
+                },
+                function (data) {
+                    var examMember;
+                    if (data.memberList != null) {
+                        examMember = data.memberList[0];
+                        if (examMember != null && examMember != "") {
+                            //判断是否是通过读卡器读取，如果不是，直接取数据库中的信息；如果是，再判断数据库中的照片是否为身份证照片
+                            //如果是，显示该照片，如果不是，显示身份证照片
+                            if (isReadIdCard) {
+                                getNavEle("#eamobile").val(examMember.mobile);
+                                getNavEle("#eaworkUnit").val(examMember.workUnit);
+                                if (examMember.isIdCardIcon == 1) {
+                                    getNavEle("#eamemberIcon").attr("src", examMember.icon);
+                                }
+                            } else {
+                                getNavEle("#eaname").val(examMember.name);
+                                getNavEle("#easex").val(examMember.sex);
+                                getNavEle("#eaaddress").val(examMember.idCardAddress);
+                                getNavEle("#eamemberIcon").attr("src", examMember.icon);
+                                getNavEle("#eamobile").val(examMember.mobile);
+                                getNavEle("#eaworkUnit").val(examMember.workUnit);
+                            }
+                        }
+                    }
+//                    if(data.memberList==null){
+//                        getNavEle("#eaname").val("");
+//                        getNavEle("#easex").val("");
+//                        getNavEle("#eaaddress").val("");
+//                        getNavEle("#eamemberIcon").attr("src", "");
+//                        getNavEle("#eamobile").val("");
+//                        getNavEle("#eaworkUnit").val("");
+//                    }
+                    isReadIdCard = false;
+                    if (data.examMemberExamList != null && data.examMemberExamList.length > 0) {
+                        var html = "";
+                        getNavEle(".tableBEaNone").hide();
+                        for (var i = 0; i < data.examMemberExamList.length; i++) {
+                            var exam = data.examMemberExamList[i];
+                            html += "<tr class=' examHistoryTableTdEa'>";
+                            html += "<td class='no1'>" + exam.id + "</td>";
+                            html += "<td class='no2'>" + exam.examNumber + "</td>";
+                            html += "<td class='no1'>" + exam.name + "</td>";
+                            html += "<td class='no1'>" + exam.examNumber + "</td>";
+                            html += "<td class='no2'>" + exam.examTimeStr + "</td>";
+                            html += "<td class='no3'></td>";
+                            html += "</tr>";
+                        }
+                        getNavEle("#examHistoryTable").append(html);
+                    }
+//                    if (data.hasEcard==1) {
+//                        getNavEle(this).alertmsg('info', "存在有效期超过三个月的健康证！");
+//                        return false;
+//                    }
+                }
+        );
+    }
+
+
+    //选择套餐，同时下方表格显示所选套餐内容
+    var packageChangeEa = function () {
+        getNavEle(".examCheckTableTd").remove();
+        getNavEle("#eapackageMoney").val("");
+//        console.info("packageChange:"+getNavEle("#eapackageId").val());
+        var categoryTwoValue = getNavEle("#eaopenCategoryLevelTwo").val();
+
+        if (categoryTwoValue != '') {
+
+            //通过套餐id查询该套餐，并回填价格
+            var packageId = getNavEle("#eapackageId").val();
+            $.getJSON("#U("/admin/examBusiness/examAdd/getPackageById")",
+                    {
+                        packageId: packageId
+                    },
+                    function (data) {
+                        getNavEle("#eapackageMoney").val(data.examPackage.money);
+                        if (data.examProjectList.length > 0) {
+                            var html = "";
+                            getNavEle(".tableANone").hide();
+                            for (var i = 0; i < data.examProjectList.length; i++) {
+//                            ExamProject project = data.examProjectList.get(i);
+                                var project = data.examProjectList[i];
+                                html += "<tr class=' examCheckTableTd'>";
+                                html += "<td class='no1'></td>";
+                                html += "<td class='no2'>" + project.projectName + "</td>";
+                                if (project.topLimit != null && project.topLimit != '') {
+                                    html += "<td class='no1'>" + project.topLimit + "</td>";
+                                } else {
+                                    html += "<td class='no1'></td>";
+                                }
+                                if (project.lowerLimit >= 0) {
+                                    html += "<td class='no1'>" + project.lowerLimit + "</td>";
+                                } else {
+                                    html += "<td class='no1'></td>";
+                                }
+                                if (project.unit != null && project.unit != '') {
+                                    html += "<td class='no1'>" + project.unit + "</td>";
+                                } else {
+                                    html += "<td class='no1'></td>";
+                                }
+                                html += "<td class='no3'>" + project.projectPrice + "</td>";
+                                html += "<td class='no3'></td>";
+                                html += "</tr>";
+                            }
+
+
+                            getNavEle("#examCheckTableEa").append(html);
+                        }else{
+                            getNavEle(".tableANone").show();
+                        }
+                    }
+            );
+
+        }
+
+    }
+
+
+    var name = '';
+    var sex = '';
+    var birthday = '';
+    var address = '';
+    var idCardNum = '';
+    var mobile = '';
+    var workUnit = '';
+    var age = '';
+    var areaId = '';
+    var packageId = '';
+    var packageMoney = '';
+    var memberIcon = '';
+    var agenciesId = '';
+    var categoryId = '';
+
+    //保存并打印
+    getNavEle("#saveAndPrintEa").on("mousedown", function () {
+        //idCardReadA();
+        //setTimeout(function () {
+            name = getNavEle("#eaname").val();
+            sex = getNavEle("#easex").val();
+            birthday = getNavEle("#eabirthday").val();
+            address = getNavEle("#eaaddress").val();
+            idCardNum = getNavEle("#eaidCardNum").val();
+            mobile = getNavEle("#eamobile").val();
+            workUnit = getNavEle("#eaworkUnit").val();
+            age = getNavEle("#eaage").val();
+            areaId = getNavEle("#eaareaId").val();
+            packageId = getNavEle("#eapackageId").val();
+            packageMoney = getNavEle("#eapackageMoney").val();
+            memberIcon = getNavEle("#eamemberIcon").attr("src");
+            agenciesId = getNavEle("#eaagenciesId").val();
+            categoryId = getNavEle("#eaopenCategoryLevelTwo").val();
+
+            if (idCardNum == '' || idCardNum == null) {
+                getNavEle(this).alertmsg('error', "身份证号不能为空！");
+                return false;
+            }
+            if (idCardNum != '' || idCardNum != null) {
+                // 身份证号码为15位或者18位，15位时全为数字，
+                // 18位前17位为数字，最后一位是校验位，可能为数字或字符X
+                var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                if (reg.test(idCardNum) === false) {
+                    getNavEle(this).alertmsg('error', "身份证输入不合法");
+                    return false;
+                }
+            }
+            if (name == '' || name == null) {
+                getNavEle(this).alertmsg('error', "姓名不能为空！");
+                return false;
+            }
+            if (address == '' || address == null) {
+                getNavEle(this).alertmsg('error', "地址不能为空！");
+                return false;
+            }
+            if (age == '' || age == null) {
+                getNavEle(this).alertmsg('error', "年龄不能为空！");
+                return false;
+            }
+            if (age < 16) {
+                getNavEle(this).alertmsg('error', "16周岁以下不能登记办理健康证！");
+                return false;
+            }
+            if (sex == '' || sex == null) {
+                getNavEle(this).alertmsg('error', "请选择性别！");
+                return false;
+            }
+            if (birthday == '' || birthday == null) {
+                getNavEle(this).alertmsg('error', "出生日期不能为空！");
+                return false;
+            }
+            if (workUnit == '' || workUnit == null) {
+                getNavEle(this).alertmsg('error', "工作单位不能为空！");
+                return false;
+            }
+            if (mobile == '' || mobile == null) {
+                getNavEle(this).alertmsg('error', "联系电话不能为空！");
+                return false;
+            }
+            if (agenciesId == '' || agenciesId == null) {
+                getNavEle(this).alertmsg('error', "体检机构不能为空！");
+                return false;
+            }
+            if (categoryId == '' || categoryId == null) {
+                getNavEle(this).alertmsg('error', "行业类别不能为空！");
+                return false;
+            }
+            if (packageId == '' || packageId == null) {
+                getNavEle(this).alertmsg('error', "体检套餐不能为空！");
+                return false;
+            }
+            if (areaId == '' || areaId == null) {
+                getNavEle(this).alertmsg('error', "地段区域不能为空！");
+                return false;
+            }
+            if (packageMoney == '' || packageMoney == null) {
+                getNavEle(this).alertmsg('error', "体检费用不能为空！");
+                return false;
+            }
+            if (memberIcon == '' || memberIcon == null) {
+                getNavEle(this).alertmsg('error', "头像不能为空！");
+                return false;
+            }
+            $.post("#U("/admin/examBusiness/examAdd/addJudgeExamMember")",
+                    {
+                        idCardNum: idCardNum,
+                        judgeTag: "1"
+                    }, function (data) {
+
+                        var json = eval('(' + data + ')');
+
+
+                        if (json.isNew != 0) {
+                            //该用户不是新用户 有数据
+                            if (json.isThirty != 1) {
+                                //不超过3各月，//判断是否需要作废
+                                $.post("#U("/admin/examBusiness/examAdd/addJudgeExamMember")",
+                                        {
+                                            idCardNum: idCardNum,
+                                            judgeTag: "2"
+                                        }, function (data) {
+
+                                            var json = eval('(' + data + ')');
+
+
+                                            if (json.isCancel == 1) {
+
+                                                getNavEle(this).alertmsg('confirm', '您现未完成的体检项目,确定重新体检?', {
+                                                    displayMode: 'slide',
+                                                    displayPosition: 'topcenter',
+                                                    okName: '确定',
+                                                    cancelName: '取消',
+                                                    title: '提示',
+                                                    okCall: function (data) {
+                                                        //直接注册
+                                                        addExamMember();
+                                                    }
+                                                });
+
+                                            } else {
+                                                //没有需要作废的项目 则不弹出 直接添加新的用户 不做任何处理
+//                                                    //直接注册
+                                                addExamMember();
+                                            }
+
+
+                                        });
+
+                            } else {
+
+                                getNavEle(this).alertmsg('confirm', '您现有的健康证有效期超过3个月,确定重新体检?', {
+                                    displayMode: 'slide',
+                                    displayPosition: 'topcenter',
+                                    okName: '确定',
+                                    cancelName: '取消',
+                                    title: '提示',
+                                    okCall: function (data) {
+
+                                        $.post("#U("/admin/examBusiness/examAdd/addJudgeExamMember")",
+                                                {
+                                                    idCardNum: idCardNum,
+                                                    judgeTag: "2"
+                                                }, function (data) {
+
+                                                    var json = eval('(' + data + ')');
+
+
+                                                    if (json.isCancel == 1) {
+
+                                                        getNavEle(this).alertmsg('confirm', '您现未完成的体检项目,确定重新体检?', {
+                                                            displayMode: 'slide',
+                                                            displayPosition: 'topcenter',
+                                                            okName: '确定',
+                                                            cancelName: '取消',
+                                                            title: '提示',
+                                                            okCall: function (data) {
+                                                                //直接注册
+                                                                addExamMember();
+                                                            }
+                                                        });
+
+                                                    } else {
+                                                        //没有需要作废的项目 则不弹出 直接添加新的用户 不做任何处理
+//                                                    //直接注册
+                                                        addExamMember();
+                                                    }
+
+
+                                                });
+
+                                    }
+                                });
+                            }
+
+                        } else {
+                            //直接注册
+                            addExamMember();
+                        }
+
+                    });
+       // },500)
+
+
+
+
+
+//        getNavEle(this).alertmsg('confirm', '您现有的健康证有效期超过3个月,确定重新体检?', {
+//            displayMode: 'slide',
+//            displayPosition: 'topcenter',
+//            okName: '确定',
+//            cancelName: '取消',
+//            title: '提示',
+//            okCall: function(data){
+
+
+
+    });
+
+
+    var addExamMember = function () {
+
+        $.post("#U("/admin/examBusiness/examAdd/addExamMember")",
+                {
+                    name: name,
+                    sex: sex,
+                    age: age,
+                    birthday: birthday,
+                    address: address,
+                    idCardNum: idCardNum,
+                    mobile: mobile,
+                    workUnit: workUnit,
+                    areaId: areaId,
+                    packageId: packageId,
+                    packageMoney: packageMoney,
+                    memberIcon: memberIcon,
+                    agenciesId: agenciesId,
+                    categoryId: categoryId,
+                    isCameraPhoto:isCameraPhoto
+                },
+                function (data) {
+                    data = $.parseJSON(data);
+                    if (data.statusCode == 300) {
+                        getNavEle(this).alertmsg('error', "操作失败！");
+                        return false;
+                    } else {
+                        getNavEle(this).alertmsg('ok', "操作成功！");
+//                        getNavEle("#resetEa").click();
+                        var examMemberId = data.message;
+                        var loginUserAreaCode = getNavEle('#loginUserAreaCode').attr('value');
+//                        alert('loginUserAreaCode:' + loginUserAreaCode);
+                        if (loginUserAreaCode == "132") {//疾控打印
+//                            alert("疾控打印");
+                            //弹出打印体检单的通知
+                            showExamJkPrintView(examMemberId);
+                            getNavEle("#resetEa").click();
+                        } else {//乡镇打印
+##                                                    var urll = '#U("printViewExamForm")?examId=' + examMemberId;
+##                                                    getNavEle(this).dialog({
+##                                                        id: 'viewExamDialog',
+##                                                        url: urll,
+##                                                        title: '体检单打印',
+##                                                        width: '750',
+##                                                        height: '600'
+##                                                    });
+                            showExamXzPrintView(examMemberId);
+                            getNavEle("#resetEa").click();
+                        }
+                    }
+                });
+
+
+    }
+
+    //弹出打印窗口
+    function showExamJkPrintView(examMemberId) {
+        //弹出弹框 修改用户信息
+        var url = "#U('jkPrintViewTransferForm?id=')" + examMemberId;
+//        getNavEle(this).dialog({id:'printPhysicalExamDialog', url:url, title:'体检流转单打印',width:'550',height:'360'});
+
+        getNavEle('#printExamAdd').attr('src', url);
+    }
+
+    //弹出打印窗口
+    function showExamXzPrintView(examMemberId) {
+        //弹出弹框 修改用户信息
+        var url = "#U('printViewExamForm?examId=')" + examMemberId;
+//        getNavEle(this).dialog({id:'printPhysicalExamDialog', url:url, title:'体检流转单打印',width:'550',height:'360'});
+
+        getNavEle('#printExamAdd').attr('src', url);
+    }
+
+    //重置
+    getNavEle("#resetEa").on("click", function () {
+        getNavEle(".tableBEaNone").show();
+        getNavEle(".tableAEaNone").show();
+        getNavEle("input").val("");
+        getNavEle("#easex").val("");
+//        getNavEle("#eaagenciesId").val("");
+        getNavEle("#eaopenCategory").val("");
+        getNavEle("#eaopenCategoryLevelTwo").val("");
+        getNavEle("#eapackageId").val("");
+
+        //清除身份证照片
+        getNavEle("#eamemberIcon").attr("src","");
+
+        getNavEle(".examHistoryTableTdEa").remove();
+        getNavEle(".examCheckTableTd").remove();
+        getNavEle("img").removeAttr("src");
+        var myDate = new Date();
+        getNavEle("#eaexamTime").val(myDate.toLocaleDateString());
+    });
+
+</script>
+<iframe id="printExamAdd" src="#" style="width:0px; height:0px;"></iframe>
+<script>
+
+    function examAddPrintSuccess(examMemberId) {
+
+
+        getNavEle(this).alertmsg('ok', "打印成功");
+
+        //更新此打印记录
+        $.post("#U("/examAddUpdatePhysicalPrint")",
+                {
+                    examMemberId: examMemberId
+                },
+                function (data) {
+
+                });
+
+    }
+
+
+    function examAddPrintFail() {
+
+        getNavEle(this).alertmsg('error', "打印失败");
+
+    }
+
+
+</script>

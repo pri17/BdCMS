@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复检单打印</title>
+    <link rel="stylesheet" type="text/css" href="../../../assets/printExam/css/style-recheck-desktop.css" />
+    <!--疾控体检单打印-->
+    <script src="../../../assets/printExam/js/html2canvas.js"></script>
+    <script src="../../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../../assets/printExam/js/JsBarcode.code128.min.js"></script>
+
+    <script src="/js/LocalServiceApi.js"></script>
+</head>
+<body>
+##<object id="printX" classid="clsid:8d7d8518-ca58-4863-b94d-3c616fda7b35" width="0" height="0" align="center" HSPACE=0 VSPACE=0></object>
+
+<div id="tk" class="jkRecheckView" style="background: #ffffff">
+
+    <table width="100%" style="text-align:center">
+        <tbody >
+        <tr >
+            <td colspan="2" style="font-size: 28px;" >从业人员预防性健康检查不合格告知书</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="ticket top">
+
+        <tbody>
+        <tr>
+            <td colspan="2" class="re-code">
+                <dl class="bar-code" >
+                    <dt class="bar-img" style="width: 221px;">
+                        <img  class="tjCodeImg"  alt="" style="width: 215px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">
+                        $!examMemberExam.examNumber
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p style="font-size: 21px;">$!examMemberExam.name：</p>
+                <p style="font-size: 21px;height: 140px">&emsp;&emsp;
+                    $!resultString
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="t-r" style="padding-bottom: 0;font-size: 21px;">常熟市疾病预防控制中心</td>
+
+        </tr>
+        <tr>
+            <td class="t-r" style="padding-bottom: 0;font-size: 21px;">$!examMemberExam.examTimeShort</td>
+        </tr>
+        <tr>
+            <td colspan="2" >
+                <table border=0 cellspacing=0 class="inner-table" style="font-size: 26px;margin-bottom: 2px;">
+                    <tr>
+                        <td colspan="2" class="head">体 检 流 程</td>
+                    </tr>
+                    <tr>
+                        <td class="head half">项&emsp;&emsp;目</td>
+                        <td class="head half">完 成 情 况</td>
+                    </tr>
+                    <tr>
+                        <td >&emsp;1.复检缴费$!examMemberExam.payMoney元</td>
+                        <td></td>
+                    </tr>
+
+                    #foreach($vo in $resultList)
+                        <tr>
+                            <td>&emsp;$math.add($velocityCount,1).$!vo.name</td>
+                            <td></td>
+                        </tr>
+                    #end
+                ##                        <tr>
+                ##                            <td>&emsp;2.内科检查</td>
+                ##                            <td></td>
+                ##                        </tr>
+                ##                        <tr>
+                ##                            <td>&emsp;3.胸部X线检查</td>
+                ##                            <td></td>
+                ##                        </tr>
+                ##                        <tr>
+                ##                            <td>&emsp;4.肠检</td>
+                ##                            <td></td>
+                ##                        </tr>
+                ##                        <tr>
+                ##                            <td>&emsp;5.血检</td>
+                ##                            <td></td>
+                ##                        </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2">友情提示：</td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2">&emsp;&emsp;体检完成5个工作日后，可凭身份证在大厅自</td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2">助机上打印健康证，如有疑问请咨询工作人员。</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="ticket" style="margin-top:5px;margin-left: 24px;">
+        <tbody>
+        <tr>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="" style="width:200px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="" style="width:200px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="" style="width:200px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img class="tjCodeImg" alt="" style="width:200px;">
+                    </dt>
+                    <dd class="bar-num" style="font-size: 21px;">$!examMemberExam.examNumber</dd>
+                </dl>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<input type="hidden" id="examMemberId" value="$!examMemberExam.id">
+<img src="" id="s" />
+</body>
+</html>
+<script>
+
+    JsBarcode(".tjCodeImg", "$!examMemberExam.examNumber",{displayValue:false,height:80,width:5});
+    d="";
+    function recheckPrintForm(){
+
+        html2canvas(document.getElementById("tk"), {
+            height:$("#tk").outerHeight(),
+            onrendered: function(canvas) {
+                /*d = canvas.toDataURL();
+
+                s.src=d;
+                var i = d.indexOf(",");
+                d = d.substr(i + 1);*/
+
+//                var returnResult = printX.printImage(d, 170, 'com5', 115200);
+
+/*                localService.print(d,function () {
+                    var examMemberId = $('#examMemberId').val();
+
+                    parent.printRecheckOkReturn(examMemberId);
+
+                    window.close();
+                },function (msg) {
+
+
+                    window.close();
+                });*/
+
+
+                bowerPrint.rmPrintCallBack(function () {
+                    var examMemberId = $('#examMemberId').val();
+
+                    parent.printRecheckOkReturn(examMemberId);
+
+                    window.close();
+                },function () {
+                    parent.printRecheckFailureReturn();
+                    window.close();
+                });
+
+//                if (returnResult) {
+////                    alert('打印成功');
+//
+//
+////                    $.CurrentDialog.dialog('closeCurrent');
+//
+//                } else {
+//
+//                    parent.printRecheckFailureReturn();
+//
+//                    window.close();
+//                }
+            }
+        });
+
+    }
+
+    recheckPrintForm();
+
+</script>

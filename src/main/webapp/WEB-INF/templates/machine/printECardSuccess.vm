@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>常熟市疾病预防控制中心欢迎使用自助系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/machineCss/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/buttons.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/style.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+</head>
+<body class="print container">
+<a id="goBackHome"
+   class="pull-left go-back button button-glow button-border button-primary burron-rounded button-go-back">返&nbsp;&nbsp;回</a>
+
+<div class="main-content">
+##    <h1>常熟市疾病预防控制中心</h1>
+    <p class="big-font-size">欢迎使用自助系统</p>
+    <p class="pls-wait big-font-size" id="pls-wait">打印健康证<br>请稍后...</p>
+</div>
+<script>
+
+
+    var timeOutStr = 4000;
+    var secs = 20;
+    var timerId;
+    $(document).ready(function () {
+
+        start();
+
+    });
+
+    //开始启动
+    function start() {
+
+        timerId = setInterval("update()", 1000);
+
+    }
+
+    function update() {
+
+        if (secs == 0) {
+
+            clearInterval(timerId);
+
+            intoSuccessAfter();
+
+            return;
+
+
+        }
+        else {
+            secs--;
+
+        }
+    }
+
+        //点击返回
+        $('#goBackHome').click(function () {
+            backToUp();
+        })
+
+
+        function intoSuccessAfter() {
+
+            window.location.href = "http://" + window.location.host + "/machine/printECardSuccessAfter.do";
+
+        }
+
+
+
+        //返回上一页
+        function backToUp() {
+
+            window.history.go(-1);
+
+        }
+
+
+//    var timeClearId;
+//    //检测打印机的状态来告知用户后续操作
+//    //先检查打印机是否正常
+//    var dwRectCode = checkPrint();
+//    switch (checkPrint()) {
+//            //alert("打印机准备就绪");
+//        case 0:
+//
+//            //跳转下一个页面
+//            intoSuccessAfter();
+//
+//            clearTimeout(timeClearId);
+//
+//    }
+//
+//
+//
+//
+//    var secs = 20;
+//    for (var i = 1; i <= secs; i++) {
+//        timeClearId = setTimeout("update(" + i + ");", i * 1000);
+//    }
+//
+//    function update(num) {
+//        if (num == secs) {
+//
+//            clearTimeout(timerId);
+//            intoSuccessAfter();
+//        }
+//        else {
+//            var printnr = secs - num;
+//            document.getElementById("countDown").innerText = printnr;
+//        }
+//    }
+//
+//    //点击返回
+//    $('#goBackHome').click(function () {
+//        backToUp();
+//    })
+//
+//
+//    function intoSuccessAfter() {
+//
+//        window.location.href = "http://" + window.location.host + "/machine/printECardSuccessAfter.do";
+//
+//    }
+//
+//
+//
+//    //返回上一页
+//    function backToUp() {
+//
+//        window.history.go(-1);
+//
+//    }
+
+
+</script>
+</body>
+</html>

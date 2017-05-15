@@ -1,0 +1,121 @@
+<div class="bjui-pageContent">
+    <style>
+        .content{width: 800px;height:600px;margin:0 auto;border:1px solid #555;background-color: #e7eef0;}
+        .top{height:50px;border-bottom: 1px solid #555;}
+        .top img{margin:4px 20px 0 30px;float:left;}
+        .top span{font-size: 16px;font-weight: bold;display: inline-block;height:50px;line-height: 50px; float:left;}
+        .xiala{width:750px;height:270px;overflow-y:scroll;border:1px solid #555;margin:10px 24px 0 24px;background-color: #fff;}
+        .xiala>div{margin:6px 0 0 14px;}
+        .xiala p{height:24px;line-height:24px;vertical-align: text-bottom;}
+        .xiala p input{vertical-align: text-bottom;}
+        .cancel{height:36px;padding-left: 24px;}
+        .cancel p{float: left;height:36px;line-height: 36px;margin-right: 26px;}
+        .cancel p img{margin-right: 6px;}
+        .heart{width:750px;min-height:150px;border:1px solid #555;margin-left: 24px;background-color: #fff;margin-bottom: 30px;}
+        .heart>div{margin:20px 0 0 14px;}
+        .heart p{height:24px;line-height:24px;vertical-align: text-bottom;}
+        .heart p input{vertical-align: middle;width:300px;}
+        .footer{width:100%;text-align: center;}
+        .footer a{padding:6px 30px;background-color: #fff;color:#333;border:1px solid #555;margin-right: 60px;border-radius: 3px;-moz-border-radius:3px;font-weight:bold;font-size: 16px;text-decoration: none;}
+    </style>
+    <form action="#U('upIntestinal')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <div class="form-group">
+            <div class="xiala">
+                <div id="resultDescriptionDiv">
+                    #LoadBean("examResultDescriptionService")
+                    #foreach($!el in $!examResultDescriptionService.getAllResultDescription($!projectId))
+                        <p><input type="checkbox" id="checked$!el.id" name="resultDescriptionIds" s="$!el.description"  data-toggle="icheck" value="$!el.id" >$!el.description</p>
+                    #end
+                #end
+                </div>
+            </div>
+        </div>
+    ##        <div class="form-group">
+    ##            <span>{{ selectedIds}}</span>
+    ##            </div>
+        <div class="form-group">
+            <div class="cancel clearfix">
+                <p><img src="/assets/hplus/img/exam/paste_pic.png" alt="">撤销</p>
+                <p><img src="/assets/hplus/img/exam/paste_pic.png" alt="">剪切</p>
+                <p><img src="/assets/hplus/img/exam/paste_pic.png" alt="">复制</p>
+                <p><img src="/assets/hplus/img/exam/paste_pic.png" alt="">黏贴</p>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="heart">
+                <div id="upResultDescription">
+
+                ##                <p><input type="text"></p>
+
+                </div>
+            </div>
+        </div>
+        <div class="add-role-button">
+            <ul>
+                <li><button type="button" class="btn btn-close" >关闭</button></li>
+                <li><button type="submit"  class="btn-default" >保存</button></li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<script>
+    //   var  resultDescriptionDiv = new Vue({
+    //       el: '#resultDescriptionDiv',
+    //       data: function() {
+    //           return {
+    //               selectedIds: {1}
+    //           }
+    //       },
+    //
+    //   });
+
+    Array.prototype.remove=function(obj){
+        for(var i =0;i <this.length;i++){
+            var temp = this[i];
+//        if(!isNaN(obj)){
+//            temp=i;
+//        }
+            if(temp == obj){
+                for(var j = i;j <this.length;j++){
+                    this[j]=this[j+1];
+                }
+                this.length = this.length-1;
+            }
+        }
+    }
+
+    var idsList=new Array();
+    var ids="";
+    var description="";
+    var upResultDescription=$("#upResultDescription");
+    $("input[name='resultDescriptionIds']").on("ifChanged",function(e){
+        if ($(this).is(':checked')){
+            ids =$(this).val();
+            description=$(this).attr("s");
+            idsList.push(ids);
+        ##        $.post("#U('')",
+        ##                {},function(data){
+        ##
+        ##                });
+            upResultDescription.append('<p id="deldescription'+ids+'">' +
+                    '<input type="hidden" name="updescriptionId"  value="'+ids+'"/>' +
+                    '<input type="text" name="updescription" id="updescription'+ids+'" i="'+ids+'" value="'+description+'"/>' +
+                    '</p>');
+        }else{
+            ids =$(this).val();
+            idsList.remove(ids);
+            $("#deldescription"+ids+"").remove();
+        }
+
+
+    });
+
+
+
+</script>

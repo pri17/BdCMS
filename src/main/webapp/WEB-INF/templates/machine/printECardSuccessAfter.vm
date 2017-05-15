@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>常熟市疾病预防控制中心欢迎使用自助系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/machineCss/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/buttons.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/style.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../assets/js/machine/machinePrint.js"></script>
+</head>
+<body class="print container">
+<a id="backToHome" class="pull-left go-back button button-glow button-border button-primary burron-rounded button-go-back">返&nbsp;&nbsp;回</a>
+
+<div class="main-content">
+##    <h1>常熟市疾病预防控制中心</h1>
+    <p class="big-font-size">欢迎使用自助系统</p>
+    <p class="pls-wait big-font-size">打印完成，请取健康证</p>
+</div>
+<script>
+
+    //打印成功后如果需要返回则直接返回主页
+    $('#backToHome').click(function () {
+
+            goToHome();
+
+    });
+
+    var secs = 4;
+    var timerId;
+    $(document).ready(function () {
+
+        start();
+
+    });
+
+
+    //开始启动
+    function start() {
+
+        timerId = setInterval("update()", 1000);
+
+    }
+
+    function update() {
+
+        if (secs == 0) {
+
+            clearInterval(timerId);
+
+            goToHome();
+
+            return;
+
+
+        }
+        else {
+            secs--;
+
+        }
+    }
+
+    //返回主页
+    function goToHome(){
+
+        window.location.replace("http://" + window.location.host + "/machine/index.do");
+    }
+
+</script>
+</body>
+</html>

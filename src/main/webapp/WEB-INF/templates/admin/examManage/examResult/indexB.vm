@@ -1,0 +1,764 @@
+    <style>
+        *{margin:0;padding:0;}
+        body{font-family:'Microsoft YaHei',YaHei,Arial,Helvetica,sans-serif;}
+        .ermain a{font-size: 17px;color:#333;text-decoration:none;}
+        a:hover{border-bottom: 1px solid #333;}
+        input{width:130px;height:23px;box-sizing:border-box;}
+        select{box-sizing:border-box;}
+        .container{width:1024px;height:300px;margin:0 auto;border:1px solid #ccc;}
+        .head{height:36px;border-bottom:1px solid #ccc;}
+        .head span{font-size: 17px;color:#333;height:28px;line-height: 28px; padding:0 26px;border:1px solid #ccc;background-color: #e4ecee;margin:7px 0 0 20px;display: inline-block;border-top-left-radius: 3px;-moz-border-top-left-radius: 3px;border-top-right-radius: 3px;-moz-border-top-right-radius: 3px;}
+
+        .ermain{height:80px;border-bottom: 1px solid #ccc;}
+        /*.ermain-a{width:400px;float: left;height:100%;border-left: 1px solid #ccc;border-right: 1px solid #ccc;}*/
+        /*.ermain-a a{width:80px;height:44px;line-height: 44px; border:1px solid #ccc;border-radius: 4px;-moz-border-radius:4px;text-align: center;margin-right: 4px;display: inline-block;background-color: #79b6ec;margin-top: 8px;}*/
+        /*.ermain-a a:first-child{margin-left: 20px;}*/
+        /*.ermain-a span{height:20px; width:100%;background-color: #c1c1c1;text-align: center;display: inline-block;line-height: 20px;margin-top: 6px;font-size: 14px;}*/
+        .ermain-a{width:400px;float: left;height:100%;border-left: 1px solid #ccc;border-right: 1px solid #ccc;}
+        .ermain-a span{font-size: 17px;width:80px;height:44px;line-height: 44px; border:1px solid #ccc;border-radius: 5px;-moz-border-radius:5px;display: inline-block;text-align: center;background-color: #79b6ec;margin:8px 0 0 14px;}
+        .ermain-a em{font-style: normal; height:20px; width:100%;background-color: #c1c1c1;text-align: center;display: inline-block;line-height: 20px;margin-top: 6px;font-size: 14px;}
+
+        .ernav{height:38px;border-bottom:1px solid #ccc;}
+        .ernav-a{width:70%;height:100%; float:left;line-height: 38px;background-color: #cee3fe;}
+        /*.ernav-a span{font-size: 17px;font-weight: bold;color: #003366;margin-left: 20px;margin-right: 24px;}*/
+        .ernav-a span{font-size: 17px;width:80px;height:30px;line-height: 30px; border:1px solid #ccc;border-radius: 5px;-moz-border-radius:5px;display: inline-block;text-align: center;background-color: #79b6ec;margin:3px 0 0 14px;}
+        .ernav-a a{font-size: 13px;height:18px;border:2px solid #7cb7ec;color: #003366;font-weight: bold;padding-left: 50px;padding-right: 15px;border-radius: 6px;-moz-border-radius:6px;}
+        .ernav-b{width:30%;height:100%;float:left;line-height: 38px;background-color: #cee3fe;border-left: 1px solid #ccc;}
+        /*.ernav-b span{font-size: 17px;font-weight: bold;color: #003366;margin:0 10px;}*/
+        .ernav-b a{font-size: 13px;height:18px;border:2px solid #7cb7ec;color: #003366;font-weight: bold;padding-left: 10px;border-radius: 6px;-moz-border-radius:6px;}
+        .content{height:112px;}
+        .ercon-a{width:100%;height:100%;float:left;margin-top: 20px;}
+        .ercon-a p{margin-bottom: 8px;}
+        .ercon-a input{width:120px;height: 28px;}
+        .ercon-a select{width:120px;height: 28px;}
+        .ercon-a .con-aa{width:25%;float: left;}
+        .ercon-a .con-aa span{font-size: 14px;width:70px;text-align:right;display: inline-block;margin-right: 15px;}
+        .ercon-a .con-aa select{margin-left: 14px;}
+
+        .ercon-a .con-ab{width:25%;float:left;}
+        .ercon-a .con-ab span{font-size: 14px;width:70px;text-align:right;display: inline-block;}
+        .ercon-a .con-ab select{margin-left: 14px;}
+
+        .ercon-a .con-ac{width:25%;float:left;}
+        .ercon-a .con-ac span{font-size: 14px;width:60px;text-align:right;display: inline-block;margin-right: 15px;}
+
+        .ercon-a .con-ad{width:25%;float:left;}
+        .ercon-a .con-ad span{font-size: 14px;width:60px;text-align:right;display: inline-block;margin-right: 15px;}
+        .ercon-a .con-ad p a{width:94px;height:40px;line-height: 40px;text-align: center;border:1px solid #ccc;display: inline-block;background-color: #79b6ec;border-radius: 5px;-moz-border-radius:5px;float:right;}
+
+        .ercon-b{width:20%;height:100%;float:left;border-left: 1px solid #ccc;}
+        .ercon-b p:first-child{margin-top:20px;}
+        .ercon-b p{text-align: center;margin-bottom: 8px;}
+        .ercon-b p input{width:160px;height:28px;}
+        .ercon-b p a{font-size:18px; width:80px;height:36px;line-height: 36px;background-color: #cee3fe;display: inline-block;border-radius: 6px;-moz-border-radius:6px;border:1px solid #ccc;}
+
+        .check-de a{margin-left: 20px;height:30px;line-height: 30px;padding: 6px 20px;border:1px solid #555;border-bottom:none;text-decoration:none;}
+        .check-de .check-dea{background: #e4ecee;}
+        #resultRightTable th,#resultRightTable td input,#resultRightTable td select{border:1px,height:30px;}
+    </style>
+<div class="bjui-pageHeader" style="background-color: white;" id="resultForm">
+    <form id="pagerForm" class="resultForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+    #pageInput($page)
+
+    <div class="ernav">
+        <div class="ernav-a">
+##            <span>信息筛选</span>
+        <button class="btn btn-default" id="" style="display: none" type="submit">查询</button>
+            <button id="reloadSearch" data-toggle="reloadsearch" data-clear-query="true" class="btn btn-default" style="margin-left: 10px;" style="cursor:pointer">清空查询</button>
+            <button id="exportDecideExcel" class="btn btn-default" style="cursor:pointer">导出列表</button>
+            <button  id="saveRightResultDecide" onclick="saveRightResultDecideSecond();" data-type="post" data-toggle="doajax" data-confirm-msg="确定保存右侧列表数据吗？" class="btn btn-default" style="cursor:pointer">保&nbsp;&nbsp;存</button>
+            <button id="defaultSelectedResultDecide" data-toggle="doajax" onclick="defaultSelectedResultDecideNew();" class="btn btn-default" style="cursor:pointer">批量判断</button>
+        </div>
+        <div class="ernav-b">
+##            <span>条码扫描</span>
+##            <a style="background-color: white;">条形码编号</a>
+            <span style="margin-left: 10%;">条形码编号</span>
+            <input type="text" id="examNumberScan" name="examNumberScan" class="form-control" size="10" data-rule="number" value="$!examNumberScan">
+            <button type="button" class="btn btn-default" id="examNumnberClick" data-url="" >搜索</button>
+        </div>
+    </div>
+
+    <div class="content" style="background-color: white;">
+        <div class="ercon-a">
+            <div class="con-aa">
+##                <p>
+##                    <span style="">地段区域</span>
+##                    <select name="areaId" id="areaId" data-width="130">
+##                        <option value="">全部</option>
+##                        #LoadBean("examAreaService")
+##                        #foreach($el in $examAreaService.getRootExamArea())
+##                            <option value="$!el.id"
+##                                #if($!el.id==$!areaId)
+##                                    selected
+##                                #end
+##                            >$!el.areaName</option>
+##                        #end
+##                    #end
+##                    </select>
+##                </p>
+####                <p><span style="margin-right: 3px;">项目类别</span><select name="" id="" data-width="130" data-emptytxt="请选择">
+####                    <option value="">全部</option>
+####                </select></p>
+##                <p><span style="margin-right: 3px;">是否复检</span><select name="isRecheck" id="" data-width="130" data-emptytxt="请选择">
+##                    <option value="">全部</option>
+##                    <option #if($!isRecheck=="1") selected #end value="1">是</option>
+##                    <option #if($!isRecheck=="0") selected #end value="0">否</option>
+##                </select></p>
+                <p><span>姓名</span><input type="text" id="memberName" name="memberName" value="$!memberName"></p>
+                <p><span>身份证件号</span><input type="text" name="idNum" id="idNum" value="$!idNum"></p>
+                <p><span>体检号</span><input type="text" id="examNumber" name="examNumber" value="$!examNumber"></p>
+            </div>
+            <div class="con-ab">
+##                <p><span>姓名</span><input type="text" name="memberName" value="$!memberName"></p>
+##                <p><span>身份证件号</span><input type="text" name="idNum" value="$!idNum"></p>
+##                <p><span>体检号</span><input type="text" name="examNumber" value="$!examNumber"></p>
+    #if($!currentAgenciesCode == 132)
+
+    <p><span>地段区域</span><select name="areaId" id="areaId" data-width="130">
+        <option value="">全部</option>
+        #LoadBean("examAreaService")
+        #foreach($el in $examAreaService.getRootExamArea())
+            <option value="$!el.id"
+                #if($!el.id==$!currentAreaId)
+                    selected
+                #end
+            >$!el.areaName</option>
+        #end
+    #end
+
+</select>
+</p>
+
+#else
+    <input type="hidden" name="areaId" value="$!currentAreaId">
+<p><span>地段区域</span><select name="areaIdHidden" id="areaIdHidden" data-width="130" disabled>
+    <option value="">全部</option>
+    #LoadBean("examAreaService")
+    #foreach($el in $examAreaService.getRootExamArea())
+        <option value="$!el.id"
+            #if($!el.id==$!currentAreaId)
+                selected
+            #end
+        >$!el.areaName</option>
+    #end
+#end
+
+</select>
+</p>
+
+#end
+
+                ##                <p><span style="margin-right: 3px;">项目类别</span><select name="" id="" data-width="130" data-emptytxt="请选择">
+                ##                    <option value="">全部</option>
+                ##                </select></p>
+                    <p><span style="margin-right: 3px;">是否复检</span><select name="isRecheck" id="isRecheck" data-width="130" data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        <option #if($!isRecheck=="1") selected #end value="1">是</option>
+                        <option #if($!isRecheck=="0") selected #end value="0">否</option>
+                    </select></p>
+            </div>
+            <div class="con-ac">
+                <p><span>体检日期</span><input type="text" value="$!startTime" id="startTime" name="startTime" data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期" data-width="130"></p>
+                <p><span></span><input type="text" value="$!endTime" name="endTime" id="endTime" data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期" data-width="130"></p>
+                <p><span>项目结果</span><select name="verifyConclusion" id="verifyConclusion" data-width="130" data-emptytxt="请选择">
+                    <option value="">全部</option>
+                    <option #if($!verifyConclusion=="1") selected #end value="1">合格</option>
+                    <option #if($!verifyConclusion=="2") selected #end value="2">不合格</option>
+                    <option #if($!verifyConclusion=="0") selected #end value="0">未判断</option>
+                </select>
+                </p>
+            </div>
+            <div class="con-ad">
+                <p><span>收费</span><select name="payState" id="payState" data-width="130" data-emptytxt="请选择">
+                    <option value="">全部</option>
+                    <option #if($!payState=="2") selected #end value="2">已收费</option>
+                    <option #if($!payState=="1") selected #end value="1">未收费</option>
+                </select>
+                    <input id="isErQuery" name="isErQuery" value="123" type="hidden"/>
+                </p>
+                <p><button class="btn btn-default" id="searchBtnEr" type="submit" style="margin-left: 80px;">查询</button></p>
+            </div>
+        </div>
+##        <div class="ercon-b">
+##            <p>条形码编号</p>
+##            <p><input type="text" id="examNumber" name="examNumber" class="form-control" size="10" data-rule="number"></p>
+##            <p>
+##                <button type="button" class="btn btn-default" data-id="dialog-normal" data-toggle="dialog"
+##                        data-width="800" data-height="600" id="commitCode" data-url="">确认
+##                </button>
+##            </p>
+##        </div>
+    </div>
+    </form>
+</div>
+
+    <div class="bjui-pageContent tableContent" style="margin-top: 10px;">
+        <div id="middleContainer" style="overflow-x: auto;">
+            <div class="check-de" style="height: 35px;line-height: 40px;">
+                <a id="checkA" href="javascript:void(0);" class="check-dea">相关$!page.total记录</a>
+            </div>
+            <table id="table-left" class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" style="width:38%;float: left;">
+                <thead>
+                <tr>
+                ##                <th><input id="allCheckResult" type="checkbox" style="width: 30px;float: left;line-height: 40px;" value=""/></th>
+                    <th >姓名</th>
+                    <th >体检号</th>
+                ##                <th>身份证号</th> data-toggle="dialog" data-width="467" data-height="200"  data-title="查看" data-url="#U('toEntryResultRight?id=?',$!vo.id)"
+                    <th >工作单位</th>
+                    <th >体检日期</th>
+                </tr>
+                </thead>
+                <tbody >
+                    #foreach($vo in $page.list)
+                    <tr name="entryResultTr" s="$!vo.examNumber" i="$!vo.id">
+                    ##                    <th><input type="checkbox" style="width: 30px;float: left;line-height: 40px;" value="$!vo.id" /></th>
+                        <td>$!vo.name</td>
+                        <td>$!vo.examNumber</td>
+                    ##                    <td  id="entryResult$!vo.id" s="$!vo.id" data-toggle="dialog" data-width="830" data-height="500"  data-title="结果判断" data-url="#U('toEntryResult?id=?',$!vo.id)">$!vo.examMember.idCardNum</td>
+                        <td>$!vo.workUnit</td>
+                    ##                    <td>$date.format('yyyy-MM-dd HH:mm:ss',$!vo.examTime)</td>
+                        <td>$!vo.examTimeStr</td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+            <table id="resultRightTable" class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" style="width:60%;float:right;">
+                <thead>
+                <tr>
+                    <th style="width: 50px;">体检项目</th>
+                    <th style="width: 42px;">结果判断</th>
+                    <th style="width: 130px;">体检结果</th>
+                    <th style="width: 60px;">判断人</th>
+                    <th style="width: 80px;">判断日期</th>
+                    <th style="width: 48px;">复检</th>
+                    <th style="width: 48px;">收费</th>
+                    <th style="width: 80px;">备注</th>
+                </tr>
+                </thead>
+                <tbody id="resultRightTab">
+                    #foreach($vo in $!resultList)
+                    <tr>
+                    ##                    <th><div class="icheckbox_minimal-purple" style="position: relative;" ></div></th>
+                        <input type="hidden" id="hiddenExamIdRight"  value="$!vo.memberExamId"/>
+                        <td style="width: 50px;" id="entryResultRightTr$!vo.id" s="$!vo.id" data-id="entryResultOne">$!vo.projectName</td>
+                        <td style="width: 60px;">
+                            <input type="hidden" id="hiddenResultId" jsonName="examResultId" value="$!vo.id"/>
+                            <select #if($!vo.isNew==0||$!vo.projectId==6)disabled #end  jsonName="isQualified" name="isQualified$!vo.projectId" i="$!vo.id" s="$!vo.projectId" id="" style="width: 100%;height:100%;">
+                                <option #if($!vo.isQualified=="1") selected #end value="1">合格</option>
+                                <option #if($!vo.isQualified=="2") selected #end value="2">不合格</option>
+                                <option #if($!vo.isQualified=="0"||$!vo.isQualified=="3") selected #end value="0">未判断</option>
+                            </select>
+                        ##                    #if($!vo.isQualified==0)
+                        ##                        未判断
+                        ##                    #elseif($!vo.isQualified==1)
+                        ##                        合格
+                        ##                    #elseif($!vo.isQualified==2)
+                        ##                        不合格
+                        ##                    #end
+                        ##                        <input type="radio" jsonName="isQualified" #if($!vo.isQualified==2) checked #end data-toggle="icheck" name="isQualified$!vo.projectId" data-label="合格" value="2"/>
+                        ##                        <input type="radio" jsonName="isQualified" #if($!vo.isQualified==1) checked #end data-toggle="icheck" name="isQualified$!vo.projectId" data-label="不合格" value="1"/>
+                        ##                        <input type="radio" jsonName="isQualified" #if($!vo.isQualified==0) checked #end data-toggle="icheck" name="isQualified$!vo.projectId" data-label="未判断" value="0"/>
+                        </td>
+                        <td style="width: 130px;">
+                        ##                        #if($!vo.projectId==7)
+                        ##                            <input type="text" name="tags" data-width="100px"  value="" data-toggle="tags" data-url="#U("findResultDescription?id=?",$!vo.id)" >
+                        ##                            <input type="hidden" id="hiddenProjectResult" jsonName="examResult"/>
+                        ##                        #else
+                        ##                            <select jsonName="examResult" name="blodResult$!vo.projectId" s="$!vo.projectId">
+                        ##                                #if($!vo.projectId==5)
+                        ##                                    <option #if($!vo.examResult=="阴性") selected #end value="阴性">阴性</option>
+                        ##                                    <option #if($!vo.examResult=="阳性") selected #end value="阳性">阳性</option>
+                        ##                                #elseif($!vo.projectId==6)
+                        ##                                    <option #if($!vo.examResult=="正常") selected #end value="正常">正常</option>
+                        ##                                    <option #if($!vo.examResult=="痢疾杆菌阳性") selected #end value="痢疾杆菌阳性">痢疾杆菌阳性</option>
+                        ##                                #elseif($!vo.projectId==8)
+                        ##                                    <option #if($!vo.examResult=="阴性") selected #end value="阴性">阴性</option>
+                        ##                                    <option #if($!vo.examResult=="阳性") selected #end value="阳性">阳性</option>
+                        ##                                #elseif($!vo.projectId==9)
+                        ##                                    <option #if($!vo.examResult=="正常") selected #end value="正常">正常</option>
+                        ##                                    <option #if($!vo.examResult=="阳性") selected #end value="阳性">阳性</option>
+                        ##                                #elseif($!vo.projectId==10)
+                        ##                                    <option #if($!vo.examResult=="心肺正常") selected #end value="心肺正常">心肺正常</option>
+                        ##                                    <option #if($!vo.examResult=="阳性") selected #end value="阳性">阳性</option>
+                        ##                                #end
+                        ##                            </select>
+                        ##                        #end
+                            <input #if($!vo.isNew==0||$!vo.projectId==6)readonly #end type="text" jsonName="examResult" id="blodResult$!vo.id" i="$!vo.id" name="blodResult$!vo.projectId" s="$!vo.projectId" value="$!vo.examResult" style="width: 100%;height: 31px;"/>
+                        </td>
+                        <td style="width: 30px;">$!vo.doctorName</td>
+                        #if(!$!vo.judgeTime)
+                            <td style="width: 100px;"></td>
+                        #else
+                            <td style="width: 100px;">$!vo.judgeTimeStr</td>
+                        #end
+
+                        #if($!vo.recheckTag==0)
+                            <td style="width: 30px;">初检</td>
+                        #else
+                            <td style="width: 30px;">$!vo.recheckTag次复检</td>
+                        #end
+
+                        #if($!vo.payState==1)
+                            <td style="width: 30px;">未收费</td>
+                        #else
+                            <td style="width: 30px;">已收费</td>
+                        #end
+                        <td style="width: 30px;">$!vo.remark</td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            var tableLeft = document.getElementById("table-left");
+            var tableRight = document.getElementById("resultRightTable");
+            var widthLeft = parseInt(getComputedStyle(tableLeft).width);
+            var widthRight = parseInt(getComputedStyle(tableRight).width);
+            document.getElementById("middleContainer").style.width = widthLeft + widthRight +150 +'px';
+        })
+    </script>
+
+
+
+    <input type="hidden" id="pageCurrentFind" value="$page.pageCurrent">
+    <input type="hidden" id="pageCountFind" value="$page.pageCount">
+    <input type="hidden" id="pageSizeFind" value="$page.pageSize">
+    #page($page)
+
+        <script>
+
+            $("#examNumberScan").on("keydown",function(event){
+                    var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+                    var code = theEvent.keyCode;
+                    if (code == 32) {
+                    examNumberScan();
+                }
+            });
+
+            $("#examNumnberClick").click(function(){
+                examNumberScan();
+            });
+
+            function examNumberScan(){
+                var examNumber = $('#examNumberScan').val();
+                if(examNumber==''){
+                    $(this).alertmsg("error","请先扫描条形码获取体检人员信息！");
+                    return false;
+                }
+                $("#searchBtnEr").submit();
+            };
+
+            $('select[jsonName]').live('change', function(e) {
+                var checked = $(this).is(':selected');
+                var projectId = $(this).attr("s");
+                var id = $(this).attr("i");
+                var isQualified = $(this).val();
+                if(isQualified==0){
+                    $("#blodResult"+id).val("");
+                    $("#blodResult"+id).hide();
+                }else if(isQualified==1){
+                    $("#blodResult"+id).show();
+                    if(projectId==7){
+                        $("#blodResult"+id).val("<90");
+                    }else if(projectId==6||projectId==9){
+                        $("#blodResult"+id).val("正常");
+                    }else if(projectId==10){
+                        $("#blodResult"+id).val("心肺正常");
+                    }else{
+                        $("#blodResult"+id).val("阴性");
+                    }
+                }else if(isQualified==2){
+                    $("#blodResult"+id).show();
+                    if(projectId==7){
+                        $("#blodResult"+id).val(">89");
+                    }else if(projectId==6){
+                        $("#blodResult"+id).val("痢疾杆菌阳性");
+                    }else{
+                        $("#blodResult"+id).val("阳性");
+                    }
+                }
+            });
+
+            $("#searchBtnEr").click(function () {
+                $("#isErQuery").val("1");
+            });
+
+            //excel导出
+            $("#exportDecideExcel").on("click",function(e){
+                var pageCurrent = $('#pageCurrentFind').val();
+                var pageCount = $('#pageCountFind').val();
+                var pageSize = $('#pageSizeFind').val();
+                var memberName = $("#resultForm #memberName").val();
+                var idNum = $("#resultForm #idNum").val();
+                var examNumber = $("#resultForm #examNumber").val();
+                var areaId = $("#resultForm #areaId").val();
+                var isRecheck = $("#resultForm #isRecheck").val();
+                var startTime = $("#resultForm #startTime").val();
+                var endTime = $("#resultForm #endTime").val();
+                var verifyConclusion = $("#resultForm #verifyConclusion").val();
+                var payState = $("#resultForm #payState").val();
+                window.open("#U("/admin/examManage/examResult/exportDecideExcel")"+"?pageCurrent="
+                        +pageCurrent+"&pageCount="+pageCount+"&pageSize="+pageSize+ "&areaId=" + areaId+
+                        "&isRecheck=" + isRecheck+ "&memberName=" + memberName+ "&idNum=" + idNum+
+                        "&examNumber=" + examNumber+"&startTime="+ startTime+"&endTime=" + endTime+
+                        "&verifyConclusion=" + verifyConclusion+ "&payState=" + payState);
+            });
+
+
+            var saveRightResultDecideSecond=function(){
+                var examMemberId = $("#hiddenExamIdRight").val();
+                console.info(examMemberId);
+                var results = {};
+                $("#resultRightTable tr:gt(0)").each(function(i){
+                    var data = new Object();
+                    $(this).find("select[jsonName],input[jsonName]").each(function(){
+                        var name = $(this).attr("jsonName");
+
+                            data[name]= $(this).val();
+
+
+                    });
+                    results[i]=data;
+                });
+                results=JSON.stringify(results);
+
+##                $("#saveRightResultDecide").attr("href","#U("saveRightResultDecide?results=")"+results);
+
+                $.post("#U('/admin/examManage/examResult/saveRightResultDecide')",
+                        {results:results,examMemberId:examMemberId},function(data){
+                            data= $.parseJSON(data);
+                            if(data) {
+                                if(data.statusCode==300){
+                                    $(this).alertmsg("error",data.message);
+                                    return false;
+                                }else{
+                                    $(this).alertmsg("ok","保存当前体检结果成功！");
+                                    setTimeout(function(){
+                                        $(".resultForm").click();
+                                    },1000);
+                                }
+
+                            }else{
+                            }
+                        });
+
+            };
+
+            function saveResult(){
+                var examMemberId = $("#hiddenExamIdLeft").val();
+                var results = {};
+                $("#resultDecideTab tr:gt(0)").each(function(i){
+                    var data = new Object();
+                    $(this).find("select[jsonName],input[jsonName]").each(function(){
+                        var name = $(this).attr("jsonName");
+                        if(name=="isQualified"){
+                            if($(this).is(":checked")){
+                                data[name]= $(this).val();
+                            }
+                        }else{
+                            data[name]= $(this).val();
+                        }
+
+                    });
+                    results[i]=data;
+                });
+                results=JSON.stringify(results);
+
+                $.post("#U('/admin/examManage/examResult/saveRightResultDecide')",
+                        {results:results,examMemberId:examMemberId},function(data){
+                            data= $.parseJSON(data);
+                            if(data) {
+                                if(data.statusCode==300){
+                                    $(this).alertmsg("error",data.message);
+                                    return false;
+                                }else{
+                                    $(this).alertmsg("ok","录入成功！")
+                                    setTimeout(function(){
+                                        $(document).dialog("close","entryResultDecide");
+                                        $(document).dialog("close","entryResultDialog");
+                                        $(".resultForm").click();
+                                    },1000);
+                                }
+
+                            }
+                        });
+
+            }
+
+            $(document).ready(function(){
+
+                $("#examNumnberClick").focus();
+
+//                $('select[jsonName]').each(function(){
+//                    var projectId = $(this).attr("s");
+//                    var id = $(this).attr("i");
+//                    var isQualified = $(this).val();
+//                    console.info("项目号"+projectId);
+//                    console.info("是否合格状态"+isQualified)
+//                    if(isQualified==0){
+//                        $("#blodResult"+id).val("");
+//                        $("#blodResult"+id).hide();
+//                    }else if(isQualified==1){
+//                        $("#blodResult"+id).show();
+//                        if(projectId==7){
+//                            $("#blodResult"+id).val("<90");
+//                        }else{
+//                            $("#blodResult"+id).val("阴性");
+//                        }
+//                    }else if(isQualified==2){
+//                        $("#blodResult"+id).show();
+//                        if(projectId==7){
+//                            $("#blodResult"+id).val(">89");
+//                        }else{
+//                            $("#blodResult"+id).val("阳性");
+//                        }
+//                    }
+//                });
+
+
+//                $("input[name='tags']").tags(
+//                        {
+//                            max:1
+//                        }
+//                );
+            });
+
+            $(".no4 select").change(function(){
+                var blodResultVal = $(this).val();
+                var projectId = $(this).attr("s");
+                if(blodResultVal=="阳性"||blodResultVal==">90"){
+
+                    $("#blodResultSel"+projectId+"").attr("checked",true);
+                }else{
+                    $("#blodResultSel"+projectId+"").removeAttr("checked");
+                }
+            });
+
+//            $("input[name='tags']").on('aftercreated.bjui.tags', function(e, data) {
+//
+//                if(data.item){
+//
+//                    // 当前选定项的值(object，具体值由返回JSON决定)
+//                    var description  = data.item.label;
+//                    console.info("q"+description);
+//                    $("#descriptionVal").val(description);
+//                    $("#hiddenProjectResult").val(description);
+//                }else if(data.value){
+//                    var descriptionId = data.value;
+//                    $("#resultDescriptionId").val(descriptionId);
+//                    console.info("m"+descriptionId);
+//                    $("#descriptionVal").val(descriptionId);
+//                    $("#hiddenProjectResult").val(descriptionId);
+//                }
+//                if(Number($("#descriptionVal").val())>90||$("#descriptionVal").val()==">90"){
+//                    $("#blodResultSel7").attr("checked",true);
+//                }else{
+//                    $("#blodResultSel7").removeAttr("checked");
+//                }
+//
+//            })   entryResultTr
+
+            var intervalTimer = null;
+
+            $("tr[name='entryResultTr']").click(function(){
+                var examNumber = $(this).attr("s");
+                clearTimeout(intervalTimer); //取消上次延时未执行的方法
+                intervalTimer = setTimeout(function () {
+                $.post("#U('findSelectedResultDetailBackMap')",
+                        {examNumber:examNumber},function(data){
+                            if(data) {
+                                data = $.parseJSON(data);
+                                var html="";
+                                var entryResultRight = $('#resultRightTab');
+                                $('#resultRightTab').empty();
+                                var loginUserRole = data.loginUserRole;
+                                var results =  data.resultList;
+                                for(var i=0;i<results.length;i++){
+//                            html+="<tbody id='entryblodResultRight'>";
+//                                    var entryResult = data[i];
+                                    var entryResult = results[i];
+                                    html+=" <tr  align='center'>";
+                                    html+="<input type='hidden' id='hiddenExamIdRight'  value='"+entryResult.memberExamId+"'/>";
+                                    html+="<td align='center' data-id='entryResultOne' id='entryResultRightTr"+entryResult.id+"' s='"+entryResult.id+"'>"+entryResult.projectName+"</td>";
+                                    html+="<td style='width: 60px;'>";
+                                    html+="<input type='hidden' id='hiddenResultId' jsonName='examResultId' value='"+entryResult.id+"'/>";
+                                    if(entryResult.isNew==0||entryResult.projectId==6){
+                                        html+="<select jsonName='isQualified' disabled  name='isQualified'"+entryResult.projectId+"' i='"+entryResult.id+"' s='"+entryResult.projectId+"' id='' style='width: 100%;height:100%;'>";
+                                    }else{
+                                        html+="<select jsonName='isQualified'  name=isQualified'"+entryResult.projectId+"' i='"+entryResult.id+"' s='"+entryResult.projectId+"' id='' style='width: 100%;height:100%;'>";
+                                    }
+//                                    if(entryResult.isNew==0||entryResult.projectId==6){
+//                                        html+="<select jsonName='isQualified' disabled name=isQualified'"+entryResult.projectId+"' i='"+entryResult.id+"' s='"+entryResult.projectId+"' id='' style='width: 100%;height:100%;'>";
+//                                    }else{
+//                                        html+="<select jsonName='isQualified'  name='isQualified'"+entryResult.projectId+"' i='"+entryResult.id+"' s='"+entryResult.projectId+"' id='' style='width: 100%;height:100%;'>";
+//                                    }
+                                    if(entryResult.isQualified==1){
+                                        html+="<option value='1' selected>合格</option>";
+                                        html+="<option value='2'>不合格</option>";
+                                        html+="<option value='0'>未判断</option>";
+                                    }
+                                    if(entryResult.isQualified==2){
+                                        html+="<option value='1'>合格</option>";
+                                        html+="<option value='2' selected>不合格</option>";
+                                        html+="<option value='0'>未判断</option>";
+                                    }
+                                    if(entryResult.isQualified==0||entryResult.isQualified==3){
+                                        html+="<option value='1'>合格</option>";
+                                        html+="<option value='2'>不合格</option>";
+                                        html+="<option value='0' selected>未判断</option>";
+                                    }
+                                    html+="</select>";
+                                    html+="</td>";
+//                                    if(entryResult.isQualified==0) {
+//                                        html += "<td>未判断</td>";
+//                                    }else if(entryResult.isQualified==1){
+//                                        html += "<td>合格</td>";
+//                                    }else if(entryResult.isQualified==2) {
+//                                        html += "<td>不合格</td>";
+//                                    }
+                                    if(typeof(entryResult.examResult)=='undefined'){
+                                        if(entryResult.isNew==0||entryResult.projectId==6){
+                                            html+="<td style='width: 130px;'><input type='text' readonly jsonName='examResult' id='blodResult"+entryResult.id+"' i='"+entryResult.id+"' name='blodResult"+entryResult.id+"' s='"+entryResult.id+"' value='' style='width: 100%;height: 31px;'/></td>";
+                                        }else{
+                                            html+="<td style='width: 130px;'><input type='text' jsonName='examResult' id='blodResult"+entryResult.id+"' i='"+entryResult.id+"' name='blodResult"+entryResult.id+"' s='"+entryResult.id+"' value='' style='width: 100%;height: 31px;'/></td>";
+                                        }
+                                    }else{
+                                        if(entryResult.isNew==0||entryResult.projectId==6){
+                                            html+="<td style='width: 130px;'><input readonly type='text' jsonName='examResult' id='blodResult"+entryResult.id+"' i='"+entryResult.id+"' name='blodResult"+entryResult.id+"' s='"+entryResult.id+"' value='"+entryResult.examResult+"' style='width: 100%;height: 31px;'/></td>";
+                                        }else{
+                                            html+="<td style='width: 130px;'><input type='text' jsonName='examResult' id='blodResult"+entryResult.id+"' i='"+entryResult.id+"' name='blodResult"+entryResult.id+"' s='"+entryResult.id+"' value='"+entryResult.examResult+"' style='width: 100%;height: 31px;'/></td>";
+                                        }
+
+                                    }
+                                    if(typeof(entryResult.doctorName)=='undefined'){
+                                        html+="<td></td>";
+                                    }else{
+                                        html+="<td>"+entryResult.doctorName+"</td>";
+                                    }
+                                    if(typeof(entryResult.judgeTime)=='undefined'){
+                                        html+="<td></td>";
+                                    }else{
+                                        html+="<td>"+entryResult.judgeTimeStr+"</td>";
+                                    }
+//                            html+="<td>"+entryblodResult.decideTime+"</td>";
+                                    if(entryResult.recheckTag==0) {
+                                        html += "<td style='width: 30px;'>初检</td>";
+                                    }else{
+                                        html += "<td style='width: 30px;'>"+entryResult.recheckTag+"次复检</td>";
+                                    }
+                                    if(entryResult.payState==1) {
+                                        html += "<td style='width: 30px;'>未收费</td>";
+                                    }else{
+                                        html += "<td style='width: 30px;'>已收费</td>";
+                                    }
+                                    if(typeof(entryResult.remark)=='undefined'){
+                                        html+="<td></td>";
+                                    }else{
+                                        html+="<td>"+entryResult.remark+"</td>";
+                                    }
+                                    html+="</tr>";
+
+//                            html+="</tbody>";
+                                }
+                                entryResultRight.append(html);
+
+
+
+//                                $('select[jsonName]').each(function(){
+//                                    var projectId = $(this).attr("s");
+//                                    var id = $(this).attr("i");
+//                                    var isQualified = $(this).val();
+//                                    console.info("项目号"+projectId);
+//                                    console.info("是否合格状态"+isQualified)
+//                                    if(isQualified==0){
+//                                        $("#blodResult"+id).val("");
+//                                        $("#blodResult"+id).hide();
+//                                    }else if(isQualified==1){
+//                                        $("#blodResult"+id).show();
+//                                        if(projectId==7){
+//                                            $("#blodResult"+id).val("<90");
+//                                        }else{
+//                                            $("#blodResult"+id).val("阴性");
+//                                        }
+//                                    }else if(isQualified==2){
+//                                        $("#blodResult"+id).show();
+//                                        if(projectId==7){
+//                                            $("#blodResult"+id).val(">89");
+//                                        }else{
+//                                            $("#blodResult"+id).val("阳性");
+//                                        }
+//                                    }
+//                                });
+
+                            }else{
+                                $('#resultRightTab').empty();
+                            }
+                        });
+                }, 300);
+
+            });
+
+            /**
+             * 鼠标双左侧血检信息列弹出结果录入框
+             */
+            $("tr[name='entryResultTr']").dblclick(function(){
+                var id = $(this).attr("i");
+                clearTimeout(intervalTimer); //取消上次延时未执行的方法
+                $(document).dialog({id:'entryResultDialog',width:'830',height:'500', url:"#U('toEntryResult?')id="+id, title:'录入'});
+
+            });
+
+            //默认值操作
+            function defaultSelectedResultDecideNew(){
+                var memberName = $("#resultForm #memberName").val();
+                var idNum = $("#resultForm #idNum").val();
+                var examNumber = $("#resultForm #examNumber").val();
+                var areaId = $("#resultForm #areaId").val();
+                var isRecheck = $("#resultForm #isRecheck").val();
+                var startTime = $("#resultForm #startTime").val();
+                var endTime = $("#resultForm #endTime").val();
+                var verifyConclusion = $("#resultForm #verifyConclusion").val();
+                var payState = $("#resultForm #payState").val();
+
+                $(document).bjuiajax("doAjax",{url:"#U('defaultSelectedResultDecide?')memberName="+memberName+"&idNum="+
+                idNum+"&examNumber="+examNumber+"&areaId="+areaId+"&isRecheck="+isRecheck+"&startTime="+
+                startTime+"&endTime="+endTime+"&verifyConclusion="+verifyConclusion+"&payState="+payState,
+                    confirmMsg:"确定要执行此操作吗？筛选范围内的结果会被置为合格！",
+                    callback:"defaultSelectedResultDecideCallback"});
+
+            };
+
+            //默认值操作回调
+            function defaultSelectedResultDecideCallback(){
+                $(".resultForm").submit();
+            };
+
+##            /**
+##             * 选中
+##             */
+##            $("#allCheckResult").on("click",function(e){
+##                if($(this).attr("checked")) {
+##                    $("[type='checkbox']").each(function(){
+##                        $(this).attr("checked",'true');
+##                    });
+##                } else {
+##                    $("[type='checkbox']").each(function(){
+##                        $(this).removeAttr("checked");
+##                    });
+##                }
+##            });
+##
+##            function defaultSelectedResultDecide(){
+##                var resultIds = "";
+##                $("tbody [type='checkbox']").each(function(){
+##                    if ($(this).attr("checked")) {
+##                        resultIds += $(this).val()+",";
+##                    }
+##                    console.info(resultIds);
+##                });
+##                $("#defaultSelectedResultDecide").attr("href","#U("defaultSelectedResultDecide?resultIds=")"+resultIds);
+##            };
+        </script>

@@ -1,0 +1,224 @@
+<div class="bjui-pageContent">
+    <style>
+
+        .content_blod_result{width: 800px;height:490px;margin:0 auto;border:1px solid #555;background-color: #e7eef0;}
+        .top_blod_result{height:50px;border-bottom: 1px solid #555;}
+        .top_blod_result img{margin:4px 20px 0 30px;float:left;}
+        .top_blod_result span{font-size: 16px;font-weight: bold;display: inline-block;height:50px;line-height: 50px; float:left;}
+        .people_mess{width:750px;height:50px;border:1px solid #555;border-radius: 8px;-moz-border-radius:8px;margin: 10px 0 0 24px;}
+        .people_mess>div{font-weight: bold;margin:4px 0 0 14px;}
+        .people_mess>p{float:left;margin-right:14px;margin-top:10px;}
+        .people_mess>p>span{margin-right:6px;vertical-align: bottom;}
+        .people_mess>p>input{/*width:180px;height:24px;*/border:1px solid #ccc;}
+        .people_mess .peo_time{margin-left:56px; }
+        .people_mess p input.in_last{width:100px;}
+        .pro_list{width:750px;height:auto;min-height:270px;border:1px solid #555;margin:10px 0 30px 24px;}
+        .pro_list div{font-weight: bold;height:34px;line-height: 34px;}
+        .pro_div{background-color: #79b6ec;padding-left: 14px;}
+        .pro_list table{border-collapse:collapse;}
+        .pro_list table th,.pro_list table td{border:1px solid #555;}
+        .no1{width:50px;background-color: #efefef;}
+        .no2{width:100px;}
+        .no3{width:50px;text-align: center;}
+        .no4{width:100px;}
+        .no5{width:100px;}
+        .no6{width:50px;text-align: center;}
+        .no7{width:100px;text-align: center;}
+        .no8{width:160px;text-align: center;}
+        .blod_result_tab .tr_h{height:36px;background-color: #efefef;}
+        .blod_result_tab tr{height:32px;}
+        select{width:100px;height:32px;border:0;}
+        .footer{width:100%;text-align: center;}
+        .footer a{padding:6px 30px;background-color: #fff;color:#333;border:1px solid #555;margin-right: 60px;border-radius: 3px;-moz-border-radius:3px;font-weight:bold;font-size: 16px;text-decoration: none;
+    </style>
+    <form action="#U('entryIntestinalResult')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+        <input type="hidden" name="intestinalId" value="$!intestinalId"/>
+        <input type="hidden" id="resultDescriptionId" name="resultDescriptionId" />
+        <input type="hidden" id="descriptionVal" name="descriptionVal" />
+        <div class="people_mess clearfix">
+            <p class="peo_time"><span class="line-height-one">体检日期</span><input type="text" value="$date.format('yyyy-MM-dd HH:mm:ss',$!intestinal.memberExam.examTime)" readonly></p>
+            <p><span class="line-height-one">体检号</span><input type="text" value="$!intestinal.examNumber" readonly></p>
+            <p><span class="line-height-one">姓名</span><input type="text" class="in_last" value="$!intestinal.memberExam.name" readonly></p>
+        </div>
+        <div class="pro_list">
+            <div class="pro_div">体检项目列表</div>
+            <table class="blod_result_tab" id="entry_Intestinal_result">
+                <tbody>
+                <tr class="tr_h">
+                    <td class="no1"></td>
+                    <td class="no2">项目名称</td>
+                    <td class="no3">合格</td>
+                    <td class="no4">体检结果</td>
+                    <td class="no5">备注</td>
+##                    <td class="no6">复查</td>
+                    <td class="no7">判断人</td>
+                    <td class="no8">判断日期</td>
+                </tr>
+                    #foreach($!vo in $!blodIntestinalList)
+                    <tr>
+                        <td class="no1"></td>
+                        <td class="no2">$!vo.projectName</td>
+                        <td class="no3">
+                            <input type="checkbox" jsonName="isQualified" name="isQualified$!vo.projectId" i="$!vo.id" #if($!vo.isQualified==0||$!vo.isQualified==1||$!vo.isQualified==3)checked #end id="isQualified$!vo.id" disabled="true" value="1"></td>
+                            <input type="hidden" id="hiddenResultId" jsonName="examResultId" value="$!vo.id"/>
+                        <td class="no4">
+                                <select #if($!vo.isNew==0)disabled #end jsonName="examResult" i="$!vo.id" name="intestinalResult$!vo.projectId" s="$!vo.projectId">
+                                    #if($!vo.projectId==6)
+                                        #if($!vo.isQualified==0||$!vo.isQualified==3)
+                                            <option t="1" selected value="正常">正常</option>
+                                            <option t="2" value="检出沙门氏菌（伦敦）">检出沙门氏菌（伦敦）</option>
+                                            <option t="3" value="检出沙门氏菌（田纳西）">检出沙门氏菌（田纳西）</option>
+                                            <option t="4" value="检出沙门氏菌（肠炎）">检出沙门氏菌（肠炎）</option>
+                                            <option t="5" value="检出沙门氏菌（鼠伤寒）">检出沙门氏菌（鼠伤寒）</option>
+                                            <option t="6" value="痢疾杆菌阳性">痢疾杆菌阳性</option>
+                                        #elseif($!vo.isQualified==1)
+                                            <option t="1" selected value="$!vo.examResult">$!vo.examResult</option>
+                                            <option t="2" value="检出沙门氏菌（伦敦）">检出沙门氏菌（伦敦）</option>
+                                            <option t="3" value="检出沙门氏菌（田纳西）">检出沙门氏菌（田纳西）</option>
+                                            <option t="4" value="检出沙门氏菌（肠炎）">检出沙门氏菌（肠炎）</option>
+                                            <option t="5" value="检出沙门氏菌（鼠伤寒）">检出沙门氏菌（鼠伤寒）</option>
+                                            <option t="6" value="痢疾杆菌阳性">痢疾杆菌阳性</option>
+                                        #else
+                                            <option t="1" value="正常">正常</option>
+                                            <option t="2" value="检出沙门氏菌（伦敦）">检出沙门氏菌（伦敦）</option>
+                                            <option t="3" value="检出沙门氏菌（田纳西）">检出沙门氏菌（田纳西）</option>
+                                            <option t="4" value="检出沙门氏菌（肠炎）">检出沙门氏菌（肠炎）</option>
+                                            <option t="5" value="检出沙门氏菌（鼠伤寒）">检出沙门氏菌（鼠伤寒）</option>
+                                            <option t="6" value="痢疾杆菌阳性">痢疾杆菌阳性</option>
+                                            <option t="7" selected value="$!vo.examResult">$!vo.examResult</option>
+                                        #end
+                                    #end
+                                </select>
+                        </td>
+                        <td class="no5">必检项目</td>
+##                        <td class="no6"><input type="checkbox" name="isRecheck$!vo.projectId" id="blodResultSel$!vo.projectId"></td>
+                        #if(!$vo.doctorName)
+                            <td class="no7"></td>
+                        #else
+                            <td class="no7">$vo.doctorName</td>
+                        #end
+                        #if(!$vo.judgeTime)
+                            <td class="no8"></td>
+                        #else
+                            <td class="no8">$date.format('yyyy-MM-dd HH:mm:ss',$!vo.judgeTime)</td>
+                        #end
+                    </tr>
+                    #end
+                ##                <tr> <input type="text" name="tags" data-width="313px"  value="" data-toggle="tags" data-url="#U("findMedicalDescription")" >
+                ##                    <td class="no1"></td>
+                ##                    <td class="no2">项目名称</td>
+                ##                    <td class="no3"><input type="checkbox"></td>
+                ##                    <td class="no4"><select name="" id="">
+                ##                        <option value=""><90</option>
+                ##                        <option value="">>90</option>
+                ##                    </select></td>
+                ##                    <td class="no5">备注</td>
+                ##                    <td class="no6"><input type="checkbox"></td>
+                ##                    <td class="no7">判断人</td>
+                ##                    <td class="no8">判断日期</td>
+                ##                </tr>
+                ##                <tr>
+                ##                    <td class="no1"></td>
+                ##                    <td class="no2">项目名称</td>
+                ##                    <td class="no3"><input type="checkbox"></td>
+                ##                    <td class="no4"><select name="" id="">
+                ##                        <option value="">阴性</option>
+                ##                        <option value="">阳性</option>
+                ##                    </select></td>
+                ##                    <td class="no5">备注</td>
+                ##                    <td class="no6"><input type="checkbox"></td>
+                ##                    <td class="no7">判断人</td>
+                ##                    <td class="no8">判断日期</td>
+                ##                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="add-role-button">
+            <ul>
+                <li><button type="button" class="btn btn-close" >关闭</button></li>
+                <li><button type="button"  class="btn-default" onclick="saveIntestinalResult();">保存</button></li>
+            </ul>
+        </div>
+
+    </form>
+</div>
+
+<script>
+
+##    var saveIntestinalResult=function(){
+##        var results = {};
+##        $("#entry_Intestinal_result tr:gt(0)").each(function(i){
+##            var data = new Object();
+##            $(this).find("select[jsonName],input[jsonName]").each(function(){
+##                var name = $(this).attr("jsonName");
+##                if(name=="isQualified"){
+##                    if($(this).is(":checked")){
+##                        data[name]="1";
+##                    }else{
+##                        data[name]="2";
+##                    }
+##                }else{
+##                    data[name]= $(this).val();
+##                }
+##
+##            });
+##            results[i]=data;
+##        });
+##        results=JSON.stringify(results);
+##
+##        $.post("#U('/admin/examManage/examResult/entryResultDecide')",
+##                {results:results},function(data){
+##                    data= $.parseJSON(data);
+##                    if(data) {
+##                        $(this).alertmsg("ok","录入成功！")
+##                    }
+##                });
+##
+##    }
+
+    $(document).ready(function(){
+        $("input[name='tags']").tags(
+                {
+                    max:1
+                }
+        );
+    })
+
+    $("#entry_Intestinal_result .no4 select").change(function(){
+        var t = $(this).find("option:selected").attr("t");
+        var blodResultVal = $(this).val();
+        var projectId = $(this).attr("s");
+        var id = $(this).attr("i");
+        if(t=="1"){
+            $("#entry_Intestinal_result #isQualified"+id).attr("checked",true);
+        }else{
+            $("#entry_Intestinal_result #isQualified"+id).removeAttr("checked");
+        }
+    });
+
+//    $("input[name='tags']").on('aftercreated.bjui.tags', function(e, data) {
+//
+//        if(data.item){
+//
+//            // 当前选定项的值(object，具体值由返回JSON决定)
+//            var description  = data.item.label;
+//            console.info("q"+description);
+//            $("#descriptionVal").val(description);
+//        }else if(data.value){
+//            var descriptionId = data.value;
+//            $("#resultDescriptionId").val(descriptionId);
+//            console.info("m"+descriptionId);
+//            $("#descriptionVal").val(descriptionId);
+//        }
+//        if(Number($("#descriptionVal").val())>90||$("#descriptionVal").val()==">90"){
+//            $("#blodResultSel7").attr("checked",true);
+//        }else{
+//            $("#blodResultSel7").removeAttr("checked");
+//        }
+//
+//    })
+
+</script>

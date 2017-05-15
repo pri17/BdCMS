@@ -1,0 +1,707 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', YaHei, Arial, Helvetica, sans-serif;
+    }
+
+    .rmmain a {
+        font-size: 17px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    a:hover {
+        border-bottom: 1px solid #333;
+    }
+
+    input {
+        width: 130px;
+        height: 23px;
+        box-sizing: border-box;
+    }
+
+    select {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1024px;
+        height: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+    }
+
+    .head {
+        height: 36px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .head span {
+        font-size: 17px;
+        color: #333;
+        height: 28px;
+        line-height: 28px;
+        padding: 0 26px;
+        border: 1px solid #ccc;
+        background-color: #e4ecee;
+        margin: 7px 0 0 20px;
+        display: inline-block;
+        border-top-left-radius: 3px;
+        -moz-border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        -moz-border-top-right-radius: 3px;
+    }
+
+    .rmmain {
+        height: 80px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /*.rmmain-a{width:200px;float:left;height:100%;}*/
+    /*.rmmain-a a{width:80px;height:44px;line-height: 44px; border:1px solid #ccc;border-radius: 4px;-moz-border-radius:4px;text-align: center;margin-right: 4px;display: inline-block;background-color: #79b6ec;margin-top: 8px;}*/
+    /*.rmmain-a a:first-child{margin-left: 10px;}*/
+    /*.rmmain-a span{height:20px; width:100%;background-color: #c1c1c1;text-align: center;display: inline-block;line-height: 20px;margin-top: 6px;font-size: 14px;}*/
+    .rmmain-b {
+        width: 200px;
+        float: left;
+        height: 100%;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+    .rmmain-b span {
+        font-size: 17px;
+        width: 80px;
+        height: 44px;
+        line-height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 8px 0 0 14px;
+    }
+
+    .rmmain-b em {
+        font-style: normal;
+        height: 20px;
+        width: 100%;
+        background-color: #c1c1c1;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .rmnav {
+        height: 38px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .rmnav-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+    }
+
+    /*.rmnav-a span{font-size: 17px;font-weight: bold;color: #003366;margin-left: 20px;margin-right: 24px;}*/
+    .rmnav-a span {
+        font-size: 17px;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        display: inline-block;
+        text-align: center;
+        background-color: #79b6ec;
+        margin: 3px 0 0 14px;
+    }
+
+    /*.rmnav-a a {*/
+        /*font-size: 13px;*/
+        /*height: 18px;*/
+        /*border: 2px solid #7cb7ec;*/
+        /*color: #003366;*/
+        /*font-weight: bold;*/
+        /*padding-left: 50px;*/
+        /*padding-right: 15px;*/
+        /*border-radius: 6px;*/
+        /*-moz-border-radius: 6px;*/
+    /*}*/
+
+    .rmcontent {
+        height: 112px;
+    }
+
+    .rmcon-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        padding-top: 20px;
+    }
+
+    .rmcon-a .con-aa {
+        width: 205px;
+        float: left;
+    }
+
+    .rmcon-a p {
+        margin-bottom: 8px;
+    }
+
+    .rmcon-a input {
+        width: 130px;
+        height: 28px;
+    }
+
+    .rmcon-a select {
+        width: 130px;
+        height: 28px;
+    }
+
+    .rmcon-a .con-aa {
+        width: 28%;
+    }
+
+    .rmcon-a .con-aa span {
+        font-size: 14px;
+        width: 72px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 14px;
+    }
+
+
+    .rmcon-a .con-ab {
+        width: 23%;
+        float: left;
+    }
+
+    .rmcon-a .con-ab span {
+        font-size: 14px;
+        width: 70px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 14px;
+    }
+
+    .rmcon-a .con-ac {
+        width: 24%;
+        float: left;
+    }
+
+    .rmcon-a .con-ac span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .rmcon-a .con-ad {
+        width: 22%;
+        float: left;
+    }
+
+    .rmcon-a .con-ad span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .rmcon-a .con-ad p a {
+        width: 74px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .rmcon-a .con-ae {
+        width: 20%;
+        float: left;
+    }
+
+    .rmcon-a .con-ae span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .rmcon-a .con-ae p a {
+        margin-top: 25px;
+        width: 74px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .rmcon-b {
+        width: 180px;
+        height: 100%;
+        float: left;
+        border-left: 1px solid #ccc;
+    }
+
+    .rmcon-b p:first-child {
+        margin-top: 13px;
+    }
+
+    .rmcon-b p {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .rmcon-b p input {
+        width: 160px;
+        height: 26px;
+    }
+
+    .rmcon-b p a {
+        font-size: 18px;
+        width: 80px;
+        height: 36px;
+        line-height: 36px;
+        background-color: #cee3fe;
+        display: inline-block;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    select{border: 1px solid #cccccc;}
+</style>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="nav">
+            <div class="rmnav-a" style="background-color: #cee3fe;">
+                <button class="btn btn-default" id="searchBtnRm" type="submit" style="margin-left: 10px;">查询</button>
+                <button class="btn btn-default" id="" style="display: none" type="submit">查询</button>
+                <button id="reloadSearch" data-toggle="reloadsearch" data-clear-query="true" class="btn btn-default" style="margin-left: 6px;">清空查询
+                </button>
+                <button id="exportReviewExcel" data-toggle="exportOption" class="btn btn-default" style="margin-left: 6px;">导出列表</button>
+                <a  onclick="printRmR()" href="javascript:void(0)" class="btn btn-default" style="margin-left: 6px;">打&nbsp;&nbsp;印</a>
+                <a id="reviewCredentialsCard" href="javascript:void(0)" onclick="reviewCredentialsCardClick()" class="btn btn-default" style="margin-left: 6px;">预&nbsp;&nbsp;览</a>
+            </div>
+        </div>
+        <div class="rmcontent" style="height: 135px;">
+            <div class="rmcon-a" style="background-color: white;">
+                <div class="con-ab">
+                    <p><span>体检号</span><input id="examNumber" name="examNumber" type="text" value="$!examNumber"></p>
+                    <p><span>姓名</span><input id="memberName" name="memberName" type="text" value="$!memberName"></p>
+                    #if($!currentAgenciesCode == 132)
+                    <p><span>地段区域</span><select name="areaId" id="areaId" data-width="130">
+                        <option value="">全部</option>
+                        #LoadBean("examAreaService")
+                        #foreach($el in $examAreaService.getRootExamArea())
+                            <option value="$!el.id"
+                                #if($!el.id==$!currentAreaId)
+                                    selected
+                                #end
+                                    >$!el.areaName</option>
+                        #end
+                    #end
+
+                    </select>
+                    </p>
+
+                #else
+                    <input type="hidden" name="areaId" value="$!currentAreaId">
+                <p><span>地段区域</span><select name="areaIdHidden" id="areaId" data-width="130" disabled>
+                    <option value="">全部</option>
+                    #LoadBean("examAreaService")
+                    #foreach($el in $examAreaService.getRootExamArea())
+                        <option value="$!el.id"
+                            #if($!el.id==$!currentAreaId)
+                                selected
+                            #end
+                                >$!el.areaName</option>
+                    #end
+                #end
+
+                </select>
+                </p>
+
+                #end
+                </div>
+                <div class="con-aa">
+                    <p><span>身份证件号</span><input style="width: 180px;" id="idCardNum" name="idCardNum" type="text" value="$!idCardNum"></p>
+
+                    <p><span>工作单位</span><input style="width: 180px;" id="workUnit" name="workUnit" type="text" value="$!workUnit"></p>
+                        <p><span>是否打印</span><select name="isRechekPrint" id="isRechekPrint" data-width="130"
+                                                    data-emptytxt="请选择" value="$!isPrint">
+                            <option value="">全部</option>
+                            <option value="1"
+                                #if($!isRechekPrint==1)
+                                    selected
+                                #end>已打印
+                            </option>
+                            <option value="0"
+                                #if($!isRechekPrint==0)
+                                    selected
+                                #end>未打印
+                            </option>
+                        </select>
+                        ##                    <input id="isRmQuery" name="isRmQuery" value="123" type="hidden"/>
+                        </p>
+
+
+
+                </div>
+
+                <div class="con-ad">
+
+                    <p><span>体检日期</span><input id="beginTime" name="beginTime" type="text" value="$!beginTime"
+                                               data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期"></p>
+                    <p><span></span><input id="endTime" name="endTime" type="text" value="$!endTime"
+                                           data-toggle="datepicker" data-nobtn="true" placeholder="点击选择日期"></p>
+                </div>
+                <div class="con-ac">
+                    <p><span>行业分类</span><select name="parentId" id="openCategory" onchange="addOptionRm()"
+                                                data-width="130" data-emptytxt="请选择">
+                        <option value="">全部</option>
+                        #LoadBean("examCategoryService")
+                        #foreach($rootVo in $examCategoryService.getRootCategory())
+                            <option value="$rootVo.id"
+                                #if($rootVo.id==$!parentId)
+                                    selected
+                                #end
+                                    >
+                                $rootVo.categoryName
+                            </option>
+                        #end
+                    #end
+                    </select>
+                    </p>
+                    <p><span></span><select name="openCategoryLevelTwoRm" id="openCategoryLevelTwoRm" data-width="130"
+                                            data-emptytxt="请选择">
+                    ##                    <option value="">全部</option>
+                    </select>
+                    </p>
+                    <input id="openCategoryLevelTwoRmId" name="openCategoryLevelTwoRmId"
+                           value="$!openCategoryLevelTwoRm" type="hidden">
+
+                </div>
+                <div class="con-ae">
+                    <p  style="margin-left: 400px;">
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th width="26px"><input id="allChecked" name="allExamChecked" type="checkbox" style="width: 30px;float: left;line-height: 40px;" value=""/>
+            </th>
+            <th style="text-align:center;">体检号</th>
+            <th style="text-align:center;">姓名</th>
+            <th style="text-align:center;">性别</th>
+            <th style="text-align:center;">身份证号</th>
+            <th style="text-align:center;">地段区域</th>
+            <th style="text-align:center;">行业分类</th>
+            <th style="text-align:center;">工作单位</th>
+            <th style="text-align:center;">体检日期</th>
+            <th style="text-align:center;">是否打印</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr e="$!vo.examNumber" i="$!vo.id">
+                <td><input name="reviewActionIds" type="checkbox" style="width: 30px;float: left;line-height: 40px;" value="$!vo.id"/></td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.examNumber</td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.name</td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.sexStr</td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.idCardNum</td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.areaName</td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.categoryName</td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.workUnit</td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.examTimeStr</td>
+                <td style="text-align:center;" name="clickReviewAction">$!vo.isRecheckPrintStr</td>
+            </tr>
+            #end
+        <script>
+            var tid = getNavEle( "#openCategoryLevelTwoRmId").val();
+            getNavEle( ".categoryLevelTwoClass").remove();
+            var pid = getNavEle( "#openCategory").val();
+            $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                    {
+                        pid: pid
+                    },
+                    function (data) {
+                        if (data.categoryList.length > 0) {
+                            var html = "";
+                            for (var i = 0; i < data.categoryList.length; i++) {
+                                var category = data.categoryList[i];
+                                if (category.id == tid) {
+                                    html += "<option class='categoryLevelTwoClass' value='" + category.id + "' selected>" + category.categoryName + "</option>";
+                                } else {
+                                    html += "<option class='categoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                                }
+                            }
+                            getNavEle( "#openCategoryLevelTwoRm").append(html);
+                        }
+                    }
+            );
+        </script>
+        </tbody>
+    </table>
+</div>
+<input type="hidden" id="pageCurrentReview" value="$page.pageCurrent">
+<input type="hidden" id="pageCountReview" value="$page.pageCount">
+<input type="hidden" id="pageSizeReview" value="$page.pageSize">
+<input type="hidden" id="agenciesCode" value="$!agenciesCode">
+#page($page)
+<iframe id="printExamReviceMPrint" src="#" style="width:0px; height:0px;"></iframe>
+<script>
+    getNavEle( "#searchBtnRm").click(function () {
+        getNavEle( "#isRmquery").val("1");
+    });
+    //行业类别二级选项卡
+    var addOptionRm = function (tid) {
+        getNavEle( ".categoryLevelTwoClass").remove();
+        var pid = getNavEle( "#openCategory").val();
+        $.getJSON("#U("/admin/examBusiness/examAdd/getCategoryByPid")",
+                {
+                    pid: pid
+                },
+                function (data) {
+                    if (data.categoryList.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.categoryList.length; i++) {
+                            var category = data.categoryList[i];
+                            if (category.id == tid) {
+                                html += "<option class='categoryLevelTwoClass' value='" + category.id + "' selected>" + category.categoryName + "</option>";
+                            } else {
+                                html += "<option class='categoryLevelTwoClass' value='" + category.id + "'>" + category.categoryName + "</option>";
+                            }
+                        }
+                        getNavEle( "#openCategoryLevelTwoRm").append(html);
+                    }
+                }
+        );
+    }
+    getNavEle( "#exportReviewExcel").on("click", function (e) {
+        var pageCurrent = getNavEle( '#pageCurrentReview').val();
+        var pageCount = getNavEle( '#pageCountReview').val();
+        var pageSize = getNavEle( '#pageSizeReview').val();
+        var memberName = encodeURI(encodeURI(getNavEle( '.rmcontent #memberName').val()));
+        var idCardNum = getNavEle( '.rmcontent #idCardNum').val();
+        var examNumber = getNavEle( '.rmcontent #examNumber').val();
+        var areaId = getNavEle( '.rmcontent #areaId').val();
+        var openCategoryLevelTwoRmId = getNavEle( '.rmcontent #openCategoryLevelTwoRmId').val();
+        var workUnit =encodeURI(encodeURI(getNavEle( '.rmcontent #workUnit').val()));
+        var isRechekPrint = getNavEle( '.rmcontent #isRechekPrint').val();
+        var beginTime = getNavEle( '.rmcontent #beginTime').val();
+        var endTime = getNavEle( '.rmcontent #endTime').val();
+        window.open("#U("/admin/examManage/reviewManage/exportReviewExcel")" + "?pageCurrent="
+                + pageCurrent + "&pageCount=" + pageCount + "&pageSize=" + pageSize+ "&areaId=" + areaId+
+                "&openCategoryLevelTwoRmId=" + openCategoryLevelTwoRmId+ "&memberName=" + memberName+ "&idCardNum=" + idCardNum+
+                "&examNumber=" + examNumber+"&workUnit="+ workUnit+ "&beginTime="+ beginTime+"&isRechekPrint="+ isRechekPrint+
+                "&endTime=" + endTime);
+    });
+    //预览复检通知单
+     function reviewCredentialsCardClick () {
+        //预览复检通知单时，通过checkbox获取需要预览的数据id，补全健康证地址
+        var credentialID = new Array();
+        //查出所有已选择的体检数据
+        getNavEle( "tbody [type='checkbox']").each(function () {
+            if (getNavEle( this).attr("checked")) {
+                credentialID.push(getNavEle( this).val());
+            }
+        });
+        if (credentialID.length > 1) {
+            getNavEle( this).alertmsg('error', "只能选择一张复检通知单进行预览！");
+            return false;
+        }
+        if (credentialID == '') {
+            getNavEle( this).alertmsg('error', "未选择需要预览的复检通知单！");
+            return false;
+        }
+
+        //通过地段区域代码 判断进入哪种预览页面
+        var agencies = getNavEle( "#agenciesCode").val();
+        var urll = '';
+        var dialogObj={};
+        if (agencies == "132") {
+            //疾控中心
+            var urll = '#U("reviewCredential")?id=' + credentialID[0];
+##            getNavEle( this).attr("href", urll);
+##            getNavEle( this).attr("data-toggle", "dialog");
+##            getNavEle( this).attr("data-id", "viewCredential");
+##            getNavEle( this).attr("data-title", "复检通知单预览");
+##            getNavEle( this).attr("data-width", "1100");
+##            getNavEle( this).attr("data-height", "600");
+//            getNavEle( "#reloadSearch").click();
+            dialogObj=  {
+                id:'viewCredential',
+                url:urll,
+                title:'复检通知单预览',
+                width:624,
+                height:600
+
+            };
+
+
+        } else {
+            urll = '#U("unqualifiedNoticeRm")?id=' + credentialID[0];
+//            getNavEle( this).attr("href", urll);
+//            getNavEle( this).attr("data-toggle", "dialog");
+//            getNavEle( this).attr("data-id", "viewCredential");
+//            getNavEle( this).attr("data-title", "复检通知单预览");
+//            getNavEle( this).attr("data-width", "1100");
+//            getNavEle( this).attr("data-height", "600");
+            dialogObj=  {
+                id:'viewCredential',
+                url:urll,
+                title:'复检通知单预览',
+                width:1100,
+                height:600
+
+            };
+
+
+//        getNavEle( "#reloadSearch").click();
+        }
+//        console.log(dialogObj);
+        getNavEle( this).dialog(
+                dialogObj
+            );
+
+
+    };
+
+
+    //打印复检通知单
+   function printRmR() {
+       var credentialID = new Array();
+       //查出所有已选择的体检数据
+       getNavEle( "tbody [type='checkbox']").each(function () {
+           if (getNavEle( this).attr("checked")) {
+               credentialID.push(getNavEle( this).val());
+           }
+       });
+       if (credentialID.length == 0) {
+           getNavEle( this).alertmsg('error', "未选择需要打印的复检通知单！");
+           return false;
+       }
+       //通过地段区域代码 判断进入哪种预览页面
+       var agencies = getNavEle( "#agenciesCode").val();
+       var urll = "";
+       if (agencies == "132") {
+
+           if (credentialID.length > 1) {
+               getNavEle( this).alertmsg('error', "热敏打印只能选择一张通知单进行打印！");
+               return false;
+           }else{
+               //urll = '#U("printReviewCredential")?ids=' + credentialID[0];
+
+               urll = '#U("jkReviewCredential")?ids=' + credentialID[0];
+           }
+
+
+//            getNavEle( this).attr("href", urll);
+//            getNavEle( this).attr("data-toggle", "dialog");
+//            getNavEle( this).attr("data-id", "printCredentialsCard");
+//            getNavEle( this).attr("data-title", "打印的页面");
+//            getNavEle( this).attr("data-width", "620");
+//            getNavEle( this).attr("data-height", "700");
+
+
+
+       } else {
+           //wanglu
+           //urll = '#U("printUnqualifiedNoticeRm")?ids=' + credentialID;
+           urll = '#U("townshipReview")?ids=' + credentialID;
+           /*            getNavEle( this).attr("href", urll);
+                       getNavEle( this).attr("data-toggle", "dialog");
+                       getNavEle( this).attr("data-id", "viewCredential");
+                       getNavEle( this).attr("data-title", "打印复检通知单");
+                       getNavEle( this).attr("data-width", "740");
+                       getNavEle( this).attr("data-height", "700");*/
+//        getNavEle( "#reloadSearch").click();
+       }
+       console.log(urll);
+       getNavEle('#printExamReviceMPrint')[0].src=urll;
+   }
+
+    var intervalTimer = null;
+
+    ##    //单击单行数据 跳出不合格项目进行判断
+    ##    getNavEle( "tr[name='clickReviewAction']").dblclick(function(){
+    ##        var memberExamId = getNavEle( this).attr("i");
+    ##        clearTimeout(intervalTimer); //取消上次延时未执行的方法
+    ##        console.log("dblclick");
+    ##        //弹出弹框 确认用户的复检项目
+    ##            var url = "#U('toReview?memberExamId=')" + memberExamId;
+    ##            getNavEle( this).attr("href", url);
+    ##            getNavEle( this).attr("data-toggle", "dialog");
+    ##            getNavEle( this).attr("data-id", "viewCredential");
+    ##            getNavEle( this).attr("data-title", "复检确认");
+    ##            getNavEle( this).attr("data-width", "750");
+    ##            getNavEle( this).attr("data-height", "500");
+    ##
+    ##    })
+
+    //已自动确认 不需要手工再去确认复检信息
+##    getNavEle( "td[name='clickReviewAction']").dblclick(function () {
+##
+##        var parentTag = getNavEle( this).parent('tr');
+##
+##        var memberExamId = parentTag.attr("i");
+##
+##        //弹出弹框 确认用户的复检项目
+##        var url = "#U('toReview?memberExamId=')" + memberExamId;
+##        getNavEle( this).attr("href", url);
+##        getNavEle( this).attr("data-toggle", "dialog");
+##        getNavEle( this).attr("data-id", "dialogReviewManage");
+##        getNavEle( this).attr("data-title", "复检确认");
+##        getNavEle( this).attr("data-width", "750");
+##        getNavEle( this).attr("data-height", "500");
+##
+##    })
+
+
+
+    //wanglu  添加 复选框多选操作js
+
+    //全选或全不选
+    getNavEle( "#allChecked").click(function () {
+        if (this.checked) {
+            getNavEle( "input[name=reviewActionIds]:checkbox").attr("checked", true);
+        } else {
+            getNavEle( "input[name=reviewActionIds]:checkbox").attr("checked", false);
+        }
+    });
+
+
+</script>

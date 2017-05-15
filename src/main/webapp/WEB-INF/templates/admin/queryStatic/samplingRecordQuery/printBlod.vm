@@ -1,0 +1,223 @@
+<style>
+    p, span {
+        color: #333;
+    }
+
+    .list {
+        width: 670px;
+        height: auto;
+
+        /*border: 1px solid #797979;*/
+    }
+
+    .head {
+        font-size: 16px;
+        margin-left: 28px;
+        color: #333;
+        margin-top: 12px;
+    }
+
+    .list p {
+        margin-left: 28px
+    }
+
+    .num {
+        margin-right: 232px;
+    }
+
+    .cun {
+        margin-right: 44px;
+    }
+
+    .time {
+        margin-right: 186px;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin: 12px 0 0 10px;
+    }
+
+    table, td {
+        border: 1px solid #797979;
+    }
+
+    td {
+        height: 30px;
+        text-align: center;
+        color: #333;
+    }
+
+    td.pr-one {
+        height: 36px;
+        width: 89px;
+    }
+
+    td.pr-two {
+        width: 59px;
+    }
+
+    td.pr-three {
+        width: 79px;
+    }
+
+    td.pr-four {
+        width: 69px;
+    }
+
+    td.pr-time {
+        font-size: 12px;
+    }
+
+    .but {
+        margin-top: 40px;
+    }
+
+    .but a {
+        float: right;
+        width: 100px;
+        height: 30px;
+        line-height: 28px;
+        text-align: center;
+        display: inline-block;
+        border: 1px solid #555;
+        border-radius: 3px;
+        -moz-border-radious: 3px;
+        color: #333;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .but a.true {
+        margin: 0 40px 0 30px;
+    }
+
+    /*打印分页 样式*/
+    .list{
+        page-break-after: always;
+    }
+</style>
+<script>
+    doPrint();
+    function doPrint() {
+//        var myDoc = {
+//            documents: document,
+//            /*
+//             要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+//             作为首页打印id 为'page2'的作为第二页打印            */
+//            copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须
+//        };
+//        document.getElementById("jatoolsPrinter").print(myDoc, false); // 直接打印，不弹出打印机设置对话框
+        if(!jsPrintSetup){
+            window.open("https://addons.mozilla.org/en-US/firefox/addon/js-print-setup/")
+        }else{
+
+            jsPrintSetup.setSilentPrint(true);
+
+            // set page header/ /设置页面标题
+
+            jsPrintSetup.setOption('headerStrLeft', '');
+
+            jsPrintSetup.setOption('headerStrCenter', '');
+
+            jsPrintSetup.setOption('headerStrRight', '');
+
+            // set empty page footer/ /设置空页页脚
+
+            jsPrintSetup.setOption('footerStrLeft', '');
+
+            jsPrintSetup.setOption('footerStrCenter', '');
+
+            jsPrintSetup.setOption('footerStrRight', '');
+
+            jsPrintSetup.printWindow(window);
+        }
+
+    }
+</script>
+
+
+    #foreach($p in $listPage)
+        <div class="list">
+            <div class="head">采样列表</div>
+            <p><span class="num">采样时间：$!startTime 至 $!endTime </span><span>乡镇： $!areaName</span></p>
+            <p><span class="cun">监护类别：从业人员体检</span><span class="time">采样类型：血样</span><span>页码：$!velocityCount/$!printPage 页</span></p>
+            <table>
+                <tr>
+                    <td class="pr-one">体检编号</td>
+                    <td class="pr-two">检验号</td>
+                    <td class="pr-three">HAV-lgM</td>
+                    <td class="pr-three">HEV-IgM</td>
+                    <td class="pr-three">ALT</td>
+                    <td class="pr-four">疫区</td>
+                    <td class="pr-three">复检项目</td>
+                    <td class="pr-four">检验日期</td>
+                </tr>
+                #foreach($vo in $p)
+                    <tr>
+                        <td>$!vo.examNumber</td>
+                        <td>$!vo.testNumber</td>
+                        <td>
+                            #set($reshut1="")
+                            #foreach($b in $!vo.blodIntestinals)
+                                #if($b.projectName=='甲肝')
+                                    #set($reshut1=$b.examResult)
+                                #end
+                            #end
+                            $reshut1
+                           #* #if($!vo.blodIntestinals.size()>=1)
+                         $!vo.blodIntestinals[0].examResult
+                        #end*#
+                        </td>
+                        <td>
+                    #set($reshut2="")
+                    #foreach($b in $!vo.blodIntestinals)
+                        #if($b.projectName=='戊肝')
+                            #set($reshut2=$b.examResult)
+                        #end
+                    #end
+                    $reshut2
+                            #*if($!vo.blodIntestinals.size()>=2)
+                $!vo.blodIntestinals[1].examResult
+                #end*#
+                        </td>
+                        <td>
+                            #set($reshut3="")
+                            #foreach($b in $!vo.blodIntestinals)
+                                #if($b.projectName=='谷丙转氨酶')
+                                    #set($reshut3=$b.examResult)
+                                #end
+                            #end
+                            $reshut3
+                          #*  #if($!vo.blodIntestinals.size()>=3)
+                        $!vo.blodIntestinals[2].examResult
+                    #end*#
+                        </td>
+                        <td>$!vo.examAffected.affectedName</td>
+                        <td>$!vo.examRecheckStr</td>
+                        <td>$!vo.createTimeStr</td>
+                    </tr>
+                #end
+
+            </table>
+        </div>
+    #end
+
+
+#*
+<div class="bjui-pageFooter">
+    <ul>
+        <li>
+            <button type="button" class="btn-default" >关闭</button>
+        </li>
+        <li>
+            <button id="printBlodPage" class="btn-default" >打印</button>
+        </li>
+    </ul>
+</div>
+*#
+
+<script>
+
+
+</script>

@@ -1,0 +1,51 @@
+<div class="bjui-pageContent">
+    <form action="#U('addConfig.html')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+        <input type="hidden" name="id" value="$!vo.id"/>
+        <div class="form-group">
+            <label class="control-label x85">配置项：</label>
+            <input type="text"   name="key" value="$!vo.key"
+                   data-rule="required" size="30"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">配置值：</label>
+            <input type="text"   name="val" value="$!vo.val"
+                   data-rule="required" size="30"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">配置描述：</label>
+            <input type="text"   name="describe" value="$!vo.describe"
+                   data-rule="required" size="30"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">分组：</label>
+            <input type="text"   name="group" value="$!vo.group"
+                   data-rule="required" size="30"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">文本类型：</label>
+            <select name="valType" data-toggle="selectpicker" data-width="200">
+                <option value="text">text</option>
+                <option value="select">select</option>
+            </select>
+            <script>
+                $("#configValType").val("${vo.valType}")
+            </script>
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">文本内容：</label>
+            <textarea style="width: 400px;height: 300px;" class="form-control"
+                      name="valExt" data-reactid="">$!vo.valExt</textarea>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+        <li><button type="submit"  class="btn-default" data-icon="save">保存</button></li>
+    </ul>
+</div>
+<script>
+
+</script>

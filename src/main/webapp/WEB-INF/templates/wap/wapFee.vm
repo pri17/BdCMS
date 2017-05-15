@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>体检项目及费用明细</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/B-JUI/BJUI/themes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/wap/style.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+##    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../assets/machineCss/js/sweetalert-dev.js"></script>
+</head>
+<body class="gray">
+
+<section id="feeSection" class="container exam-payment gray">
+
+    <div class="info-box">
+        #if($no_pay)
+                <div style="width: 100%;font-size: 20px;text-align: center">$!msg</div>
+            #else
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>体检项目</th>
+                    </tr>
+                    </thead>
+                    <tbody id="packageTable">
+                        #foreach($p in $projectList)
+                        <tr>
+                            <td style="text-align: left;padding-left: 34px">$p</td>
+
+                        </tr>
+                        #end
+
+
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th style="text-align: left;padding-left: 10px">应缴费：$price</th>
+
+                    </tr>
+                    </tfoot>
+                </table>
+                <span class="remind">
+      <b>友情提醒：</b>
+      如需发票，请到体检大厅收费窗口缴费
+    </span>
+                <div class="checkbox">
+                    <label>
+                    ##                <input type="checkbox" checked>银联支付
+                    </label>
+                </div>
+                <button id="paySure" onclick="wxPay()" style="font-size: 15px">确认缴费</button>
+        #end
+
+    </div>
+</section>
+<script>
+    function wxPay() {
+        WeixinJSBridge.invoke(
+                'getBrandWCPayRequest', {
+                    "appId":"$!payInfo.appId",     //公众号名称，由商户传入
+                    "timeStamp":"$!payInfo.timeStamp",         //时间戳，自1970年以来的秒数
+                    "nonceStr":"$!payInfo.nonceStr", //随机串
+                    "package":"$!payInfo.package",
+                    "signType":"MD5",         //微信签名方式：
+                    "paySign":"$!payInfo.paySign" //微信签名
+                },
+                function(res){
+                    if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+//                        alert("支付成功")
+                        WeixinJSBridge.call('closeWindow');
+                    }else{
+//                        alert(" 支付失败")
+                    }
+                    // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                }
+        );
+    }
+
+    function onBridgeReady(){
+
+    }
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    }else{
+        onBridgeReady();
+    }
+</script>
+
+<script>
+    $("#feeSection").css("height",window.innerHeight);
+    /* 设置根元素的font-size大小 */
+    document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+//    //点击查询按钮，查询该身份证用户体检套餐信息
+//    $("#searchBtn").click(function () {
+//        var idCardNum = $("#idCardNumber").val();
+//        $.getJSON("http://"+window.location.host+"/wap/getCategoryByIdCardNum.do",
+//                {
+//                    idCardNum:idCardNum
+//                },
+//                function (data) {
+//                    if (data.isRecheck==0) {
+//                        if (data.examProjectList!=null && data.examProjectList.length>0) {
+//                            $("#packageTable").html("");
+//                            $("#price").html("");
+//                            var html = "";
+//                            for (var i=0;i<data.examProjectList.length;i++) {
+//                                html += "<tr>";
+//                                html += "<td>"+data.examProjectList[i].projectName+"</td>";
+//                                html += "<td>"+data.examProjectList[i].projectPrice+"</td>";
+//                                html += "</tr>";
+//                            }
+//                            $("#packageTable").append(html);
+//                        }
+//                    } else {
+//                        if (data.examProjectList!=null && data.examProjectList.length>0) {
+//                            $("#packageTable").html("");
+//                            $("#price").html("");
+//                            var html = "";
+//                            for (var i=0;i<data.examProjectList.length;i++) {
+//                                html += "<tr>";
+//                                html += "<td>"+data.examProjectList[i].examProject.projectName+"</td>";
+//                                html += "<td>"+data.examProjectList[i].examProject.projectPrice+"</td>";
+//                                html += "</tr>";
+//                            }
+//                            $("#packageTable").append(html);
+//                        }
+//                    }
+//                    if (data.money!=null) {
+//                        $("#price").append(data.money);
+//                    }
+//                });
+//    });
+//    //点击按钮，跳转银联支付页面
+//    $("#paySure").click(function () {
+//
+//    });
+
+
+    function checkFee(){
+        if($tag){
+            alertNotice("","没有需要缴费的记录", "error");
+        }
+    }
+    checkFee();
+
+
+
+    //wanglu 弹出层
+    function alertNotice(title, text, type) {
+        swal({
+            title: title,
+            text: text,
+            type: type,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "确定"
+        });
+    };
+</script>
+</body>
+</html>

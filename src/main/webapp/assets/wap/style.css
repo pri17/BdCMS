@@ -1,0 +1,293 @@
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.gray {
+  background-color: #EAEBEB; }
+
+section,
+header,
+.info-box {
+  background-color: #fff; }
+
+.title {
+  font-size: 0.5625rem;
+  line-height: 1.25rem;
+  text-align: center;
+  background: #666;
+  color: #FFF; }
+
+.notice-content {
+  padding: 1.75rem .25rem 0;
+  margin-bottom: 4rem; }
+.notice-content h1 {
+  font-size: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.125rem;
+  text-align: center; }
+.notice-content p {
+  font-size: 0.4375rem;
+  line-height: 1.3;
+  margin: 0; }
+
+.custom-btn {
+  font-size: 0.5rem;
+  width: 2.5rem;
+  height: 1rem;
+  border: 1px solid #807A71;
+  color: #FFF;
+  background: #06F;
+  letter-spacing: 0.125rem; }
+
+.custom-btn-big {
+  font-size: 0.5rem;
+  width: 7.09375rem;
+  height: 1rem;
+  border: 1px solid #807A71;
+  background: #06F;
+  letter-spacing: 0.125rem;
+  color: #FFF; }
+
+/* reservation */
+.registration-margin-bottom{
+  margin-bottom: 2%;
+}
+.registration-button{
+  border-radius: 16px;
+}
+.reservation {
+  font-size: 0.53125rem;
+  padding: 0.75rem 0 0.25rem 0; }
+.reservation label {
+  padding-right: 0 !important;
+  text-align: left !important; }
+.reservation input,
+.reservation select {
+  width: 100%;
+  height: 0.71875rem; }
+.reservation .form-group {
+  margin-bottom: 0.0625rem; }
+.reservation .necessary {
+  color: #F00; }
+.reservation .col-xs-7 {
+  padding-right: 9px; }
+.reservation .col-xs-7 + .necessary {
+  margin-left: 6px; }
+.reservation .container-fluid .row {
+  margin-top: 0.15625rem; }
+.reservation .get-code-box {
+  display: inline-block;
+  margin-left: -4px;
+  padding: 0 10px; }
+.reservation .get-code-box .get-code {
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #A9A9A9;
+  font-size: 0.5rem; }
+.reservation .get-code-box + .necessary {
+  margin-left: 11px; }
+.reservation .check-code {
+  padding-right: 10px; }
+.reservation .gender > label {
+  padding-left: 0; }
+
+/* exam-payment */
+.exam-payment .search-tool {
+  padding: 0.40625rem 15px 0.3125rem; }
+.exam-payment .search-tool div {
+  padding-right: 0; }
+.exam-payment .search-tool div + div {
+  padding-left: 0; }
+.exam-payment .search-tool input {
+  height: 0.78125rem; }
+.exam-payment .search-tool button {
+  font-size: 0.40625rem;
+  background-color: #06F;
+  border: 1px solid #807A71;
+  border-radius: 5px;
+  color: #FFF;
+  letter-spacing: 0.125rem;
+  width: 2.5rem;
+  height: 0.78125rem;
+  line-height: 0.78125rem; }
+.exam-payment .info-box {
+  border: 1px solid #797979;
+  padding: 0.3125rem 0.46875rem; }
+.exam-payment .info-box table {
+  margin-bottom: 0; }
+.exam-payment .info-box table td, .exam-payment .info-box table th {
+  text-align: center;
+  padding: 0;
+  font-size: 0.53125rem;
+  line-height: 1.5; }
+.exam-payment .remind {
+  font-size: 0.3125rem; }
+.exam-payment button {
+  width: 3.4375rem;
+  height: 1.25rem;
+  background-color: #06F;
+  border: 1px solid #807A71;
+  letter-spacing: 0.125rem;
+  line-height: 0.78125rem;
+  font-size: 0.5rem;
+  color: #FFF;
+  display: block;
+  margin: 0 auto; }
+
+/* wechat-pay */
+.pay-head {
+  text-align: center; }
+.pay-head p {
+  margin: 0; }
+.pay-head .pay-title {
+  font-size: 0.5rem;
+  line-height: 1.5625rem;
+  height: 1.5625rem; }
+.pay-head .pay-cost {
+  font-size: 1.125rem;
+  line-height: 1.28125rem;
+  height: 2.5rem; }
+.pay-head img {
+  max-width: 320px; }
+
+.recheck {
+  padding-top: 15px; }
+.recheck .info-box {
+  padding-bottom: 1.71875rem;
+  min-height: 10.9375rem;
+  position: relative; }
+.recheck .info-box button {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -1.71875rem; }
+
+.pay-detail {
+  border-top: 1px solid #797979;
+  border-bottom: 1px solid #797979;
+  padding: 0.78125rem 0.71875rem 0.625rem;
+  text-align: left; }
+.pay-detail p {
+  margin: 0;
+  font-size: 0.5rem; }
+.pay-detail span {
+  float: right; }
+
+.pay-now {
+  display: block;
+  margin: 1.25rem auto;
+  width: 7.65625rem;
+  height: 1.25rem;
+  border: 1px solid #797979;
+  color: #fff;
+  font-size: 0.5rem;
+  background-color: #33CC00; }
+.health-certificate-margin p{
+  line-height: 1.52!important;
+}
+.outer-box,
+.inner-box {
+  background-color: #fff;
+  padding: 0.25rem;
+  border: 1px solid #797979; }
+
+.certificate {
+  padding: 0.25rem; }
+
+.inner-box + .inner-box {
+  margin-top: 10px; }
+
+.inner-box {
+  padding-bottom: 0; }
+.inner-box p {
+  margin: 0; }
+.inner-box .certificate-head {
+  text-align: center; }
+.inner-box .certificate-head .img-box img {
+  width: 1.875rem;
+  height: 1.25rem; }
+.inner-box .certificate-head p {
+  font-size: 0.5rem; }
+.inner-box .certificate-content p {
+  font-size: 0.34375rem;
+  line-height: 1.2; }
+.inner-box .certificate-content .certificate-code {
+  width: 1.5rem;
+  height: 1.5rem; }
+.inner-box .certificate-content .media-right {
+  padding-left: 5px; }
+.inner-box .certificate-content .media-right img {
+  width: 2.40625rem;
+  height: 3.375rem; }
+.inner-box .certificate-content .media-right p {
+  text-align: center; }
+.inner-box.notice h3 {
+  text-align: center;
+  font-size: 0.375rem;
+  margin-top: .5em; }
+.inner-box.notice p {
+  font-size: 0.375rem;
+  margin-bottom: 3px; }
+
+.qualified {
+  background-color: #33CC00; }
+
+.unqualified {
+  background-color: #FF0000; }
+
+.to-check {
+  background-color: #FFFF00; }
+
+.no-check {
+  background-color: #CCCCCC; }
+
+.arrow-right,
+.arrow-down,
+.arrow-left {
+  width: 0.625rem;
+  height: 0.625rem; }
+
+.exam-process {
+  padding-top: 15px; }
+.exam-process button {
+  letter-spacing: normal; }
+.exam-process .process-detail {
+  position: relative;
+  padding: 15px 0; }
+.exam-process .process-detail .line-box {
+  display: inline-block;
+  border: 1px solid #797979;
+  font-size: 0.40625rem; }
+.exam-process .line-two {
+  display: none;
+  margin-top: 0.9375rem; }
+.exam-process .line-two .box-payment {
+  position: relative; }
+.exam-process .line-two .box-payment .arrow-down {
+  position: absolute;
+  top: -0.9375rem;
+  left: 0; }
+.exam-process .line-two.active {
+  display: block; }
+
+.common-issue {
+  width: 100%;
+  padding: 10px;
+  height: 90%; }
+.common-issue ul {
+  background-color: #fff;
+  list-style-type: none;
+  border: 1px solid #333;
+  height: 100%;
+  padding: 10px; }
+.common-issue ul li {
+  border: 1px solid #333;
+  padding: 10px 0; }
+.common-issue ul li + li {
+  margin-top: 10px; }
+
+/*# sourceMappingURL=style.css.map */

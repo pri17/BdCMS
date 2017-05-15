@@ -1,0 +1,245 @@
+<style>
+    *{color:#333;}
+    .list{width:630px;height:890px;/*border:1px solid #797979;*/}
+    .top{font-size: 15px;font-weight: bold;margin:40px 0 30px 20px;}
+    .logo{font-size: 30px;text-align: center;margin-bottom:26px;}
+    .vefcontent{margin-left: 20px; margin-top: 20px;  margin-bottom: 20px;}
+    .vefcontent table{
+       margin-left: 32px;
+    }
+    .vefcontent div{margin-top: 10px;}
+    .vefTable{border-collapse:collapse;}
+    .vefTable, td{border:1px solid #797979;}
+    .table-t{
+        border-right:1px solid #797979;
+    }
+    .vefcontent td{height:35px;width:144px;text-align: center;}
+    .vefcontent td.ill{width:60px;}
+    .vefcontent td.no{border-top:none; border-right: none;}
+    .table-t .heart{width:51px;}
+    .table-t .heart-o{width:219px;}
+    .table-t .heart1{width:36px;}
+    .table-t .heart-o1{width:234px;}
+    .vefcontent td.skin{height:50px;}
+    .vefcontent td.other{height:50px;}
+    .vefcontent td.do-q{text-align: right;}
+    .vefcontent td.do-q span{padding-right: 60px;margin-top:15px;display: inline-block;}
+    .vefcontent td.ill-o{width:100px;}
+    .vefcontent td.ill-t{width:160px;}
+    .vefcontent div.la-ta{height:240px;border:1px solid #797979;width:577px;margin-top:0;border-top:none;}
+    .la-ta .c-j{margin:12px 0 0 12px; display: inline-block;}
+    .la-ta .z-doc{margin:90px 0 10px 294px;}
+    .la-ta .z-doc span{padding-left:40px;display: inline-block;}
+    .la-ta .ti{margin-left: 280px;}
+    .la-ta .ti span{padding-left: 40px;}
+    .post{margin-bottom: 10px;}
+    .post span{
+        display: inline-block;
+    }
+    .head-box li{
+        float: left;
+        list-style: none;
+        height: 30px;
+        line-height: 30px;
+    }
+    .head-box{
+        margin-bottom: 20px;
+        padding-top: 18px;
+    }
+    .header-bottom-line{
+        border-bottom: 1px solid #797979;
+    }
+</style>
+<script>
+    doPrint();
+    function doPrint() {
+        if($examMemberExamList.size()<=0){
+          return false;
+        }
+//        var myDoc = {
+//            documents: document,
+//            /*
+//             要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+//             作为首页打印id 为'page2'的作为第二页打印            */
+//            copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须
+//        };
+//        document.getElementById("jatoolsPrinter").print(myDoc, false); // 直接打印，不弹出打印机设置对话框
+        if(!jsPrintSetup){
+            window.open("https://addons.mozilla.org/en-US/firefox/addon/js-print-setup/")
+        }else{
+
+            jsPrintSetup.setSilentPrint(true);
+
+            // set page header/ /设置页面标题
+
+            jsPrintSetup.setOption('headerStrLeft', '');
+
+            jsPrintSetup.setOption('headerStrCenter', '');
+
+            jsPrintSetup.setOption('headerStrRight', '');
+
+            // set empty page footer/ /设置空页页脚
+
+            jsPrintSetup.setOption('footerStrLeft', '');
+
+            jsPrintSetup.setOption('footerStrCenter', '');
+
+            jsPrintSetup.setOption('footerStrRight', '');
+
+            jsPrintSetup.printWindow(window);
+        }
+
+    }
+
+</script>
+##<div style="position:absolute;width: 300px;height: 130px;z-index: 9;background-color: #ffffff;"></div>
+#set($brandIndex=1)
+#foreach($vo in $!examMemberExamList)
+<div class="bjui-pageContent" id="page$brandIndex" style="width: 700px;">
+    <div class="list">
+        <div class="logo">江苏省从业人员预防性健康检查用表</div>
+        <div class="vefcontent">
+            <ul class="head-box">
+                <li style="width:15%;">体检日期：</li>
+                <li class="header-bottom-line" style="width:35%;">$!vo.examTimeStr</li>
+                <li style="width:10%;">编 号：</li>
+                <li class="header-bottom-line" style="width:40%;">$!vo.eCardNumber</li>
+                <li style="width:9%;">单位：</li>
+                <li class="header-bottom-line" style="width:41%;">$!vo.workUnit</li>
+                <li style="width:15%;">单位性质：</li>
+                <li class="header-bottom-line" style="width:35%;"></li>
+                <li style="width:9%;">姓名：</li>
+                <li class="header-bottom-line" style="width:18%;">$!vo.name</li>
+                <li style="width:9%;">性别：</li>
+                <li class="header-bottom-line" style="width:6%;">#if($!vo.examMember.sex==0)
+                        女
+                        #else
+                            男
+                        #end
+                </li>
+                <li style="width:9%;">年龄：</li>
+                <li class="header-bottom-line" style="width:8%;">$!vo.age</li>
+                <li style="width:9%;">民族：</li>
+                <li class="header-bottom-line" style="width:8%;"></li>
+                <li style="width:15%;">文化程度：</li>
+                <li class="header-bottom-line" style="width:9%;"></li>
+                <li style="width:9%;">岗位：</li>
+                <li class="header-bottom-line" style="width:18%;">$!vo.categoryName</li>
+                <li style="width:9%;">工龄：</li>
+                <li class="header-bottom-line" style="width:6%;"></li>
+                <li style="width:17%;">身份证号码：</li>
+                <li class="header-bottom-line" style="width:40%;">$!vo.idCardNum</li>
+                <div style="clear: both;"></div>
+            </ul>
+            <table class="vefTable" class="table-t" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="no" style="width: 60px;border-right: none;" class="ill" rowspan="2">既往<br/>病史</td>
+                    <td class="no">病&nbsp&nbsp&nbsp&nbsp&nbsp名</td>
+                    <td class="no">肝炎</td>
+                    <td class="no">痢疾</td>
+                    <td class="no">伤寒</td>
+                    <td class="no">肺结核</td>
+                    <td class="no">皮肤病</td>
+                    <td class="no" style="width:92px;">其它</td>
+                </tr>
+                <tr>
+                    <td>患病时间</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <table class="table-t" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="ill no" rowspan="4">体征</td>
+                    <td class="no heart1">心</td>
+                    <td class="no heart-o"><i>合格</i></td>
+                    <td class="no heart1">肝</td>
+                    <td class="no heart-o1"><i>合格</i></td>
+                </tr>
+                <tr>
+                    <td class="no heart1">脾</td>
+                    <td class="no heart-o"><i>合格</i></td>
+                    <td class="no heart1">肺</td>
+                    <td class="no heart-o"><i>合格</i></td>
+                </tr>
+                <tr>
+                    <td class="no skin heart">皮肤</td>
+                    <td class="no skin doctor" colspan="3" style="text-align: left;">&nbsp;&nbsp;手癣&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        指甲癣&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手部湿疹&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        银屑（或鳞屑）病<br>&nbsp;&nbsp;渗出性皮肤病&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;化脓皮肤病</td>
+                </tr>
+                <tr>
+                    <td class="no heart">其他</td>
+                    <td class="no"></td>
+                    <td class="no doctor" colspan="2" style="text-align: left;">医师签名:<i>$!vo.projectData.n</i></td>
+                </tr>
+                <tr>
+                    <td class="no other" colspan="2">X线胸透或<br/>胸部拍片</td>
+                    <td class="no do-q" colspan="3"><span style="margin-left: 60px;float:left;margin-top: 6px;"><i>合格</i></span><span>医师签字：<i>$!vo.projectData.x</i></span></td>
+                </tr>
+            </table>
+            <table class="table-t" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="no ill" rowspan="7">实验室<br/>检查（<br/>化验单<br/>附后）</td>
+                    <td class="no ill-o" colspan="2">检查项目</td>
+                    <td class="no ill-t">检查结果</td>
+                    <td class="no ill-t">检验师签名</td>
+                </tr>
+                <tr>
+                    <td class="no ill-o" rowspan="2">大便培养</td>
+                    <td class="no ill-f">痢疾杆菌</td>
+                    <td class="no ill-t"><i>合格</i></td>
+                    <td class="no ill-t"><i>$!vo.projectData.c</i></td>
+                </tr>
+                <tr>
+                    <td class="no ill-f">伤寒或副伤寒</td>
+                    <td class="no ill-t"><i>合格</i></td>
+                    <td class="no ill-t"><i>$!vo.projectData.c</i></td>
+                </tr>
+                <tr>
+                    <td class="no ill-o">肝功能</td>
+                    <td class="no ill-f">谷丙转氨酶</td>
+                    <td class="no ill-t"><i>合格</i></td>
+                    <td class="no ill-t"><i>$!vo.projectData.b</i></td>
+                </tr>
+                <tr>
+                    <td class="no ill-o" colspan="2">甲肝抗体（IgM)</td>
+                    <td class="no ill-t"><i>合格</i></td>
+                    <td class="no ill-t"><i>$!vo.projectData.j</i></td>
+                </tr>
+                <tr>
+                    <td class="no ill-o" colspan="2">戊肝抗体（IgM)</td>
+                    <td class="no ill-t"><i>合格</i></td>
+                    <td class="no ill-t"><i>$!vo.projectData.w</i></td>
+                </tr>
+                <tr>
+                    <td class="no ill-o" colspan="2">其他</td>
+                    <td class="no ill-t"></td>
+                    <td class="no ill-t"></td>
+                </tr>
+            </table>
+            <div style="margin-left: 32px" class="la-ta">
+                <span class="c-j">检查结论：</span>
+                <div style="margin-top: 24px; margin-left: 92px"><i>合格</i></div>
+                <p class="z-doc">主检医师签名：<i>$!vo.verifyName</i><span>（公章）</span></p>
+                <p class="ti"><span><i>$!vo.examTimeShortCN.get("year")</i>年</span><span><i>$!vo.examTimeShortCN.get("month")</i>月</span><span><i>$!vo.examTimeShortCN.get("day")</i>日</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="page-break-after:always;"></div>
+    #set($brandIndex=$brandIndex+1)
+#end
+##<div class="bjui-pageFooter">
+##    <ul>
+##        <li><button type="button" class="btn-default" >关闭</button></li>
+##    </ul>
+##</div>
+##<object id="jatoolsPrinter" classid="CLSID:B43D3361-D075-4BE2-87FE-057188254255" codebase="jatoolsPrinter.cab#version=8,6,0,0" style="display: none;"></object>
+##<script src="http://s.pc.qq.com/navigate/adc/v3/engine_loader_v3.js" type="text/javascript" charset="UTF-8"></script>
+##<script src="http://s.pc.qq.com/navigate/adc/jquery.min.js?ver=3" type="text/javascript" charset="UTF-8"></script>
+##<script src="http://s.pc.qq.com/navigate/adc/velocity.js" type="text/javascript" charset="UTF-8"></script>

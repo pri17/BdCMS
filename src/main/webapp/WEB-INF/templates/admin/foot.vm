@@ -1,0 +1,9 @@
+<script src="#U('/asset/hplus/js/jquery.min.js?v=2.1.4')"></script>
+<script src="#U('/asset/hplus/js/bootstrap.min.js?v=3.3.6')"></script>
+<script src="#U('/asset/hplus/js/plugins/metisMenu/jquery.metisMenu.js')"></script>
+<script src="#U('/asset/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js')"></script>
+<script src="#U('/asset/hplus/js/plugins/layer/layer.min.js')"></script>
+<script src="#U('/asset/hplus/js/hplus.min.js?v=4.1.0')"></script>
+<script type="text/javascript" src="#U('/asset/hplus/js/contabs.min.js')"></script>
+<script src="#U('/asset/hplus/js/plugins/pace/pace.min.js')"></script>
+

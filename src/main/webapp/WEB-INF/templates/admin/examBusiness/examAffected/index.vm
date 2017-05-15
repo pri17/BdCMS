@@ -1,0 +1,272 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+
+                <label class="row-label">体检日期</label>
+                <input type="text" id="beginTime" name="beginTime" id="j_custom_issuedate" value="$!beginTime" data-toggle="datepicker" data-rule="date" style="width: 120px;" >
+                <input type="text" id="endTime" name="endTime" id="j_custom_indate" value="$!endTime" data-toggle="datepicker" data-rule="date" style="width: 120px;">&nbsp;
+                <script type="text/javascript">
+                    getNavEle('#j_custom_issuedate').on('afterchange.bjui.datepicker', function(e, data) {
+                        var pattern = 'yyyy-MM-dd'
+                        var start = data.date;
+                        var end = data.date;
+
+                        end.setFullYear(start.getFullYear() + 10);
+                        end.setDate(start.getDate() - 1);
+
+                        getNavEle('#j_custom_indate').val(end.formatDate(pattern))
+                    })
+                </script>
+    ##            <label>手机号：</label>
+    ##            <input type="text" id="" value="$!mobile" name="mobile" class="form-control" size="12">&nbsp;
+                <label style="margin-left: 30px;">乡镇：</label>
+                <select name="areaId" id="areaId"  data-toggle="selectpicker" data-width="170"
+                        data-emptytxt="全部">
+                  <option value="">全部</option>
+                    #LoadBean("examAreaService")
+                        #foreach($el in $examAreaService.getRootExamArea())
+                            <option value="$!el.id"
+                            #if($!el.id==$!areaId)
+                                    selected
+                            #end
+                            >
+                                $!el.areaName</option>
+                        #end
+                        #end
+                </select>
+
+                <button type="submit" class="btn-default" style="margin-left: 16px;">查询</button>
+                <button class="btn btn-default" href="javascript:;"
+                   data-toggle="reloadsearch" data-clear-query="true" style="margin-left: 16px;">清空查询</button>
+            <button id="exportAffectedExcel" data-toggle="exportOption"
+                    class="btn btn-default" style="cursor:pointer;margin-left: 16px;">
+                导出列表
+            </button>
+            <a href="javascript:void(0)" id="printExamAffected" class="btn btn-default"
+              #* data-toggle="dialog"
+               data-id="printAffected"
+               data-title="打印"
+               data-width="600"
+               data-height="450"*#
+               style="margin-left: 16px;"
+            >&nbsp;打印&nbsp;</a>
+            <a href="#U('toSetAffected?')" class="btn btn-default"
+                    data-toggle="dialog"
+                    data-id="toAddAffected"
+                    data-title="设置疫区"
+                    data-width="720"
+                    data-height="540"
+               style="margin-left: 16px !important;"
+            >&nbsp;设置疫区&nbsp;</a>
+            <a id="saveAffectedBtn" href="javascript:void(0)"  onclick="saveAffectedMember();" class="btn btn-default"
+              #* data-toggle="doajax" data-confirm-msg="确定保存选中的疫区人员信息吗？"
+               data-id="saveAffected" data-url=""*#
+               data-title="保存" style="margin-left: 16px;"
+            >&nbsp;保存&nbsp;</a>
+
+        </div>
+        <input id="examAffectedIsQuery" name="examAffectedIsQuery" value="$!examAffectedIsQuery" type="hidden"/>
+    </form>
+
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th style="width: 30px; text-align: center;" ><input id="allCheck" type="checkbox" style="width: 20px;line-height: 40px;" value=""/></th>
+            <th align="center">采样号</th>
+            <th align="center">体检号</th>
+            <th align="center">姓名</th>
+            <th align="center" style="width: 42px!important;">性别</th>
+            <th align="center">出生日期</th>
+            <th align="center">就业单位</th>
+##            <th align="center">疫区地址</th>
+            <th align="center">代码所对应的地区</th>
+            <th align="center">体检日期</th>
+            <th align="center">IHA</th>
+            <th align="center">DDIA</th>
+            <th align="center">COPT</th>
+            <th align="center">粪检</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr align="center">
+                    <td style="width:30px;"><input type="checkbox" style="width: 30px;float: left;line-height: 40px;" value="$!vo.id" /></td>
+                    <td style="width:100px;">$!vo.blodTestNumber</td>
+                    <td style="width:100px;">$!vo.examNumber</td>
+                    <td style="width:80px;">$!vo.name</td>
+                    #if($!vo.sex==0)
+                       <td style="width:42px;">&nbsp;&nbsp;女&nbsp;&nbsp;</td>
+                    #elseif($!vo.sex==1)
+                      <td style="width:42px;">&nbsp;&nbsp;男&nbsp;&nbsp;</td>
+                    #end
+                    <td style="width:100px;">$!vo.birthday</td>
+                    <td style="width:200px;">$!vo.workUnit</td>
+##                <td style="width:200px;">$!vo.examMember.idCardAddress</td>
+                    <td style="width:200px;">$!vo.affectedCodeName</td>
+                    <td style="width:150px;">$!vo.examTimeStr</td>
+                    #*<td style="width:70px;"><input style="height: 33px;border:1px;width:68px;" id="IHAVal$!vo.id" value="$!vo.IHA"/></td>
+                    <td style="width:70px;"><input style="height: 33px;border:1px;width:68px;" id="DDIAVal$!vo.id" value="$!vo.DDIA"/ ></td>*#
+                    <td style="width:70px;">
+                        <select id="IHAVal$!vo.id" data-toggle="selectpicker" style="height: 33px;border:1px;width:68px;">
+                            <option value=""></option>
+                            <option value="阴性" #if($!vo.IHA=='阴性')
+                                selected
+                            #end>阴性</option>
+                            <option value="阳性"
+                                #if($!vo.IHA=='阳性')
+                                    selected
+                                #end>阳性</option>
+                        </select>
+                    </td>
+                    <td style="width:70px;">
+                        <select id="DDIAVal$!vo.id" data-toggle="selectpicker" style="height: 33px;border:1px;width:68px;">
+                            <option value=""></option>
+                            <option value="阴性"#if($!vo.DDIA=='阴性')
+                                    selected
+                            #end>阴性</option>
+                            <option value="阳性"
+                                #if($!vo.DDIA=='阳性')
+                                    selected
+                                #end>阳性</option>
+                        </select>
+                    </td>
+                    <td style="width:70px;"><input style="height: 33px;border:1px;width:68px;" id="COPTVal$!vo.id" value="$!vo.COPT"/></td>
+                    <td style="width:70px;"><input style="height: 33px;border:1px;width:68px;" id="STOOLVal$!vo.id" value="$!vo.STOOL"/></td>
+
+            </tr>
+            #end
+        </tbody>
+    </table>
+    <input type="hidden" id="affectedPageCurrent" value="$page.pageCurrent">
+    <input type="hidden" id="affectedPageCount" value="$page.pageCount">
+    <input type="hidden" id="affectedPageSize" value="$page.pageSize">
+    <script>
+        /**
+         * 选中
+         */
+        getNavEle("#allCheck").on("click",function(e){
+            if(getNavEle(this).attr("checked")) {
+                getNavEle("[type='checkbox']").each(function(){
+                    getNavEle(this).attr("checked",'true');
+                });
+            } else {
+                getNavEle("[type='checkbox']").each(function(){
+                    getNavEle(this).removeAttr("checked");
+                });
+            }
+        });
+
+        /**
+         *保存疫区人员血检额外信息
+         */
+        function saveAffectedMember(){
+            var ids = "";
+            var iha="";
+            var ddia="";
+            var copt="";
+            var stool="";
+            getNavEle("tbody [type='checkbox']").each(function(i){
+//                if(i==1){
+//                    $(this).alertmsg("error","只能保存一个人员！");
+//                }
+                if (getNavEle(this).attr("checked")) {
+                    ids += getNavEle(this).val()+",";
+                    var id=getNavEle(this).val();
+                    iha=getNavEle("#IHAVal"+id).val();
+                    ddia=getNavEle("#DDIAVal"+id).val();
+                    copt=getNavEle("#COPTVal"+id).val();
+                    stool=getNavEle("#STOOLVal"+id).val();
+
+                }
+            });
+           /* var url = "#U('saveAffectedMember?')ids="+ids+"&iha="+iha+"&ddia="+ddia+"&copt="+copt+"&stool="+stool;*/
+            /*getNavEle("#saveAffectedBtn").attr("data-url",url);*/
+            getNavEle(this).alertmsg("confirm","确定保存选中的疫区人员信息吗",{okCall:function(){
+                $.post("#U('saveAffectedMember')",
+                        {   ids:ids,
+                            iha:iha,
+                            ddia:ddia,
+                            copt:copt,
+                            stool:stool
+                        },function(data){
+                            data=$.parseJSON(data);
+                            if(data.statusCode==200) {
+                                getNavEle( this).alertmsg("ok",data.message);
+                            }else if(data.statusCode==300){
+                                getNavEle( this).alertmsg("error",data.message);
+                            }
+                        });
+            }})
+        };
+    </script>
+</div>
+
+#page($page)
+<div id="printDiv"></div>
+<iframe id="printAffectedPrint" src="#" style="width:0px; height:0px;"></iframe>
+<script>
+    getNavEle("#printExamAffected").on("click",function(e){
+    var ids = "";
+    getNavEle("tbody [type='checkbox']").each(function(i){
+        if (getNavEle(this).attr("checked")) {
+            ids += getNavEle(this).val()+",";
+        }
+    });
+    if(ids.length==0){
+        getNavEle(this).alertmsg('error', "未选择需要打印的疫区内容！");
+        return false;
+    }
+   var urll = '#U("printExamAffected")?ids='+ids;
+   /*  $(this).attr("href",urll);
+     $(this).attr("data-toggle","dialog");
+     $(this).attr("data-id","printExamAffected");
+     $(this).attr("data-title","打印的页面");
+     $(this).attr("data-width","880");
+     $(this).attr("data-height","400");*/
+ //   console.log(urll);
+    setTimeout(function(){
+        getNavEle('#printAffectedPrint').attr('src',urll);
+    })
+
+});
+
+
+//导出列表
+    getNavEle("#exportAffectedExcel").on("click", function () {
+//    var pageCurrent = $('#affectedPageCurrent').val();
+//    var pageCount = $('#affectedPageCount').val();
+//    var pageSize = $('#affectedPageSize').val();
+    var beginTime = getNavEle('#beginTime').val();
+    var endTime = getNavEle('#endTime').val();
+    var areaId = getNavEle('#areaId').val();
+    window.open("#U("/admin/examBusiness/examAffected/exportExcel")" + "?beginTime="+beginTime+"&endTime="+endTime+"&areaId="+areaId);
+});
+    getNavEle("#setAffected").on("click", function () {
+    var id = "";
+    var x=0;
+    getNavEle("tbody [type='checkbox']").each(function(i){
+        if (getNavEle(this).attr("checked")) {
+            id = getNavEle(this).val();
+            x++;
+        }
+    });
+    if(x<=0){
+        getNavEle(this).alertmsg('error', "未选择需要设置的疫区内容！");
+        return false;
+    }else if(x>1){
+        getNavEle(this).alertmsg('error', "只能选择一个设置的疫区内容！");
+        return false;
+    }
+    urll="#U("toSetAffected")?id="+id;
+        getNavEle(this).attr("href",urll);
+        getNavEle(this).attr("data-toggle","dialog");
+        getNavEle(this).attr("data-id","printExamAffected");
+        getNavEle(this).attr("data-title","设置疫区");
+        getNavEle(this).attr("data-width","880");
+        getNavEle(this).attr("data-height","400");
+});
+</script>

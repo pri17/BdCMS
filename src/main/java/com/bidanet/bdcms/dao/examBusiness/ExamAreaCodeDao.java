@@ -1,0 +1,12 @@
+package com.bidanet.bdcms.dao.examBusiness;
+
+import com.bidanet.bdcms.dao.Dao;
+import com.bidanet.bdcms.entity.ExamAreaCode;
+
+/**
+* ExamAreaCode DAO
+ *  cf
+*/
+public interface ExamAreaCodeDao extends Dao<ExamAreaCode> {
+
+}

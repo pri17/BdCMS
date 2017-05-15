@@ -1,0 +1,58 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+            <button href="#U('toAddSysLog')" class="btn btn-default new-add-right"
+               data-toggle="dialog"
+               data-id="addSysLog"
+               data-title="新建版本"
+               data-width="600"
+               data-height="300"
+            >&nbsp;新建版本&nbsp;</button>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+            <th align="center">版本标题</th>
+            <th align="center">版本内容</th>
+            <th align="center">发布人</th>
+            <th align="center">发布时间</th>
+            <th align="center">修改人</th>
+            <th align="center">修改时间</th>
+            <th align="center" width="220">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr>
+                <td align="center">$!vo.title</td>
+                <td align="center">$!vo.content</td>
+                <td align="center">$!vo.creator</td>
+                #if(!$vo.createTime)
+                    <td align="center"></td>
+                #else
+                    <td align="center">$date.format('yyyy-MM-dd HH:mm:ss',$!vo.createTime)</td>
+                #end
+                <td align="center">$!vo.updater</td>
+                #if(!$vo.updateTime)
+                    <td align="center"></td>
+                #else
+                    <td align="center">$date.format('yyyy-MM-dd HH:mm:ss',$!vo.updateTime)</td>
+                #end
+                <td align="center">
+                    <button   data-toggle="dialog" data-id="updateExamPayItem" data-width="650" data-height="300"  data-height="400" class="btn btn-default" href="#U('toUpdateSysLog?id=?',$vo.id)"
+                       >编辑</button>
+                    <button type="button" class="btn btn-default" href="#U('delete?id=?',$vo.id)"
+                       data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</button>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+
+</div>
+#page($page)

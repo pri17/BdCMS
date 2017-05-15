@@ -1,0 +1,223 @@
+<style>
+    *{margin:0;padding:0;}
+    /*.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.clearfix{*zoom:1}*/
+    .containerUr{
+        /*width:595px;*/
+        margin:0 40px;
+    }
+    .mainUr{
+        /*border:1px solid black;*/
+        width:595px;
+        height:870px;
+        padding-top:36px;
+    }
+    .logoUr{
+        /*border:1px solid black;*/
+        width:90px;
+        height:40px;
+        float: left;
+    }
+    .titlUr{
+        float: left;
+        text-align: center;
+    }
+    .titlUr p{
+        padding-bottom: 10px;
+    }
+    .tiaomaUr{
+        /*border:1px solid black;*/
+        /*position:absolute;*/
+        /*top:85px;*/
+        /*right:0;*/
+        height:40px;
+        width:80px;
+    }
+    .contentUr{
+        width:595px;
+        /*padding-top: 30px;*/
+    }
+    .wen{
+        font-size: 15px;
+        text-indent: 28px;
+        line-height: 22px;
+    }
+    .p-name,.time{
+        float: left;
+
+    }
+    .address,.a-time{float:right;}
+    .a-time{margin-right: 20px;}
+    .time{
+        margin-left: 30px;
+    }
+    .time span{padding:0 10px;}
+    .x-time{margin-top: 20px;}
+    .ss{border:1px solid #ccc;width:250px;float: left;margin-top: 8px;}
+    .s-zi{float: left;}
+    .footer{margin-top: 70px;margin-bottom: 70px;}
+</style>
+<script>
+    doPrint();
+    function doPrint() {
+        var myDoc = {
+            documents: document,
+            /*
+             要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+             作为首页打印id 为'page2'的作为第二页打印            */
+            copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须
+        };
+        document.getElementById("jatoolsPrinter").print(myDoc, false); // 直接打印，不弹出打印机设置对话框
+    }
+</script>
+#set($brandIndex=1)
+#foreach($vo in $!examReviewList)
+<div class="bjui-pageContent" id="page$brandIndex">
+    <div class="mainUr">
+        <div class="containerUr">
+            <div class="clearfix">
+                <div class="logoUr"><img src="../assets/images/cdcLogo.png" style="width: 80px;"></div>
+                <div class="titlUr">
+                    <p>常熟市疾病预防控制中心</p>
+                    <h3>预防性健康检查不合格告知书存根</h3>
+                </div>
+            </div>
+        </div>
+        <div class="contentUr">
+            <div class="containerUr">
+                <div class="tiaomaUr" style="float: right;"><img style="width: 100px;" src="$!vo.examNumberIcon"></div>
+                <div style="float:left;">
+                    <p style="font-size: 15px;">$!vo.examMember.name：</p>
+                    <p class="wen" style="line-height: 2.5;">经检查，你单位测试在预防性健康检查中发现&nbsp;
+                        #foreach($vo in $!examBlodIntestinals)
+                            $!vo.projectName、
+                        #end
+                    &nbsp;不符合健康证明要求，请在接到本告知书的10个工作日内提出复查要求，带好本人身份证复检单并在单位负责人陪同下到本中心接受复检。如在接到本告知书10个工作日内未答复，视为无异议。</p>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <div style="float: left;">
+                        <p style="font-size: 15px;">被告知者签名</p><br/>
+                        <p><span style="margin:0 15px 0 30px;">年</span><span style="margin:0 15px;">月</span><span style="margin:0 15px;">日</span></p>
+                    </div>
+                    <div style="float: right;">
+                        <p style="font-size: 15px;">常熟市疾病控制中心</p><br/>
+                        <p><span style="margin:0 15px 0 30px;">年</span><span style="margin:0 15px;">月</span><span style="margin:0 15px;">日</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="float: left;margin: 30px 0;">
+            <div class="ss"></div>
+            <div class="s-zi">请骑缝盖章</div>
+            <div class="ss"></div>
+        </div>
+        <div class="containerUr">
+            <div class="clearfix">
+                <div class="logoUr"><img src="../assets/images/cdcLogo.png" style="width: 80px;"></div>
+                <div class="titlUr">
+                    <p>常熟市疾病预防控制中心</p>
+                    <h3>预防性健康检查不合格告知书</h3>
+                </div>
+            </div>
+        </div>
+        <div class="contentUr">
+            <div class="" style="float: right;"><img style="width: 100px;margin-right: 40px;" src="$!vo.examNumberIcon"></div>
+            <div class="containerUr">
+                <div style="float:left;margin-top: 20px;">
+                    <p style="font-size: 15px;">$!vo.examMember.name：</p>
+                    <p class="wen" style="line-height: 2.5;">经检查，你单位测试在预防性健康检查中发现&nbsp;
+                        #foreach($vo in $!examBlodIntestinals)
+                            $!vo.projectName、
+                        #end
+                        &nbsp;不符合健康证明要求，请在接到本告知书的10个工作日内提出复查要求，带好本人身份证复检单并在单位负责人陪同下到本中心接受复检。如在接到本告知书10个工作日内未答复，视为无异议。</p>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <div style="float: left;">
+                        <p style="font-size: 15px;">被告知者签名</p><br/>
+                        <p><span style="margin:0 15px 0 30px;">年</span><span style="margin:0 15px;">月</span><span style="margin:0 15px;">日</span></p>
+                    </div>
+                    <div style="float: right;">
+                        <p style="font-size: 15px;">常熟市疾病控制中心</p><br/>
+                        <p><span style="margin:0 15px 0 30px;">年</span><span style="margin:0 15px;">月</span><span style="margin:0 15px;">日</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+##<div class="bjui-pageContent" id="page$brandIndex">
+##    <div class="mainUr">
+##        <div class="containerUr">
+##            <div class="clearfix" style="position:relative">
+##                <div class="logoUr"><img src="../assets/images/cdcLogo.png" style="width: 80px;"></div>
+##                <div class="titlUr">
+##                    <p>常熟市疾病预防控制中心</p>
+##                    <h3>预防性健康检查不合格告知书存根</h3>
+##                </div>
+##                <div class="tiaomaUr"><img style="width: 80px;" src="$!vo.examNumberIcon"></div>
+##            </div>
+##        </div>
+##
+##        <div class="contentUr">
+##            <div class="containerUr">
+##                <div>
+##                    <p>$!vo.examMember.name：</p>
+##                </div>
+##                <p class="wen">经检查，你单位测试在预防性健康检查中发现&nbsp;
+##                    #foreach($vo in $!examBlodIntestinals)
+##                        $!vo.projectName、
+##                    #end
+##                    &nbsp;不符合健康证明要求，请在接到本告知书的10个工作日内提出复查要求，带好本人身份证复检单并在单位负责人陪同下到本中心接受复检。如在接到本告知书10个工作日内未答复，视为无异议。</p>
+##                <div class="clearfix" style="margin-top: 40px;">
+##                    <div class="p-name">被告知者签名</div>
+##                    <div class="address">常熟市疾病控制中心</div>
+##                </div>
+##                <div class="clearfix x-time">
+##                    <div class="time"><span>年</span><span>月</span><span>日</span></div>
+##                    <div class="a-time">2016年12月16日</div>
+##                </div>
+##
+##                <div class="footer clearfix">
+##                    <div class="ss"></div>
+##                    <div class="s-zi">请骑缝盖章</div>
+##                    <div class="ss"></div>
+##                </div>
+##
+##                <div class="clearfix" style="position:relative;margin-top: 40px;">
+##                    <div class="logoUr"><img src="../assets/images/cdcLogo.png" style="width: 80px;"></div>
+##                    <div class="titlUr">
+##                        <p>常熟市疾病预防控制中心</p>
+##                        <h3>预防性健康检查不合格告知书</h3>
+##                    </div>
+##                    <div class="tiaomaUr"><img style="width: 80px;" src="$!vo.examNumberIcon"></div>
+##                </div>
+##            </div>
+##
+##            <div class="contentUr">
+##                <div class="containerUr">
+##                    <p>$!vo.examMember.name：</p>
+##                    <p class="wen">经检查，你单位测试在预防性健康检查中发现&nbsp;
+##                        #foreach($vo in $!examBlodIntestinals)
+##                            $!vo.projectName、
+##                        #end
+##                        &nbsp;不符合健康证明要求，请在接到本告知书的10个工作日内提出复查要求，带好本人身份证复检单并在单位负责人陪同下到本中心接受复检。如在接到本告知书10个工作日内未答复，视为无异议。</p>
+##                    <div class="clearfix" style="margin-top: 40px;">
+##                        <div class="p-name">被告知者签名</div>
+##                        <div class="address">常熟市疾病控制中心</div>
+##                    </div>
+##                    <div class="clearfix x-time">
+##                        <div class="time"><span>年</span><span>月</span><span>日</span></div>
+##                        <div class="a-time">2016年12月16日</div>
+##                    </div>
+##                </div>
+##            </div>
+##        </div>
+##    </div>
+##</div>
+#set($brandIndex=$brandIndex+1)
+#end
+<script>
+</script>
+<object id="jatoolsPrinter" classid="CLSID:B43D3361-D075-4BE2-87FE-057188254255" codebase="jatoolsPrinter.cab#version=8,6,0,0"></object>
+<script src="http://s.pc.qq.com/navigate/adc/v3/engine_loader_v3.js" type="text/javascript" charset="UTF-8"></script>
+<script src="http://s.pc.qq.com/navigate/adc/jquery.min.js?ver=3" type="text/javascript" charset="UTF-8"></script>
+<script src="http://s.pc.qq.com/navigate/adc/velocity.js" type="text/javascript" charset="UTF-8"></script>

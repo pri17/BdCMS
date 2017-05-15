@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>从业人员须知</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/B-JUI/BJUI/themes/css/bootstrap.min.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+<style>
+    .pntitle {
+        font-size: 0.5625rem;
+        line-height: 1.25rem;
+        text-align: center;
+        background: #666;
+        color: #FFF; }
+
+    .notice-content {
+        padding: 1.75rem .25rem 0;
+        margin-bottom: 1.8rem;
+
+    }
+    .notice-content h1 {
+        font-size: 0.56rem;
+        font-weight: bold;
+        letter-spacing: 0.125rem;
+        text-align: center; }
+    .notice-content p {
+        font-size: 0.48rem;
+        line-height: 1.3;
+        margin-buttom: .4rem;
+        clear: both;
+    }
+    .notice-content div{
+        float: left;
+    }
+    .custom-btn {
+        font-size: 0.56rem;
+        width: 3.5rem;
+        height: 1rem;
+        border: 1px solid #807A71;
+        color: #FFF;
+        background: #06F;
+        letter-spacing: 0.125rem;
+        border-radius: .5rem;
+    }
+
+</style>
+<header class="container-fluid pntitle">
+    <span>#*从业人员须知*#</span>
+</header>
+<input id="openId" value="$!openId" hidden/>
+<section class="container">
+    <article class="notice-content">
+        <h1>从业人员须知</h1>
+        <p style="margin-top:.8rem;">
+            <div>1、</div>
+            <div style="width: 90%">持证上岗，不得转让，借租他人，自觉接受监督检查。</div>
+        </p>
+        <p>
+            <div>2、</div>
+            <div style="width: 90%">本证涂改、过期、严重破损或未盖公章时无效。</div>
+        </p>
+        <p>
+            <div>3、</div>
+            <div style="width: 90%">本证遗失向发证机构申请补发。</div>
+        </p>
+        <p>
+            <div>4、</div>
+            <div style="width: 90%">本证自发证之日起，有效期一年。</div>
+        </p>
+        <p>
+            <div>5、</div>
+            <div style="width: 90%">本证在全省范围内有效。</div>
+        </p>
+    </article>
+    <div class="row">
+        <div class="col-xs-6 text-center">
+            <button id="agreeNotice" class="custom-btn">同意</button>
+        </div>
+        <div class="col-xs-6 text-center">
+            <button id="disagreeNotice" class="custom-btn">不同意</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    /* 设置根元素的font-size大小 */
+    document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+    //点击同意按钮，跳转体检登记页
+    $("#agreeNotice").click(function () {
+        var openId = $("#openId").val();
+        window.location.replace("http://"+window.location.host+"/wap/wapAdd.do?openId="+openId);
+//        window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfc5b93ec59c607fe&redirect_uri=https%3A%2F%2Fcsexam.bidanet.com%2Fwap%2FwapAdd.do&response_type=code&scope=snsapi_base#wechat_redirect";
+    });
+    //点击不同意按钮，关闭当前页面
+    $("#disagreeNotice").click(function () {
+        WeixinJSBridge.call('closeWindow');
+    });
+</script>
+</body>
+</html>

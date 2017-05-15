@@ -1,0 +1,121 @@
+<style>
+    *{margin:0;padding:0;}
+    .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.clearfix{*zoom:1}
+    .containerUr{
+        margin:0 40px;
+    }
+    .mainUr{
+        /*border:1px solid red;*/
+        width:595px;
+        height:842px;
+        padding-top:36px;
+    }
+    .logoUr{
+        /*border:1px solid black;*/
+        width:90px;
+        height:40px;
+        float: left;
+    }
+    .titlUr{
+        float: left;
+        text-align: center;
+    }
+    .titlUr p{
+        padding-bottom: 10px;
+    }
+    .tiaomaUr{
+        /*border:1px solid black;*/
+        position:absolute;
+        top:85px;
+        right:0;
+        height:40px;
+        width:80px;
+    }
+    .contentUr{margin-top: 30px;}
+    .wen{
+        text-indent: 28px;
+        line-height: 22px;
+    }
+    .p-name,.time{
+        float: left;
+
+    }
+    .address,.a-time{float:right;}
+    .a-time{margin-right: 20px;}
+    .time{
+        margin-left: 30px;
+    }
+    .time span{padding:0 10px;}
+    .x-time{margin-top: 20px;}
+    .ss{border:1px solid #ccc;width:210px;float: left;margin-top: 8px;}
+    .s-zi{float: left;}
+    .footer{margin-top: 40px;margin-bottom: 40px;}
+</style>
+
+<div class="bjui-pageContent">
+    <div class="mainUr">
+        <div class="containerUr">
+            <div class="clearfix" style="position:relative">
+                <div class="logoUr"><img src="../assets/images/cdcLogo.png" style="width: 80px;"></div>
+                <div class="titlUr">
+                    <p>常熟市疾病预防控制中心</p>
+                    <h3>预防性健康检查不合格告知书存根</h3>
+                </div>
+                <div class="tiaomaUr"><img style="width: 80px;" src="$!examMemberExam.examNumberIcon"></div>
+            </div>
+        </div>
+
+        <div class="contentUr">
+            <div class="containerUr">
+                <p>$!examMemberExam.examMember.name：</p>
+                <p class="wen">经检查，你单位测试在预防性健康检查中发现&nbsp;
+                    #foreach($vo in $!examBlodIntestinals)
+                        $!vo.projectName、
+                    #end
+                &nbsp;不符合健康证明要求，请在接到本告知书的10个工作日内提出复查要求，带好本人身份证复检单并在单位负责人陪同下到本中心接受复检。如在接到本告知书10个工作日内未答复，视为无异议。</p>
+                <div class="clearfix" style="margin-top: 40px;">
+                    <div class="p-name">被告知者签名</div>
+                    <div class="address">常熟市疾病控制中心</div>
+                </div>
+                <div class="clearfix x-time">
+                    <div class="time"><span>年</span><span>月</span><span>日</span></div>
+                    <div class="a-time">2016年12月16日</div>
+                </div>
+
+                <div class="footer clearfix">
+                    <div class="ss"></div>
+                    <div class="s-zi">请骑缝盖章</div>
+                    <div class="ss"></div>
+                </div>
+
+                <div class="clearfix" style="position:relative">
+                    <div class="logoUr"><img src="../assets/images/cdcLogo.png" style="width: 80px;"></div>
+                    <div class="titlUr">
+                        <p>常熟市疾病预防控制中心</p>
+                        <h3>预防性健康检查不合格告知书</h3>
+                    </div>
+                    <div class="tiaomaUr"><img style="width: 80px;" src="$!examMemberExam.examNumberIcon"></div>
+                </div>
+            </div>
+
+            <div class="contentUr">
+                <div class="containerUr">
+                    <p>$!examMemberExam.examMember.name：</p>
+                    <p class="wen">经检查，你单位测试在预防性健康检查中发现&nbsp;
+                        #foreach($vo in $!examBlodIntestinals)
+                            $!vo.projectName、
+                        #end
+                        &nbsp;不符合健康证明要求，请在接到本告知书的10个工作日内提出复查要求，带好本人身份证复检单并在单位负责人陪同下到本中心接受复检。如在接到本告知书10个工作日内未答复，视为无异议。</p>
+                    <div class="clearfix" style="margin-top: 40px;">
+                        <div class="p-name">被告知者签名</div>
+                        <div class="address">常熟市疾病控制中心</div>
+                    </div>
+                    <div class="clearfix x-time">
+                        <div class="time"><span>年</span><span>月</span><span>日</span></div>
+                        <div class="a-time">2016年12月16日</div>
+                    </div>
+                </div>
+            </div>
+</div>
+<script>
+</script>

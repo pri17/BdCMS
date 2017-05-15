@@ -1,0 +1,72 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+
+            <div style="float: left;">
+                <label>角色名：</label>
+                <input type="text" id="role" value="$!query.role" name="role" class="form-control" size="10">&nbsp;
+
+                <button type="submit" class="btn-default" >查询</button>&nbsp;
+                <button class="btn btn-default" href="javascript:void(0);"
+                   data-toggle="reloadsearch" data-clear-query="true">清空查询
+                </button>
+            </div>
+            <div class="new-add-right">
+                <button href="#U('toAddRole')" class="btn btn-default"
+                        data-toggle="dialog"
+                        data-id="toAddRole"
+                        data-title="添加角色"
+                        data-width="760"
+                        data-height="800"
+                        >&nbsp;新建&nbsp;
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr class="first-tr-style">
+
+            <th align="center">角色名</th>
+            <th align="center">介绍</th>
+##            <th>状态</th>
+
+            <th align="center" width="280">操作</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color">
+            #foreach($vo in $page.list)
+            <tr>
+
+                <td align="center">$!vo.role</td>
+                <td align="center">$!vo.description</td>
+##                #if($!vo.status=="enable")
+##                    <td>正常</td>
+##                #else
+##                    <td>禁用</td>
+##                #end
+                <td align="center">
+                    <button type="button" class="btn btn-default" href="#U('deleteRole?id=?',$vo.id)"
+                       data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</button>
+
+                    <button   data-toggle="dialog" data-id="updateRole" data-width="760" data-height="800" class="btn btn-default" href="#U('toUpdateRole?id=?',$vo.id)"
+                    >修改</button>
+##                    #if($!vo.status=="enable")
+##                        <a   data-toggle="doajax"  data-confirm-msg="确定要禁用此角色吗？"  class="btn btn-orange" href="#U('toStartOrStop?id=?',$vo.id)">禁用</a>
+##                    #else
+##                        <a   data-toggle="doajax"  data-confirm-msg="确定要启用此角色吗？"  class="btn btn-blue" href="#U('toStartOrStop?id=?',$vo.id)">启用</a>
+##                    #end
+##                    <a   data-toggle="dialog"  class="btn btn-green" href="#U('toTransformUsers?id=?',$vo.id)"
+##                    >用户转移</a>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+#page($page)

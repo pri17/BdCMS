@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/printExam/css/style.css">
+
+</head>
+<body>
+<div class="bjui-pageContent">
+
+<div id="tk" style="background: #ffffff">
+
+    <table width="100%" style="text-align:center">
+        <tbody >
+        <tr >
+            <td colspan="2" style="font-size: 28px;" >从业人员预防性健康检查流转单</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="ticket top" >
+
+        <tbody>
+        <tr>
+            <td>
+                <span class="item">体 检 号：</span>
+                <dl class="bar-code" style="margin: 0px">
+                    <dt class="bar-img">
+                        <img src="img/bar-code.png" alt="">
+                    </dt>
+                    <dd class="bar-num">
+                        1613233101
+                    </dd>
+                </dl>
+            </td>
+            <td>
+                <dl style="margin-top: 0px;margin-bottom: 0px;">
+                    <dt style="height: 88px;line-height: 100px;">
+                        姓&emsp;名：<span class="name">陈美珍</span>
+                    </dt>
+                    <dd style="width:80px">
+                        性&emsp;别：<span class="sex">女</span>
+                    </dd>
+                </dl>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                身份证号：<span class="id-card" style="font-size:23px">320520195303032924</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                工作单位：<span class="work-unit">常熟市王庄个体</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                体检日期：<span class="exam-date">2016-09-23</span>
+            </td>
+            <td >
+                行  业：<span class="vocation" id="hyText" >饰品卫生啊</span>
+            </td>
+        </tr>
+
+        <tr style="height:320px">
+            <td colspan="2">
+                <table border=0 cellspacing=0 class="inner-table" style="font-size: 26px;margin-bottom: 2px;">
+                    <tr>
+                        <td colspan="2" class="head">体 检 流 程</td>
+                    </tr>
+                    <tr>
+                        <td class="head half">项&emsp;&emsp;目</td>
+                        <td class="head half">完成情况</td>
+                    </tr>
+                    <tr>
+                        <td>&emsp;1.缴费87元</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&emsp;2.内科检查</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&emsp;3.胸部X线检查</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&emsp;4.肠检</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>&emsp;5.血检</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2">友情提示：</td>
+        </tr>
+        <!--<tr class="notice">
+         <td colspan="2">&emsp;&emsp;1.如需要发票可凭此流转单至底楼大厅<br/>收费窗口打印。</td>
+       </tr>
+      <tr class="notice">
+         <td colspan="2">&emsp;&emsp;2.内科、X光检查在底楼，肠检、血检在二楼。</td>
+       </tr>-->
+        <tr class="notice">
+            <td colspan="2">&emsp;&emsp;体检完成5个工作日后，可凭身份证在大厅自</td>
+        </tr>
+        <tr class="notice">
+            <td colspan="2">助机上打印健康证，如有疑问请咨询工作人员。</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="ticket" style="    margin-top: 16px;
+    margin-left: 30px;">
+        <tbody>
+        <tr>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img src="img/bar-code.png" alt="">
+                    </dt>
+                    <dd class="bar-num">1613233101</dd>
+                </dl>
+            </td>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img src="img/bar-code.png" alt="">
+                    </dt>
+                    <dd class="bar-num">1613233101</dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img src="img/bar-code.png" alt="">
+                    </dt>
+                    <dd class="bar-num">1613233101</dd>
+                </dl>
+            </td>
+            <td class="bar-box">
+                <dl class="bar-code">
+                    <dt class="bar-img">
+                        <img src="img/bar-code.png" alt="">
+                    </dt>
+                    <dd class="bar-num">1613233101</dd>
+                </dl>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<img src="" id="s"/>
+<script src="../assets/printExam/js/html2canvas.js"></script>
+    <script src="../js/jquery-1.7.2.min.js"></script>
+
+    <script src="/js/LocalServiceApi.js"></script>
+<script>
+
+
+    d="";
+    html2canvas(document.getElementById("tk"), {
+        onrendered: function(canvas) {
+            // canvas is the final rendered <canvas> element
+            d = canvas.toDataURL();
+            s.src=d;
+            var i = d.indexOf(",");
+            d = d.substr(i + 1)
+//        x.printImage(d, 150);
+        }
+    });
+
+
+$('#jkPrintPhysical').click(function () {
+
+    localService.print(d,function () {
+        $(this).alertmsg('ok', "打印成功");
+        $(this).close();
+    },function () {
+        $(this).alertmsg('error', "打印失败");
+    })
+//    var returnResult = x.printImage(d, 200,'com5',115200);
+
+
+})
+
+</script>
+</div>
+</body>
+
+</html>
+
+<div class="bjui-pageFooter">
+    <ul>
+        <li></li><button type="button" class="btn" id="jkPrintPhysical" >打印</button></li>
+    </ul>
+</div>

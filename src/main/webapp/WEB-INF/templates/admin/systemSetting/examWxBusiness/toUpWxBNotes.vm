@@ -1,0 +1,22 @@
+<div class="bjui-pageContent">
+    <form action="#U('upWxBNotes')"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden" name="upId" value="$!wxBNotes.id"/>
+        <div class="form-group">
+            <label class="control-label x85"></label>
+            <textarea cols="45" rows="20" name="content" value="" data-toggle="autoheight">$!wxBNotes.content</textarea>
+        </div>
+        <span class="middle red">*</span>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-default" >关闭</button></li>
+        <li><button type="submit"  class="btn-default" >保存</button></li>
+    </ul>
+</div>
+<script>
+
+</script>

@@ -1,0 +1,200 @@
+<style>
+    p,span{color:#333;}
+    .ecfcontainer{width:630px;height:890px;;}
+    .ecfcontainer .title{text-align: center;font-size: 28px;color:#333;margin-top: 14px;}
+    .ecfcontainer .img{position: absolute;left:500px;top:150px}
+    /*.ecfcontainer .photo{position: absolute;top:54px;left: 0px;border:1px solid #797979;width: 95px;height:120px;113,34}*/
+    .ecfcontainer .content{margin-top:70px;margin-left: 20px;}
+    .ecfcontainer .content p{margin-top: 4px;}
+    .ecfcontainer .content .name{margin-right: 20px;}
+    .ecfcontainer .content .tele{padding-right: 40px;}
+    .ecfcontainer .content .ind{margin-right: 50px;}
+    .ecfcontainer .charge{border:1px solid #797979;height:30px;width:590px;line-height: 28px;margin-left: }
+    .ecfcontainer .charge span{border-right:1px solid #797979;display: inline-block;text-align: center;line-height: 28px;}
+    .ecfcontainer .charge .one-c{width:166px;}
+    .ecfcontainer .charge .two-c{width:130px;}
+    .ecfcontainer table{border-collapse:collapse;}
+    .ecfcontainer table.one-ta{margin-top: 8px;}
+    .ecfcontainer table, td{border:1px solid #797979;color:#333;}
+    .ecfcontainer td{height:30px;width:196px;text-align: center;}
+    .ecfcontainer td.one{height:36px;}
+    .ecfcontainer table.one-ta td.wid{height:38px;}
+    .ecfcontainer p span.company{margin:0 120px 0 8px;}
+    .ecfcontainer .line{border-bottom: 2px dashed #ff0000;width:590px;margin-top: 7px;}
+    .ecfcontainer .t-img img{float: right;margin-right: 58px;}
+    .ecfcontainer table.two-ta td{height:28px;}
+    .ecfcontainer table.two-ta td.name-o{width:60px;}
+    .ecfcontainer table.two-ta td.name-t{width:80px;}
+    .ecfcontainer table.two-ta td.name-th{width:100px;}
+    .ecfcontainer table.two-ta td.name-telep{width:190px;}
+    .ecfcontainer table.two-ta td.name-add{width:320px;}
+    .ecfcontainer table.two-ta td.name-time{width:110px;}
+    .ecfcontainer table.two-ta td.name-ltime{width:110px;}
+    .ecfcontainer table.two-ta td.name-oo{width:160px;}
+    .ecfcontainer p span.last-ti{margin-right: 340px;}
+    .ecfcontainer p.last-list{margin-top: 8px;}
+</style>
+<script src="../../../assets/printExam/js/JsBarcode.code128.min.js"></script>
+
+<div class="bjui-pageContent">
+    <div class="ecfcontainer">
+        <div class="title">常熟市食品、公共场所从业人员<br/>预防性健康检查表</div>
+        <div style="text-align: right;float:right;margin-right: 14px;">
+            <div  style="width: 30%;">
+                <img class="tjCodeImg" style="width: 155px" alt="">
+            </div>
+            <div  style="font-size: 15px;text-align: center">
+                $!exam.examNumber
+            </div>
+        </div>
+        <div class="img" style="width: 102px;height: 136px;overflow: hidden;"><img src="$!exam.icon" alt="" style="width: 100%;" >#*<div class="photo"></div>*#</div>
+        <div class="content">
+            <p>一、基本情况</p>
+            <p><span class="name">姓名：$!exam.name</span><span class="name">性别：$!exam.sexStr</span><span>身份证号：$!exam.idCardNum</span></p>
+            <p><span class="tele">电话号码：$!exam.mobile</span><span class="ind">行业：$!exam.categoryName</span><span>工种：</span></p>
+            <p><span>工作单位：$!exam.workUnit</span></p>
+            <p>二、收费情况</p>
+            <p class="charge"><span class="one-c">体检费用</span><span class="two-c">$!exam.payMoney</span><span class="two-c">收费情况</span><span class="one-c"></span></p>
+            <p>三、培训、体检结果</p>
+            <table class="one-ta">
+                <tr>
+                    <td class="one-ta">检查项目</td>
+                    <td class="one-ta">检查情况</td>
+                    <td class="one-ta">医师签名</td>
+                </tr>
+                <tr>
+                    <td class="wid">既往史（重点消化道、<br/>呼吸道传染病史）</td>
+                    <td class="wid"></td>
+                    <td class="wid"></td>
+                </tr>
+                <tr>
+                    <td class="">问诊及内科皮肤科检查</td>
+                    <td class=""></td>
+                    <td class=""></td>
+                </tr>
+                <tr>
+                    <td class="">胸部X线检查</td>
+                    <td class=""></td>
+                    <td class=""></td>
+                </tr>
+                <tr>
+                    <td class="">采血</td>
+                    <td class=""></td>
+                    <td class=""></td>
+                </tr>
+                <tr>
+                    <td class="">肠检</td>
+                    <td class=""></td>
+                    <td class=""></td>
+                </tr>
+            </table>
+            <p><span class="company">体检单位：$!exam.agenciesName</span><span id="examTimeS" class="time">体检日期：$!exam.examTimeShort</span></p>
+            <div class="line"></div>
+            <div style="height: 50px;">
+                <div class="title" style="text-align: center;margin-top: 10px;height: 35px;float: left;width: 65%;margin-left: -4px; ">$!exam.agenciesName血液检查单</div>
+            ##            <div class="t-img clearfix"><img src="images/er.png" alt=""></div>
+                <div style="text-align: right;float:right;margin-right: 14px;">
+                    <div  style="width: 30%;">
+                        <img class="tjCodeImg" style="width: 155px" alt="">
+                    </div>
+                    <div  style="font-size: 15px;text-align: center">
+                        $!exam.examNumber
+                    </div>
+                </div>
+            </div>
+            <table style="width: 100%" class="two-ta">
+                <tr>
+                    <td style="width: 10%" class="name-o">姓名</td>
+                    <td style="width: 14%" class="name-t">$!exam.name</td>
+                    <td style="width: 10%" class="name-o">性别</td>
+                    <td style="width: 14%" class="name-t">$!exam.sexStr</td>
+                    <td style="width: 18%" class="name-th">身份证号</td>
+                    <td style="width: 34%" class="name-telep" colspan="4">$!exam.idCardNum</td>
+                </tr>
+                <tr>
+                    <td style="width: 10%" class="name-o">单位</td>
+                    <td style="width: 56%" class="name-add" colspan="4">$!exam.workUnit</td>
+                    <td style="width: 14%" class="name-t">送检日期</td>
+                    <td style="width: 20%" class="name-ltime">$!exam.examTimeShort</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%" ="name-oo" colspan="2">检查项目</td>
+                    <td style="width: 41%" class="" colspan="3">结果</td>
+                    <td style="width: 34%" class="name-telep" colspan="2">备注</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%" class="name-oo" colspan="2">谷丙转氨酶</td>
+                    <td style="width: 41%" class="" colspan="3"></td>
+                    <td style="width: 34%" class="name-telep" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td style="width: 25%" class="name-oo" colspan="2">甲肝</td>
+                    <td style="width: 41%" class="" colspan="3"></td>
+                    <td style="width: 34%" class="name-telep" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td style="width: 25%" class="name-oo" colspan="2">戊肝</td>
+                    <td style="width: 41%" class="" colspan="3"></td>
+                    <td style="width: 34%" class="name-telep" colspan="2"></td>
+                </tr>
+            ##                <tr>
+            ##                    <td class="name-oo" colspan="2"></td>
+            ##                    <td class="" colspan="3"></td>
+            ##                    <td class="name-telep" colspan="2"></td>
+            ##                </tr>
+            </table>
+            <p class="last-list"><span class="last-ti">报告日期</span><span>检验者</span></p>
+        </div>
+    </div>
+</div>
+<script>
+
+    JsBarcode(".tjCodeImg", "$!exam.examNumber",{displayValue:false,height:80,width:5});
+    //    }
+    //    $(document).ready(function () {
+    //        var date = new Date();
+    //        $("#examTimeS").html(date.toLocaleDateString());
+    //    });
+
+
+
+    function doPrint() {
+        //        var myDoc = {
+        //            documents: document,
+        //            /*
+        //             要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+        //             作为首页打印id 为'page2'的作为第二页打印            */
+        //            copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须
+        //        };
+        //        document.getElementById("jatoolsPrinter").print(myDoc, false); // 直接打印，不弹出打印机设置对话框
+        if(!jsPrintSetup){
+            window.open("https://addons.mozilla.org/en-US/firefox/addon/js-print-setup/")
+        }else{
+            jsPrintSetup.setSilentPrint(true);
+
+            jsPrintSetup.setOption('marginTop', 15);
+
+            // set page header/ /设置页面标题
+
+            jsPrintSetup.setOption('headerStrLeft', '');
+
+            jsPrintSetup.setOption('headerStrCenter', '');
+
+            jsPrintSetup.setOption('headerStrRight', '');
+
+            // set empty page footer/ /设置空页页脚
+
+            jsPrintSetup.setOption('footerStrLeft', '');
+
+            jsPrintSetup.setOption('footerStrCenter', '');
+
+            jsPrintSetup.setOption('footerStrRight', '');
+
+            jsPrintSetup.printWindow(window);
+        }
+
+    }
+
+
+    doPrint();
+</script>

@@ -1,0 +1,164 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('jurisdiction')" method="post">
+        #pageInput($page)
+        <div class="bjui-searchBar">
+
+        </div>
+
+    </form>
+</div>
+<div class="bjui-pageContent">
+    <form action="#U('addRoleMenu')"
+          id="addGood"
+          data-reload-navtab="false"
+          method="post" class="pageForm" data-toggle="validate">
+    <div id="layout-02" style="height:100%; overflow:hidden;">
+        <div  id="roleMenu" >
+            <input type="hidden" name="id" value="$!query.id"/>
+            <input type="hidden" name="menus" v-model="menus" value="">
+            <div v-for=" rootMenu in tree" >
+                <h4>{{rootMenu.name}}</h4>
+                <table v-for="menu in rootMenu.childrend" class="table table-bordered table-hover table-striped table-top" id="item" >
+                    <tr v-for="c in menu.childrend" class="check-box">
+                        <td v-if="$index==0" v-bind:rowspan="menu.childrend.length" style="border: solid 1 black;width: 300px" class="check-box">
+                            {{menu.name}}
+                            <input type="checkbox" class="checkApp" v-bind:value="menu.id" v-model="checkedList"  v-on:click="checkedAll(menu)">
+                        </td>
+                        <td style="border: solid 1 black;width: 300px" class="check-box">
+                            {{c.name}}
+                            <input type="checkbox"  v-bind:value="c.id"  v-model="checkedList" v-on:click="checkedSecond(c)">
+                        </td>
+                        <td >
+                            <span v-for="t in c.childrend" >{{t.name}}
+                                <input type="checkbox"  v-bind:value="t.id"    v-model="checkedList" v-on:click="checkedThir(t)">
+                            </span>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li>
+            <button type="button" class="btn-default" >关闭</button>
+        </li>
+        <li>
+            <button type="submit" class="btn-default" >保存</button>
+        </li>
+    </ul>
+</div>
+
+<script>
+
+    var menus=[];
+    $.getJSON("#U("/admin/menu/getMenuTree")",function (treeData, result) {
+       var checkedMenus="$!checked";
+        if(checkedMenus==""){
+            checkedMenus="[]";
+        }
+        checkedMenus=eval(checkedMenus);
+
+        var roleMenuVm=  new Vue({
+            el:"#roleMenu",
+            data:{
+                tree:treeData,
+                checkedList:checkedMenus
+            },
+            methods:{
+                isRoot:function (v) {
+                    if(v.parentId >0){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                },
+                checkedAll:function (el) {
+                    if(this.checkedList.indexOf(el.id)<0){
+                        //之前未选中，操作为选中操作
+
+                        this.checkedList.push(
+                                el.id
+                        );
+                        this.checkedList.push(el.parentId);
+                        for(var i=0;i<el.childrend.length;i++){
+                            var c=el.childrend[i];
+                            this.checkedList.push(c.id);
+                            for(var j=0;j<c.childrend.length;j++){
+                                var t=c.childrend[j];
+                                this.checkedList.push(t.id);
+                            }
+                        }
+
+                    }else{
+                        //之前选中，操作为，取消选中
+                        this.checkedList.$remove(el.id);
+                            for (var i=0;i<el.childrend.length;i++){
+                                var c=el.childrend[i];
+                                this.checkedList.$remove(c.id);
+                                for(var j=0;j<c.childrend.length;j++){
+                                    var t=c.childrend[j];
+                                    this.checkedList.$remove(t.id);
+                                }
+                            }
+                        for(var i=0;i<el.childrend.length;i++){
+                            var c=el.childrend[i];
+                            this.checkedList.$remove(c.id)
+                            for(var j=0;j<c.childrend.length;j++){
+                                var t=c.childrend[j];
+                                this.checkedList.$remove(t.id);
+                            }
+                        }
+                    }
+                },
+                checkedSecond:function (se) {
+                    if(this.checkedList.indexOf(se.id)<0){
+                        this.checkedList.push(
+                                se.id
+                        );
+                        this.checkedList.push(se.parentId);
+                        for(var j=0;j<se.childrend.length;j++){
+                            var t=se.childrend[j];
+                            this.checkedList.push(t.id);
+                        }
+                    }else {
+                        this.checkedList.$remove(se.id);
+                        if (this.checkedList.indexOf(se.id)<0){
+                            for (var i=0;i<se.childrend.length;i++){
+                                var t=se.childrend[i];
+                                this.checkedList.$remove(t.id);
+                            }
+                        }
+                        for(var j=0;j<se.childrend.length;j++){
+                            var t=se.childrend[j];
+                            this.checkedList.$remove(t.id);
+                        }
+                    }
+                },
+                checkedThir:function (th) {
+                    if(this.checkedList.indexOf(th.id)<0){
+                        this.checkedList.push(th.id);
+//                        console.log(th);
+//                        alert(this.rootPId);
+                        this.checkedList.push(th.parentId);
+
+                    }else {
+                        this.checkedList.$remove(th.id);
+
+                    }
+                },
+
+
+            },
+            computed: {
+                menus: function () {
+                    return JSON.stringify(this.$data.checkedList)
+                }
+            }
+        })
+    })
+</script>

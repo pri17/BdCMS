@@ -1,0 +1,379 @@
+<ul id="bjui-hnav-navbar">
+
+    <li class="active">
+        <a href="javascript:;" data-toggle="slidebar">
+            后台数据管理</a>
+
+        <div class="items hide" data-noinit="true">
+
+
+            <ul  class="ztree ztree_main"
+                 id="admin_data"
+                 data-toggle="ztree" data-on-click="MainMenuClick"
+                 data-expand-all="ture" data-faicon="check-square-o" data-title="remark">
+                <li data-id="1" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="用于各等级角色权限的分配"
+                    data-faicon-close="folder-o">
+                    权限分配管理</li>
+                <li data-id="16" data-pid="1" data-url="#U('user/adminTypeIndex')"
+                    data-remark="创建、删除用户"
+                    data-tabid="adminIndex">
+                    员工管理</li>
+                <li data-id="18" data-pid="1" data-url="#U('user/cityIndex')"
+                    data-remark="创建、删除用户"
+                    data-tabid="cityIndex">
+                    城市合伙人</li>
+                <li data-id="10" data-pid="1" data-url="#U('user/cityShopIndex')"
+                    data-remark="创建、删除用户"
+                    data-tabid="shopIndex">
+                    商铺会员</li>
+                <li data-id="19" data-pid="1" data-url="#U('user/vipIndex')"
+                    data-remark="创建、删除用户"
+                    data-tabid="vipIndex">
+                    会员管理</li>
+                <li data-id="11" data-pid="1" data-url="#U('userRole/index')"
+                    data-remark="创建、配置角色"
+                    data-tabid="roleIndex">
+                    角色管理</li>
+                <li data-id="12" data-pid="1" data-url="#U('shopStore/index')"
+                    data-remark="创建、配置门店"
+                    data-tabid="shopStoreIndex">
+                    门店管理</li>
+                <li data-id="13" data-pid="1" data-url="#U('shopStore/indexAuditing')"
+                    data-remark="待审核门店"
+                    data-tabid="shopStoreAuditingIndex">
+                    待审核门店</li>
+                <li data-id="14" data-pid="1" data-url="#U('shopStore/indexEnable')"
+                    data-remark="已审核门店"
+                    data-tabid="shopStoreEnableIndex">
+                    已审核门店</li>
+                <li data-id="15" data-pid="1" data-url="#U('shopStore/indexAuditingDC')"
+                    data-remark="待审核门店(专员)"
+                    data-tabid="shopStoreAuditingDCIndex">
+                    待审核门店(专员)</li>
+                <li data-id="15" data-pid="1" data-url="#U('shopStore/indexEnableDC')"
+                    data-remark="已审核门店(专员)"
+                    data-tabid="shopStoreEnableDCIndex">
+                    已审核门店(专员)</li>
+                <li data-id="16" data-pid="1" data-url="#U('recommendStore/index')"
+                    data-remark="门店推荐"
+                    data-tabid="sortStoreIndex">
+                    门店推荐</li>
+                <li data-id="17" data-pid="1" data-url="#U('user/index')"
+                    data-remark="文件上传"
+                    data-tabid="fileIndex">
+                    文件上传</li>
+                <li data-id="18" data-pid="1" data-url="#U('thirdPartyLogin/index')"
+                    data-remark="第三方登录"
+                    data-tabid="thirdPartyLoginIndex">
+                    第三方登录</li>
+
+                <li data-id="2" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-faicon-close="folder-o">
+                    基础设置管理</li>
+                <li data-id="21" data-pid="2" data-url="#U('category/index')"
+                    data-tabid="categoryIndex">
+                    分类管理</li>
+                <li data-id="22" data-pid="2" data-url="#U('area/index')"
+                    data-tabid="areaIndex">
+                    地区管理</li>
+                <li data-id="23" data-pid="2" data-url="#U('businessCircles/index')"
+                    data-tabid="businessCirclesIndex">
+                    商圈管理</li>
+                <li data-id="29" data-pid="2" data-url="#U('district/index')"
+                    data-tabid="districtIndex">
+                    区域管理</li>
+
+                <li data-id="3" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="用于发布通告"
+                    data-faicon-close="folder-o">
+                    公告管理</li>
+                <li data-id="31" data-pid="3" data-url="#U('advertising/index')"
+                    data-remark="发布、编辑、删除广告"
+                    data-tabid="adIndex">
+                    广告管理</li>
+                <li data-id="32" data-pid="3" data-url="#U('friendship/friend')"
+                    data-remark="发布、编辑、删除"
+                    data-tabid="friendIndex">
+                    友情链接管理</li>
+                <li data-id="33" data-pid="3" data-url="#U('email/emailList')"
+                    data-remark="添加、删除邮件订阅"
+                    data-tabid="emailliistIndex">邮箱列表</li>
+                <li data-id="33" data-pid="3" data-url="#U('message/messageList')"
+                    data-remark="编辑、删除"
+                    data-tabid="messagelistIndex">消息模板</li>
+                <li data-id="34" data-pid="3" data-url="#U('config/configList')"
+                    data-remark="编辑、删除"
+                    data-tabid="configlistIndex">配置管理</li>
+                <li data-id="35" data-pid="3" data-url="#U('pei/peizhi')"
+                    data-remark="编辑、删除"
+                    data-tabid="peizhiIndex">系统配置</li>
+                <li data-id="36" data-pid="3" data-url="#U('bank/bankList')"
+                    data-remark="编辑、删除"
+                    data-tabid="bankListIndex">银行列表</li>
+                <li data-id="37" data-pid="3" data-url="#U('stationMessage/index')"
+                    data-remark="已读、删除"
+                    data-tabid="stationMessageIndex">
+                    站内消息</li>
+                <li data-id="38" data-pid="3" data-url="#U('hotSearch/index')"
+                    data-remark="编辑、删除"
+                    data-tabid="hotSearchIndex">
+                    搜索热词</li>
+
+                <li data-id="4" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="用于发布通告"
+                    data-faicon-close="folder-o">
+                    商铺用户信息管理</li>
+                <li data-id="41" data-pid="4" data-url="#U('shop/toAddShop')"
+                    data-remark=""
+                    data-tabid="toAddShopIndex">
+                    添加商铺</li>
+                <li data-id="42" data-pid="4" data-url="#U('shop/weiShen')"
+                    data-remark="审核"
+                    data-tabid="weiShenIndex">
+                    商铺待审核列表</li>
+                <li data-id="43" data-pid="4" data-url="#U('shop/yiShen')"
+                    data-remark=""
+                    data-tabid="yiShenIndex">商铺已审核列表</li>
+                <li data-id="44" data-pid="4" data-url="#U('shop/shopList')"
+                    data-remark="编辑、删除"
+                    data-tabid="shopListIndex">商铺列表</li>
+                <li data-id="45" data-pid="4" data-url="#U('shop/daiShen')"
+                    data-remark="审核"
+                    data-tabid="daiShenIndex">专员待审列表</li>
+                <li data-id="46" data-pid="4" data-url="#U('shop/trailList')"
+                    data-remark="审核"
+                    data-tabid="trailListIndex">专员已审列表</li>
+                <li data-id="47" data-pid="4" data-url="#U('shop/list')"
+                    data-remark="查看"
+                    data-tabid="listIndex">专员地区商铺列表</li>
+                <li data-id="5" data-pid="0"
+                    data-url="#U('/user/index')"
+                    data-tabid="userIndex">用户管理</li>
+
+                <li data-id="5" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="用于配置标签"
+                    data-faicon-close="folder-o">
+                    商品团购标签</li>
+                <li data-id="51" data-pid="5" data-url="#U('goodsTag/goodsTagList')"
+                    data-remark=""
+                    data-tabid="goodsTagListIndex">
+                    商品标签列表</li>
+
+
+                <li data-id="6" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="用于发布通告"
+                    data-faicon-close="folder-o">
+                    商品管理</li>
+                <li data-id="61" data-pid="6" data-url="#U('goods/goodsList')"
+                    data-remark=""
+                    data-tabid="goodsListIndex">
+                    商品列表</li>
+                <li data-id="62" data-pid="6" data-url="#U('goods/commissionerList')"
+                    data-remark=""
+                    data-tabid="commissionerListIndex">
+                    商品列表(专员)</li>
+
+
+                <li data-id="200" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="用于发布通告"
+                    data-faicon-close="folder-o">
+                    团购商品管理</li>
+                <li data-id="201" data-pid="200" data-url="#U('tuanGoods/tuanList')"
+                    data-remark=""
+                    data-tabid="tuanGoodsListIndex">
+                    商品团购</li>
+                <li data-id="201" data-pid="200" data-url="#U('activityGoods/activityList')"
+                    data-remark=""
+                    data-tabid="activityListIndex">
+                    商品团购活动</li>
+                <li data-id="201" data-pid="200" data-url="#U('tuanGoods/shopStoreList')"
+                    data-remark=""
+                    data-tabid="shopStoreListIndex">
+                    复制门店商品</li>
+
+
+
+                <li data-id="100" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="用于新增、修改代理人"
+                    data-faicon-close="folder-o">
+                    代理人管理</li>
+                <li data-id="101" data-pid="100" data-url="#U('agent/indexCity')"
+                    data-remark="城市代理人"
+                    data-tabid="cityAgentIndex">
+                    城市代理人</li>
+                <li data-id="102" data-pid="100" data-url="#U('agent/indexGreen')"
+                    data-remark="绿钻代理人"
+                    data-tabid="greenAgentIndex">
+                    绿钻代理人</li>
+                <li data-id="103" data-pid="100" data-url="#U('agent/indexYellow')"
+                    data-remark="黄钻代理人"
+                    data-tabid="yellowAgentIndex">
+                    黄钻代理人</li>
+                <li data-id="9" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="用于管理订单信息"
+                    data-faicon-close="folder-o">
+                    订单管理</li>
+                <li data-id="91" data-pid="9" data-url="#U('order/allOrder')"
+                    data-remark=""
+                    data-tabid="logisticsIndex">
+                    订单管理</li>
+##                <li data-id="92" data-pid="9" data-url="#U('order/logistics')"
+##                    data-remark=""
+##                    data-tabid="logisticsIndex">
+##                    物流管理</li>
+##                <li data-id="93" data-pid="9" data-url="#U('order/storeGoods')"
+##                    data-remark=""
+##                    data-tabid="storeGoodsIndex">
+##                    商城商品订单</li>
+##                <li data-id="94" data-pid="9" data-url="#U('order/localePay')"
+##                    data-remark=""
+##                    data-tabid="localePayIndex">
+##                    现场买单订单</li>
+                <li data-id="92" data-pid="9" data-url="#U('order/group')"
+                    data-remark=""
+                    data-tabid="groupIndex">
+                    团购商品订单</li>
+##                <li data-id="96" data-pid="9" data-url="#U('order/grogshopGoods')"
+##                    data-remark=""
+##                    data-tabid="grogshopGoodsIndex">
+##                    酒店商品订单</li>
+##                <li data-id="97" data-pid="9" data-url="#U('order/travelGoods')"
+##                    data-remark=""
+##                    data-tabid="travelGoodsIndex">
+##                    旅游商品订单</li>
+                <li data-id="93" data-pid="9" data-url="#U('order/index')"
+                    data-remark=""
+                    data-tabid="cashIndex">
+                    优惠买订单</li>
+                <li data-id="94" data-pid="9" data-url="#U('tuanCoupon/tuanCoupon')"
+                    data-remark=""
+                    data-tabid="groupIndex">
+                    团购券</li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <a href="javascript:;" data-toggle="slidebar">
+            菜单管理</a>
+        <div class="items hide" data-noinit="true">
+            <ul  class="ztree ztree_main"
+                 id="school_data"
+                 data-toggle="ztree" data-on-click="MainMenuClick"
+                 data-expand-all="true" data-faicon="check-square-o"
+                 data-title="remark">
+
+                <li data-id="1" data-pid="01"
+                    data-faicon="folder-open-o"
+                    data-remark=""
+                    data-faicon-close="folder-o">
+                    菜单详情管理</li>
+
+                <li data-id="10" data-pid="1" data-url="#U('/admin/menu/menuList')"
+                    data-remark="菜单"
+                    data-tabid="menuListIndex">
+                    菜单管理</li>
+                <li data-id="11" data-pid="1" data-url="#U('/admin/role/roleList')"
+                    data-remark="添加、编辑、删除"
+                    data-tabid="roleListIndex">
+                    权限菜单</li>
+                <li data-id="13" data-pid="1" data-url="#U('/admin/favorite/goodFavoriteList')"
+                    data-remark="收藏商品"
+                    data-tabid="goodFavoriteListIndex">
+                    收藏商品</li>
+                <li data-id="14" data-pid="1" data-url="#U('/admin/favorite/shopStoreFavoriteList')"
+                    data-remark="收藏门店"
+                    data-tabid="shopStoreFavoriteListIndex">
+                    收藏门店</li>
+
+                <li data-id="15" data-pid="1" data-url="#U('/admin/userBankCard/userBankCardList')"
+                    data-remark="添加、编辑、删除用户绑定信息"
+                    data-tabid="userBankCardListIndex">
+                    用户绑定银行卡</li>
+                <li data-id="16" data-pid="1" data-url="#U('/admin/goodsRecommend/goodsRecommendList')"
+                    data-remark="收藏门店"
+                    data-tabid="goodsRecommendListIndex">
+                    推荐商品</li>
+                <li data-id="18" data-pid="1" data-url="#U('/admin/kiting/getKitingList')"
+                    data-remark="提现列表"
+                    data-tabid="getKitingListIndex">
+                    提现列表</li>
+                <li data-id="17" data-pid="1" data-url="#U('/admin/kiting/toAddKiting')"
+                    data-remark="提取现金"
+                    data-toggle="dialog"
+                    data-width="600"
+                    data-height="600"
+                    data-tabid="toAddKitingIndex">
+                    提现</li>
+
+            </ul>
+
+
+        </div>
+    </li>
+
+
+    <li>
+        <a href="javascript:;" data-toggle="slidebar">
+            金额账户管理</a>
+        <div class="items hide" data-noinit="true">
+
+            <ul id="user_data" class="ztree ztree_main" data-toggle="ztree"
+                data-on-click="MainMenuClick" data-expand-all="true"
+                data-faicon="check-square-o" data-title="remark">
+
+                <li data-id="1" data-pid="0"
+                    data-faicon="folder-open-o"
+                    data-remark="金额账户"
+                    data-faicon-close="folder-o">
+                    金额账户</li>
+                <li data-id="10" data-pid="1" data-url="#U('moneyAccountLog/index')"
+                    data-remark="流通记录"
+                    data-tabid="moneyAccountLogIndex">
+                    流通记录</li>
+
+
+
+                <li data-id="23" data-pid="0"  data-faicon="folder-open-o"
+                    data-remark=""
+                    data-faicon-close="folder-o">
+                    优惠券</li>
+
+                <li data-id="200" data-pid="23" data-url="#U('coupon/index')"
+                    data-remark="优惠券"
+                    data-tabid="couponIndex">
+                    优惠券</li>
+
+                <li data-id="201" data-pid="23" data-url="#U('userCoupon/index')"
+                    data-remark="用户优惠券"
+                    data-tabid="userCouponIndex">
+                    用户优惠券</li>
+
+                <li data-id="33" data-pid="0"  data-faicon="folder-open-o"
+                    data-remark=""
+                    data-faicon-close="folder-o">
+                    支付管理</li>
+
+                <li data-id="301" data-pid="33" data-url="#U('payManage/index')"
+                    data-remark="支付配置"
+                    data-tabid="payManageIndex">
+                    支付配置</li>
+
+            </ul>
+
+
+        </div>
+    </li>
+
+
+
+</ul>

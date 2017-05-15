@@ -1,0 +1,100 @@
+<html>
+<head>
+<style>
+    table{border-collapse:collapse;margin:12px 0 0 10px;}
+    table, td ,tr,th{border:1px solid #797979;}XI
+</style>
+<script src="/assets/printExam/js/JsBarcode.code128.min.js"></script>
+<script src="/assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+<script src="/assets/B-JUI/BJUI/js/bjui-util.date.js"></script>
+    <script>
+        doPrint();
+
+        function doPrint() {
+
+            if(!jsPrintSetup){
+                window.open("https://addons.mozilla.org/en-US/firefox/addon/js-print-setup/")
+            }else{
+
+                jsPrintSetup.setSilentPrint(true);
+
+                // set page header/ /设置页面标题
+
+                jsPrintSetup.setOption('headerStrLeft', '');
+
+                jsPrintSetup.setOption('headerStrCenter', '');
+
+                jsPrintSetup.setOption('headerStrRight', '');
+
+                // set empty page footer/ /设置空页页脚
+
+                jsPrintSetup.setOption('footerStrLeft', '');
+
+                jsPrintSetup.setOption('footerStrCenter', '');
+
+                jsPrintSetup.setOption('footerStrRight', '');
+
+                jsPrintSetup.printWindow(window);
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="page1" class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-top" data-selected-multi="true">
+        <thead>
+        <tr>
+            <th align="center">采样号</th>
+            <th align="center">体检号</th>
+            <th align="center" style="width: 80px;">姓名</th>
+            <th align="center" style="width: 35px;">性别</th>
+            <th align="center">出生日期</th>
+            <th align="center" style="width: 100px;">就业单位</th>
+            #*<th align="center">户口所在地</th>*#
+            <th align="center">代码所对应的地区</th>
+            <th align="center">体检日期</th>
+            <th align="center">IHA</th>
+            <th align="center">DDIA</th>
+            <th align="center">COPT</th>
+            <th align="center">粪检</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($vo in $examMemberExams)
+            <tr align="center">
+                <td>$!vo.blodTestNumber</td>
+                <td>$!vo.examNumber</td>
+                <td>$!vo.projectData.name</td>
+            <td>
+                #if($!vo.projectData.sex==0)
+                    女
+                #elseif($!vo.projectData.sex==1)
+                    男
+                #end</td>
+                <td>$!vo.projectData.birthday</td>
+                <td>$!vo.projectData.workUnit</td>
+               #* <td>$!vo.projectData.idCardAddress</td>*#
+                <td>$!vo.affectedCodeName</td>
+                <td>$!vo.examTimeStr</td>
+                <td>$!vo.IHA</td>
+                <td>$!vo.DDIA</td>
+                <td>$!vo.COPT</td>
+                <td>$!vo.STOOL</td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+#*
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn btn-close" >关闭</button></li>
+    </ul>
+</div>
+<object id="jatoolsPrinter" classid="CLSID:B43D3361-D075-4BE2-87FE-057188254255" codebase="jatoolsPrinter.cab#version=8,6,0,0"></object>
+<script src="http://s.pc.qq.com/navigate/adc/v3/engine_loader_v3.js" type="text/javascript" charset="UTF-8"></script>
+<script src="http://s.pc.qq.com/navigate/adc/jquery.min.js?ver=3" type="text/javascript" charset="UTF-8"></script>
+<script src="http://s.pc.qq.com/navigate/adc/velocity.js" type="text/javascript" charset="UTF-8"></script>*#

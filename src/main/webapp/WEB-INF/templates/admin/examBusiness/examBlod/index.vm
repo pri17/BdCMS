@@ -1,0 +1,223 @@
+<style>
+    *{margin:0;padding:0;}
+    /*a{font-size:14px;color:#333;text-decoration: none;}*/
+    a:hover{text-decoration:underline;}
+    body{font-family:'Microsoft YaHei',YaHei,Arial,Helvetica,sans-serif;}
+    .container{width:1024px;margin:0 auto;height:820px;border:1px solid #999;}
+    .head{height:36px;border-bottom: 1px solid #999;}
+    .head span{font-size: 18px;font-weight: bolder; height:30px;line-height:30px; width:98px;display: inline-block; border:1px solid #999;background: #e4ecee;margin:5px 0 0 20px;text-align: center;border-top-left-radius: 3px;-moz-border-top-left-radius:3px; border-top-right-radius: 3px;-moz-border-top-right-radius:3px;}
+    /*head ---结束*/
+    .nav1{height:40px;background: #dbeaf9;border:1px solid #999;}
+    .nav1 span{font-size: 16px; height:28px;line-height:28px; width:120px;display: inline-block; border:1px solid #999;background: #e4ecee;margin:5px 0 0 20px;text-align: center;border-radius: 4px;-moz-border-radius:4px;}
+    .nav1 span img{margin-right: 10px;vertical-align: middle;margin-top: -4px;}
+    /*nav ---结束*/
+    .main{height:260px;}
+    .content-im{width:150px;height:200px;border:1px solid #797979;float:left;margin:18px 0 0 30px;border-radius: 6px;-moz-border-radius:6px;text-align:center;/*line-height: 228px;*/}
+    /*content-im ---结束*/
+    .content-xi-b{width:235px;float:left;height:220px;margin:18px 0 0 0;}
+    .content-xi-b span{width:84px;text-align:right;display: inline-block;}
+    .content-xi-b input{width:150px;height:26px;box-sizing:border-box;}
+    .content-xi-b .main-a, .content-xi-b .main-b{position: relative;}
+    .content-xi-b input.con-a{width:200px;position: absolute;left:84px;top:0;}
+    .content-xi-b input.con-b{width:440px;position: absolute;left:84px;top:0;}
+    .content-xi-b p{margin-bottom: 12px;}
+    /*content-xi ---结束*/
+    .content-lei-b{width:480px;float:left;margin:18px 0 0 60px;}
+    .content-lei-b span{width:84px;text-align:right;display: inline-block;}
+    .content-lei-b input{width:230px;height:26px;box-sizing:border-box;}
+    .content-lei-b input.con-c{width:150px;}
+    .content-lei-b input.con-d{width:80px;}
+    .content-lei-b p{margin-bottom: 12px;}
+    .content-lei-b p span.con-min{width:70px;}
+    /*content-lei ---结束*/
+    /*main ---结束*/
+    .footer{margin-top: 18px;}
+    .footer-a-b{height:100px;width:484px;border:1px solid #999;float:left;margin:0 26px 0 30px;}
+    .footer-b-b a{font-size: 40px;text-align: center;line-height: 100px; border:1px solid #999;float:left;height:100px;width:150px;border-radius: 6px;-moz-border-radius:6px;background: #ecf2f3;margin-right: 26px;}
+    .footer-b-b a:hover{color: red;}
+    .footer-c-b{width:276px;float: left;border:1px solid #999;height:100px;}
+    /*footer ---结束*/
+</style>
+<div class="bjui-pageHeader" style="background-color: white;min-width: 1300px;">
+
+<!--head 结束-->
+<input type="hidden" id="blodErrMSG" class="btn-red" data-toggle="alertmsg" data-options="{type:'error', msg:'请先扫描条形码获取体检人员信息！'}"/>
+<div class="nav1"><span><img src="/assets/hplus/img/exam/ren.png" alt="">血检采样</span></div>
+<!--nav 结束-->
+<div class="main clearfix" id="blodContentDiv">
+    <div class="content-im"><img id="examBlodImgIcon" src="" style="width:150px;height: 200px;border: 1px solid #797979;border-radius: 6px;"></div>
+    <div class="content-xi-b">
+        <p><span>体检号：</span><input id="medicalNum" type="text"></p>
+        <p ><span>姓名：</span><input id="medicalName" type="text" readonly></p>
+##        <p><span>工种：</span><input id="medicalWorkCate" type="text" readonly></p>
+        <p><span>体检日期：</span><input id="medicalExamDay" type="text" class="con-c" readonly></p>
+        <p><span>出生日期：</span><input id="medicalBirthDay" type="text" readonly></p>
+        <p ><span>地区：</span><input id="medicalArea" type="text" readonly></p>
+        <p style="line-height: 2" class="main-b"><span>备注：</span><input id="medicalRemark" type="text" class="con-b" readonly></p>
+    </div>
+    <div class="content-lei-b">
+        <p><span>体检类别：</span><input id="medicalCate" type="text" class="con-c" readonly></p>
+        <p><span>性别：</span><input id="medicalSex" type="text" class="con-d" readonly></p>
+        <p><span>身份证号：</span><input id="medicalId" type="text" readonly></p>
+        <p><span>行业：</span><input id="medicalIndustry" type="text" readonly></p>
+        <p ><span>工作单位：</span><input id="medicalUnit" type="text" readonly></p>
+    </div>
+</div>
+
+</div>
+<div class="bjui-pageContent" style="padding: 2px 5px;">
+<div class="nav1"><span><img src="/assets/hplus/img/exam/ren.png" alt="">血检采样</span></div>
+<div class="footer clearfix">
+    <div class="footer-a-b"><span style="line-height: 100px;margin-left: 20px;font-size: 40px;color: #0a6aa1">无血检项目</span></div>
+    <div class="footer-b-b"><a href="javascript:void(0);">采样</a></div>
+    <div class="footer-c-b"><span style="line-height: 100px;margin-left: 20px;font-size: 40px;"></span></div>
+</div>
+    </div>
+<script>
+    getNavEle( document).ready(function () {
+        getNavEle( '.content-xi-b #medicalNum').focus();
+        getNavEle( '.content-xi-b #medicalNum').on("keydown",function (event) {
+            var examNumber = getNavEle( '.content-xi-b #medicalNum').val();
+                var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+                var code = theEvent.keyCode;
+                if (code == 13) {
+                if(examNumber==''){
+                    getNavEle( '#blodErrMSG').click();
+                    getNavEle( '.content-xi-b #medicalNum').focus();
+                    getNavEle( '.content-xi-b #medicalNum').select();
+                    return false;
+                }
+
+                $.post("#U('checkMemberExam')",
+                        {examNumber:examNumber},function(data){
+                            data= $.parseJSON(data);
+                            if(data.errorMsg){
+                                getNavEle( this).alertmsg("error",data.errorMsg);
+                                getNavEle( '.content-xi-b #medicalNum').focus();
+                                getNavEle( '.content-xi-b #medicalNum').select();
+                                return false;
+                            }else{
+                                $.post("#U('/admin/examBusiness/examMedical/findMemberExamByNumber')",
+                                        {examNumber:examNumber},function(data){
+                                            data= $.parseJSON(data);
+
+                                            if(data) {
+                                                getNavEle( '#blodContentDiv #medicalName').val(data.name);
+                                                getNavEle( '#blodContentDiv #medicalBirthDay').val(data.birthday);
+                                                getNavEle( "#blodContentDiv #examBlodImgIcon").attr("src",data.icon);
+//                                                getNavEle( '#blodContentDiv #medicalWorkCate').val();
+                                                getNavEle( '#blodContentDiv #medicalExamDay').val(data.examTimeStr);
+                                                getNavEle( '#blodContentDiv #medicalArea').val(data.areaName);
+//                                                data.anamnesis
+                                                getNavEle( '#blodContentDiv #medicalHis').val('');
+                                                getNavEle( '#blodContentDiv #medicalRemark').val();
+                                                getNavEle( '#blodContentDiv #medicalCate').val("从业人员体检");
+                                                getNavEle( '#blodContentDiv #medicalSex').val((data.sex == 0) ? "女" : "男");
+//                                                getNavEle( '#blodContentDiv #medicalNation').val();
+                                                getNavEle( '#blodContentDiv #medicalId').val(data.idCardNum);
+                                                getNavEle( '#blodContentDiv #medicalIndustry').val(data.categoryName);
+                                                getNavEle( '#blodContentDiv #medicalUnit').val(data.workUnit);
+
+                                                $.post("#U('generateTestNumber')",
+                                                        {examNumber:examNumber},function(data){
+                                                            data= $.parseJSON(data);
+                                                            if (data) {
+                                                                getNavEle( '.footer-a-b span').text('谷丙转氨酶，甲肝，戊肝');
+                                                                getNavEle( '.footer-c-b span').text(data);
+                                                                getNavEle( '.content-xi-b #medicalNum').focus();
+                                                                getNavEle( '.content-xi-b #medicalNum').select();
+                                                            }
+                                                        });
+                                            }else{
+                                                getNavEle( this).alertmsg("error","获取信息失败，请扫描正确的条形码！");
+                                                getNavEle( '.content-xi-b #medicalNum').focus();
+                                                getNavEle( '.content-xi-b #medicalNum').select();
+                                            }
+
+                                        });
+                            }
+                        });
+
+##                $.post("#U('/admin/examBusiness/examMedical/findMemberExamByNumber')",
+##                        {examNumber:examNumber},function(data){
+##                            data= $.parseJSON(data);
+##                            if(data) {
+##                                console.info(data);
+##                                getNavEle( '#blodContentDiv #medicalName').val(data.examMember.name);
+##                                getNavEle( '#blodContentDiv #medicalBirthDay').val(data.examMember.birthday);
+##                                getNavEle( '#blodContentDiv #medicalWorkCate').val();
+##                                getNavEle( '#blodContentDiv #medicalExamDay').val(data.examTimeStr);
+##                                getNavEle( '#blodContentDiv #medicalArea').val(data.examArea.areaName);
+##                                getNavEle( '#blodContentDiv #medicalHis').val(data.examMember.anamnesis);
+##                                getNavEle( '#blodContentDiv #medicalRemark').val();
+##                                getNavEle( '#blodContentDiv #medicalCate').val("从业人员体检");
+##                                getNavEle( '#blodContentDiv #medicalSex').val((data.examMember.sex == 0) ? "女" : "男");
+##                                getNavEle( '#blodContentDiv #medicalNation').val();
+##                                getNavEle( '#blodContentDiv #medicalId').val(data.examMember.idCardNum);
+##                                getNavEle( '#blodContentDiv #medicalIndustry').val(data.examCategory.categoryName);
+##                                getNavEle( '#blodContentDiv #medicalUnit').val(data.workUnit);
+##
+##                                $.getJSON("#U('/admin/examBusiness/examMedical/checkMemberExam')",
+##                                        {
+##                                            examNumber:examNumber
+##                                        },function(data){
+##                                            if(data.statusCode==300){
+##                                                getNavEle( this).alertmsg("error",data.message);
+##                                                getNavEle( '.content-xi-b #medicalNum').focus();
+##                                                return false;
+##                                            }else{
+##                                                $.post("#U('generateTestNumber')",
+##                                                        {examNumber:examNumber},function(data){
+##                                                            data= $.parseJSON(data);
+##                                                            console.info(data);
+##                                                            if (data!=null) {
+##                                                                getNavEle( '.footer-a-b span').text('谷丙转氨酶，甲肝，戊肝');
+##                                                                getNavEle( '.footer-c-b span').text(data);
+##                                                            } else {
+##                                                                getNavEle( this).alertmsg("error","当前没有需要体检的血检项目！");
+##                                                            }
+##                                                        });
+##                                            }
+##                                        });
+##
+##                            }else{
+##                                getNavEle( this).alertmsg("error","获取信息失败，请扫描正确的条形码！");
+##                            }
+##                        });
+            };
+        });
+
+##        getNavEle( '.footer-b-b a').on('click',function(){
+##            var examNumber = getNavEle( '.content-xi-b #medicalNum').val();
+##            //TODO
+##            if(examNumber==''){
+##                getNavEle( this).alertmsg("error","请先扫描条形码获取体检人员信息！")
+##//                alert('请先扫描条形码获取体检人员信息！');
+##                getNavEle( '.content-xi-b #medicalNum').focus();
+##                return false;
+##            }
+##            $.getJSON("#U('/admin/examBusiness/examMedical/checkMemberExam')",
+##                    {
+##                        examNumber:examNumber
+##                    },function(data){
+##                        if(data.statusCode==300){
+##                            getNavEle( this).alertmsg("error",data.message);
+##                            getNavEle( '.content-xi-b #medicalNum').focus();
+##                            return false;
+##                        }else{
+##                            $.post("#U('generateTestNumber')",
+##                                    {examNumber:examNumber},function(data){
+##                                        data= $.parseJSON(data);
+##                                        console.info(data);
+##                                        getNavEle( '.footer-a-b span').text('谷丙转氨酶，甲肝，戊肝');
+##                                        getNavEle( '.footer-c-b span').text(data);
+##                                    });
+##                        }
+##                    });
+##
+##        })
+    })
+</script>
+
+##</body>
+##</html>

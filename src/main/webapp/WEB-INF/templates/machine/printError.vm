@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>常熟市疾病预防控制中心欢迎使用自助系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/machineCss/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/buttons.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/style.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="../js/machine/machinePrint.js"></script>
+</head>
+<body class="print container">
+<a href="javascript: history.go(-1)" class="pull-left go-back button button-glow button-border button-primary burron-rounded">返&nbsp;&nbsp;回</a>
+<div class="main-content">
+    <h1>常熟市疾病预防控制中心</h1>
+    <p>欢迎使用自助系统</p>
+    <p class="pls-wait" id="pls-wait">健康证打印,请将身份证放置在感应区...</p>
+    <div>
+  <span class="count-down">
+    <span>倒计时</span>
+    <span class="time" id="countDown">30</span>
+    <span>秒</span>
+  </span>
+##        <button id="eCardPrintBack" >返回</button>
+##        <a href="javascript:;"  id="eCardPrintBack" class="pull-left go-back button button-glow button-border button-primary burron-rounded">返回</a>
+    </div>
+</div>
+</body>
+<script>
+    /* 设置屏幕宽度 */
+      document.getElementsByTagName('body')[0].style.width = 1280 + 'px';
+      document.getElementsByTagName('body')[0].style.height = 1080 + 'px';
+      document.getElementsByTagName('body')[0].style.fontSize = window.innerWidth / 10 + 'px';
+
+    //    $('#registerExam').click(function(){
+    //        window.location.href = "http://"+window.location.host+"/wap/wapAdd.do";
+    //    });
+
+//    $(document).ready(function () {
+        //初始化识别身份证
+        //识别身份证好后读取接口数据，如果数据获取成功则自动打印
+//        openXZXCard();
+
+        var secs = 4;
+        for(var i=1;i<=secs;i++) {
+            window.setTimeout("update(" + i + ");", i * 1000);
+        }
+
+        function update(num) {
+            if(num == secs) {
+                //返回上一层页面
+//                window.history.go(-1);
+
+                window.location.href = "http://"+window.location.host+"/machine/printECardSuccess.do";
+            }
+            else {
+                var printnr = secs-num;
+                document.getElementById("countDown").innerText = printnr;
+            }
+        }
+
+        $('#eCardPrintBack').click(function () {
+
+            //返回
+            //返回上一层页面
+            window.history.go(-1);
+
+            //secs
+            secs = 0;
+        })
+
+
+//    });
+
+
+
+##        var isInit=false;
+##
+##        function  openXZXCard() {
+##
+##            var obj = document.getElementById("CardReader1");
+##            if(false==isInit)
+##            {
+##                //设置端口号，1表示串口1，2表示串口2，依此类推；1001表示USB。0表示自动选择
+##                obj.setPortNum(0);
+##                isInit=true;
+##            }
+##            //使用重复读卡功能
+##            obj.Flag=0;
+##            //obj.BaudRate=115200;
+##            //设置照片保存路径，照片文件名：(身份证号).bmp。默认路径为系统临时目录,照片文件名：image.bmp
+##            obj.PhotoPath=form1.photoPath.value;
+##            //读卡
+##            var rst = obj.ReadCard();
+##//            返回0x90表示读卡成功，0x01表示端口打开失败，0x02表示接收数据超时，0x41表示读卡失败，其它的错误号表示其它的错误。
+##            if (0x90==rst) {
+##                alert(obj.CardNo());
+##                alert(obj.NameL());
+##                alert(obj.NationL());
+##                alert(obj.SexL());
+##                alert(obj.Address());
+##
+##                queryMemberInfo(obj.CardNo());
+##            } else if(0x01 == rest) {
+##                alert("端口打开失败!");
+##                $("#idCardNum").val("");
+##                $("#name").val("");
+##                $("#birthday").val("");
+##                $("#sex").val("");
+##                $("#address").val("");
+##                $("#memberIcon").attr("src","");
+##            }else if(0x02 == rest){
+##                alert("接收数据超时!");
+##                $("#idCardNum").val("");
+##                $("#name").val("");
+##                $("#birthday").val("");
+##                $("#sex").val("");
+##                $("#address").val("");
+##                $("#memberIcon").attr("src","");
+##            }else if(0x41 == rest){
+##                alert("读卡失败!");
+##                $("#idCardNum").val("");
+##                $("#name").val("");
+##                $("#birthday").val("");
+##                $("#sex").val("");
+##                $("#address").val("");
+##                $("#memberIcon").attr("src","");
+##            }else{
+##                alert("其他错误!");
+##            }
+##
+##
+##        }
+##
+##        function  queryMemberInfo(idCardNum) {
+##
+##            //先检查打印机是否正常
+##
+##
+##            switch (checkPrint()) {//打印机正常
+##
+##                case 0: // 准备就绪
+##
+##                $.getJSON("#U("/machine/getMmeberInfoByIdCard")",
+##                        {
+##                            idCardNum: idCardNum
+##                        },
+##                        function (data) {
+##                            //修改成功
+##                            if(data.errorMsg!= null){
+##
+##                                alert(data.errorMsg);
+##
+##                            }else{
+##                                printECard(data.result);
+##                            }
+##                        }
+##                )
+##
+##            case -1:
+##            alert('打印机脱机或未连接');
+##//                    $('#print-line').prepend('以下未打印，请重新添加');
+##            window.clearInterval(printLineInterval);
+##            break;
+##        case -2:
+##            alert('卡片用完');
+##//                    $('#print-line').prepend('以下未打印，请重新添加');
+##            window.clearInterval(printLineInterval);
+##            break;
+##        case -3:
+##            alert('色带用完');
+##//                    $('#print-line').prepend('以下未打印，请重新添加');
+##            window.clearInterval(printLineInterval);
+##            break;
+##        case -4:
+##            alert('打印机忙碌');
+##//                    $('#print-line').prepend('以下未打印，请重新添加');
+##            window.clearInterval(printLineInterval);
+##            break;
+##        case -5: // 打印机正在打印
+##//                    $('#print-text').text($('#print-text').text()+'。');
+##            break;
+##        case -6:
+##            alert('卡片卡在通道里面，请排出卡片');
+##//                    $('#print-line').prepend('以下未打印，请重新添加');
+##            window.clearInterval(printLineInterval);
+##            break;
+##
+##
+##
+##        }
+##        }
+##
+##        //识别身份证好后读取接口数据，如果数据获取成功则自动打印
+##        //name, sex, age, idCard, No, createTime, examNumber, qrUrl, photoUrl
+##        function  printECard(data) {
+##
+##            machineStartPrint(examECard.examMember.name,examECard.examMember.sexStr,examECard.memberAge,
+##                        examECard.examMember.idCardNum,examECard.eCardNumber,
+##                        examECard.issueTimeStr,examECard.examNumber,examECard.qrCodeUrl,examECard.memberPhoto);
+##
+##
+##
+##        }
+##
+##
+##
+##    //刷身份证进行打印，先根据身份证获取卡信息 然后再去调用打印功能
+##
+##        var secs = 30;
+##        for(var i=1;i<=secs;i++) {
+##            window.setTimeout("update(" + i + ")", i * 1000);
+##        }
+##        function update(num) {
+##            if(num == secs) {
+##                //返回上一层页面
+##                window.history.go(-1);
+##            }
+##            else {
+##                var printnr = secs-num;
+##                $('#countDown').val(printnr);
+##            }
+##        }
+##
+##        //返回上一层
+##        $('#backBtn').click(function () {
+##            window.history.go(-1);
+##        })
+
+
+</script>
+</html>
+

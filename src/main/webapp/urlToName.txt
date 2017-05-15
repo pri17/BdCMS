@@ -1,0 +1,1 @@
+/admin/clean/cleanLogRecordList.do,查看清分

@@ -1,0 +1,162 @@
+<link rel="stylesheet" type="text/css" href="../assets/printExam/css/style-recheck-machine.css"/>
+<div class="bjui-pageContent">
+    <button  id="jkMachineRecheckPrintViewTransferFormAction" >打印</button>
+    <div id="tk" class="jkMachineRecheckView" style="background: #ffffff;">
+
+        <table width="100%" style="text-align:center">
+            <tbody >
+            <tr >
+                <td colspan="2" style="font-size: 28px;" >从业人员预防性健康检查不合格告知书</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="ticket top">
+
+            <tbody>
+            <tr style="height: 102px;">
+                <td colspan="2" class="re-code">
+                    <dl class="bar-code">
+                        <dt class="bar-img">
+                            <img src="$!examMemberExam.examumberIcon" alt="" style="height: 78px;">
+                        </dt>
+                        <dd class="bar-num" style="font-size: 21px;">
+                            $!examMemberExam.examNumber
+                        </dd>
+                    </dl>
+                </td>
+            </tr>
+            <tr style="height: 80px;">
+                <td colspan="2">
+                    <p style="font-size: 21px;">$!examMemberExam.examMember.name：</p>
+                    <p style="font-size: 21px;">&emsp;&emsp;经检查，您在预防性健康检查中发现</br>不符合健康证明要求，请带好本人身份证及复检单来</br>本中心接受复检，如在接到本告知书  10个工作日内未</br>答复，视为无异议。</p>
+                </td>
+            </tr>
+
+            <tr style="height: 22px;">
+                <td class="t-r" style="padding-bottom: 0;font-size: 21px;">常熟市疾病预防控制中心</td>
+
+            </tr>
+            <tr style="height: 22px;">
+                <td class="t-r" style="padding-bottom: 0;font-size: 21px;">$!examMemberExam.examTimeShort</td>
+            </tr>
+            <tr style="height: 250px;">
+                <td colspan="2" >
+                    <table border=0 cellspacing=0 class="inner-table" style="font-size: 26px;margin-bottom: 0px;">
+                        <tr>
+                            <td colspan="2" class="head">体 检 流 程</td>
+                        </tr>
+                        <tr>
+                            <td class="head half">项&emsp;&emsp;目</td>
+                            <td class="head half">完 成 情 况</td>
+                        </tr>
+                        <tr>
+                            <td >&emsp;1.复检缴费$!examMemberExam.examPay.payMoney元</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&emsp;2.内科检查</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&emsp;3.胸部X线检查</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&emsp;4.肠检</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>&emsp;5.血检</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="notice" >
+                <td colspan="2">友情提示：</td>
+            </tr>
+            <tr class="notice">
+                <td colspan="2">&emsp;&emsp;体检完成5个工作日后，可凭身份证在大厅自</td>
+            </tr>
+            <tr class="notice">
+                <td colspan="2">助机上打印健康证，如有疑问请咨询工作人员。</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="ticket" style="margin-top:22px;margin-left: 30px;">
+            <tbody>
+            <tr>
+                <td class="bar-box">
+                    <dl class="bar-code">
+                        <dt class="bar-img">
+                            <img src="$!examMemberExam.examumberIcon" alt="">
+                        </dt>
+                        <dd class="bar-num" style="font-size: 21px;">$!examMemberExam.examNumber</dd>
+                    </dl>
+                </td>
+                <td class="bar-box">
+                    <dl class="bar-code">
+                        <dt class="bar-img">
+                            <img src="$!examMemberExam.examumberIcon" alt="">
+                        </dt>
+                        <dd class="bar-num" style="font-size: 21px;">$!examMemberExam.examNumber</dd>
+                    </dl>
+                </td>
+            </tr>
+            <tr>
+                <td class="bar-box">
+                    <dl class="bar-code">
+                        <dt class="bar-img">
+                            <img src="$!examMemberExam.examumberIcon" alt="">
+                        </dt>
+                        <dd class="bar-num" style="font-size: 21px;">$!examMemberExam.examNumber</dd>
+                    </dl>
+                </td>
+                <td class="bar-box">
+                    <dl class="bar-code">
+                        <dt class="bar-img">
+                            <img src="$!examMemberExam.examumberIcon" alt="">
+                        </dt>
+                        <dd class="bar-num" style="font-size: 21px;">$!examMemberExam.examNumber</dd>
+                    </dl>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <img src="" id="s" />
+
+</div>
+<script>
+
+    alert("outerheight:="+$("#tk").outerHeight());
+    d="";
+    html2canvas(document.getElementById("tk"), {
+        height:$("#tk").outerHeight(),
+        onrendered: function(canvas) {
+            d = canvas.toDataURL();
+
+            s.src=d;
+            var i = d.indexOf(",");
+            d = d.substr(i + 1)
+        }
+    });
+
+
+    $('#jkMachineRecheckPrintViewTransferFormAction').click(function () {
+
+        alert('intoJkPrint');
+
+        var returnResult = printX.printImage(d, 200, 'com5', 115200);
+
+
+        if (returnResult) {
+            $(this).alertmsg('ok', "打印成功");
+            $(document).dialog('close');
+        } else {
+            $(this).alertmsg('error', "打印失败");
+        }
+    })
+
+</script>

@@ -1,0 +1,93 @@
+
+.jkMachinePrintView{
+  width: 576px;
+  height: 1164px;
+  font-size: 21px;
+}
+.jkMachinePrintView dd {
+  margin: 0;
+  text-align: center;
+}
+.jkMachinePrintView th {
+  font-size: 20px;
+}
+.jkMachinePrintView td {
+  padding: 2px 0;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.ticket {
+  box-sizing: border-box;
+  width: 600px;
+  padding: 8px;
+  background: #ffffff;
+}
+.bar-img {
+  width: 210px;
+}
+.bar-img img {
+  width: 100%;
+  height:88px;
+}
+.bar-code {
+  display: inline-block;
+}
+.item {
+  display: inline-block;
+  height: 118px;
+  line-height: 100px;
+  vertical-align: bottom;
+}
+.half {
+  width: 50%;
+}
+.inner-table {
+  height: 320px;
+  border-top: 2px solid #333;
+  border-left: 2px solid #333;
+}
+.inner-table td {
+  border-bottom: 2px solid #333;
+  border-right: 2px solid #333;
+  font-size: 26px;
+}
+.inner-table {
+  width: 98%;
+}
+.inner-table .head {
+  text-align: center;
+}
+.bar-box {
+  text-align: center;
+  width: 260px;
+}
+.bar-box .bar-code {
+  /*border: 1px solid #333;*/
+  padding: 0 5px;
+  margin: 0;
+  /*height: 140px;*/
+  margin-bottom: 40px;
+}
+.notice td{
+  padding: 2px 0;
+  font-size: 22px;
+}
+.re-code {
+  text-align: right;
+}
+.re-code .bar-code {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+.t-l {
+  text-align: left;
+}
+.t-r {
+  text-align: right;
+}
+.ticket.top {
+
+  padding-bottom: 0;
+}

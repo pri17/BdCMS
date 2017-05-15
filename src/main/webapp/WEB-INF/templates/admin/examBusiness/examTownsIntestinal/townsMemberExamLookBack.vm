@@ -1,0 +1,69 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" class="blodResultForm" data-toggle="ajaxsearch" action="#U('townsMemberExamLookBack')" method="post">
+        #pageInput($page)
+
+        <div class="bjui-searchBar" id="lookSearch">
+
+            <label>体检号：</label>
+            <input type="text" id="examNumberBlod" value="$!examNumber" name="examNumber" class="form-control" size="12">&nbsp;
+
+            <label>姓名：</label>
+            <input type="text" id="memberName" value="$!memberName" name="memberName" class="form-control" size="10">&nbsp;
+
+            <label class="row-label">开始时间：</label>
+            <input type="text" name="beginTime" size="12" id="j_custom_issuedate" value="$!beginTime" data-toggle="datepicker" data-rule="date">&nbsp;
+
+            <label class="row-label">结束时间：</label>
+            <input type="text" name="endTime"  size="12" id="j_custom_indate" value="$!endTime" data-toggle="datepicker" data-rule="date">&nbsp;
+
+            <button type="submit" class="btn-default">查询</button>
+##            <button class="btn btn-default" id="" href="javascript:;"
+##                    data-toggle="reloadsearch" data-clear-query="true"
+##            >清空查询</button>&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;
+
+        </div>
+    </form>
+</div>
+
+<div class="bjui-pageContent tableContent">
+            <table class="table table-bordered table-hover table-striped table-top"  data-selected-multi="true">
+                <thead>
+                <tr>
+                    <th align="center">体检号</th>
+                    <th align="center">姓名</th>
+                    <th align="center">性别</th>
+                    <th align="center">出生日期</th>
+                    <th align="center">体检日期</th>
+                    <th align="center">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    #foreach($vo in $page.list)
+                    <tr align="center" name="entryblodResultTr" id="entryblodResultTr$!vo.memberExamId"  s="$!vo.id">
+                        <td style="width:100px;">$!vo.examNumber</td>
+                        <td style="width:80px;">$!vo.name</td>
+                    <td style="width:50px;">
+                        #if($!vo.sex==0)
+                            女
+                        #elseif($!vo.sex==1)
+                            男
+                        #end
+                        </td>
+                        <td style="width:150px;">$!vo.birthday</td>
+                        <td style="width:150px;">$date.format('yyyy-MM-dd',$!vo.examTime)</td>
+##                        <td style="width:70px;">$date.format('yyyy-MM-dd',$!vo.examMember.birthday)</td>
+                        <td style="width:100px;">
+                        <button data-toggle="lookupback" data-args="{number:'$!vo.examNumber'}"title="确认" data-icon="check" class="btn btn-default"
+                        >确认</button>
+                        </td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+</div>
+<script>
+
+</script>
+
+#page($page)

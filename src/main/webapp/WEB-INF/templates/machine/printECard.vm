@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>常熟市疾病预防控制中心欢迎使用自助系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../assets/machineCss/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/buttons.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/style.css">
+    <link rel="stylesheet" href="../assets/machineCss/css/sweetalert.css">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+
+</head>
+<body class="print container">
+
+<object id="ECardReader" codebase="../assets/FirstActivex.cab#version=1,3,3,1"
+        classid="CLSID:F225795B-A882-4FBA-934C-805E1B2FBD1B"
+        width="0" height="0">
+    <param name="_Version" value="65536"/>
+    <param name="_ExtentX" value="2646"/>
+    <param name="_ExtentY" value="1323"/>
+    <param name="_StockProps" value="0"/>
+</object>
+<object id="mfc" classid="clsid:35B8CFBC-F978-49A9-BC76-CCC9DE109FCB"
+        codebase="../assets/JSP280E.ocx" height="0" width="0"></object>
+
+##<a href="javascript: history.go(-1)"
+##   class="pull-left go-back button button-glow button-border button-primary burron-rounded button-go-back">返&nbsp;&nbsp;回</a>
+<div class="main-content">
+##    <h1>常熟市疾病预防控制中心</h1>
+    <p class="big-font-size">欢迎您使用自助系统打印健康证</p>
+    <p class="pls-wait big-font-size" id="pls-wait">请将身份证放置在感应区...</p>
+    <div>
+ </div>
+</div>
+<script src="../assets/machineCss/js/sweetalert.min.js"></script>
+<script src="../js/machine/machinePrint.js"></script>
+</body>
+<script>
+    /* 设置屏幕宽度 */
+    document.getElementsByTagName('body')[0].style.width = 1280 + 'px';
+    document.getElementsByTagName('body')[0].style.height = 1080 + 'px';
+    document.getElementsByTagName('body')[0].style.fontSize = window.innerWidth / 10 + 'px';
+
+
+    var timeOutStr = 6000;
+    var secs = 30;
+    var timerId;
+    var isInit = false;
+    var requestTag = false;
+    $(document).ready(function () {
+
+        start();
+
+    });
+
+    //开始启动
+    function start() {
+
+        timerId = setInterval("update()", 1000);
+
+    }
+
+    function update() {
+
+        if (secs == 0) {
+            clearBack();
+        }
+        else {
+            secs--;
+//            document.getElementById("countDown").innerText = secs;
+            if (!requestTag) {
+                openXZXCard();
+//                requestTag = true;
+//                queryMemberInfo('321283198901265430');
+
+            }
+        }
+    }
+
+
+    //读取身份证信息
+    function openXZXCard() {
+
+        var obj = document.getElementById("ECardReader");
+        if (false == isInit) {
+            //设置端口号，1表示串口1，2表示串口2，依此类推；1001表示USB。0表示自动选择
+            obj.setPortNum(3);
+            isInit = true;
+        }
+        //使用重复读卡功能
+        obj.Flag = 0;
+        obj.BaudRate = 115200;
+        //读卡
+        var rst = obj.ReadCard();
+        //返回0x90表示读卡成功，0x01表示端口打开失败，0x02表示接收数据超时，0x41表示读卡失败，其它的错误号表示其它的错误。
+        if (0x90 == rst) {
+
+            requestTag = true;
+
+            //根据idcardNum获取数据 是否有打印的card
+            queryMemberInfo(obj.CardNo(),obj.GetImage());
+
+
+
+        } else if (0x01 == rst) {
+//            alert("身份证读卡器端口打开失败!请联系工作人员");
+            requestTag = true;
+            swal({
+                title: "身份证读卡器端口打开失败!",
+//                text: "身份证读卡器端口打开失败!请联系工作人员",
+
+                timer: timeOutStr
+            }, function () {
+                clearBack();
+            });
+        } else if (0x02 == rst) {
+            requestTag = true;
+//            alert("身份证读卡器接收数据超时!请联系工作人员");
+            swal({
+                title: "身份证读卡器接收数据超时!",
+//                text: "身份证读卡器接收数据超时!请联系工作人员",
+
+                timer: timeOutStr
+            }, function () {
+                clearBack();
+            });
+
+        } else if (0x41 == rst) {
+            requestTag = true;
+//            alert("身份证读卡器读卡失败!请联系工作人员");
+            swal({
+                title: "身份证读卡器读卡失败!",
+//                text: "身份证读卡器读卡失败!请联系工作人员",
+
+                timer: timeOutStr
+            }, function () {
+                clearBack();
+            });
+
+        } else {
+            requestTag = true;
+//            alert("身份证读卡器其他错误!请联系工作人员");
+            swal({
+                title: "身份证读卡器其他错误!",
+//                text: "身份证读卡器其他错误!请联系工作人员",
+
+                timer: timeOutStr
+            }, function () {
+                clearBack();
+            });
+
+
+        }
+
+
+    }
+
+    //根据身份证号码，获取数据,打印pvc
+    function queryMemberInfo(idCardNum,imageData) {
+
+            queryByIdCardNum(idCardNum,imageData);
+
+
+    }
+
+    function queryByIdCardNum(idCardNum,imageData) {
+
+//        alert("idCardNum=" + idCardNum);
+
+        $.getJSON("#U("/machine/getECardByIdCard")",
+                {
+                    idCardNum: idCardNum,
+                    headData:imageData
+                },
+                function (data) {
+
+//                    alert(data);
+                    //修改成功
+                    if (data.errorMsg != null) {
+
+//                        swal({
+//                            title: data.errorMsg,
+////                            text: data.errorMsg,
+//
+//                            timer: timeOutStr
+//                        }, function () {
+//                            clearBack();
+//                        });
+                        queryByIdCardNumRPrint(idCardNum);
+
+                    } else {
+
+//                        alert(data.result);
+
+                        var obj = eval("(" + data.result + ")");
+
+//                        checkPrint()
+
+                        switch (checkPrint()) {//打印机正常
+
+                            case 0: // 准备就绪
+
+
+                                printECard(obj);
+
+
+                                break;
+
+                            case -1:
+//                alert('打印机脱机或未连接');
+                                swal({
+                                    title: "打印机脱机或未连接!",
+//                                    text: "打印机脱机或未连接!请联系工作人员",
+                                    timer: timeOutStr,
+                                    type: "error"
+                                }, function () {
+                                    clearBack();
+                                });
+                                break;
+                            case -2:
+//                alert('卡片用完');
+                                swal({
+                                    title: "卡片用完!",
+//                                    text: "卡片用完,请联系工作人员添加！",
+                                    timer: timeOutStr,
+                                    type: "error"
+                                }, function () {
+                                    clearBack();
+                                });
+                                break;
+
+                            case -3:
+//                alert('色带用完');
+                                swal({
+                                    title: "色带用完!",
+//                                    text: "色带用完,请联系工作人员更换!",
+                                    timer: timeOutStr,
+                                    type: "error"
+                                }, function () {
+                                    clearBack();
+                                });
+                                break;
+                            case -4:
+//                alert('打印机忙碌');
+                                swal({
+                                    title: "打印机忙碌!",
+//                                    text: "打印机忙碌",
+                                    timer: timeOutStr,
+                                    type: "error"
+                                }, function () {
+                                    clearBack();
+                                });
+                                break;
+                            case -5: // 打印机正在打印
+//                alert('打印机正在打印...');
+                                swal({
+                                    title: "印机正在打印...",
+//                                    text: "印机正在打印...",
+                                    timer: timeOutStr,
+                                    type: "error"
+                                }, function () {
+                                    clearBack();
+                                });
+                                break;
+                            case -6:
+//                alert('卡片卡在通道里面，请排出卡片');
+                                swal({
+                                    title: "卡片卡在通道里面，请排出卡片",
+//                                    text: "卡片卡在通道里面，请排出卡片",
+                                    timer: timeOutStr,
+                                    type: "error"
+                                }, function () {
+                                    clearBack();
+                                });
+                                break;
+
+
+                        }
+
+
+                    }
+                }
+        )
+
+
+    }
+
+    //识别身份证好后读取接口数据，如果数据获取成功则自动打印
+    //name, sex, age, idCard, No, createTime, examNumber, qrUrl, photoUrl
+    function printECard(data) {
+        swal({   title: "正在打印健康证，请稍候...",
+            timer: 30000,
+            showConfirmButton: false },function(){
+            goBackUp();
+        });
+        var printRet = machineStartPrint(data.name, data.sexStr, data.memberAge,
+                data.idCardNumber, data.eCardNumber,
+                data.issueTimeStr, data.examNumber, data.memberPhoto, data.qrCodeUrl);
+
+
+        if (printRet == 0) {
+            //打印成功,进行ajax请求 将该次的打印置
+//            alert('data.id-printRet=' + data.id);
+
+            $.post("#U("/machine/updateECard")",
+                    {
+                        eCardId: data.id
+                    },
+                    function (data) {
+
+//                        alert(data);
+                        //修改成功
+                        //页面跳转打印中的页面
+
+                        if (data.statusCode == 300) {
+//                            clearBack();
+
+                        } else {
+//                            goToSuccess();
+                        }
+
+                    }
+            )
+
+
+        } else if (printRet == 1) {
+//            alert("打印机驱动不对");
+            swal({
+                title: "打印机驱动错误！",
+//                text: "打印机驱动错误",
+                type: "error",
+                timer: timeOutStr,
+
+            }, function () {
+                clearBack();
+            });
+        } else if (printRet == 2) {
+//            alert("网络照片不能解析请检测网络");
+            swal({
+                title: "网络照片不能解析请检测网络！",
+//                text: "网络照片不能解析请检测网络",
+                type: "error",
+                timer: timeOutStr,
+            }, function () {
+                clearBack();
+            });
+        } else if (printRet == 3) {
+//            alert("本地照片不能解析请检测");
+            swal({
+                title: "本地照片不能解析请检测！",
+//                text: "本地照片不能解析请检测",
+                type: "error",
+                timer: timeOutStr,
+            }, function () {
+                clearBack();
+            });
+        }
+
+    }
+
+
+    //刷身份证进行打印，先根据身份证获取卡信息 然后再去调用打印功能
+
+    //返回上一层
+    $('#backBtn').click(function () {
+        clearBack();
+    })
+
+    //返回上一层
+    function goBackUp() {
+
+        window.history.go(-1);
+
+        clearInterval(timerId);
+        return;
+    }
+
+    //跳转下一页
+    function goToSuccess() {
+
+        window.location.href = "http://" + window.location.host + "/machine/printECardSuccess.do";
+
+        clearInterval(timerId);
+        return;
+
+    }
+
+
+    function clearBack() {
+
+        clearInterval(timerId);
+        goBackUp();
+        return;
+
+    }
+
+
+
+
+    function queryByIdCardNumRPrint(idCardNum) {
+
+        var isUpdateSuccess = 0;
+
+        $.getJSON("#U("/machine/getExamPhysicalByIdCardNumber")",
+                {
+                    idCardNumber: idCardNum,
+                    _t:new Date().getTime()
+                },
+                function (data) {
+//                    alert(data);
+
+                    //修改成功
+                    if (data.errorMsg != null) {
+
+                        swal({
+                            title: "健康证不存在",
+//                            text: ,
+                            timer: timeOutStr
+
+                        }, function () {
+                            clearBack();
+
+                        });
+
+                    } else {
+
+                        var examMemberExam = eval('(' + data.examMemberExam + ')');
+
+//                        var examMember = examMemberExam.examMember;
+
+//                        alert(examMember.isIdCardIcon);
+
+                        //2017-01-21 新增 将用户姓名进行更新 用身份证姓名填充
+//                        updateMemberName(examMember.id);
+
+                        var recheckTag = examMemberExam.recheckTag;
+
+
+                        if (recheckTag == 0) {//否 体检单
+                            swal({   title: "正在打印体检单，请稍候...",
+                                showConfirmButton: false });
+
+                            urll = '#U("jkMachinePrintViewTransferForm")?id=' + examMemberExam.id;
+
+                        } else if (recheckTag > 0) {//是  复检单
+                            swal({   title: "正在打印复检单，请稍候...",
+                                showConfirmButton: false });
+
+                            urll = '#U("jkMachineRecheckPrintViewTransferForm")?id=' + examMemberExam.id;
+
+                        }
+
+                        $('#printExamPrint').attr('src', urll);
+//                        updateMember(examMemberExam.id,examMemberExam.memberId,1,recheckTag);
+                        //判断用户是否有头像
+//                        if (examMemberExam.isIdCardIcon==0){
+//                            //如果该头像不是身份证头像 ：后台或者微信登记
+////                            updateMemberPhoto(examMember.id);
+//
+//
+//
+//                        }else{
+//                            updateMember(examMemberExam.id,examMemberExam.memberId,0,recheckTag);
+//                        }
+
+
+
+
+
+
+
+                    }
+                }
+        )
+
+    }
+
+
+
+
+
+
+    /**
+     * 打印页面隐藏了 回调parent显示成功
+     */
+    function machinePrintSuccess(examMemberId) {
+
+//        alert("success=" + examMemberId);
+        updatePhysicalPrint(examMemberId);
+
+
+
+
+    }
+
+    /**
+     * 打印页面隐藏了 回调parent显示失败
+     */
+    function machinePrintFail() {
+
+//        alert("fail");
+
+        swal({
+                    title: "打印失败!",
+//                    text: "打印失败,请联系工作人员",
+
+                    showCancelButton: false,
+                    confirmButtonText: "确定!",
+                    closeOnConfirm: true
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        goBackUp();
+                    }
+                });
+
+    }
+
+    //更新打印状态
+    function updatePhysicalPrint(memberExamId) {
+//        alert("memberExamId=" + memberExamId);
+        $.post("#U("/machine/updatePhysicalPrint")",
+                {
+                    examMemberId: memberExamId
+                },
+                function (data) {
+                    if (data.statusCode == 300) {
+
+                    } else {
+                        window.location.href = "http://" + window.location.host + "/machine/printExamSuccess.do";
+                    }
+                });
+    }
+
+
+</script>
+
+
+<iframe id="printExamPrint" src="#" style="width:0px; height:0px;"></iframe>
+</html>
+

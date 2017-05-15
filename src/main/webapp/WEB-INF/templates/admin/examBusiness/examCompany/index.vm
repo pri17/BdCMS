@@ -1,0 +1,30 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm"data-toggle="validate" action="#U('importCompanyPeopleInform')" method="post"
+          enctype="multipart/form-data">
+        #pageInput($page)
+
+        <div class="bjui-searchBar">
+            <input id="url"type="text" />
+            <button type="button" onclick="selectFile()" class="btn btn-primary">选择文件</button>
+            <input  id="file" type="file" accept=".xls,.xlsx" name="file" class="form-control"  style="display: none" data-rule="required"
+                    onchange="getFileUrl()"/>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn-default" data-icon="level-up">导入企业信息</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/assets/csExamCompanyTemplate.xlsx" class="btn btn-default"data-icon="level-down">&nbsp;下载企业模板&nbsp;</a>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true">
+        <thead>
+    </table>
+
+</div>
+#page($page)
+<script>
+    function selectFile(){
+        getNavEle("#file").click();
+    }
+    function getFileUrl(){
+        getNavEle("#url").val(getNavEle("#file").val());
+    }
+</script>

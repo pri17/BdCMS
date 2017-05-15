@@ -1,0 +1,546 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', YaHei, Arial, Helvetica, sans-serif;
+    }
+
+    /*a {*/
+    /*font-size: 17px;*/
+    /*color: #333;*/
+    /*text-decoration: none;*/
+    /*}*/
+
+    /*a:hover {*/
+    /*border-bottom: 1px solid #333;*/
+    /*}*/
+
+    input {
+        width: 130px;
+        height: 23px;
+        box-sizing: border-box;
+    }
+
+    select {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 1024px;
+        height: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+    }
+
+    .head {
+        height: 36px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .head span {
+        font-size: 17px;
+        color: #333;
+        height: 28px;
+        line-height: 28px;
+        padding: 0 26px;
+        border: 1px solid #ccc;
+        background-color: #e4ecee;
+        margin: 7px 0 0 20px;
+        display: inline-block;
+        border-top-left-radius: 3px;
+        -moz-border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        -moz-border-top-right-radius: 3px;
+    }
+
+    .srqnav {
+        height: 38px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .srqnav-a {
+        width: 100%;
+        height: 100%;
+        float: left;
+        line-height: 38px;
+    }
+
+    .srqnav-a span {
+        font-size: 17px;
+        font-weight: bold;
+        color: #003366;
+        margin-left: 20px;
+        margin-right: 24px;
+    }
+
+    .srqnav-a a {
+        font-size: 13px;
+        height: 18px;
+        border: 2px solid #7cb7ec;
+        color: #003366;
+        font-weight: bold;
+        padding-left: 50px;
+        padding-right: 15px;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+    }
+
+    .content {
+        height: 112px;
+    }
+
+    .srqcon-a {
+        width: 100%;
+        /*height: 100%;*/
+        float: left;
+        padding-top: 20px;
+    }
+
+    .srqcon-a .con-aa {
+        float: left;
+    }
+
+    .srqcon-a p {
+        margin-bottom: 8px;
+    }
+
+    .srqcon-a input {
+        width: 130px;
+        height: 28px;
+    }
+
+    .srqcon-a select {
+        width: 130px;
+        height: 28px;
+    }
+
+    .srqcon-a .con-aa {
+        width: 276px;
+    }
+
+    .srqcon-a .con-aa span {
+        width: 70px;
+        margin-right: 15px;
+        font-size: 14px;
+        text-align: right;
+        display: inline-block;
+    }
+
+    .srqcon-a .con-aa select {
+        margin-left: 14px;
+    }
+
+    .srqcon-a .con-ab {
+        width: 260px;
+        float: left;
+    }
+
+    .srqcon-a .con-ab span {
+        font-size: 14px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .srqcon-a .con-ac {
+        width: 240px;
+        float: left;
+    }
+
+    .srqcon-a .con-ac span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .srqcon-a .con-ad {
+        width: 70px;
+        float: left;
+    }
+
+    .srqcon-a .con-ad span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+        margin-right: 16px;
+    }
+
+    .srqcon-a .con-ad p a {
+        width: 100px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .srqcon-a .con-ae {
+        width: 60px;
+        float: left;
+    }
+
+    .srqcon-a .con-ae span {
+        font-size: 14px;
+        width: 60px;
+        text-align: right;
+        display: inline-block;
+    }
+
+    .srqcon-a .con-ae p a {
+        width: 100px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        border: 1px solid #ccc;
+        display: inline-block;
+        background-color: #79b6ec;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        float: right;
+    }
+
+    .srqcon-b {
+        width: 180px;
+        height: 100%;
+        float: left;
+        border-left: 1px solid #ccc;
+    }
+
+    .srqcon-b p:first-child {
+        margin-top: 13px;
+    }
+
+    .srqcon-b p {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .srqcon-b p input {
+        width: 160px;
+        height: 26px;
+    }
+
+    .srqcon-b p a {
+        font-size: 18px;
+        width: 80px;
+        height: 36px;
+        line-height: 36px;
+        background-color: #cee3fe;
+        display: inline-block;
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    select{border: 1px solid #cccccc;}
+</style>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+        <div class="bjui-searchBar" style="height: 145px;">
+            <div class="srqnav">
+                <div class="srqnav-a" style="background-color: #cee3fe;"><span>信息筛选</span>
+                </div>
+            </div>
+
+            <input id="reloadSearch" data-toggle="reloadsearch" data-clear-query="false" type="hidden"></input>
+            <div class="content">
+                <div class="srqcon-a" style="background-color: white;height:100px;">
+                    <div class="con-aa">
+                        <p><span>采样时间</span><input type="text" id="startTime" name="startTime" value="$!startTime"
+                                                   data-toggle="datepicker"
+                                                   data-nobtn="true" placeholder="点击选择日期">
+                        </p>
+                        <p><span></span><input type="text" id="endTime" name="endTime" value="$!endTime"
+                                               data-toggle="datepicker"
+                                               data-nobtn="true" placeholder="点击选择日期"></p>
+                    ##                        <p><span style="margin-right: 14px;">监护类别</span><select name="" id="" data-toggle=""
+                    ##                                                                                data-width="130" data-emptytxt="请选择">
+                    ##                            <option value="" selected>从业人员体检</option>
+                    ##                        </select></p>
+                    </div>
+                    <div class="con-ab">
+
+                        #if($!currentAgenciesCode == 132)
+
+                        <p><span>地段区域</span><select name="areaId" id="areaId" data-width="130">
+                            <option value="">全部</option>
+                            #LoadBean("examAreaService")
+                            #foreach($el in $examAreaService.getRootExamArea())
+                                <option value="$!el.id"
+                                    #if($!el.id==$!currentAreaId)
+                                        selected
+                                    #end
+                                >$!el.areaName</option>
+                            #end
+                        #end
+
+                    </select>
+                    </p>
+
+                    #else
+                        <input type="hidden" name="areaId" value="$!currentAreaId">
+                    <p><span>地段区域</span><select name="areaIdHidden" id="areaIdHidden" data-width="130" disabled>
+                        <option value="">全部</option>
+                        #LoadBean("examAreaService")
+                        #foreach($el in $examAreaService.getRootExamArea())
+                            <option value="$!el.id"
+                                #if($!el.id==$!currentAreaId)
+                                    selected
+                                #end
+                            >$!el.areaName</option>
+                        #end
+                    #end
+
+                    </select>
+                    </p>
+
+                    #end
+
+                        <p><span>采样类型</span><select name="sampleType" value="$!sampleType"
+                                                    onchange="sampleTypeChange();" id="sampleType"
+                                                    data-toggle="" data-width="130">
+                            <option value="1" #if($!sampleType==1) selected
+                            #end
+                            >血检
+                            </option>
+                            <option value="2" #if($!sampleType==2) selected
+                            #end>肠检
+                            </option>
+                        </select></p>
+                    </div>
+                    <div class="con-ab" style="width: 220px">
+                        <p><span style="margin-right: 14px;">监护类别</span><select name="" id="" data-toggle=""
+                                                                                data-width="130" data-emptytxt="请选择">
+                            <option value="" selected>从业人员体检</option>
+                        </select></p>
+##                        <input id="isSrQuery" name="isSrQuery" value="123" type="hidden"/>
+                    </div>
+
+                    <div class="con-ae">
+                        <button class="btn btn-default" id="searchBtnSr" type="submit">查询</button>
+                    </div>
+                    <div class="con-ae">
+                        <button class="btn btn-default" id="print" type="button">打印</button>
+                    </div>
+                    <div class="con-ae">
+                        <button id="exportRecordExcel" data-toggle="exportOption" class="btn btn-default"
+                                style="cursor:pointer">
+                            导出列表
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input id="simpleRecordIsQuery" name="simpleRecordIsQuery" value="$!simpleRecordIsQuery" type="hidden"/>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent" style="top: 135px;bottom: 70px">
+    <table id="blodExamResult" class="table table-bordered table-top">
+        <thead>
+        <tr class="first-tr-style">
+            <th style="text-align:center;">检验日期</th>
+            <th style="text-align:center;">体检号</th>
+            <th style="text-align:center;">检验号</th>
+            <th style="text-align:center;">HAV-IgM(甲)</th>
+            <th style="text-align:center;">HEV-IgM(戊)</th>
+            <th style="text-align:center;">ALT(谷)</th>
+            <th style="text-align:center;">疫区</th>
+            <th style="text-align:center;">复检项目</th>
+
+        </tr>
+        </thead>
+        <tbody class="hover-color" id="blodListContent">
+            #foreach($vo in $page.list)
+            <tr style="text-align:center;">
+                <td>$!vo.createTimeStr</td>
+                <td>$!vo.examNumber</td>
+                <td>$!vo.testNumber</td>
+
+                <td>
+                    #set($reshut1="")
+                            #foreach($b in $!vo.blodIntestinals)
+                    #if($b.projectName=='甲肝')
+                        #set($reshut1=$b.examResult)
+                    #end
+                #end
+                            $reshut1
+                </td>
+
+                <td>
+                    #set($reshut2="")
+                            #foreach($b in $!vo.blodIntestinals)
+                    #if($b.projectName=='戊肝')
+                        #set($reshut2=$b.examResult)
+                    #end
+                #end
+                            $reshut2
+                </td>
+
+                <td>
+                    #set($reshut3="")
+                            #foreach($b in $!vo.blodIntestinals)
+                    #if($b.projectName=='谷丙转氨酶')
+                        #set($reshut3=$b.examResult)
+                    #end
+                #end
+                            $reshut3
+                </td>
+
+                #*#if($!vo.blodIntestinals.size()>0)
+                    <td>$!vo.blodIntestinals[0].examResult</td>
+                #else
+                    <td></td>
+                #end
+
+                #if($!vo.blodIntestinals.size()>2)
+                    <td>$!vo.blodIntestinals[2].examResult</td>
+                #else
+                    <td></td>
+                #end
+
+                #if($!vo.blodIntestinals.size()>1)
+                    <td>$!vo.blodIntestinals[1].examResult</td>
+                #else
+                    <td></td>
+                #end*#
+
+
+
+
+            ##                <td>$!vo.blodIntestinals[1].examResult</td>
+            ##                <td>$!vo.blodIntestinals[2].examResult</td>
+                <td>$!vo.examAffected.affectedName</td>
+                <td>$!vo.examRecheckStr</td>
+
+            </tr>
+            #end
+        </tbody>
+    </table>
+    <table id="intestinalExamResult" class="table table-bordered table-top">
+        <thead>
+        <tr class="first-tr-style">
+            <th style="text-align:center;">体检号</th>
+            <th style="text-align:center;">检验号</th>
+            <th style="text-align:center;">体检结果</th>
+            <th style="text-align:center;">检验日期</th>
+        </tr>
+        </thead>
+        <tbody class="hover-color" id="intestinalListContent">
+            #foreach($vo in $page.list)
+            <tr style="text-align:center;">
+                <td>$!vo.examNumber</td>
+                <td>$!vo.testNumber</td>
+                <td>$!vo.intestinalBlods[0].examResult</td>
+                <td>$!vo.createTimeStr</td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+    <input type="hidden" id="pageList" value="$page.list">
+    <input type="hidden" id="pageCurrent" value="$page.pageCurrent">
+    <input type="hidden" id="pageCount" value="$page.pageCount">
+    <input type="hidden" id="pageSize" value="$page.pageSize">
+</div>
+#page($page)
+<div id="printDiv"></div>
+<iframe id="printSamplingPrint" src="#" style="width:0px; height:0px;"></iframe>
+<script>
+
+    ##    //$page.total  总共
+    ##    //$page.pagesize  每页多少条
+    ##    //$page.pageCurrent 当前页
+    getNavEle( document).ready(function () {
+        getNavEle( "#searchBtnSr").click(function () {
+            getNavEle( "#simpleRecordIsQuery").val("1");
+        });
+        var value = getNavEle( '#sampleType').val();
+
+        if (value == 1) {
+            getNavEle( '#blodExamResult').show();
+            getNavEle( '#intestinalExamResult').hide();
+        } else if (value == 2) {
+            getNavEle( '#blodExamResult').hide();
+            getNavEle( '#intestinalExamResult').show();
+        } else {
+            getNavEle( '#blodExamResult').show();
+            getNavEle( '#intestinalExamResult').hide();
+        }
+    });
+
+    //选择血检 肠检的时候调取不同的表格数据
+    function sampleTypeChange() {
+        var sampleType = document.getElementById("sampleType");
+        var value = sampleType.options[sampleType.selectedIndex].value;
+        //同时修改form里面deaction查询数据
+        if (value == 1) {
+
+            getNavEle( '#blodListContent').empty();
+            getNavEle( '#intestinalListContent').empty();
+
+            getNavEle( '#blodExamResult').show();
+            getNavEle( '#intestinalExamResult').hide();
+
+        } else if (value == 2) {
+
+            getNavEle( '#blodListContent').empty();
+            getNavEle( '#intestinalListContent').empty();
+
+            getNavEle( '#intestinalExamResult').show();
+            getNavEle( '#blodExamResult').hide();
+        }
+    }
+
+    //打印按钮操作
+    getNavEle( '#print').click(function () {
+        var startTime = getNavEle( '#startTime').val();
+        var endTime = getNavEle( '#endTime').val();
+        var areaId = getNavEle( '#areaId').val();
+        var pageCurrent = getNavEle( '#pageCurrent').val();
+        var pageCount = getNavEle( '#pageCount').val();
+        var pageSize = getNavEle( '#pageSize').val();
+        var url;
+
+        if (getNavEle( '#blodExamResult').css("display") == 'none') {//打印肠检单
+            //弹出弹框 修改用户信息
+            url = "#U('printIntestinal?startTime=')" + startTime + "&endTime=" + endTime
+                    + "&areaId=" + areaId
+                    + "&pageCurrent=" + pageCurrent + "&pageCount=" + pageCount + "&pageSize=" + pageSize;
+        } else {//打印血检单
+            url = "#U('printBlod?startTime=')" + startTime + "&endTime=" + endTime
+                    + "&areaId=" + areaId
+                    + "&pageCurrent=" + pageCurrent + "&pageCount=" + pageCount + "&pageSize=" + pageSize;
+        }
+       /* getNavEle( this).attr("data-url", url);
+        getNavEle( this).attr("data-toggle", "dialog");
+        getNavEle( this).attr("data-id", "recordPrint");
+        getNavEle( this).attr("data-title", "打印");
+        getNavEle( this).attr("data-width", "800");
+        getNavEle( this).attr("data-height", "800");
+
+        getNavEle( "#reloadSearch").click();*/
+
+        getNavEle( '#printSamplingPrint').attr('src',url);
+
+
+    });
+
+    //导出列表
+    getNavEle( "#exportRecordExcel").on("click", function () {
+
+        var beginTime = getNavEle( '#startTime').val();
+        var endTime = getNavEle( '#endTime').val();
+        var areaId = getNavEle( '#areaId').val();
+        var sampleType = getNavEle( '#sampleType').val();
+        window.open("#U("/admin/queryStatic/samplingRecordQuery/exportRecordExcel")" + "?beginTime="+beginTime+"&endTime="+endTime+"&areaId="+areaId+"&sampleType="+sampleType);
+    });
+</script>

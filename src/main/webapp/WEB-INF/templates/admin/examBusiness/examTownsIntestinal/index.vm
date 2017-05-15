@@ -1,0 +1,238 @@
+<div class="bjui-pageHeader heard-query">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="#U('index')" method="post">
+        #pageInput($page)
+    </form>
+        <div class="bjui-searchBar" id="townsIntestinalSearch">
+            <input type="hidden" id="hiddenCurrentNumber"/>
+            <div>
+            <label>起始号：</label>
+            <input type="text" id="startingNumber" value="" name="startingNumber" class="form-control" size="13" style="height:-1px;margin-bottom: 2px;margin-top: 2px;">&nbsp;
+            <label>增量：</label>
+            <input type="text" id="increment" value="1" data-rule="number" name="increment" class="form-control"
+                   style="margin-left: 42px;height:-1px;margin-bottom: 2px;margin-top: 2px;width: 136px;">&nbsp;
+            <br/>
+            <label>当前号：</label>
+            <input type="text" id="currentNumber" value="" data-rule="number" name="currentNumber" class="form-control" style="height:-1px;width: 130px;">&nbsp;
+            <label>下一采样号：</label>
+            <input type="text" id="nextNumber" value="" data-rule="number" name="nextNumber" class="form-control" style="height:-1px;width: 136px;">&nbsp;&nbsp;&nbsp;
+                <button id="setBtn" class="btn btn-default" style="width: 100px;">设置</button>
+            </div>
+            <hr style="height:1px;border:none;border-top:1px solid rgba(85, 85, 85, 0.37);    margin-top: 10px;margin-bottom: 10px;height:-1px;" />
+            <label>检验号：</label>
+            <input type="text" id="examNumber" value="" name="examNumber" class="form-control" size="13" style="height:-1px;margin-bottom: 2px;">
+            <input type="hidden" id="examNumberLook" name="memberExamLookup.number" size="13" >
+            <button id="ertry" class="btn btn-default" style="margin-bottom: 2px;" data-url="#U('townsMemberExamLookBack')" data-toggle="lookupbtn"
+                    data-title="体检信息查找带回" data-group="memberExamLookup" data-width="820" data-height="600">
+##            <a href="#U('townsMemberExamLookBack')" data-toggle="lookupbtn" data-group="memberExamLookup" data-width="800" data-height="600">...</a>
+            ...
+            </button>&nbsp;&nbsp;&nbsp;
+            <input type="text" id="sampleNumber" value="" name="sampleNumber" class="form-control" style="height:-1px;margin-bottom: 2px;width: 179px;">
+            <br/>
+            <input type="text" id="sampleTxt" value="无肠检项目" name="sampleTxt" class="form-control" style="margin-left: 60px;width:362px ;margin-bottom: 2px;color:#0a6aa1;">&nbsp;&nbsp;&nbsp;
+            <button id="sample" class="btn btn-default" style="width: 100px;margin-bottom: 2px;cursor:default;">采样</button>
+        </div>
+
+</div>
+<div class="bjui-pageContent tableContent">
+    <div class="col-md-5" style="padding-right: 23px;padding-left: 0px;">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true">
+        <thead>
+        <tr>
+            <th align="center" style="width:80px;">编号</th>
+            <th align="center" style="width:100px;">体检号</th>
+            <th align="center" style="width:80px;">采样号</th>
+        </tr>
+        </thead>
+        <tbody id="townsIntestinalTab">
+##            #foreach($vo in $page.list)
+##            <tr align="center" id="townsIntestinalTr">
+##                <td style="width:100px;"></td>
+##                <td style="width:80px;"></td>
+##                <td style="width:100px;"></td>
+##            </tr>
+##            #end
+        </tbody>
+    </table>
+    </div>
+    <script>
+        getNavEle( document).ready(function(){
+
+        });
+
+        // 乡镇肠检体检信息查找带回回调方法
+        getNavEle( '#examNumberLook').on('afterchange.bjui.lookup', function(e, data) {
+            var examNumber = data.value;
+            getNavEle( "#townsIntestinalSearch #examNumber").val(examNumber);
+        });
+
+        var times;
+
+        getNavEle( "#startingNumber").blur(function(){
+            if(isNaN(getNavEle( "#startingNumber").val())){
+                getNavEle( this).alertmsg("error","请输入不大于5000的正整数！");
+                return false;
+            }
+            if(Number(getNavEle( "#startingNumber").val())<=0||Number(getNavEle( "#startingNumber").val())>5000){
+                getNavEle( this).alertmsg("error","请输入不大于5000的正整数！");
+                return false;
+            }
+            times = 1;
+            computeSampleNumber(times);
+        });
+
+        //计算当前号，下一采样号
+        function computeSampleNumber(obj){
+            var startingNumber = getNavEle( "#startingNumber").val();
+            var increment = getNavEle( "#increment").val();
+            var currentNumber = getNavEle( "#currentNumber").val();
+//            var nextNumber = getNavEle( "#nextNumber").val();
+            if(times==1){
+                getNavEle( "#currentNumber").val(startingNumber);
+            }else{
+                getNavEle( "#currentNumber").val(currentNumber*1+increment*1);
+            }
+            getNavEle( "#nextNumber").val((getNavEle( "#currentNumber").val()*1)+1);
+            var n = getNavEle( "#nextNumber").val();
+            times++;
+
+        };
+/*回车一次计算一次*/
+        var keyDownTime=0;
+        function keyDownSampleNumber( ){
+
+            keyDownTime=keyDownTime+1;
+
+            //alert(keyDownTime);
+            var startingNumber = getNavEle( "#startingNumber").val();
+            var increment = getNavEle( "#increment").val();
+            var currentNumber = getNavEle( "#currentNumber").val();
+//            var nextNumber = getNavEle( "#nextNumber").val();
+            if(keyDownTime==1){
+                getNavEle( "#currentNumber").val(startingNumber);
+            }else{
+                getNavEle( "#currentNumber").val(currentNumber*1+increment*1);
+            }
+            getNavEle( "#nextNumber").val((getNavEle( "#currentNumber").val()*1)+1);
+            var n = getNavEle( "#currentNumber").val();
+            return n;
+
+        };
+
+
+        //设置操作
+        var clickNum =0;
+        getNavEle( "#setBtn").click(function(){
+            if(clickNum %2==0){
+                getNavEle( "#startingNumber").attr("disabled", true);
+                getNavEle( "#increment").attr("disabled", true);
+                getNavEle( "#currentNumber").attr("disabled", true);
+                getNavEle( "#nextNumber").attr("disabled", true);
+                getNavEle( '#townsIntestinalSearch #examNumber').focus();
+            }else{
+                getNavEle( "#startingNumber").removeAttr("disabled");
+                getNavEle( "#increment").removeAttr("disabled");
+                getNavEle( "#currentNumber").removeAttr("disabled");
+                getNavEle( "#nextNumber").removeAttr("disabled");
+            }
+            clickNum++;
+            keyDownTime=0;
+        });
+
+        //输入体检号后点击操作
+//        getNavEle( "#ertry").click(function(){
+//            var examNumber = getNavEle( "#townsIntestinalSearch #examNumber").val();
+//            barCodeScan(examNumber);
+//        });
+
+
+        // 扫描条形码
+        getNavEle( "#townsIntestinalSearch #examNumber").on("keydown",function(event){
+
+            var examNumber = getNavEle( "#townsIntestinalSearch #examNumber").val();
+            var theEvent = window.event || arguments.callee.caller.arguments[0]; //谷歌能识别event，火狐识别不了，所以增加了这一句，chrome浏览器可以直接支持event.keyCode
+            var code = theEvent.keyCode;
+            if (code == 13) {
+//                var keyDownTime=0;
+//                keyDownTime=keyDownTime++;
+               // keyDownTime=keyDownTime++;
+                barCodeScan(examNumber);
+            };
+        });
+
+
+
+        //获取体检号后的检测，保存，展示肠检信息操作(后面得采集按钮和血检肠检采集一样暂无用)
+        function barCodeScan(examNumber){
+            if(examNumber==''){
+                getNavEle( this).alertmsg("error","请扫描条形码获取体检号！");
+                getNavEle( '#townsIntestinalSearch #examNumber').focus();
+                getNavEle( '#townsIntestinalSearch #examNumber').select();
+                return false;
+            };
+
+            if(examNumber.indexOf("132")==-1||examNumber.indexOf("132")>3){
+
+            }else{
+                getNavEle( this).alertmsg("error","请在肠检样品采集进行采集！");
+                return false;
+            }
+
+            $.post("#U('checkTownsIntestinal')",
+                    {examNumber:examNumber},function(data){
+                        data= $.parseJSON(data);
+                        if(data.errorMsg){
+                            getNavEle( this).alertmsg("error",data.errorMsg);
+                            getNavEle( '#townsIntestinalSearch #examNumber').focus();
+                            getNavEle( '#townsIntestinalSearch #examNumber').select();
+                            return false;
+                        }else{
+
+
+                            var nowNumber=keyDownSampleNumber();
+                            getNavEle( "#currentNumber").val(nowNumber);
+                           // alert( getNavEle( "#currentNumber").val());
+                            $.post("#U('saveTownsIntestinalTestNumber')",
+                                    {
+                                        examNumber:examNumber,
+                                        sampleNumber:getNavEle( "#currentNumber").val()
+                                    },function(data){
+                                        data= $.parseJSON(data);
+                                        if (data) {
+                                            if(data.statusCode==200){
+                                                getNavEle( '#sampleNumber').val(getNavEle( "#currentNumber").val());
+                                                getNavEle( '#sampleTxt').val('肠道带菌检查');
+                                                getNavEle( '#townsIntestinalSearch #examNumber').focus();
+                                                getNavEle( '#townsIntestinalSearch #examNumber').select();
+
+                                                if(times!=2){
+                                                    computeSampleNumber(times);
+                                                }
+
+                                                $.post("#U('findTownsIntestinalByNumber')",
+                                                        {
+                                                            examNumber:examNumber,
+                                                            sampleNumber:getNavEle( "#currentNumber").val()
+                                                        },function(data){
+                                                            data= $.parseJSON(data);
+                                                            var html = "";
+                                                            var townsIntestinalTab = getNavEle( "#townsIntestinalTab");
+                                                           // townsIntestinalTab.empty();
+                                                            html+="<tr align='center' id='townsIntestinalTr'>";
+                                                            html+="<td style='width:80px;'>"+data.id+"</td>";
+                                                            html+="<td style='width:100px;'>"+data.examNumber+"</td>";
+                                                            html+="<td style='width:80px;'>"+data.testNumber+"</td>";
+                                                            html+="</tr>";
+                                                            townsIntestinalTab.prepend(html);
+                                                        });
+
+                                            }
+                                        }
+                                    });
+                        }
+                    });
+        }
+
+    </script>
+</div>
+
+#page($page)

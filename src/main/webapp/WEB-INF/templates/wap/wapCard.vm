@@ -1,0 +1,166 @@
+##<!DOCTYPE html>
+##<html lang="zh-hans">
+##<head>
+##    <meta charset="utf-8">
+##    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+##    <title>电子健康证</title>
+##    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+##    <meta name="apple-mobile-web-app-capable" content="yes">
+##    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+##    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+##    <link rel="stylesheet" href="../assets/wap/bootstrap.min.css">
+##    <link rel="stylesheet" href="../assets/wap/style.css">
+##</head>
+##<body class="gray">
+###if($!examEcard!="")
+##<section class="container-fluid certificate gray">
+##    <div class="outer-box">
+##        <div class="inner-box">
+##            <div class="media certificate-head">
+##                <div class="media-left img-box">
+##                    <img src="../assets/images/cdcLogo.png" alt="">
+##                </div>
+##                <div class="media-body">
+##                    <p>江苏省从业人员预防性</p>
+##                    <p>健康检查合格证明</p>
+##                </div>
+##            </div>
+##            <div class="media certificate-content">
+##                <div class="media-body">
+##                    <p>
+##                        姓名:<span data-certificate-name>$!examEcard.examMember.name</span>&emsp;
+##                        性别:<span data-certificate-gender>
+##                        #if($!examEcard.examMember.sex==1)
+##                            男
+##                            #elseif($!examEcard.examMember.sex==0)
+##                                女
+##                        #end
+##                    </span>&emsp;
+##                        年龄:<span data-certificate-age>$!examEcard.examMember.age</span>&emsp;
+##                    </p>
+##                    <p>身份证号:<span data-user-id>$!examEcard.examMember.idCardNum</span></p>
+##                    <p>编号:<span data-certificate-id>苏$!examEcard.eCardNumber号</span></p>
+##                    <p>发证单位:<span data-certificate-unit>$!examEcard.eCardAgency</span></p>
+##                    <p>发证日期:<span data-certificate-date>$!examEcard.issueTimeStr</span></p>
+##                    <img data-certificate-code class="certificate-code" src="$!examEcard.qrCodeUrl" alt="">
+##                </div>
+##                <div class="media-right">
+##                    <img src="$!examEcard.memberPhoto" alt="">
+##                    <p>$!examEcard.examNumber</p>
+##                </div>
+##            </div>
+##        </div>
+##        <div class="inner-box notice">
+##            <h3>从业人员须知</h3>
+##            <p>1、本证应妥善保管，不得转让、租借他人，自觉接受监督检查。</p>
+##            <p>2、本证涂改、过期、严重破损或未盖公章时无效。</p>
+##            <p>3、本证遗失向发证机构申请补发。</p>
+##            <p>4、本证自发证之日起，有效期一年。</p>
+##            <p>5、本证在全省范围内有效。</p>
+##        </div>
+##    </div>
+##</section>
+###else
+##<div style="text-align: center;margin-top: 30%;">
+##    <p>未查询到健康证信息</p>
+##    <div class="col-xs-12 text-center" style="margin-top: 35%;">
+##        <button id="disagreeNotice" class="custom-btn">返回</button>
+##    </div>
+##</div>
+###end
+##<script>
+##    /* 设置根元素的font-size大小 */
+##    document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+##    //点击不同意按钮，关闭当前页面
+##    $("#disagreeNotice").click(function () {
+##        WeixinJSBridge.call('closeWindow');
+##    });
+##</script>
+##</body>
+##</html>
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>电子健康证</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="../assets/B-JUI/BJUI/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="../assets/wap/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/wap/style.css">
+</head>
+<body class="gray">
+    #if($!examEcard!="")
+    <section class="container-fluid certificate gray">
+        <div class="outer-box">
+            <div class="inner-box">
+                <div class="media certificate-head" style="padding: 0 .5rem;">
+                    <div class="media-left img-box">
+                        <img src="../assets/images/cdcLogo.png" alt="">
+                    </div>
+                    <div class="media-body">
+                        <p style="line-height: 1.2">江苏省从业人员预防性</p>
+                        <p style="line-height: 1.2">健康检查合格证明</p>
+                    </div>
+                </div>
+                <div class="media certificate-content" style="position: relative;">
+                    <div class="media-body health-certificate-margin" style="position: relative;">
+                        <p>
+                            姓名：<span data-certificate-name>$!examEcard.examMember.name</span>&emsp;
+                        </p>
+                        <p>
+                            性别：<span data-certificate-gender>$!examEcard.sexStr</span>
+                        </p>
+                        <p>
+
+                            年龄：<span data-certificate-age>$!examEcard.memberAge</span>&emsp;
+                        </p>
+                        <p>身份证号：<span data-user-id>$!examEcard.idCardNumber</span></p>
+                        <p>编号：<span data-certificate-id>苏$!examEcard.eCardNumber号</span></p>
+                        <p>发证日期：<span data-certificate-date>$!examEcard.issueTimeStr</span></p>
+
+                        <p style="margin-bottom: .2rem">发证机构：<span data-certificate-unit>$!examEcard.eCardAgency</span></p>
+                        <div style="position: absolute; right: 1.4rem; top: 0; width: ">
+                            <img data-certificate-code class="certificate-code" src="$!examEcard.qrCodeUrl" alt="">
+                        </div>
+                    </div>
+                    <div class="media-right">
+                        <div style="height: 2.9rem; overflow: hidden;">
+                            <img style="width: 100%;" src="$!examEcard.memberPhoto" alt="">
+                        </div>
+                        <p>$!examEcard.examNumber</p>
+                    </div>
+                    <div style="position: absolute;right: 1.8rem;bottom: .4rem; z-index: 1000; height: 1.6rem; width: 1.6rem">
+                        <img style="width: 100%;" src="/assets/images/wap/seal-img.png">
+                    </div>
+                </div>
+            </div>
+            <div class="inner-box notice">
+                <h3>从业人员须知</h3>
+                <p>1、本证应妥善保管，不得转让、租借他人，自觉接受监督检查。</p>
+                <p>2、本证涂改、过期、严重破损或未盖公章时无效。</p>
+                <p>3、本证遗失向发证机构申请补发。</p>
+                <p>4、本证自发证之日起，有效期一年。</p>
+                <p style="margin-bottom: .7rem">5、本证在全省范围内有效。</p>
+            </div>
+        </div>
+    </section>
+    #else
+    <div style="text-align: center;">
+        <p>未查询到健康证信息</p>
+        <div class="col-xs-12 text-center" style="margin-top: 35%;">
+            <button id="disagreeNotice" class="custom-btn">返回</button>
+        </div>
+    </div>
+    #end
+<script>
+    /* 设置根元素的font-size大小 */
+    document.getElementsByTagName('html')[0].style.fontSize = window.innerWidth / 10 + 'px';
+    $("#disagreeNotice").click(function () {
+        WeixinJSBridge.call('closeWindow');
+    });
+</script>
+</body>
+</html>

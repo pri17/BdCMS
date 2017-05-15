@@ -1,0 +1,9 @@
+<div class="bjui-pageContent">
+
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" >关闭</button></li>
+        <li><button type="submit"  class="btn-default" >保存</button></li>
+    </ul>
+</div>

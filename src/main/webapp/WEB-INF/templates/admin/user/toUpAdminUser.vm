@@ -1,0 +1,131 @@
+<div class="bjui-pageContent">
+    <form action="#U('upAdminUser')"
+          data-reload-navtab="true"
+          method="post" class="pageForm" data-toggle="validate" >
+
+        <input type="hidden" name="uid" value="$!user.uid"/>
+        <input type="hidden" name="oldRoleId" value="$!roleId"/>
+
+        <div class="form-group">
+            <label class="control-label x85">姓名：</label>
+            <input type="text"   name="realName" value="$!user.realName"
+                   data-rule="" size="30"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">登录名：</label>
+            <input type="text"   name="username" value="$!user.username"
+                   data-rule="required" size="30"
+            />
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">选择单位：</label>
+            <select name="agenciesId" id="agenciesId"  data-toggle="selectpicker" data-width="170"
+                    data-emptytxt="请选择" onchange="agenciesChange();">
+                <option value="">请选择所在单位</option>
+                #LoadBean("examAgenciesService")
+                #foreach($el in $examAgenciesService.getAllAgencies())
+                    <option  value="$!el.id"
+                    #if($!el.id==$!user.agenciesId)
+                        selected
+                    #end
+                    >$!el.agenciesName</option>
+                #end
+            #end
+            </select>
+        </div>
+        <div class="form-group" id="selectedDepartment" style="display: none">
+            <label class="control-label x85">科室：</label>
+            <select name="departmentId" data-toggle="selectpicker" data-width="170"
+                    data-emptytxt="请选择">
+                <option value="">请选择所在科室</option>
+                #LoadBean("examDepartmentService")
+                #foreach($el in $examDepartmentService.getAllDepartment())
+                    <option value="$!el.id"
+                        #if($!el.id == $!user.departmentId) selected
+                    #end>$!el.departmentName</option>
+                #end
+            #end
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label x85">选择角色：</label>
+            <select name="roleId" id="updateAdminRole"  data-toggle="selectpicker" data-width="170"
+                    data-emptytxt="请选择角色">
+                <option value="">请选择角色</option>
+                #LoadBean("roleService")
+                #foreach($el in $roleService.getAllRole())
+                    <option  value="$!el.id"
+                        #if($!el.id==$!roleId)
+                             selected
+                        #end
+                    >$!el.role</option>
+                #end
+            #end
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label x85">选择地区：</label>
+            <select name="areaId" id="addAreaId"  data-toggle="selectpicker" data-width="170"
+                    data-emptytxt="请选择">
+                <option value="">请选择地区</option>
+                #LoadBean("examAreaService")
+                #foreach($el in $examAreaService.getRootExamArea())
+                    <option value="$!el.id" #if($!el.id==$!user.areaId)
+                            selected
+                    #end>
+                        $!el.areaName
+                    </option>
+                #end
+            #end
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label x85">手机号码：</label>
+            <input type="text"   name="mobile" value="$!user.mobile"
+                   size="30"
+                   data-rule="mobile"
+            />
+        </div>
+
+        <div class="bottomBtnDiv">
+            <ul class="bottomBtnUl" >
+                <li class="bottomBtnLi" >
+                    <button type="button" class="btn btn-close" >关闭</button>
+                </li>
+                <li class="bottomBtnLi" >
+                    <button type="submit"  class="btn-default" >保存</button>
+                </li>
+            </ul>
+        </div>
+
+    </form>
+</div>
+<script>
+
+    var agenciesChange = function () {
+        var id = $("#agenciesId").val();
+        $.getJSON("#U("/admin/systemSetting/examAgencies/findAgenciesById")",
+                {
+                    id:id
+                },
+                function (agenciesCode) {
+                    //$("#price").val(totalPrice);
+                    var selectedDepartment =  document.getElementById('selectedDepartment');
+
+                    if (agenciesCode==132){
+
+                        selectedDepartment.style.display='block';
+                    }else{
+                        selectedDepartment.style.display='none';
+                    }
+                });
+
+    }
+    //页面加载时，调用一次addOption方法，对行业类别加默认值
+    agenciesChange();
+
+</script>
