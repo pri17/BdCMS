@@ -110,7 +110,8 @@ public class ExamTogetherQueryDaoImpl extends BaseDaoImpl<ExamMemberExam> implem
     }
 
     @Override
-    public List<ExamMemberExam> queryTogetherNoPageList(String name,String eCardNumber,Long categoryId, String areaId, String idCard, String workUnit, String examNumber, String startTime, String endTime, String payState, String payType, String isRecheck, String isQualified,String sortByTime,String channel) throws ParseException {
+    public List<ExamMemberExam> queryTogetherNoPageList(String name,String eCardNumber,Long categoryId, String areaId, String idCard, String workUnit, String examNumber, String startTime, String endTime, String payState, String payType, String isRecheck, String isQualified,String sortByTime,String channel
+                                                        , String insState) throws ParseException {
         Map<String,Object> map = new HashMap<String,Object>();
         StringBuilder hql = new StringBuilder(" from ExamMemberExam as memebrExam where 1=1");
 
@@ -186,6 +187,10 @@ public class ExamTogetherQueryDaoImpl extends BaseDaoImpl<ExamMemberExam> implem
             map.put("channel", Integer.parseInt(channel));
         }
 
+        if (StringUtils.isNotBlank(insState)){
+            hql.append(" and memebrExam.insState =:insState");
+            map.put("insState", Integer.valueOf(insState));
+        }
 
         //排序
         if (StringUtils.isNotEmpty(sortByTime)){
@@ -221,7 +226,7 @@ public class ExamTogetherQueryDaoImpl extends BaseDaoImpl<ExamMemberExam> implem
 
     @Override
     public Long queryCountTogetherList(String name,String eCardNumber,Long categoryId,String areaId, String idCard, String workUnit, String examNumber,String startTime, String endTime, String payState, String payType, String isRecheck,
-                                       String isQualified,String sortByTime,String channel) throws ParseException{
+                                       String isQualified,String sortByTime,String channel,String insState) throws ParseException{
         Map<String,Object> map = new HashMap<String,Object>();
         StringBuilder hql = new StringBuilder("select count(memebrExam.id) from ExamMemberExam as memebrExam where 1=1");
         //姓名
@@ -287,6 +292,10 @@ public class ExamTogetherQueryDaoImpl extends BaseDaoImpl<ExamMemberExam> implem
             map.put("channel", Integer.parseInt(channel));
         }
 
+        if (StringUtils.isNotBlank(insState)){
+            hql.append(" and memebrExam.insState =:insState");
+            map.put("insState", Integer.valueOf(insState));
+        }
 
         Query query = getSession().createQuery(hql.toString());
 

@@ -16,10 +16,10 @@ public interface ExamTogetherQueryDao extends Dao<ExamMemberExam>{
                                            int pageNo, int pageSize) throws ParseException;
 
     List<ExamMemberExam> queryTogetherNoPageList(String name,String eCardNumber,Long categoryId,String areaId, String idCard, String workUnit, String examNumber,String startTime, String endTime, String payState, String payType, String isRecheck,
-                                           String isQualified,String sortByTime,String channel) throws ParseException;
+                                           String isQualified,String sortByTime,String channel, String i) throws ParseException;
 
     Long queryCountTogetherList(String name,String eCardNumber,Long categoryId,String areaId, String idCard, String workUnit, String examNumber,String startTime, String endTime, String payState, String payType, String isRecheck,
-                                String isQualified,String sortByTime,String channel) throws ParseException;
+                                String isQualified,String sortByTime,String channel,String i) throws ParseException;
 
     List<ExamMemberExam> queryTogetherList(String ids);
 }

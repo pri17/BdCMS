@@ -57,7 +57,7 @@ public class ExamTogetherQueryServiceImpl extends BaseServiceImpl<ExamMemberExam
     private JedisPool jedisPool;
 
     public void queryExamTogetherList(Page<TogetherQueryEntity> page,Long uid, String name,String eCardNumber, Long categoryId, String areaId, String idCard, String workUnit, String examNumber, String startTime, String endTime, String payState, String payType, String isRecheck,
-                                      String isQualified,String sortByTime,String channel) throws ParseException {
+                                      String isQualified,String sortByTime,String channel, String insState) throws ParseException {
 //        List<ExamMemberExam> list = examTogetherQueryDao.queryTogetherList(name, areaId, idCard, workUnit, examNumber, startTime, endTime, payState, payType, isRecheck, isQualified, page.getPageCurrent(), page.getPageSize());
 //        long count = examTogetherQueryDao.queryCountTogetherList(name, areaId, idCard, workUnit, examNumber, startTime, endTime, payState, payType, isRecheck, isQualified);
 //        page.setList(list);
@@ -69,6 +69,13 @@ public class ExamTogetherQueryServiceImpl extends BaseServiceImpl<ExamMemberExam
         List<ExamMemberExam> list = new ArrayList<ExamMemberExam>();
 
         long count = 0;
+
+            list = examTogetherQueryDao.queryTogetherNoPageList(name, eCardNumber,categoryId, areaId, idCard, workUnit, examNumber, startTime, endTime, payState, payType, isRecheck, isQualified,sortByTime,channel,insState);
+            long countTogetherQAddNo = examTogetherQueryDao.queryCountTogetherList(name,eCardNumber, categoryId,areaId, idCard, workUnit, examNumber, startTime, endTime, payState, payType, isRecheck, isQualified,sortByTime,channel,insState);
+
+            jedis.del(EXAM_TOGETHER_QUERY_KEY);
+
+            count = countTogetherQAddNo;
 
         //如果feeadd为空 则是不叠加查询 每次查询后进行删除操作
 //        if (StringUtils.isEmpty(togetherQAdd)) {
@@ -164,6 +171,8 @@ public class ExamTogetherQueryServiceImpl extends BaseServiceImpl<ExamMemberExam
             queryEntity.setChannelStr(examMemberExam.getChannelStr());
 
             queryEntity.setMobile(examMemberExam.getMobile());
+
+            queryEntity.setInsStateStr(examMemberExam.getInsState()!=null?(examMemberExam.getInsState() == 1 ? "已打印" : "未打印"):"");
 
             String jsonStr = JsonParseTool.toJson(queryEntity);
 

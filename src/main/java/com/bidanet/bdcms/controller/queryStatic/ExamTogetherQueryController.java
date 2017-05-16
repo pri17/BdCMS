@@ -123,7 +123,7 @@ public class ExamTogetherQueryController extends AdminBaseController{
     @RequestMapping("/index")
     public void index(String name, String areaId, String idCard, String eCardNumber,String workUnit, String examNumber, String startTime, String endTime, String payState, String payType, String isRecheck,
                       String isQualified, @ModelAttribute Page<TogetherQueryEntity> page, Model model,String tabid,Long togetherCategoryLevelTwo,Long isEtQuery,String sortByTime,String channel,
-                      String parentId) throws ParseException {
+                      String parentId, String insState) throws ParseException {
 //        if (isEtQuery!=null) {
 
         User user = uc.getUser();
@@ -131,7 +131,7 @@ public class ExamTogetherQueryController extends AdminBaseController{
         if(areaId == null){
             areaId = user.getAreaId().toString();
         }
-            examTogetherQueryService.queryExamTogetherList(page,user.getUid(), name,eCardNumber, togetherCategoryLevelTwo, areaId, idCard, workUnit, examNumber, startTime, endTime, payState, payType, isRecheck, isQualified,sortByTime,channel);
+            examTogetherQueryService.queryExamTogetherList(page,user.getUid(), name,eCardNumber, togetherCategoryLevelTwo, areaId, idCard, workUnit, examNumber, startTime, endTime, payState, payType, isRecheck, isQualified,sortByTime,channel,insState);
 
             List<UserRole> userRoles = userRoleService.getByUid(user.getUid());
             if (userRoles.size()>0) {
@@ -158,6 +158,7 @@ public class ExamTogetherQueryController extends AdminBaseController{
                 model.addAttribute("togetherCategoryLevelTwoId", togetherCategoryLevelTwo);
                 model.addAttribute("categoryParentId", parentId);
                 model.addAttribute("channel",channel);
+                model.addAttribute("insState",insState);
             }
 //        }
         //tableId = tabid;
@@ -385,6 +386,8 @@ public class ExamTogetherQueryController extends AdminBaseController{
                     int dataIndex = pageSize * i + j;
                     if (dataIndex<examMemberExams.size()){
                         ExamMemberExam examMemberExam = examMemberExams.get(dataIndex);
+                        examMemberExam.setInsState(1);//肠检单打印字段设置为已打印
+                        examMemberExamService.updateT(examMemberExam);
                         pageData.add(examMemberExam);
                     }else{
                         ExamMemberExam examMemberExam = new ExamMemberExam();

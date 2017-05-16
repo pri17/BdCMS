@@ -16,7 +16,7 @@ public interface ExamTogetherQueryService  extends Service<ExamMemberExam>  {
 
 
     void queryExamTogetherList(Page<TogetherQueryEntity> page,Long uid, String name,String eCardNumber, Long categoryId,String areaId, String idCard, String workUnit, String examNumber, String startTime, String endTime, String payState, String payType, String isRecheck,
-                               String isQualified,String sortByTime,String channel)throws ParseException;
+                               String isQualified,String sortByTime,String channel,String isInsPrint)throws ParseException;
 
     List<ExamMemberExam> getExamMemberExams(String ids);
 

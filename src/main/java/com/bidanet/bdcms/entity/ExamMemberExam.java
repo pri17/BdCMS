@@ -47,19 +47,21 @@ public class ExamMemberExam {
 
     private Long examTime;
 
+
     /**
      * 新增字段，判断该肠检是否已经打印过, 2017/05/15
      */
-    private Integer inteIsPrint;
+    private Integer insState;
 
-    @Column (name = "intestinalIsPrint")
-    public Integer getInteIsPrint() {
-        return inteIsPrint;
+    @Column (name = "insState")
+    public Integer getInsState() {
+        return insState;
     }
 
-    public void setInteIsPrint(Integer inteIsPrint) {
-        this.inteIsPrint = inteIsPrint;
+    public void setInsState(Integer insState) {
+        this.insState = insState;
     }
+
 
     /**
      * 体检日期格式化：yyyy-MM-dd HH:mm:ss

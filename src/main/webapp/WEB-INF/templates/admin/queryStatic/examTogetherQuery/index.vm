@@ -276,7 +276,7 @@
 
     .etqcon-a .con-ad span {
         font-size: 14px;
-        width: 60px;
+        width: 70px;
         text-align: right;
         display: inline-block;
         margin-right: 15px;
@@ -529,6 +529,20 @@
 ##                    <p><input id="togetherQAddBox" type="checkbox"
 ##                              name="togetherQAdd" #if($!togetherQAdd=="1") checked="checked"
 ##                        #end style="width: 20px;"><span style="width: 170px;vertical-align: 60%;">累加健康体检人员查询结果</span></p>
+                    <p><span>肠检单状态</span><select name="insState" id="insState" data-toggle="" data-width="130">
+                        <option value="">全部</option>
+                        <option value="0"
+                            #if(0==$!insState)
+                                selected
+                            #end>未打印
+                        </option>
+                        <option value="1"
+                            #if(1==$!insState)
+                                selected
+                            #end>已打印
+                        </option>
+                    </select>
+                    </p>
                 </div>
 
             </div>
@@ -561,6 +575,7 @@
             <th style="text-align: center;">是否复检</th>
             <th style="text-align: center;">手机号码#*收费方式*#</th>
             <th style="text-align: center;">是否收费</th>
+            <th style="text-align: center;">肠检单</th>
             <th style="text-align: center;">来源</th>
         </tr>
         </thead>
@@ -584,6 +599,7 @@
                 <td style="text-align: center;">$!vo.recheckTagStr</td>
                 <td style="text-align: center;">$!vo.mobile#*$!vo.payTypeStr*#</td>
                 <td style="text-align: center;">$!vo.payTypeStr#*$!vo.payStateStr*#</td>
+                <td style="text-align: center;">$!vo.insStateStr</td>
                 <td style="text-align: center;">$!vo.channelStr</td>
             </tr>
             #end
@@ -617,11 +633,12 @@
         var channel = getNavEle( '.etqcontent #channel').val();
         var payType = getNavEle( '.etqcontent #payType').val();
         var payState = getNavEle( '.etqcontent #payState').val();
+        var insState = getNavEle('.etqcontent #insState').val();
         window.open("#U("/admin/queryStatic/examTogetherQuery/exportTogetherExcel")" + "?pageCurrent="
                 + pageCurrent + "&pageCount=" + pageCount + "&pageSize=" + pageSize+ "&areaId=" + areaId+
                 "&togetherCategoryLevelTwoId=" + togetherCategoryLevelTwoId+ "&name=" + name+ "&idCard=" + idCard+
                 "&eCardNumber=" + eCardNumber+"&workUnit="+ workUnit+ "&startTime="+ startTime+
-                "&endTime=" + endTime+ "&examNumber=" + examNumber+ "&channel=" + channel+ "&payType=" + payType+ "&payState=" + payState);
+                "&endTime=" + endTime+ "&examNumber=" + examNumber+ "&channel=" + channel+ "&payType=" + payType+ "&payState=" + payState + "&insState" + insState);
     });
 
     var deleteVals ='';
